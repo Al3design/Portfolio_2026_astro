@@ -10,13 +10,13 @@ export default function Breadcrumb({ paths }: { paths: BreadcrumbPath[] }) {
       <Folder size={14} />
       <div className={styles.breadcrumb__list}>
         <a href="/" className={styles.breadcrumb__link}>~</a>
-        <span className={styles.breadcrumb__separator}>/</span>
+        <span className={styles.breadcrumb__separator} aria-hidden="true">/</span>
         <a href="/" className={styles.breadcrumb__link}>root</a>
         {paths.map((path, index) => {
           const isLink = typeof path === 'object';
           return (
             <span key={index} className={styles.breadcrumb__list}>
-              <span className={styles.breadcrumb__separator}>/</span>
+              <span className={styles.breadcrumb__separator} aria-hidden="true">/</span>
               {isLink ? (
                 <a href={path.href} className={styles.breadcrumb__link}>{path.name}</a>
               ) : (

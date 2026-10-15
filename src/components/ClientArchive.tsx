@@ -46,10 +46,10 @@ export default function ClientArchive({ projects, query, variables, data }: Prop
           </div>
           <div className={styles.archive__fileName}>query_db.sh</div>
           <div className={styles.archive__controls}>
-            <select className={styles.archive__select}>
+            <select className={styles.archive__select} aria-label="Filter by year">
               <option>All Years</option>
             </select>
-            <select className={styles.archive__select}>
+            <select className={styles.archive__select} aria-label="Filter by category">
               <option>All Categories</option>
             </select>
           </div>
@@ -86,10 +86,8 @@ export default function ClientArchive({ projects, query, variables, data }: Prop
                 {Array.isArray(project.stack) && project.stack.slice(0, 3).map((s: string) => <Tag key={s} className="text-[9px] px-2">{s}</Tag>)}
               </div>
               <div className={styles.archive__actionCol}>
-                <a href={`/projects/${project.slug}`}>
-                  <button className={styles.archive__actionBtn}>
-                    VIEW.MD <ExternalLink size={14} />
-                  </button>
+                <a href={`/projects/${project.slug}`} className={styles.archive__actionBtn}>
+                  VIEW.MD <ExternalLink size={14} />
                 </a>
               </div>
             </motion.div>
@@ -98,12 +96,12 @@ export default function ClientArchive({ projects, query, variables, data }: Prop
 
         {/* Pagination/Status Footer */}
         <div className={styles.archive__tableFooter}>
-          <div style={{ opacity: 0.6 }}>Showing {projects.length} of {projects.length} entries</div>
+          <div>Showing {projects.length} of {projects.length} entries</div>
           <div className={styles.archive__pagination}>
-            <button className={clsx(styles.archive__pageBtn, styles['archive__pageBtn--disabled'])}>
+            <button disabled className={clsx(styles.archive__pageBtn, styles['archive__pageBtn--disabled'])}>
               {"<"} PREV
             </button>
-            <button className={clsx(styles.archive__pageBtn, styles['archive__pageBtn--disabled'])}>
+            <button disabled className={clsx(styles.archive__pageBtn, styles['archive__pageBtn--disabled'])}>
               NEXT {">"}
             </button>
           </div>

@@ -2,6 +2,7 @@
 @use "../abstracts" as *;
 
 :root {
+  color-scheme: dark;
   @each $color, $shade-map in $active-theme {
     @each $shade, $value in $shade-map {
       --#{$color}-#{$shade}: #{$value};
@@ -50,12 +51,12 @@
   --clr-brand-secondary: rgb(var(--clr-brand-secondary-rgb));
   --clr-brand-tertiary: rgb(var(--clr-brand-tertiary-rgb));
   --clr-brand-danger: #ff716c;
-  --glass-sheen-start: 0.30;
-  --glass-sheen-end: 0.08;
-  --glass-warm-glow: 0.14;
-  --glass-cool-glow: 0.16;
+  --glass-sheen-start: 0.12;
+  --glass-sheen-end: 0.04;
+  --glass-warm-glow: 0.06;
+  --glass-cool-glow: 0.08;
   --glass-shadow-opacity: 0.5;
-  --glass-grain-opacity: 0.17;
+  --glass-grain-opacity: 0.08;
   --nav-shadow-opacity: 0.4;
   --nav-glass-saturation: 1.2;
   --energy-grid-opacity: 1;
@@ -67,6 +68,7 @@
 }
 
 .light {
+  color-scheme: light;
   // Light Theme: warm stone surfaces and restrained, readable brand accents.
   --clr-brand-surface-rgb: 231, 229, 223; // #E7E5DF
   --clr-brand-surface-low-rgb: 222, 220, 213; // #DEDCD5
@@ -156,6 +158,12 @@ h6 {
   font-weight: fw(bold);
   letter-spacing: ls(tighter);
   line-height: 1.1;
+}
+
+// A shared theme-aware ring also covers controls that reset their native outline.
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid semantic-color(brand-tertiary);
+  outline-offset: 4px;
 }
 
 main {

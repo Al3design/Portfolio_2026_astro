@@ -14,7 +14,8 @@ El sitio SHALL resolver fondos, texto y roles de marca mediante tokens semantico
 #### Scenario: Dark theme is selected again
 
 - **WHEN** el usuario regresa al tema oscuro o recarga con esa preferencia
-- **THEN** se restauran sus colores y efectos existentes sin heredar ajustes de intensidad claros
+- **THEN** se restauran sus colores y tokens de efectos oscuros sin heredar ajustes de intensidad claros
+- **AND** los reflejos oscuros se acotan cuando reducen el contraste funcional sobre las tarjetas
 
 ### Requirement: Functional contrast
 

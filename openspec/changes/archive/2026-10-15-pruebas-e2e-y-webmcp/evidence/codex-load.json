@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-15T16:24:04.528Z",
+  "freshProcess": true,
+  "modelTurns": 0,
+  "servers": [
+    {
+      "name": "e2e",
+      "tools": [
+        "open_session",
+        "call",
+        "tools",
+        "close_session"
+      ],
+      "authStatus": "unsupported"
+    },
+    {
+      "name": "webmcp",
+      "tools": [
+        "select_page",
+        "evaluate_script",
+        "new_page",
+        "list_pages",
+        "close_page",
+        "navigate_page",
+        "execute_webmcp_tool",
+        "list_webmcp_tools"
+      ],
+      "authStatus": "unsupported"
+    }
+  ]
+}

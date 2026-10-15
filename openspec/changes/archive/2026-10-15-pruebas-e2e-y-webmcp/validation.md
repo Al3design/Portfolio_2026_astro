@@ -27,3 +27,11 @@ Las herramientas nuevas todavia no aparecen en el catalogo de esta conversacion 
 No se midio un porcentaje de ahorro de tokens, no se probo una tienda futura y no se publico en produccion. Quedan revision de Alejandro y autorizacion para publicar/cerrar el OpenSpec.
 
 Reportes locales regenerables: `.e2e/summary.md`, `.e2e/report.json`, `.e2e/mcp-smoke.json`; ignorados por Git. Guia operativa: `docs/TESTING_MCP.md`.
+
+## Closure verification — 2026-10-15
+
+Alejandro confirmo commit/push y marco su revision/autorizacion (task-log.md). HEAD y upstream coinciden en 9d3fe65a0c9224c09ff77e47ddd0e42c289232a9.
+
+Un proceso nuevo de `codex app-server` ejecuto initialize y mcpServerStatus/list con serverName y detail toolsAndAuthOnly. e2e cargo cuatro herramientas y webmcp las ocho permitidas. Evidencia: evidence/codex-load.json, 2026-10-15T16:24:04.528Z, cero turnos de modelo. No se creo un chat adicional. Esto verifica la carga en una instancia nueva de Codex; no agrega retroactivamente herramientas al catalogo de esta conversacion.
+
+La prueba previa de ejecucion real y la suite 3/3 siguen documentadas arriba. El pendiente de nueva carga queda resuelto y la autorizacion humana esta registrada. Las secciones Remaining gates anteriores describen el estado historico y quedan superadas por esta verificacion para este cambio. Se archiva con sincronizacion de specs; no se realizan nuevos cambios de implementacion ni un nuevo despliegue.

@@ -5,5 +5,5 @@
 - [x] 3. Agregar configuracion e2e, pruebas deterministas y reportes ignorados por Git.
 - [x] 4. Integrar WebMCP opcional con acciones publicas existentes y documentar uso.
 - [x] 5. Ejecutar pruebas e2e, discovery/ejecucion MCP real y build; guardar evidencia en validation.md.
-- [ ] 6. Verificar carga de las conexiones en una nueva sesion de Codex.
-- [ ] 7. Revision de Alejandro y autorizacion antes de publicar o cerrar el cambio.
+- [x] 6. Verificar carga de las conexiones en una nueva sesion de Codex.
+- [x] 7. Revision de Alejandro y autorizacion antes de publicar o cerrar el cambio.

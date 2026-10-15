@@ -1,0 +1,70 @@
+{
+  "base": "http://localhost:4322",
+  "checkedAt": "2026-10-15T16:45:31.363Z",
+  "results": [
+    {
+      "theme": "light",
+      "state": "normal",
+      "textContrast": 5.183982393704583,
+      "signalContrast": null,
+      "pressed": "false",
+      "focus": false
+    },
+    {
+      "theme": "light",
+      "state": "selected",
+      "textContrast": 4.689889805229416,
+      "signalContrast": 5.353618509436333,
+      "pressed": "true",
+      "focus": false
+    },
+    {
+      "theme": "light",
+      "state": "hover",
+      "textContrast": 4.976652921541461,
+      "signalContrast": null,
+      "pressed": "false",
+      "focus": false
+    },
+    {
+      "theme": "light",
+      "state": "focus",
+      "textContrast": 4.976652921541461,
+      "signalContrast": 5.353618509436333,
+      "pressed": "false",
+      "focus": true
+    },
+    {
+      "theme": "dark",
+      "state": "normal",
+      "textContrast": 7.5082186439882745,
+      "signalContrast": null,
+      "pressed": "false",
+      "focus": false
+    },
+    {
+      "theme": "dark",
+      "state": "selected",
+      "textContrast": 11.330548590094978,
+      "signalContrast": 14.61598708262531,
+      "pressed": "true",
+      "focus": false
+    },
+    {
+      "theme": "dark",
+      "state": "hover",
+      "textContrast": 12.683186723826244,
+      "signalContrast": null,
+      "pressed": "false",
+      "focus": false
+    },
+    {
+      "theme": "dark",
+      "state": "focus",
+      "textContrast": 12.683186723826244,
+      "signalContrast": 14.61598708262531,
+      "pressed": "false",
+      "focus": true
+    }
+  ]
+}

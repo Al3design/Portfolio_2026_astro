@@ -303,7 +303,7 @@
     font-weight: fw(bold);
     letter-spacing: ls(wide)st;
     flex-shrink: 0;
-    opacity: 0.8;
+    opacity: 1;
     transition: opacity 0.25s ease;
   }
 
@@ -336,7 +336,7 @@
     font-size: 0.6rem;
     letter-spacing: ls(wide)st;
     color: semantic-color(brand-on-surface-variant);
-    opacity: 0.5;
+    opacity: 1;
   }
 }
 
@@ -347,7 +347,7 @@
     font-size: fs("100");
     letter-spacing: ls(wide);
     color: semantic-color(brand-on-surface-variant);
-    opacity: 0.6;
+    opacity: 1;
   }
 
   &__title {
@@ -362,6 +362,6 @@
 
 .status {
   &__uuid {
-    opacity: 0.7;
+    opacity: 1;
   }
 }

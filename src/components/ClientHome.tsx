@@ -233,7 +233,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
 
                         <div className={styles.home__featuredInfo}>
                           <div className={styles.home__featuredMeta}>
-                            <span>{"⟡"}</span> {featuredProject.year} {"//"} {featuredProject.type}
+                            <span aria-hidden="true">{"⟡"}</span> {featuredProject.year} {"//"} {featuredProject.type}
                           </div>
 
                           <h2 className={styles.home__featuredTitle}>

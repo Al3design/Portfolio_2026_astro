@@ -1,0 +1,1437 @@
+{
+  "base": "http://localhost:4322",
+  "checkedAt": "2026-10-15T16:41:22.578Z",
+  "method": "sample rendered backgrounds with transparent text; alpha compositing of actual text color; not an exhaustive WCAG audit",
+  "results": [
+    {
+      "route": "/",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 124,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 35,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "GitHub",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "LinkedIn",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/resume",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 185,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/archive",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 58,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Digital_Marketing_Specia",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 59,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "projects",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 124,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 35,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "GitHub",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "LinkedIn",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/resume",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 185,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/archive",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 58,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Digital_Marketing_Specia",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 59,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "projects",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 120,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "All Output",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "UI/UX Eng",
+          "outline": "solid",
+          "width": "3px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 31,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "GitHub",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "LinkedIn",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Bluesky",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Youtube",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/resume",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 181,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ADOBE",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/archive",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 54,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Digital_Marketing_Specia",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Project_Manager_&_IT_Spe",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "UX/UI_Web_Designer",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Multimedia_Designer",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 55,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "projects",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "NEXT PROJECT",
+          "outline": "solid",
+          "width": "3px"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 120,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "All Output",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "UI/UX Eng",
+          "outline": "solid",
+          "width": "3px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 31,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "GitHub",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "LinkedIn",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Bluesky",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Youtube",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/resume",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 181,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "ADOBE",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/archive",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 54,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Digital_Marketing_Specia",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Project_Manager_&_IT_Spe",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "UX/UI_Web_Designer",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Multimedia_Designer",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 55,
+      "failures": [],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "~",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "root",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "projects",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "NEXT PROJECT",
+          "outline": "solid",
+          "width": "3px"
+        }
+      ]
+    }
+  ]
+}

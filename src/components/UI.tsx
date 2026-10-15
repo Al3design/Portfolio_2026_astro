@@ -24,7 +24,7 @@ export function SyntaxCard({ children, className = "", label, ...rest }: SyntaxC
 export function Tag({ children, active, className = "", onClick }: { children: ReactNode, active?: boolean, className?: string, onClick?: () => void }) {
   const cls = clsx(styles.tag, active && styles['tag--active'], onClick && styles['tag--interactive'], className);
   return onClick
-    ? <button type="button" className={cls} onClick={onClick}>{children}</button>
+    ? <button type="button" className={cls} onClick={onClick} aria-pressed={!!active}>{children}</button>
     : <span className={cls}>{children}</span>;
 }
 

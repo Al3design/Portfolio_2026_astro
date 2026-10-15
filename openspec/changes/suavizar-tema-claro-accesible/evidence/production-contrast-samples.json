@@ -1,0 +1,3057 @@
+{
+  "base": "https://al3design.dev",
+  "checkedAt": "2026-10-15T16:26:04.795Z",
+  "method": "sample rendered backgrounds with transparent text; alpha compositing of actual text color; not an exhaustive WCAG audit",
+  "results": [
+    {
+      "route": "/",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 127,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.158,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "⟡",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 2.548,
+          "required": 4.5,
+          "opacity": 0.6
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 37,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "GitHub",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "LinkedIn",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/resume",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 187,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.156,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "~/aledesign/query_db.sh",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 1.879,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/archive",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 64,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.149,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "query_db.sh",
+          "tag": "DIV",
+          "cls": "_archive__fileName_ck81r_155",
+          "ratio": 3.482,
+          "required": 4.5,
+          "opacity": 0.8
+        },
+        {
+          "text": "Year",
+          "tag": "DIV",
+          "cls": "_archive__headerYear_ck81r_180",
+          "ratio": 2.46,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Project_ID",
+          "tag": "DIV",
+          "cls": "_archive__headerProject_ck81r_183",
+          "ratio": 2.459,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Stack",
+          "tag": "DIV",
+          "cls": "_archive__headerStack_ck81r_186",
+          "ratio": 2.46,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Action",
+          "tag": "DIV",
+          "cls": "_archive__headerAction_ck81r_189",
+          "ratio": 2.46,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Showing",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "5",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "of",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "5",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "entries",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "<",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "PREV",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "NEXT",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": ">",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Digital_Marketing_Specia",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "light",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 62,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.151,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "Freelance",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.752,
+          "required": 4.5,
+          "opacity": 0.8
+        },
+        {
+          "text": "Designer",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 1.013,
+          "required": 3,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "projects",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 127,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.214,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "⟡",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.213,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "VIEW LOG",
+          "tag": "DIV",
+          "cls": "_home__projectCardLink_1fhk3_604",
+          "ratio": 2.409,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "VIEW LOG",
+          "tag": "DIV",
+          "cls": "_home__projectCardLink_1fhk3_604",
+          "ratio": 2.409,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "VIEW LOG",
+          "tag": "DIV",
+          "cls": "_home__projectCardLink_1fhk3_604",
+          "ratio": 2.404,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "VIEW LOG",
+          "tag": "DIV",
+          "cls": "_home__projectCardLink_1fhk3_604",
+          "ratio": 2.404,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 37,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": ", UI/UX Architect who operates at the intersection of human empathy an",
+          "tag": "P",
+          "cls": "",
+          "ratio": 4.216,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Interfaces must be broken down into their smallest possible components",
+          "tag": "P",
+          "cls": "",
+          "ratio": 4.129,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Aesthetics without analytics is just decoration. Decisions must be anc",
+          "tag": "P",
+          "cls": "",
+          "ratio": 4.476,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "A design is only as good as its implementation. Designing with a deep ",
+          "tag": "P",
+          "cls": "",
+          "ratio": 2.594,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "GitHub",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "LinkedIn",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/resume",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 187,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.214,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "~/aledesign/query_db.sh",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.012,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Freelance",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.467,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.711,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Mockups and Wireframing in low and high FIGMA, Adobe XD, Illustrator, ",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 3.043,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Fixed-term contract",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.69,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.818,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Maintenance and updating of the website in HTML, CSS, Javascript, .NET",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 3.327,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Fixed-term contract",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.487,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.818,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Maintenance and updating of the INTI website and intranet. Creation of",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 3.552,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Fixed-term contract",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.643,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.818,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Execution of email campaigns, cleaning databases in Power Query, creat",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 3.618,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Fixed-term contract",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.487,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.818,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Implementation of Agile methodologies, using Microsoft Planner, Teams,",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 3.437,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "DESIGN ARCHITECTURE",
+          "tag": "H4",
+          "cls": "_resume__skillCardCategory_owzrl_491",
+          "ratio": 3.659,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Design Systems",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.982,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Interaction Design",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.942,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Wireframing",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 4.364,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Prototyping (Figma)",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 4.426,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "FRONT-END EXECUTION",
+          "tag": "H4",
+          "cls": "_resume__skillCardCategory_owzrl_491",
+          "ratio": 3.637,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "HTML/Semantic DOM",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.909,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "CSS/SASS/Tokens",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.999,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "JavaScript (ES6+)",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 4.421,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "React Basics",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 4.187,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "METHODOLOGIES",
+          "tag": "H4",
+          "cls": "_resume__skillCardCategory_owzrl_491",
+          "ratio": 3.335,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Agile/Scrum",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.744,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Atomic Design",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.948,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "A/B Testing",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 4.231,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "WCAG Accessibility",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.908,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Institution =",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.428,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Institution =",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.362,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/archive",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 64,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.031,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "Year",
+          "tag": "DIV",
+          "cls": "_archive__headerYear_ck81r_180",
+          "ratio": 3.342,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Project_ID",
+          "tag": "DIV",
+          "cls": "_archive__headerProject_ck81r_183",
+          "ratio": 3.365,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Stack",
+          "tag": "DIV",
+          "cls": "_archive__headerStack_ck81r_186",
+          "ratio": 3.369,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Action",
+          "tag": "DIV",
+          "cls": "_archive__headerAction_ck81r_189",
+          "ratio": 3.342,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Showing",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "5",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "of",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "5",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "entries",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "<",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "PREV",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "NEXT",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": ">",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Digital_Marketing_Specia",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "dark",
+      "viewport": {
+        "width": 1280,
+        "height": 960
+      },
+      "checked": 62,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.88,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "Designer",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 1.076,
+          "required": 3,
+          "opacity": 1
+        },
+        {
+          "text": "Role",
+          "tag": "SPAN",
+          "cls": "_projectDetail__infoItemKey_9z9ln_218",
+          "ratio": 3.97,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Timeline",
+          "tag": "SPAN",
+          "cls": "_projectDetail__infoItemKey_9z9ln_218",
+          "ratio": 3.57,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Client",
+          "tag": "SPAN",
+          "cls": "_projectDetail__infoItemKey_9z9ln_218",
+          "ratio": 2.817,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "specs.json",
+          "tag": "DIV",
+          "cls": "_projectDetail__stickyHeader_9z9ln_405",
+          "ratio": 3.63,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "PROJECTS",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "RESUME",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ABOUT",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "ARCHIVE",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "RSS Feed",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Source",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "projects",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 124,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "⟡",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 2.515,
+          "required": 4.5,
+          "opacity": 0.6
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "All Output",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "UI/UX Eng",
+          "outline": "solid",
+          "width": "3px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 34,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "GitHub",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "LinkedIn",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Bluesky",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Youtube",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/resume",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 184,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "~/aledesign/query_db.sh",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 1.879,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "",
+          "outline": "none",
+          "width": "3px"
+        },
+        {
+          "label": "ADOBE",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/archive",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 61,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "query_db.sh",
+          "tag": "DIV",
+          "cls": "_archive__fileName_ck81r_155",
+          "ratio": 3.25,
+          "required": 4.5,
+          "opacity": 0.8
+        },
+        {
+          "text": "Year",
+          "tag": "DIV",
+          "cls": "_archive__headerYear_ck81r_180",
+          "ratio": 2.467,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Project_ID",
+          "tag": "DIV",
+          "cls": "_archive__headerProject_ck81r_183",
+          "ratio": 2.467,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Stack",
+          "tag": "DIV",
+          "cls": "_archive__headerStack_ck81r_186",
+          "ratio": 2.459,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Action",
+          "tag": "DIV",
+          "cls": "_archive__headerAction_ck81r_189",
+          "ratio": 2.467,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Showing",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "5",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "of",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "5",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "entries",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "<",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "PREV",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "NEXT",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": ">",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 2.424,
+          "required": 4.5,
+          "opacity": 0.6
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Digital_Marketing_Specia",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Project_Manager_&_IT_Spe",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "UX/UI_Web_Designer",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 59,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 2.165,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "Freelance",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.752,
+          "required": 4.5,
+          "opacity": 0.8
+        },
+        {
+          "text": "Designer",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 1.001,
+          "required": 3,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "projects",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "NEXT PROJECT",
+          "outline": "auto",
+          "width": "3px"
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 124,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "⟡",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 2.897,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "Mockups and Wireframing in low and high FIGMA, Adobe XD, Illustrator, ",
+          "tag": "P",
+          "cls": "_home__featuredDesc_1fhk3_238",
+          "ratio": 4.43,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "VIEW LOG",
+          "tag": "DIV",
+          "cls": "_home__projectCardLink_1fhk3_604",
+          "ratio": 2.44,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "VIEW LOG",
+          "tag": "DIV",
+          "cls": "_home__projectCardLink_1fhk3_604",
+          "ratio": 2.415,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "VIEW LOG",
+          "tag": "DIV",
+          "cls": "_home__projectCardLink_1fhk3_604",
+          "ratio": 2.44,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "VIEW LOG",
+          "tag": "DIV",
+          "cls": "_home__projectCardLink_1fhk3_604",
+          "ratio": 2.44,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "All Output",
+          "outline": "solid",
+          "width": "3px"
+        },
+        {
+          "label": "UI/UX Eng",
+          "outline": "solid",
+          "width": "3px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 34,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": ", UI/UX Architect who operates at the intersection of human empathy an",
+          "tag": "P",
+          "cls": "",
+          "ratio": 4.331,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Interfaces must be broken down into their smallest possible components",
+          "tag": "P",
+          "cls": "",
+          "ratio": 4.244,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Aesthetics without analytics is just decoration. Decisions must be anc",
+          "tag": "P",
+          "cls": "",
+          "ratio": 4.409,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "A design is only as good as its implementation. Designing with a deep ",
+          "tag": "P",
+          "cls": "",
+          "ratio": 2.567,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "GitHub",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "LinkedIn",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Bluesky",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Youtube",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/resume",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 184,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "~/aledesign/query_db.sh",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.044,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Freelance",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.812,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.922,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Mockups and Wireframing in low and high FIGMA, Adobe XD, Illustrator, ",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 4.027,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Fixed-term contract",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 4.024,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Maintenance and updating of the website in HTML, CSS, Javascript, .NET",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 4.021,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Fixed-term contract",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.973,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 4.255,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Maintenance and updating of the INTI website and intranet. Creation of",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 4.032,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Fixed-term contract",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 3.973,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 4.255,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Execution of email campaigns, cleaning databases in Power Query, creat",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 3.964,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Fixed-term contract",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 4.178,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "=",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 4.385,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Implementation of Agile methodologies, using Microsoft Planner, Teams,",
+          "tag": "P",
+          "cls": "_resume__expCardDesc_owzrl_433",
+          "ratio": 4.22,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "DESIGN ARCHITECTURE",
+          "tag": "H4",
+          "cls": "_resume__skillCardCategory_owzrl_491",
+          "ratio": 3.546,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Design Systems",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.848,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Interaction Design",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.708,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Wireframing",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 4.154,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Prototyping (Figma)",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 4.276,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "FRONT-END EXECUTION",
+          "tag": "H4",
+          "cls": "_resume__skillCardCategory_owzrl_491",
+          "ratio": 3.536,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "HTML/Semantic DOM",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.788,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "CSS/SASS/Tokens",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.766,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "JavaScript (ES6+)",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.98,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "React Basics",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.724,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "METHODOLOGIES",
+          "tag": "H4",
+          "cls": "_resume__skillCardCategory_owzrl_491",
+          "ratio": 3.265,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Agile/Scrum",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.628,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Atomic Design",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.665,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "A/B Testing",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 4.037,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "WCAG Accessibility",
+          "tag": "SPAN",
+          "cls": "_resume__skillCardItemName_owzrl_514",
+          "ratio": 3.867,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Institution =",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 4.266,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Institution =",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 4.102,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "",
+          "outline": "none",
+          "width": "3px"
+        },
+        {
+          "label": "ADOBE",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/archive",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 61,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "Legacy systems, deprecated experiments, and structural blueprints from",
+          "tag": "P",
+          "cls": "_archive__subtitle_ck81r_73",
+          "ratio": 3.466,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Year",
+          "tag": "DIV",
+          "cls": "_archive__headerYear_ck81r_180",
+          "ratio": 3.342,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Project_ID",
+          "tag": "DIV",
+          "cls": "_archive__headerProject_ck81r_183",
+          "ratio": 3.299,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Stack",
+          "tag": "DIV",
+          "cls": "_archive__headerStack_ck81r_186",
+          "ratio": 3.365,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Action",
+          "tag": "DIV",
+          "cls": "_archive__headerAction_ck81r_189",
+          "ratio": 3.277,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Showing",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "5",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "of",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "5",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "entries",
+          "tag": "DIV",
+          "cls": "",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "<",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "PREV",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": "NEXT",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        },
+        {
+          "text": ">",
+          "tag": "BUTTON",
+          "cls": "_archive__pageBtn_ck81r_302 _archive__pageBtn--disabled_ck81r_315",
+          "ratio": 3.547,
+          "required": 4.5,
+          "opacity": 0.6
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Digital_Marketing_Specia",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Project_Manager_&_IT_Spe",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "VIEW.MD",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "UX/UI_Web_Designer",
+          "outline": "auto",
+          "width": "1px"
+        }
+      ]
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checked": 59,
+      "failures": [
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "/",
+          "tag": "SPAN",
+          "cls": "_breadcrumb__separator_1ily5_63",
+          "ratio": 3.269,
+          "required": 4.5,
+          "opacity": 0.5
+        },
+        {
+          "text": "Designer",
+          "tag": "SPAN",
+          "cls": "",
+          "ratio": 1.076,
+          "required": 3,
+          "opacity": 1
+        },
+        {
+          "text": "Role",
+          "tag": "SPAN",
+          "cls": "_projectDetail__infoItemKey_9z9ln_218",
+          "ratio": 3.697,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Timeline",
+          "tag": "SPAN",
+          "cls": "_projectDetail__infoItemKey_9z9ln_218",
+          "ratio": 3.466,
+          "required": 4.5,
+          "opacity": 1
+        },
+        {
+          "text": "Client",
+          "tag": "SPAN",
+          "cls": "_projectDetail__infoItemKey_9z9ln_218",
+          "ratio": 3.076,
+          "required": 4.5,
+          "opacity": 1
+        }
+      ],
+      "overflow": false,
+      "focus": [
+        {
+          "label": "AleDesign;",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Toggle theme",
+          "outline": "auto",
+          "width": "3px"
+        },
+        {
+          "label": "Open navigation",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "~",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "root",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "projects",
+          "outline": "auto",
+          "width": "1px"
+        },
+        {
+          "label": "Copy page as Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "More export options",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Copy Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "View Markdown",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Download .md",
+          "outline": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "NEXT PROJECT",
+          "outline": "auto",
+          "width": "3px"
+        }
+      ]
+    }
+  ]
+}

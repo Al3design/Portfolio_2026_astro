@@ -11,7 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://aledesign.dev',
+  site: 'https://al3design.dev',
   integrations: [react(), mdx()],
   vite: {
     resolve: {

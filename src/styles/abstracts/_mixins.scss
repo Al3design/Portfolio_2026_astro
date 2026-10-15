@@ -89,6 +89,7 @@
 }
 
 @mixin page-title {
+  color: var(--clr-brand-on-surface);
   font-size: $font-size-900;
   font-weight: $font-weight-bold;
   line-height: 1.1;

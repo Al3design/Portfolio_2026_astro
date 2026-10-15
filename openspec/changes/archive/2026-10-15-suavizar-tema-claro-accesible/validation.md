@@ -84,3 +84,11 @@ Evidencia final local:
 - final-light-desktop.png y final-light-mobile.png revisadas visualmente: textos oscuros legibles sobre superficies calidas y grilla atenuada.
 
 Alejandro habia autorizado publicacion en 3.1 y solicito completar estas correcciones y cerrar el cambio. La tarea 3.2 sigue pendiente hasta comprobar la publicacion. No hay certificacion WCAG integral: la evidencia corresponde a esta matriz y estos estados. La discrepancia de hidratacion historica de home y la veracidad del contenido son alcances separados.
+
+## Production verified and closure — 2026-10-15
+
+Implementacion publicada por GitHub/Vercel: commit bab6c908c3a42e69cff1dff0f6ad4f4df9081bbd. Estado Vercel success, actualizado 2026-10-15T16:47:30Z, despliegue https://vercel.com/aledesign-projects/portfolio-2026-astro/6xAMfb6eVMbdpmNQTXUAhc9FQiRg. Evidencia deployment-status.json. El build cloud configurado tinacms build + astro build completo la publicacion; no se confunde con el build local sin credenciales.
+
+Se repitieron directamente sobre https://al3design.dev los 20 casos de contraste (1804 nodos, cero fallos detectados), los 20 casos de interaccion y los ocho estados de botones. Ver final-production-contrast.json, final-production-interactions.json y final-production-states.json. Cien Tab nativos y 506 controles inspeccionados; menu en ambos temas; reduced-motion de grilla/caret; sin overflow horizontal en la matriz. Los minimos medidos para texto/estado coinciden con el apartado local. Se mantienen las limitaciones metodologicas explicitadas arriba: no certificacion WCAG integral, ni prueba de todas las tecnologias asistivas.
+
+La tarea 3.2 queda completada. Se archiva el cambio y se sincroniza accessible-color-themes. La siguiente fase es contenido real + tienda 3D; los placeholders editoriales no se alteraron durante este cierre.

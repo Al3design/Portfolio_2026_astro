@@ -1,0 +1,1173 @@
+{
+  "base": "https://al3design.dev",
+  "checkedAt": "2026-10-15T16:49:51.187Z",
+  "method": "Native Tab and computed focus rings; native WebMCP theme; reduced-motion CSS; mobile menu",
+  "results": [
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 31,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 14,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/resume",
+      "theme": "light",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 47,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [
+        "none"
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/archive",
+      "theme": "light",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 26,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "light",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 21,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 31,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 14,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/resume",
+      "theme": "dark",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 47,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [
+        "none"
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/archive",
+      "theme": "dark",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 26,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "dark",
+      "width": 1280,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "PROJECTS",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "RESUME",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ABOUT",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "ARCHIVE",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 21,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(57, 91, 95)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 26,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false,
+      "menu": {
+        "open": true,
+        "links": [
+          "01 —PROJECTS",
+          "02 —RESUME",
+          "03 —ABOUT",
+          "04 —ARCHIVE"
+        ],
+        "status": [
+          {
+            "text": "STATUS: AUTHORIZEDUUID: 0X2A99·FF01·V1.0·SOUL",
+            "opacity": "1"
+          },
+          {
+            "text": "UUID: 0X2A99·FF01·V1.0·SOUL",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(57, 91, 95)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 9,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/resume",
+      "theme": "light",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(56, 91, 95)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 42,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [
+        "none"
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/archive",
+      "theme": "light",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(56, 91, 95)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 21,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "light",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(57, 91, 95)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(55, 91, 96)",
+          "visible": true
+        }
+      ],
+      "focusControls": 16,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(80, 200, 238)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 26,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false,
+      "menu": {
+        "open": true,
+        "links": [
+          "01 —PROJECTS",
+          "02 —RESUME",
+          "03 —ABOUT",
+          "04 —ARCHIVE"
+        ],
+        "status": [
+          {
+            "text": "STATUS: AUTHORIZEDUUID: 0X2A99·FF01·V1.0·SOUL",
+            "opacity": "1"
+          },
+          {
+            "text": "UUID: 0X2A99·FF01·V1.0·SOUL",
+            "opacity": "1"
+          }
+        ]
+      }
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(78, 200, 239)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 9,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/resume",
+      "theme": "dark",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(80, 200, 238)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 42,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [
+        "none"
+      ],
+      "overflow": false
+    },
+    {
+      "route": "/archive",
+      "theme": "dark",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(80, 200, 238)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 21,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    },
+    {
+      "route": "/projects/freelance",
+      "theme": "dark",
+      "width": 390,
+      "tabs": [
+        {
+          "tag": "A",
+          "label": "AleDesign;",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Toggle theme",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(80, 200, 238)",
+          "visible": true
+        },
+        {
+          "tag": "BUTTON",
+          "label": "Open navigation",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "~",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        },
+        {
+          "tag": "A",
+          "label": "root",
+          "outline": "solid",
+          "width": "2px",
+          "color": "rgb(76, 201, 240)",
+          "visible": true
+        }
+      ],
+      "focusControls": 16,
+      "reduce": true,
+      "grid": [
+        "none",
+        "none",
+        "none"
+      ],
+      "caret": [],
+      "overflow": false
+    }
+  ]
+}

@@ -15,4 +15,4 @@
 ## 3. Review and release
 
 - [x] 3.1 Revision visual de Alejandro y autorizacion expresa de publicacion.
-- [ ] 3.2 Publicar solo tras autorizacion, verificar produccion y archivar cuando corresponda.
+- [x] 3.2 Publicar solo tras autorizacion, verificar produccion y archivar cuando corresponda.

@@ -1,0 +1,977 @@
+{
+  "checkedAt": "2026-10-15T17:45:11.104Z",
+  "results": [
+    {
+      "width": 1440,
+      "language": "es",
+      "theme": "light",
+      "measured": {
+        "width": 1440,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 80,
+        "navLeft": 80,
+        "bodyRight": 1360,
+        "navRight": 1360,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 90
+        },
+        {
+          "label": "Switch to English",
+          "center": 90
+        },
+        {
+          "label": "Toggle theme",
+          "center": 90
+        },
+        {
+          "label": "RSS Feed",
+          "center": 90
+        },
+        {
+          "label": "Source",
+          "center": 90
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "language": "es",
+      "theme": "dark",
+      "measured": {
+        "width": 1440,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 80,
+        "navLeft": 80,
+        "bodyRight": 1360,
+        "navRight": 1360,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 90
+        },
+        {
+          "label": "Switch to English",
+          "center": 90
+        },
+        {
+          "label": "Toggle theme",
+          "center": 90
+        },
+        {
+          "label": "RSS Feed",
+          "center": 90
+        },
+        {
+          "label": "Source",
+          "center": 90
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "theme": "light",
+      "measured": {
+        "width": 1440,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 80,
+        "navLeft": 80,
+        "bodyRight": 1360,
+        "navRight": 1360,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 90
+        },
+        {
+          "label": "Switch to English",
+          "center": 90
+        },
+        {
+          "label": "Toggle theme",
+          "center": 90
+        },
+        {
+          "label": "RSS Feed",
+          "center": 90
+        },
+        {
+          "label": "Source",
+          "center": 90
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "theme": "dark",
+      "measured": {
+        "width": 1440,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 80,
+        "navLeft": 80,
+        "bodyRight": 1360,
+        "navRight": 1360,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 90
+        },
+        {
+          "label": "Switch to English",
+          "center": 90
+        },
+        {
+          "label": "Toggle theme",
+          "center": 90
+        },
+        {
+          "label": "RSS Feed",
+          "center": 90
+        },
+        {
+          "label": "Source",
+          "center": 90
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "language": "es",
+      "theme": "light",
+      "measured": {
+        "width": 1024,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 48,
+        "navLeft": 48,
+        "bodyRight": 976,
+        "navRight": 976,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 90
+        },
+        {
+          "label": "Switch to English",
+          "center": 90
+        },
+        {
+          "label": "Toggle theme",
+          "center": 90
+        },
+        {
+          "label": "RSS Feed",
+          "center": 90
+        },
+        {
+          "label": "Source",
+          "center": 90
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "language": "es",
+      "theme": "dark",
+      "measured": {
+        "width": 1024,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 48,
+        "navLeft": 48,
+        "bodyRight": 976,
+        "navRight": 976,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 90
+        },
+        {
+          "label": "Switch to English",
+          "center": 90
+        },
+        {
+          "label": "Toggle theme",
+          "center": 90
+        },
+        {
+          "label": "RSS Feed",
+          "center": 90
+        },
+        {
+          "label": "Source",
+          "center": 90
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "language": "en",
+      "theme": "light",
+      "measured": {
+        "width": 1024,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 48,
+        "navLeft": 48,
+        "bodyRight": 976,
+        "navRight": 976,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 90
+        },
+        {
+          "label": "Switch to English",
+          "center": 90
+        },
+        {
+          "label": "Toggle theme",
+          "center": 90
+        },
+        {
+          "label": "RSS Feed",
+          "center": 90
+        },
+        {
+          "label": "Source",
+          "center": 90
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "language": "en",
+      "theme": "dark",
+      "measured": {
+        "width": 1024,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 48,
+        "navLeft": 48,
+        "bodyRight": 976,
+        "navRight": 976,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 90
+        },
+        {
+          "label": "Switch to English",
+          "center": 90
+        },
+        {
+          "label": "Toggle theme",
+          "center": 90
+        },
+        {
+          "label": "RSS Feed",
+          "center": 90
+        },
+        {
+          "label": "Source",
+          "center": 90
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "language": "es",
+      "theme": "light",
+      "measured": {
+        "width": 768,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 32,
+        "navLeft": 32,
+        "bodyRight": 736,
+        "navRight": 736,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "language": "es",
+      "theme": "dark",
+      "measured": {
+        "width": 768,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 32,
+        "navLeft": 32,
+        "bodyRight": 736,
+        "navRight": 736,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "language": "en",
+      "theme": "light",
+      "measured": {
+        "width": 768,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 32,
+        "navLeft": 32,
+        "bodyRight": 736,
+        "navRight": 736,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "language": "en",
+      "theme": "dark",
+      "measured": {
+        "width": 768,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 32,
+        "navLeft": 32,
+        "bodyRight": 736,
+        "navRight": 736,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "language": "es",
+      "theme": "light",
+      "measured": {
+        "width": 390,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 20,
+        "navLeft": 20,
+        "bodyRight": 370,
+        "navRight": 370,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "language": "es",
+      "theme": "dark",
+      "measured": {
+        "width": 390,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 20,
+        "navLeft": 20,
+        "bodyRight": 370,
+        "navRight": 370,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "theme": "light",
+      "measured": {
+        "width": 390,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 20,
+        "navLeft": 20,
+        "bodyRight": 370,
+        "navRight": 370,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "theme": "dark",
+      "measured": {
+        "width": 390,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 20,
+        "navLeft": 20,
+        "bodyRight": 370,
+        "navRight": 370,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "language": "es",
+      "theme": "light",
+      "measured": {
+        "width": 320,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 20,
+        "navLeft": 20,
+        "bodyRight": 300,
+        "navRight": 300,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "language": "es",
+      "theme": "dark",
+      "measured": {
+        "width": 320,
+        "language": "es",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 20,
+        "navLeft": 20,
+        "bodyRight": 300,
+        "navRight": 300,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "theme": "light",
+      "measured": {
+        "width": 320,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 20,
+        "navLeft": 20,
+        "bodyRight": 300,
+        "navRight": 300,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(69, 75, 71)",
+        "background": "rgb(231, 229, 223)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "theme": "dark",
+      "measured": {
+        "width": 320,
+        "language": "en",
+        "maxWidth": "1280px",
+        "padding": "0px",
+        "bodyLeft": 20,
+        "navLeft": 20,
+        "bodyRight": 300,
+        "navRight": 300,
+        "overflow": false,
+        "navOverflow": false,
+        "cards": 6,
+        "footer": true,
+        "noindex": "noindex,nofollow",
+        "gridReduce": true,
+        "imageLoaded": true,
+        "headingColor": "rgb(217, 231, 252)",
+        "background": "rgb(13, 19, 28)"
+      },
+      "focus": {
+        "visible": true,
+        "outline": "solid",
+        "width": "3px"
+      },
+      "controls": [
+        {
+          "label": "Cambiar a español",
+          "center": 79
+        },
+        {
+          "label": "Switch to English",
+          "center": 79
+        },
+        {
+          "label": "Toggle theme",
+          "center": 79
+        },
+        {
+          "label": "Open navigation",
+          "center": 79
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,8 @@
   top: size(4);
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - #{size(12)});
+  width: calc(100% - 2 * var(--site-gutter));
+  max-width: container(max);
   height: layout(nav-height);
   display: flex;
   align-items: center;
@@ -30,8 +31,6 @@
 
   @include mq(md) {
     top: size(6);
-    width: calc(100% - #{size(24)});
-    max-width: calc(#{container(max)} - #{size(24)});
     padding: 0 size(12);
     border-radius: 16px;
 
@@ -65,7 +64,7 @@
       font-weight: fw(bold);
     }
 
-    span:last-child {
+    > span:nth-of-type(2) {
       display: none;
     }
 
@@ -78,9 +77,9 @@
   &__links {
     display: none;
     align-items: center;
-    gap: size(8);
+    gap: size(6);
 
-    @include mq(md) {
+    @include mq(lg) {
       display: flex;
     }
   }
@@ -117,10 +116,39 @@
   &__actions {
     display: flex;
     align-items: center;
-    gap: size(4);
+    gap: size(2);
+    @include mq(lg) { gap: size(4); }
+  }
+
+  &__context {
+    display: none;
+    margin-left: size(3);
+    font-family: semantic-font(mono);
+    font-size: 9px;
+    font-weight: fw(normal);
+    letter-spacing: ls(wide);
+    color: semantic-color(brand-on-surface-variant);
+
+    @include mq(lg) { display: block; }
+  }
+
+  &__language {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    font-family: semantic-font(mono);
+    font-size: fs('100');
+    color: semantic-color(brand-primary);
+    &[aria-current='page'] { text-decoration: underline; text-underline-offset: 7px; }
   }
 
   &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     background: none;
     border: none;
     color: semantic-color(brand-on-surface-variant);
@@ -138,7 +166,7 @@
     &--desktop {
       display: none;
 
-      @include mq(md) {
+      @include mq(lg) {
         display: inline-flex;
       }
     }
@@ -186,9 +214,50 @@
     }
 
     // Only show on mobile
-    @include mq(md) {
+    @include mq(lg) {
       display: none;
     }
+  }
+}
+
+.shopNotice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 34px;
+  padding: size(2) size(5);
+  text-align: center;
+  font-size: 11px;
+  background: semantic-color(brand-surface-low);
+  color: semantic-color(brand-on-surface-variant);
+}
+
+.nav--shop {
+  position: relative;
+  inset: auto;
+  transform: none;
+  margin-inline: auto;
+  height: 90px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  .nav__logo { font-size: 22px; }
+  .nav__actions { gap: 0; }
+  .nav__btn { min-width: 36px; min-height: 44px; padding: size(1); }
+  .nav__language { min-width: 30px; }
+  .nav__link { font-family: semantic-font(body); letter-spacing: normal; }
+  .nav__terminal_btn { width: 36px; height: 44px; background: none; border: none; }
+
+  @include mq(lg) {
+    height: 112px;
+    .nav__actions { gap: size(3); }
+    .nav__links { gap: size(8); }
+    .nav__language { min-width: 36px; }
   }
 }
 
@@ -224,8 +293,8 @@
   // Additional deep overlay tinting
   background-color: rgba(var(--clr-brand-surface-rgb), 0.1);
 
-  // Visible only below md
-  @include mq(md) {
+  // Keep the full menu through tablet widths.
+  @include mq(lg) {
     display: none;
   }
 

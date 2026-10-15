@@ -9,20 +9,28 @@ import "@/styles/main.scss";
 import { getEntry } from 'astro:content';
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import type { SiteSection, SiteLanguage } from '@/lib/site-navigation';
 
 const footerEntry = await getEntry('global', 'footer');
 
 interface Props {
   title?: string;
   description?: string;
+  section?: SiteSection;
+  language?: SiteLanguage;
+  noIndex?: boolean;
 }
 
 const {
-  title = "AleDesign | Alejandro Delgado - Multimedia Designer",
-  description = "Portfolio of Alejandro Delgado, a Multimedia Designer and Creative Developer specializing in high-end digital experiences, editorial design, and technical precision."
+  title = "Al3Design | Alejandro Delgado - Multimedia Designer",
+  description = "Portfolio of Alejandro Delgado, a Multimedia Designer and Creative Developer specializing in high-end digital experiences, editorial design, and technical precision.",
+  section = 'portfolio',
+  language = 'en',
+  noIndex = false,
 } = Astro.props;
+const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev');
 ---
-<html lang="en">
+<html lang={language}>
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGHRGD2X1R"></script>
@@ -36,16 +44,17 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="Multimedia Designer, Creative Developer, UX/UI Design, Portfolio, Editorial Design, Alejandro Delgado, AleDesign, Motion Design, Web Development" />
+    {noIndex && <meta name="robots" content="noindex,nofollow" />}
+    <meta name="keywords" content="Multimedia Designer, Creative Developer, UX/UI Design, Portfolio, Editorial Design, Alejandro Delgado, Al3Design, Motion Design, Web Development" />
     <meta name="author" content="Alejandro Delgado" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://al3design.dev" />
-    <meta property="og:site_name" content="AleDesign" />
+    <meta property="og:locale" content={language === 'es' ? 'es_AR' : 'en_US'} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content="Al3Design" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="/banner-background.png" />
@@ -63,10 +72,10 @@ const {
       }
     </style>
 
-    <script is:inline>
+    <script is:inline define:vars={{ shop: section === 'shop' }}>
       // Restore theme class before React renders (prevents flash)
       (function() {
-        var theme = localStorage.getItem('theme');
+        var theme = localStorage.getItem(shop ? 'shop-theme' : 'theme') || (shop ? 'light' : 'dark');
         if (theme === 'light') {
           document.documentElement.classList.add('light');
         }
@@ -79,13 +88,13 @@ const {
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <div class="bg-energy-grid" aria-hidden="true">
+    {section !== 'shop' && <div class="bg-energy-grid" aria-hidden="true">
       <div class="eg-spot eg-spot--tertiary"></div>
       <div class="eg-spot eg-spot--secondary"></div>
       <div class="eg-spot eg-spot--primary"></div>
-    </div>
+    </div>}
 
-    <Navigation client:load pathname={Astro.url.pathname} />
+    <Navigation client:load pathname={Astro.url.pathname} section={section} language={language} />
     <main>
       <slot />
     </main>

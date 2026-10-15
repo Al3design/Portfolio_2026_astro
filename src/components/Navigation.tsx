@@ -10,13 +10,8 @@ import { flushSync } from 'react-dom';
 import styles from '@/styles/components/_navigation.module.scss';
 import { clsx } from 'clsx';
 import { registerWebTools, publicPageState } from '@/lib/webmcp';
-
-const navLinks = [
-  { name: 'PROJECTS', href: '/', index: '01' },
-  { name: 'RESUME', href: '/resume', index: '02' },
-  { name: 'ABOUT', href: '/about', index: '03' },
-  { name: 'ARCHIVE', href: '/archive', index: '04' },
-];
+import { siteNavigation, type SiteSection, type SiteLanguage } from '@/lib/site-navigation';
+import { shopRoutes } from '@/data/shop-demo';
 
 // Stagger variants for overlay links
 const overlayVariants: Variants = {
@@ -49,12 +44,17 @@ const linkItemVariants: Variants = {
   exit: { opacity: 0, x: 16, transition: { duration: 0.15 } },
 };
 
-export default function Navigation({ pathname = '/' }: { pathname?: string }) {
+export default function Navigation({ pathname = '/', section = 'portfolio', language = 'en' }: { pathname?: string; section?: SiteSection; language?: SiteLanguage }) {
+  const navLinks = siteNavigation(section, language);
+  const shop = section === 'shop';
+  const spanish = language === 'es';
+  const themeStorageKey = shop ? 'shop-theme' : 'theme';
+  const defaultTheme = shop ? 'light' : 'dark';
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
-      return (localStorage.getItem('theme') as 'light' | 'dark') ?? 'dark';
+      return (localStorage.getItem(themeStorageKey) as 'light' | 'dark') ?? defaultTheme;
     }
-    return 'dark';
+    return defaultTheme;
   });
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,13 +62,13 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
   // Hydration guard + restore theme class on mount
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem('theme');
+    const saved = localStorage.getItem(themeStorageKey) ?? defaultTheme;
     if (saved === 'light') {
       document.documentElement.classList.add('light');
     } else {
       document.documentElement.classList.remove('light');
     }
-  }, []);
+  }, [themeStorageKey, defaultTheme]);
 
   useEffect(() => registerWebTools([
     {
@@ -92,12 +92,12 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
           return { error: 'theme must be light or dark' };
         }
         flushSync(() => setTheme(requestedTheme));
-        localStorage.setItem('theme', requestedTheme);
+        localStorage.setItem(themeStorageKey, requestedTheme);
         document.documentElement.classList.toggle('light', requestedTheme === 'light');
         return publicPageState();
       },
     },
-  ]), []);
+  ]), [themeStorageKey]);
 
   // Scroll lock while menu is open — html+body overflow hidden (modern, safe)
   useEffect(() => {
@@ -120,10 +120,22 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
     setMenuOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        document.querySelector<HTMLButtonElement>('button[aria-label="Close navigation"]')?.focus();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [menuOpen]);
+
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem(themeStorageKey, newTheme);
     if (newTheme === 'light') {
       document.documentElement.classList.add('light');
     } else {
@@ -131,11 +143,18 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
     }
   };
 
+  const themeIcon = shop ? (
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M12 3a9 9 0 0 0 0 18Z" fill="currentColor" />
+    </svg>
+  ) : theme === 'light' ? <Moon size={20} /> : <Sun size={20} />;
+
   if (!mounted) {
     return (
-      <nav className={clsx(styles.nav, 'opacity-0')}>
+      <nav className={clsx(styles.nav, shop && styles['nav--shop'], 'opacity-0')}>
         <div className={styles.nav__logo}>
-          <span>Ale</span>Design<span>;</span>
+          <span>Al3</span>Design<span>;</span>
         </div>
       </nav>
     );
@@ -143,9 +162,10 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
 
   return (
     <>
-      <nav className={styles.nav}>
-        <a href="/" className={styles.nav__logo} onClick={() => setMenuOpen(false)}>
-          <span>Ale</span>Design<span>;</span>
+      {shop && <p className={styles.shopNotice}>{spanish ? 'Exploración de diseño · piezas y renders de ejemplo' : 'Design exploration · sample pieces and renders'}</p>}
+      <nav className={clsx(styles.nav, shop && styles['nav--shop'])}>
+        <a href={shop ? shopRoutes[language] : '/'} className={styles.nav__logo} onClick={() => setMenuOpen(false)}>
+          <span>Al3</span>Design<span>;</span>
         </a>
 
         {/* Desktop links */}
@@ -154,11 +174,12 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
             // Normalize paths: strip trailing slash except for root
             const normalizedPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
             const normalizedHref = link.href === '/' ? '/' : link.href.replace(/\/$/, '');
-            const isActive = normalizedPathname === normalizedHref;
+            const isActive = normalizedPathname === normalizedHref || (shop && link.href.endsWith('#collection'));
             return (
               <a
                 key={link.name}
                 href={link.href}
+                aria-current={isActive ? 'page' : undefined}
                 className={clsx(styles.nav__link, isActive && styles['nav__link--active'])}
               >
                 <span>{link.name}</span>
@@ -176,18 +197,19 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
 
         {/* Right-side actions */}
         <div className={styles.nav__actions}>
+          {shop && (['es', 'en'] as const).map(locale => <a key={locale} href={shopRoutes[locale]} className={styles.nav__language} aria-label={locale === 'en' ? 'Switch to English' : 'Cambiar a español'} aria-current={locale === language ? 'page' : undefined} hrefLang={locale}>{locale.toUpperCase()}</a>)}
           {/* Theme toggle — always visible */}
           <button onClick={toggleTheme} className={styles.nav__btn} aria-label="Toggle theme">
-            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+            {themeIcon}
           </button>
 
           {/* Desktop-only action buttons */}
-          <a href="/rss.xml" target='_blank' className={clsx(styles.nav__btn, styles['nav__btn--desktop'])} aria-label="RSS Feed">
+          {!shop && <a href="/rss.xml" target='_blank' className={clsx(styles.nav__btn, styles['nav__btn--desktop'])} aria-label="RSS Feed">
             <Rss size={18} />
-          </a>
-          <button className={clsx(styles.nav__btn, styles['nav__btn--desktop'])} aria-label="Source">
+          </a>}
+          {!shop && <button className={clsx(styles.nav__btn, styles['nav__btn--desktop'])} aria-label="Source">
             <Code size={18} />
-          </button>
+          </button>}
 
           {/* Mobile hamburger — terminal >_ icon */}
           <button
@@ -237,16 +259,16 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
             {/* Overlay header */}
             <div className={styles.mobile_overlay__header}>
               <a
-                href="/"
+                href={shop ? shopRoutes[language] : '/'}
                 className={clsx(styles.nav__logo, styles['nav__logo--overlay'])}
                 onClick={() => setMenuOpen(false)}
               >
-                <span>Ale</span>Design<span>;</span>
+                <span>Al3</span>Design<span>;</span>
               </a>
 
               <div className={styles.mobile_overlay__meta}>
-                <span className={styles.meta__label}>FILE_PATH: /ROOT/NAVIGATION</span>
-                <span className={styles.meta__title}>SYSTEM_INDEX</span>
+                <span className={styles.meta__label}>{shop ? 'AL3DESIGN / OBJECTS' : 'FILE_PATH: /ROOT/NAVIGATION'}</span>
+                <span className={styles.meta__title}>{shop ? 'SHOP 3D' : 'SYSTEM_INDEX'}</span>
               </div>
             </div>
 
@@ -256,7 +278,7 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
                 // Normalize paths: strip trailing slash except for root
                 const normalizedPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
                 const normalizedHref = link.href === '/' ? '/' : link.href.replace(/\/$/, '');
-                const isActive = normalizedPathname === normalizedHref;
+                const isActive = normalizedPathname === normalizedHref || (shop && link.href.endsWith('#collection'));
                 return (
                   <motion.div
                     key={link.name}
@@ -269,6 +291,7 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
                   >
                     <a
                       href={link.href}
+                      aria-current={isActive ? 'page' : undefined}
                       className={clsx(
                         styles.mobile_overlay__link,
                         isActive && styles['mobile_overlay__link--active']
@@ -291,21 +314,21 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
                   onClick={toggleTheme}
                   aria-label="Toggle theme"
                 >
-                  {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                  {themeIcon}
                   <span>{theme === 'light' ? 'LIGHT_MODE' : 'DARK_MODE'}</span>
                 </button>
-                <a href="/rss.xml" className={clsx(styles.nav__btn, styles['nav__btn--overlay'])} aria-label="RSS Feed">
+                {!shop && <a href="/rss.xml" className={clsx(styles.nav__btn, styles['nav__btn--overlay'])} aria-label="RSS Feed">
                   <Rss size={18} />
                   <span>RSS FEED</span>
-                </a>
-                <button className={clsx(styles.nav__btn, styles['nav__btn--overlay'])} aria-label="Source">
+                </a>}
+                {!shop && <button className={clsx(styles.nav__btn, styles['nav__btn--overlay'])} aria-label="Source">
                   <Code size={18} />
                   <span>SOURCE</span>
-                </button>
+                </button>}
               </div>
               <div className={styles.mobile_overlay__status}>
-                <span>STATUS: AUTHORIZED</span>
-                <span className={styles.status__uuid}>UUID: 0X2A99·FF01·V1.0·SOUL</span>
+                <span>{shop ? (spanish ? 'ARGENTINA / OBJETOS IMPRESOS EN 3D' : 'ARGENTINA / 3D PRINTED OBJECTS') : 'STATUS: AUTHORIZED'}</span>
+                <span className={styles.status__uuid}>{shop ? (spanish ? 'EXPLORACIÓN DE DISEÑO' : 'DESIGN EXPLORATION') : 'UUID: 0X2A99·FF01·V1.0·SOUL'}</span>
               </div>
             </div>
           </motion.div>

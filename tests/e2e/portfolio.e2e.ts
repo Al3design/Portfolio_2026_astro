@@ -21,6 +21,7 @@ test('theme selection survives a page navigation', async ({ app, screen, browser
 
 test('project filters and layout update the visible project list', async ({ app, screen, browser }) => {
   await app.open('/');
+  await expect(browser.locator('astro-island[component-url*="ClientHome"]:not([ssr])')).toHaveCount(1);
   await screen.getByRole('button', 'List', { exact: true }).click();
   await screen.getByRole('button', 'Web Dev', { exact: true }).click();
   await expect(browser.locator('a[href="/projects/inti-web"]')).toBeVisible();

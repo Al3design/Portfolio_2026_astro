@@ -10,7 +10,7 @@ Fecha: 2026-10-15. Fuente: checkout del portfolio, base `bab6c90`. Este document
 - Dominio actual: al3design.dev. Alejandro confirmo Argentina como pais de venta/envio y español e ingles como idiomas. Catalogo y checkout siguen pendientes.
 - Payload es una opcion a evaluar; no hay decision de migracion de CMS.
 - Primera seleccion confirmada por Alejandro: GitCron, OdontoPro, UseOdontoPro, OdontoPau y este portfolio. Es una seleccion de proyectos, no una confirmacion de fechas, resultados, rol o metricas para las fichas.
-- Fuente ofrecida: https://www.linkedin.com/in/alejandropdelgado/ y PDF de presentacion que Alejandro puede adjuntar. LinkedIn devolvio 999 al intentar lectura automatica; no se extrajo biografia ni formacion de esa pagina.
+- Fuentes recibidas: LinkedIn leido con acceso autorizado en Chrome, CV ES/EN 2025 y case study 2026. Relevamiento y borradores en source-review.md. Confirmado por Alejandro: administrador de Moodle en TED INTI; Diseño Multimedial en Da Vinci, 2007-2018. Contacto final, zona horaria y fechas de proyectos nuevos siguen pendientes.
 - Alejandro autoriza categorias, textos e imagenes de demostracion para explorar el diseño de tienda mientras ordena las carpetas de sus impresiones. Esa autorizacion es para un prototipo identificable, no para publicar productos como inventario real.
 
 ## Estados y criterio editorial
@@ -79,6 +79,8 @@ Arquitectura candidata: portfolio profesional existente + entrada Tienda 3D + li
 
 ## Seguimiento
 
-Inventario de fuentes y salidas completado (tarea 1.3). Entrevista iniciada: idiomas, pais y seleccion de proyectos confirmados; CV/PDF, contacto y hechos profesionales siguen pendientes (1.4/1.5). No se modificaron los textos publicos durante el relevamiento. La matriz debe actualizarse con respuestas y aprobaciones concretas antes de aplicar cada lote.
+Actualizacion de identidad: Al3Design en todas las superficies actuales del sitio y prototipo. Correo de ejemplo retirado por indicacion del titular, tambien del ATS; contacto definitivo pendiente. Bluesky actualizado a al3design.dev y YouTube a @al3design, confirmado por Alejandro mediante captura de YouTube Studio. Los hallazgos de la matriz anterior describen el inventario inicial, no datos aprobados para volver a publicar.
+
+Inventario de fuentes y salidas completado (tarea 1.3). CV/PDF y LinkedIn relevados; rol actual y periodo Da Vinci confirmados. Contacto, zona horaria, fechas y entregables de los proyectos nuevos siguen pendientes (1.4/1.5). Se preparo bio bilingue interna, sin reemplazar aun los MDX biograficos publicos. La matriz debe actualizarse con respuestas y aprobaciones concretas antes de aplicar cada lote.
 
 No publicar datos sensibles de operacion (domicilio privado, costos internos o credenciales). Las cinco fichas historicas siguen en revision; la nueva seleccion confirmada no ordena eliminarlas automaticamente.

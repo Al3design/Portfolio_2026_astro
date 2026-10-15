@@ -12,6 +12,7 @@
 ## 2. Physical catalog
 
 - [x] 2.0 Preparar prototipo local bilingue con categorias, textos y renders de demostracion identificados para revisar el diseño antes del catalogo real.
+- [x] 2.0a Integrar vista local ES/EN con tokens comunes, ancho util del boceto aplicado tambien al portfolio, encabezado abierto para tienda, menu contextual, mismo footer, tema claro inicial y sin grilla animada.
 - [ ] 2.1 Confirmar pais, primeras piezas, licencias, materiales, fotos reales, variantes y capacidad de produccion.
 - [ ] 2.2 Aprobar arquitectura de navegacion y fichas, diferenciando portfolio/servicio/producto fisico.
 - [ ] 2.3 Implementar coleccion de productos, listado, ficha y consulta honesta sin checkout ficticio.

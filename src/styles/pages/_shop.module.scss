@@ -1,0 +1,221 @@
+@use '../abstracts' as *;
+
+.shop {
+  padding-top: size(8);
+
+  &__demo {
+    margin-bottom: size(10);
+    color: semantic-color(brand-on-surface-variant);
+    font-family: semantic-font(mono);
+    font-size: 11px;
+    span { color: semantic-color(brand-secondary); }
+  }
+
+  &__hero {
+    display: grid;
+    gap: size(10);
+    align-items: center;
+    padding-bottom: size(20);
+
+    @include mq(md) { grid-template-columns: 1fr 1fr; gap: size(12); }
+  }
+
+  &__eyebrow {
+    color: semantic-color(brand-secondary);
+    font-family: semantic-font(mono);
+    font-size: 10px;
+    letter-spacing: ls(wide);
+    text-transform: uppercase;
+  }
+
+  &__title {
+    @include page-title;
+    font-size: clamp(2.75rem, 1.2rem + 5vw, 5.5rem);
+    margin-block: size(6);
+  }
+
+  &__intro {
+    max-width: 25rem;
+    color: semantic-color(brand-on-surface-variant);
+    line-height: lh(loose);
+    margin-bottom: size(8);
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: size(8);
+    min-height: 48px;
+    padding: size(3) size(5);
+    border: none;
+    border-radius: radius(soft);
+    font-family: semantic-font(mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &--primary { background: semantic-color(brand-primary); color: semantic-color(brand-on-primary); }
+    &--secondary { @include ghost-border; background: semantic-color(brand-surface); color: semantic-color(brand-primary); }
+    &:hover { text-decoration: underline; text-underline-offset: 5px; }
+  }
+
+  &__heroMeta {
+    display: flex;
+    gap: size(4);
+    margin-top: size(10);
+    color: semantic-color(brand-on-surface-variant);
+    font-family: semantic-font(mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    span:nth-child(2) { color: semantic-color(brand-secondary); }
+  }
+
+  &__image {
+    aspect-ratio: 1;
+    width: 100%;
+    background-image: var(--shop-image);
+    background-size: 300% 200%;
+    background-repeat: no-repeat;
+    background-color: semantic-color(brand-surface-low);
+  }
+
+  &__heroFigure {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: radius(soft);
+    figcaption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: size(4);
+      padding: size(4) size(5);
+      background: semantic-color(brand-surface-low);
+      font-size: fs('100');
+      > span:last-child { font-family: semantic-font(mono); font-size: 9px; color: semantic-color(brand-on-surface-variant); }
+    }
+  }
+
+  &__collection, &__custom { scroll-margin-top: calc(#{layout(nav-height)} + #{size(12)}); }
+
+  &__sectionHeading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: size(6);
+    margin-bottom: size(8);
+    h2 { max-width: 42rem; font-size: fs('800'); line-height: lh(tight); margin-top: size(3); }
+  }
+
+  &__count, &__index { font-family: semantic-font(mono); font-size: 10px; }
+  &__count { color: semantic-color(brand-on-surface-variant); }
+  &__index { color: semantic-color(brand-secondary); }
+  &__filters { display: flex; flex-wrap: wrap; gap: size(2); margin-bottom: size(8); }
+  &__filter {
+    min-height: 44px;
+    padding: size(2) size(4);
+    &[aria-pressed='true'] { background: semantic-color(brand-primary); color: semantic-color(brand-on-primary); }
+    &:focus-visible { outline-offset: 4px; }
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: size(10) size(4);
+    @include mq(md) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: size(10) size(6); }
+  }
+
+  &__product { min-width: 0; }
+  &__imageButton {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    border: none;
+    border-radius: radius(soft);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  &__imageTag {
+    position: absolute;
+    bottom: size(3);
+    left: size(3);
+    padding: size(1) size(2);
+    background: semantic-color(brand-surface);
+    color: semantic-color(brand-on-surface-variant);
+    font-family: semantic-font(mono);
+    font-size: 8px;
+    text-transform: uppercase;
+  }
+  &__productHeading {
+    margin-top: size(4);
+    h3 { font-size: fs('400'); }
+    > span { display: block; margin-top: size(1); color: semantic-color(brand-secondary); font-family: semantic-font(mono); font-size: 9px; text-transform: uppercase; }
+  }
+  &__description { color: semantic-color(brand-on-surface-variant); font-size: fs('200'); line-height: lh(relaxed); margin-top: size(2); }
+  &__productTail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: size(1) size(3);
+    margin-top: size(4);
+    font-size: 11px;
+    color: semantic-color(brand-on-surface-variant);
+    button { display: inline-flex; align-items: center; gap: size(2); min-height: 44px; padding: 0; background: none; border: none; color: semantic-color(brand-primary); font-family: semantic-font(mono); font-size: 10px; text-transform: uppercase; cursor: pointer; }
+  }
+  &__disclaimer { max-width: 45rem; margin-top: size(8); font-size: 11px; color: semantic-color(brand-on-surface-variant); line-height: lh(loose); }
+  &__custom {
+    @include ghost-border;
+    display: grid;
+    align-items: center;
+    gap: size(6);
+    margin-top: size(20);
+    padding: size(8);
+    border-radius: radius(soft);
+    background: semantic-color(brand-surface-low);
+    h2 { font-size: fs('800'); margin-block: size(3); }
+    button { width: fit-content; }
+    @include mq(md) { grid-template-columns: 1fr auto; }
+    @include mq(lg) { grid-template-columns: auto 1fr auto; gap: size(10); }
+  }
+  &__customIcon { display: none; color: semantic-color(brand-tertiary); @include mq(lg) { display: block; } }
+  &__process {
+    display: grid;
+    gap: size(8);
+    padding-block: size(16) size(6);
+    @include mq(md) { grid-template-columns: repeat(3, 1fr); gap: size(12); }
+    h3 { font-size: fs('400'); margin-block: size(3) size(2); }
+    p { color: semantic-color(brand-on-surface-variant); font-size: fs('100'); line-height: lh(loose); }
+  }
+  &__dialog {
+    width: min(54rem, calc(100% - #{size(8)}));
+    max-height: 90dvh;
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: radius(soft);
+    background: semantic-color(brand-surface);
+    color: semantic-color(brand-on-surface);
+    &::backdrop { background: rgba(var(--clr-brand-surface-rgb), .8); backdrop-filter: blur(4px); }
+  }
+  &__close { display: grid; place-items: center; position: absolute; top: size(3); right: size(3); min-width: 44px; min-height: 44px; z-index: 1; border: none; border-radius: radius(soft); background: semantic-color(brand-surface); color: semantic-color(brand-on-surface); cursor: pointer; }
+  &__dialogGrid { display: grid; @include mq(md) { grid-template-columns: 1fr 1fr; } }
+  &__dialogCopy, &__customDialog {
+    padding: size(12) size(8) size(8);
+    align-self: center;
+    h2 { font-size: fs('700'); margin-block: size(4); }
+    > p:not(:first-child) { font-size: fs('200'); color: semantic-color(brand-on-surface-variant); line-height: lh(loose); }
+  }
+  &__details {
+    display: grid;
+    gap: size(3);
+    margin-top: size(6);
+    font-size: fs('100');
+    div { display: flex; justify-content: space-between; gap: size(5); }
+    dt { color: semantic-color(brand-on-surface-variant); }
+    dd { margin: 0; text-align: right; }
+  }
+  &__notice { margin-top: size(6); padding: size(4); background: semantic-color(brand-surface-low); }
+}

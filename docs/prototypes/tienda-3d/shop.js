@@ -16,7 +16,7 @@ const content=document.querySelector('#dialog-content');
 function render(){
  const t=copy[language],idx=language==='es'?0:1;
  document.documentElement.lang=language;
- document.title=language==='es'?'AleDesign Objects — propuesta de tienda 3D':'AleDesign Objects — 3D shop concept';
+ document.title=language==='es'?'Al3Design Objects — propuesta de tienda 3D':'Al3Design Objects — 3D shop concept';
  for(const el of document.querySelectorAll('[data-i18n]'))el.textContent=t[el.dataset.i18n];
  for(const el of document.querySelectorAll('[data-alt]'))el.setAttribute('aria-label',t[el.dataset.alt]);
  document.querySelector('#close-dialog').setAttribute('aria-label',t.close);

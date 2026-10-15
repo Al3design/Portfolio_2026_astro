@@ -65,6 +65,7 @@ type Props = { jobs: any[]; query: string; variables: object; data: any; exportD
 export default function ClientResume({ jobs, query, variables, data, exportData }: Props) {
   const { data: tinaData } = useTina({ query, variables, data });
   const page = tinaData.pages as PageResume;
+  const contactEmail = page.email?.trim();
 
   const skills = (page.skillGroups && page.skillGroups.length > 0)
     ? page.skillGroups
@@ -118,7 +119,9 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
 
   const downloadATS = () => {
     let cvContent = `ALEXANDRO DELGADO - UX/UI Web Designer\n\n`;
-    cvContent += `Location: Buenos Aires, Argentina\nEmail: hello@aledesign.com\n\n`;
+    cvContent += `Location: Buenos Aires, Argentina\n`;
+    if (contactEmail) cvContent += `Email: ${contactEmail}\n`;
+    cvContent += `\n`;
     cvContent += `EXPERIENCE\n\n`;
     filteredExperiences.forEach(exp => {
       cvContent += `${exp.role} at ${exp.company} (${exp.period})\n`;
@@ -160,7 +163,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
               </div>
               <div className={styles.resume__terminalPath}>
                 <Folder size={12} />
-                <span>~/aledesign/query_db.sh</span>
+                <span>~/al3design/query_db.sh</span>
               </div>
             </div>
             <div className={styles.resume__terminalBody}>
@@ -221,12 +224,12 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
                 {page.location || "Buenos Aires, Argentina"};
               </span>
             </div>
-            <div className={clsx(styles.resume__metaGroup, styles['resume__metaGroup--primary'])}>
+            {contactEmail && <div className={clsx(styles.resume__metaGroup, styles['resume__metaGroup--primary'])}>
               <span>Email =</span>
               <span data-tina-field={tinaField(page, 'email')}>
-                {page.email || "hello@aledesign.com"};
+                {contactEmail};
               </span>
-            </div>
+            </div>}
             <div className={styles.resume__metaGroup}>
               <span>Status =</span>
               <span data-tina-field={tinaField(page, 'status')}>

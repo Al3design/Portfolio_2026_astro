@@ -1,4 +1,4 @@
-# AleDesign Objects — propuesta de tienda 3D
+# Al3Design Objects — propuesta de tienda 3D
 
 Prototipo local para revisar el diseño antes de implementar el catalogo real. No es una tienda operativa ni una pagina publicada en al3design.dev. No cambia rutas, CMS ni datos profesionales del portfolio.
 

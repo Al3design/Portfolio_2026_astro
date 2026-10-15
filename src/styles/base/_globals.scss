@@ -172,14 +172,20 @@ main {
   flex-direction: column;
 }
 
+:root {
+  --site-gutter: 20px;
+  @media (min-width: 681px) { --site-gutter: 32px; }
+  @media (min-width: 1001px) { --site-gutter: 48px; }
+}
+
 .page-container {
-  width: 100%;
+  width: calc(100% - 2 * var(--site-gutter));
   max-width: container(max);
   margin: 0 auto;
-  padding: size(16) size(6);
+  padding: size(16) 0;
 
   @include mq(md) {
-    padding: size(24) size(12);
+    padding: size(24) 0;
   }
 }
 

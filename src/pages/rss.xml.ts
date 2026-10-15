@@ -71,7 +71,7 @@ export async function GET(context: APIContext) {
     });
 
   return rss({
-    title: 'AleDesign — Portfolio',
+    title: 'Al3Design — Portfolio',
     description: 'UX/UI design projects and case studies by Alejandro Delgado.',
     site,
     items,

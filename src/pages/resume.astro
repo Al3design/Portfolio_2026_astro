@@ -30,7 +30,7 @@ const exportContent = jobs.map(job => {
 const exportMetadata = {
   title: pageData.title || 'Resume',
   location: pageData.location,
-  email: pageData.email,
+  email: pageData.email?.trim() || undefined,
   status: pageData.status,
   generatedAt: new Date().toISOString(),
 };

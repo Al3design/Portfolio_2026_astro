@@ -43,7 +43,7 @@ type FooterLink = { name: string; url: string; icon?: string };
 type Props = { copyright?: string; links?: FooterLink[] };
 
 export default function Footer({ copyright, links }: Props) {
-  const resolvedLinks = links ?? [
+  const resolvedLinks: FooterLink[] = links ?? [
     { name: 'GitHub',   url: '#', icon: 'github'   },
     { name: 'LinkedIn', url: '#', icon: 'linkedin'  },
     { name: 'Bluesky',  url: '#', icon: 'bluesky'   },
@@ -53,7 +53,7 @@ export default function Footer({ copyright, links }: Props) {
     <footer className={styles.footer}>
       <div className={styles.footer__content}>
         <div className={styles.footer__logo}>
-          AleDesign
+          Al3Design
         </div>
 
         <div className={styles.footer__links}>
@@ -79,7 +79,7 @@ export default function Footer({ copyright, links }: Props) {
         </div>
 
         <div className={styles.footer__copyright}>
-          {copyright ?? '© 2026 ALE_DESIGN // COMPILED WITH SOUL'}
+          {copyright ?? '© 2026 Al3Design // COMPILED WITH SOUL'}
         </div>
       </div>
     </footer>

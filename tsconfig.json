@@ -5,7 +5,10 @@
     "**/*"
   ],
   "exclude": [
-    "dist"
+    "dist",
+    "public/admin",
+    ".e2e",
+    "docs/prototypes"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",

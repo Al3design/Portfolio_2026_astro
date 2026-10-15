@@ -4,7 +4,7 @@
 
 Fecha: 2026-10-15. Stack actual: Astro estatico + React + TinaCMS, contenido MDX/Git y despliegue en Vercel. Alejandro eligio expresamente **portfolio + tienda 3D**, español e ingles y Argentina como pais de venta/envio. Se parte de piezas fisicas impresas por el; cobertura por destino, productos y operacion siguen pendientes. Confirmar Argentina no implica tener cotizacion o transportista contratado.
 
-Seleccion inicial de proyectos confirmada por Alejandro: GitCron, OdontoPro, UseOdontoPro, OdontoPau y este portfolio. LinkedIn proporcionado: https://www.linkedin.com/in/alejandropdelgado/. Su lectura automatica devolvio 999; el PDF ofrecido por Alejandro sigue pendiente. No se inventan funciones, fechas o resultados a partir de esos nombres.
+Seleccion inicial de proyectos confirmada por Alejandro: GitCron, OdontoPro, UseOdontoPro, OdontoPau y este portfolio. LinkedIn y tres PDF ya relevados; fuentes, discrepancias y borrador ES/EN en source-review.md. Alejandro confirma puesto actual de administrador de Moodle en TED INTI y Diseño Multimedial en Da Vinci entre 2007 y 2018. No se inventan funciones, fechas o resultados a partir de los nombres de proyectos.
 
 Hallazgos a validar con el titular: `home.mdx` declara mas de 15 anos, ubicacion remote y zona EST; `about.mdx` contiene manifiesto y filosofias genericas; `resume.mdx` contiene `[EMAIL_ADDRESS]` y porcentajes de habilidad; componentes incluyen fallbacks como `hello@aledesign.com`. No se presume falso todo proyecto ni verdadero todo dato heredado. El estado corregido available_for_hire no prueba la exactitud del resto.
 
@@ -20,13 +20,15 @@ Inventariar home, about, resume, archive, cada proyecto, footer, SEO/OpenGraph, 
 
 ### Product and information architecture
 
-Separar `/projects`/portfolio del nuevo `/tienda` (ruta candidata, pendiente de aprobacion). La ficha explica que se compra un objeto fisico y si esta en stock o se produce a pedido. Portfolio no se convierte en inventario ni se reutiliza un proyecto como producto vendible.
+Separar el portfolio del nuevo `/tienda` y `/en/shop-3d`. Alejandro solicita entrada SHOP 3D en el menu del portfolio y menu contextual en la tienda. La ficha comercial futura explica que se compra un objeto fisico y si esta en stock o se produce a pedido. Portfolio no se convierte en inventario ni se reutiliza un proyecto como producto vendible.
+
+La referencia de ancho es el boceto: 1280px de contenido util como maximo, con margenes responsive de 20/32/48px, compartidos por portfolio, tienda y footer. Se conserva el token container(max), corrigiendo el padding que antes reducia su ancho util a 1184px. Encabezado de tienda abierto como la referencia; portfolio conserva su barra flotante. Marca, acciones y contenido del footer provienen de los mismos componentes/datos; el menu cambia por seccion. La tienda no renderiza la grilla animada y usa tema claro por defecto, con preferencia shop-theme independiente del portfolio. Idiomas ES/EN y paleta semantica compartida, sin invertir imagenes.
 
 Datos a confirmar por producto: nombre, descripcion de uso, autoria/licencia comercial del modelo, fotos de impresion real frente a render identificado, material, medidas, peso del objeto, variantes y SKU, acabado y cuidado, precio/moneda, stock o capacidad de produccion, plazo antes del despacho y opciones de personalizacion. Peso y dimensiones del paquete son distintos de los del objeto para cotizar envio. No afirmar aptitud alimentaria, infantil, medica, termica u otras propiedades sin evidencia.
 
 ### Delivery phases
 
-0. **Exploracion visual autorizada:** prototipo local en docs/prototypes/tienda-3d, en español/ingles, con filtros y fichas de ejemplo. Categorias propuestas: Hogar y deco, Escritorio, Organizacion y Objetos de diseño. Renders generados identificados; sin precio inventado, carrito operativo, pagos o mensajes. No se convierte en una ruta publica antes de aprobar diseño y datos reales. Mantiene Inter/Roboto Mono, tokens y reglas visuales del repo; la guia generica de diseño no reemplaza estas restricciones.
+0. **Exploracion visual autorizada:** boceto original en docs/prototypes/tienda-3d e integracion local Astro en /tienda y /en/shop-3d, en español/ingles, con filtros y fichas de ejemplo. Categorias propuestas: Hogar y deco, Escritorio, Organizacion y Objetos de diseño. Renders generados identificados; sin precio inventado, carrito operativo, pagos o mensajes. Las rutas son noindex y se mantienen locales para revision; integrar una ruta no autoriza desplegarla ni anunciar inventario comercial. Mantiene Inter/Roboto Mono, tokens y reglas visuales del repo; la guia generica de diseño no reemplaza estas restricciones.
 1. **Contenido real:** matriz editorial y reemplazos aprobados en Tina/MDX. No depende de elegir Payload.
 2. **Catalogo inicial:** pocas piezas reales, fichas y consulta/pedido asistido. CTA honesto, sin simular cobro ni carrito operativo. Se puede implementar con el stack actual ampliando Tina y Astro.
 3. **Decision de comercio:** comparar seguir con catalogo asistido, backend Payload separado y una aplicacion Next/Payload integrada; probar compatibilidad con las versiones fijadas. Backend separado mantiene Astro y usa API; una migracion completa aumenta alcance y no es necesaria por defecto.

@@ -1,7 +1,7 @@
 {
   "base": "https://al3design.dev",
-  "checkedAt": "2026-10-15T16:49:33.612Z",
-  "method": "sample rendered backgrounds with transparent text; alpha compositing of actual text color; not an exhaustive WCAG audit",
+  "checkedAt": "2026-10-15T16:58:39.999Z",
+  "method": "sample rendered backgrounds with transparent text; alpha compositing of actual text color; not an exhaustive WCAG audit; final mobile run uses emulate viewport and asserts innerWidth=390",
   "results": [
     {
       "route": "/",

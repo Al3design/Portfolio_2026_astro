@@ -4,13 +4,14 @@
 
 - [x] 1.1 Confirmar coexistencia portfolio + tienda y relevar el stack y ejemplos de contenido pendiente.
 - [x] 1.2 Investigar limites oficiales actuales de Payload e incorporarlos al diseno.
-- [ ] 1.3 Completar inventario publico y matriz fuente/estado/reemplazo/aprobacion, incluidos fallbacks y exportaciones.
+- [x] 1.3 Completar inventario publico y matriz fuente/estado/reemplazo/aprobacion, incluidos fallbacks y exportaciones.
 - [ ] 1.4 Recabar CV/bio, proyectos, rol, fechas, contacto, idioma y zona horaria reales.
 - [ ] 1.5 Preparar borradores por pagina; obtener aprobacion y reemplazar solo datos verificados.
 - [ ] 1.6 Validar que contenido publico y exportado coinciden y no contienen dummy no identificado.
 
 ## 2. Physical catalog
 
+- [x] 2.0 Preparar prototipo local bilingue con categorias, textos y renders de demostracion identificados para revisar el diseño antes del catalogo real.
 - [ ] 2.1 Confirmar pais, primeras piezas, licencias, materiales, fotos reales, variantes y capacidad de produccion.
 - [ ] 2.2 Aprobar arquitectura de navegacion y fichas, diferenciando portfolio/servicio/producto fisico.
 - [ ] 2.3 Implementar coleccion de productos, listado, ficha y consulta honesta sin checkout ficticio.

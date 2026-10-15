@@ -2,7 +2,9 @@
 
 ## Context
 
-Fecha: 2026-10-15. Stack actual: Astro estatico + React + TinaCMS, contenido MDX/Git y despliegue en Vercel. Alejandro eligio expresamente **portfolio + tienda 3D**. Se parte de piezas fisicas impresas por el; pais de cobertura, productos y operacion siguen pendientes de confirmar (Argentina es hipotesis de trabajo, no promesa publica).
+Fecha: 2026-10-15. Stack actual: Astro estatico + React + TinaCMS, contenido MDX/Git y despliegue en Vercel. Alejandro eligio expresamente **portfolio + tienda 3D**, español e ingles y Argentina como pais de venta/envio. Se parte de piezas fisicas impresas por el; cobertura por destino, productos y operacion siguen pendientes. Confirmar Argentina no implica tener cotizacion o transportista contratado.
+
+Seleccion inicial de proyectos confirmada por Alejandro: GitCron, OdontoPro, UseOdontoPro, OdontoPau y este portfolio. LinkedIn proporcionado: https://www.linkedin.com/in/alejandropdelgado/. Su lectura automatica devolvio 999; el PDF ofrecido por Alejandro sigue pendiente. No se inventan funciones, fechas o resultados a partir de esos nombres.
 
 Hallazgos a validar con el titular: `home.mdx` declara mas de 15 anos, ubicacion remote y zona EST; `about.mdx` contiene manifiesto y filosofias genericas; `resume.mdx` contiene `[EMAIL_ADDRESS]` y porcentajes de habilidad; componentes incluyen fallbacks como `hello@aledesign.com`. No se presume falso todo proyecto ni verdadero todo dato heredado. El estado corregido available_for_hire no prueba la exactitud del resto.
 
@@ -24,6 +26,7 @@ Datos a confirmar por producto: nombre, descripcion de uso, autoria/licencia com
 
 ### Delivery phases
 
+0. **Exploracion visual autorizada:** prototipo local en docs/prototypes/tienda-3d, en español/ingles, con filtros y fichas de ejemplo. Categorias propuestas: Hogar y deco, Escritorio, Organizacion y Objetos de diseño. Renders generados identificados; sin precio inventado, carrito operativo, pagos o mensajes. No se convierte en una ruta publica antes de aprobar diseño y datos reales. Mantiene Inter/Roboto Mono, tokens y reglas visuales del repo; la guia generica de diseño no reemplaza estas restricciones.
 1. **Contenido real:** matriz editorial y reemplazos aprobados en Tina/MDX. No depende de elegir Payload.
 2. **Catalogo inicial:** pocas piezas reales, fichas y consulta/pedido asistido. CTA honesto, sin simular cobro ni carrito operativo. Se puede implementar con el stack actual ampliando Tina y Astro.
 3. **Decision de comercio:** comparar seguir con catalogo asistido, backend Payload separado y una aplicacion Next/Payload integrada; probar compatibilidad con las versiones fijadas. Backend separado mantiene Astro y usa API; una migracion completa aumenta alcance y no es necesaria por defecto.
@@ -58,10 +61,10 @@ Por cada fase guardar evidencia especifica: contenido aprobado y diff; ficha rea
 
 ## Open Questions
 
-- Pais de venta/envio (Argentina pendiente de confirmacion), origen, moneda y formas de cobro.
+- Origen de despacho, moneda, cobertura por destino y formas de cobro. Argentina ya confirmada.
 - Primeras 3-5 piezas, autorias/licencias, fotos, costos, precio y capacidad de produccion.
 - Mantener servicios freelance y como se relacionan con la impresion personalizada.
-- Idioma principal, CV/bio verificables, contacto y zona horaria real.
+- español e ingles confirmados; acordar URL/localizacion y idioma inicial antes de integrar. CV/bio verificables, contacto y zona horaria real pendientes.
 - Pedido asistido inicial o checkout desde el primer lanzamiento; presupuesto y proveedor logisitico.
 - Venta digital de STL: fuera de alcance hasta pedido expreso.
 

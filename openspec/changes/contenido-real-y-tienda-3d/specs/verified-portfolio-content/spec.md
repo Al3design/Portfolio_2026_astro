@@ -1,5 +1,15 @@
 ## ADDED Requirements
 
+### Requirement: Bilingual editorial consistency
+
+El sitio actualizado SHALL ofrecer contenido en español e ingles basado en los mismos hechos aprobados.
+
+#### Scenario: A visitor changes language
+
+- **WHEN** cambia entre español e ingles en una pagina actualizada
+- **THEN** identidad, rol, fechas, contacto y condiciones comerciales mantienen el mismo significado
+- **AND** titulos, controles, metadata y exportaciones se revisan junto con el contenido principal
+
 ### Requirement: Verified professional claims
 
 El sitio SHALL publicar biografia, experiencia, proyectos, metricas y contacto respaldados por informacion confirmada por Alejandro.

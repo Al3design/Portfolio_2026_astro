@@ -1,5 +1,16 @@
 ## ADDED Requirements
 
+### Requirement: Clearly separated design preview
+
+El proyecto SHALL permitir una exploracion local con categorias y piezas de demostracion cuando Alejandro lo autorice, identificando textos y renders conceptuales y manteniendolos separados del catalogo publico.
+
+#### Scenario: A design concept is reviewed
+
+- **WHEN** Alejandro abre el prototipo de tienda
+- **THEN** puede explorar categorias y fichas de ejemplo en español e ingles
+- **AND** distingue el ejemplo del inventario real, sin cobros, reservas, consultas enviadas ni precios comerciales ficticios
+- **AND** el prototipo no se publica como tienda operativa sin aprobacion posterior
+
 ### Requirement: Portfolio and shop coexistence
 
 El sitio SHALL conservar el portfolio y ofrecer una seccion diferenciada para las piezas fisicas impresas en 3D.

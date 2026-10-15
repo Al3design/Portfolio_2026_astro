@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>AleDesign Objects — propuesta de tienda 3D</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="shop.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Ir al contenido</a>
+  <div class="demo-note"><span class="demo-dot" aria-hidden="true"></span><span data-i18n="demo">Exploración de diseño · piezas y renders de ejemplo</span></div>
+  <header class="site-header wrap">
+    <a class="brand" href="#" aria-label="AleDesign Objects"><strong>Ale<span>Design</span></strong><span class="brand-sub">OBJECTS / 3D</span></a>
+    <nav aria-label="Principal" class="main-nav">
+      <a href="https://al3design.dev" data-i18n="portfolio">Portfolio</a>
+      <a href="#collection" aria-current="page" data-i18n="collection">Colección</a>
+      <a href="#custom" data-i18n="customNav">A medida</a>
+    </nav>
+    <div class="header-controls">
+      <div class="languages" role="group" aria-label="Idioma / Language">
+        <button type="button" data-language="es" aria-pressed="true">ES</button>
+        <button type="button" data-language="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" id="theme" class="theme" aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">◐</span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true">↳</span> <span data-i18n="eyebrow">Del estudio a tu espacio</span></p>
+        <h1 id="hero-title"><span data-i18n="title1">Ideas que</span><br><span class="accent" data-i18n="title2">toman forma.</span></h1>
+        <p class="intro" data-i18n="intro">Objetos cotidianos con otra mirada. Una colección que explora diseño, utilidad y las posibilidades de la impresión 3D.</p>
+        <a class="button primary" href="#collection"><span data-i18n="explore">Explorar piezas</span><span aria-hidden="true">↗</span></a>
+        <div class="hero-meta"><span data-i18n="place">Argentina</span><span aria-hidden="true">/</span><span data-i18n="physical">Objetos físicos</span></div>
+      </div>
+      <figure class="hero-figure">
+        <div class="product-image crop-0 hero-image" role="img" aria-label="Render conceptual de un jarrón verde con textura acanalada" data-alt="heroAlt"></div>
+        <figcaption><div><span class="image-index">01 /</span><span data-i18n="heroProduct">Jarrón Sur</span></div><span class="image-caption" data-i18n="render">Render conceptual</span></figcaption>
+        <span class="photo-label" aria-hidden="true">CAPAS / LAYERS</span>
+      </figure>
+    </section>
+    <section class="collection wrap" id="collection" aria-labelledby="collection-title">
+      <header class="section-heading"><div><p class="eyebrow" data-i18n="collectionLabel">Una primera exploración</p><h2 id="collection-title" data-i18n="collectionTitle">Pequeños objetos. Nuevas posibilidades.</h2></div><p class="count mono" id="count" aria-live="polite">06 PIEZAS DE EJEMPLO</p></header>
+      <div id="filters" class="filters" role="group" aria-label="Categorías"></div>
+      <div id="products" class="products"></div>
+      <noscript><p>Activá JavaScript para explorar las categorías de esta propuesta.</p></noscript>
+      <p class="collection-disclaimer" data-i18n="disclaimer">Estas piezas ilustran la propuesta visual. El catálogo, los materiales, los precios y las opciones de entrega se definirán con las impresiones reales.</p>
+    </section>
+    <section class="custom wrap" id="custom" aria-labelledby="custom-title">
+      <div class="custom-marker mono" aria-hidden="true">[ + ]</div>
+      <div class="custom-copy"><p class="eyebrow" data-i18n="customLabel">Otra idea, otra forma</p><h2 id="custom-title" data-i18n="customTitle">¿Tenés algo en mente?</h2><p data-i18n="customCopy">Un espacio para explorar piezas personalizadas, adaptaciones y proyectos especiales. La modalidad del servicio se definirá antes del lanzamiento.</p></div>
+      <button type="button" class="button secondary" id="custom-button"><span data-i18n="customButton">Ver propuesta</span><span aria-hidden="true">↗</span></button>
+    </section>
+    <section class="process wrap" aria-labelledby="process-title"><h2 id="process-title" class="visually-hidden" data-i18n="processTitle">Cómo imaginamos la experiencia</h2><article><span class="step mono">01 /</span><h3 data-i18n="step1Title">Encontrá tu pieza</h3><p data-i18n="step1Copy">Un catálogo simple, con fotos reales y toda la información que importa.</p></article><article><span class="step mono">02 /</span><h3 data-i18n="step2Title">Conocé cada detalle</h3><p data-i18n="step2Copy">Medidas, colores y material. Stock y tiempos de producción explicados con claridad.</p></article><article><span class="step mono">03 /</span><h3 data-i18n="step3Title">Elegí cómo recibirla</h3><p data-i18n="step3Copy">Envíos en Argentina: cobertura, costo y modalidad a confirmar antes de comprar.</p></article></section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="https://al3design.dev"><strong>Ale<span>Design</span></strong><span class="brand-sub" data-i18n="footerBrand">DISEÑO + OBJETOS</span></a><p data-i18n="footerNote">Portfolio y exploración de una tienda de impresión 3D.</p><span class="mono" data-i18n="footerDemo">PROTOTIPO · SIN VENTAS</span></footer>
+  <dialog id="product-dialog" aria-labelledby="dialog-title"><button type="button" class="dialog-close" id="close-dialog" aria-label="Cerrar">×</button><div id="dialog-content"></div></dialog>
+</body>
+</html>

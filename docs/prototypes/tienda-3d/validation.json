@@ -1,0 +1,571 @@
+{
+  "checkedAt": "2026-10-15T16:58:32.969Z",
+  "base": "http://127.0.0.1:4335",
+  "method": "Real Chromium through Chrome MCP; screenshots, i18n, filters, native modal and keyboard",
+  "results": [
+    {
+      "width": 1280,
+      "language": "es",
+      "theme": "light",
+      "state": {
+        "width": 1280,
+        "language": "es",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas quetoman forma.",
+        "theme": "light"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Jarrón Sur",
+        "notice": "Ejemplo de ficha: este render no representa una pieza disponible para comprar. Sin pedidos, pagos ni reservas."
+      },
+      "tabs": [
+        {
+          "label": "Hogar y deco",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Escritorio",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organización",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "language": "es",
+      "theme": "dark",
+      "state": {
+        "width": 1280,
+        "language": "es",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas quetoman forma.",
+        "theme": "dark"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Jarrón Sur",
+        "notice": "Ejemplo de ficha: este render no representa una pieza disponible para comprar. Sin pedidos, pagos ni reservas."
+      },
+      "tabs": [
+        {
+          "label": "Hogar y deco",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Escritorio",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organización",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "language": "en",
+      "theme": "light",
+      "state": {
+        "width": 1280,
+        "language": "en",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas takinga new shape.",
+        "theme": "light"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Sur vase",
+        "notice": "Sample product page: this render does not represent an object available for purchase. No orders, payments or reservations."
+      },
+      "tabs": [
+        {
+          "label": "Home & decor",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Desk",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organization",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "language": "en",
+      "theme": "dark",
+      "state": {
+        "width": 1280,
+        "language": "en",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas takinga new shape.",
+        "theme": "dark"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Sur vase",
+        "notice": "Sample product page: this render does not represent an object available for purchase. No orders, payments or reservations."
+      },
+      "tabs": [
+        {
+          "label": "Home & decor",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Desk",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organization",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "language": "es",
+      "theme": "light",
+      "state": {
+        "width": 390,
+        "language": "es",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas quetoman forma.",
+        "theme": "light"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Jarrón Sur",
+        "notice": "Ejemplo de ficha: este render no representa una pieza disponible para comprar. Sin pedidos, pagos ni reservas."
+      },
+      "tabs": [
+        {
+          "label": "Hogar y deco",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Escritorio",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organización",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "language": "es",
+      "theme": "dark",
+      "state": {
+        "width": 390,
+        "language": "es",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas quetoman forma.",
+        "theme": "dark"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Jarrón Sur",
+        "notice": "Ejemplo de ficha: este render no representa una pieza disponible para comprar. Sin pedidos, pagos ni reservas."
+      },
+      "tabs": [
+        {
+          "label": "Hogar y deco",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Escritorio",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organización",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "theme": "light",
+      "state": {
+        "width": 390,
+        "language": "en",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas takinga new shape.",
+        "theme": "light"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Sur vase",
+        "notice": "Sample product page: this render does not represent an object available for purchase. No orders, payments or reservations."
+      },
+      "tabs": [
+        {
+          "label": "Home & decor",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Desk",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organization",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "theme": "dark",
+      "state": {
+        "width": 390,
+        "language": "en",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas takinga new shape.",
+        "theme": "dark"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Sur vase",
+        "notice": "Sample product page: this render does not represent an object available for purchase. No orders, payments or reservations."
+      },
+      "tabs": [
+        {
+          "label": "Home & decor",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Desk",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organization",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "language": "es",
+      "theme": "light",
+      "state": {
+        "width": 320,
+        "language": "es",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas quetoman forma.",
+        "theme": "light"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Jarrón Sur",
+        "notice": "Ejemplo de ficha: este render no representa una pieza disponible para comprar. Sin pedidos, pagos ni reservas."
+      },
+      "tabs": [
+        {
+          "label": "Hogar y deco",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Escritorio",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organización",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "language": "es",
+      "theme": "dark",
+      "state": {
+        "width": 320,
+        "language": "es",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas quetoman forma.",
+        "theme": "dark"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Jarrón Sur",
+        "notice": "Ejemplo de ficha: este render no representa una pieza disponible para comprar. Sin pedidos, pagos ni reservas."
+      },
+      "tabs": [
+        {
+          "label": "Hogar y deco",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Escritorio",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organización",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "theme": "light",
+      "state": {
+        "width": 320,
+        "language": "en",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas takinga new shape.",
+        "theme": "light"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Sur vase",
+        "notice": "Sample product page: this render does not represent an object available for purchase. No orders, payments or reservations."
+      },
+      "tabs": [
+        {
+          "label": "Home & decor",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Desk",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organization",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "theme": "dark",
+      "state": {
+        "width": 320,
+        "language": "en",
+        "cards": 6,
+        "filters": 5,
+        "overflow": false,
+        "image": [
+          1536,
+          1024
+        ],
+        "h1": "Ideas takinga new shape.",
+        "theme": "dark"
+      },
+      "filtered": {
+        "cards": 2,
+        "pressed": "true"
+      },
+      "modal": {
+        "open": true,
+        "title": "Sur vase",
+        "notice": "Sample product page: this render does not represent an object available for purchase. No orders, payments or reservations."
+      },
+      "tabs": [
+        {
+          "label": "Home & decor",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Desk",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        },
+        {
+          "label": "Organization",
+          "visible": true,
+          "style": "solid",
+          "width": "2px"
+        }
+      ]
+    }
+  ]
+}

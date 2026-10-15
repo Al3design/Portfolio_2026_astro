@@ -50,28 +50,55 @@
   --clr-brand-secondary: rgb(var(--clr-brand-secondary-rgb));
   --clr-brand-tertiary: rgb(var(--clr-brand-tertiary-rgb));
   --clr-brand-danger: #ff716c;
+  --glass-sheen-start: 0.30;
+  --glass-sheen-end: 0.08;
+  --glass-warm-glow: 0.14;
+  --glass-cool-glow: 0.16;
+  --glass-shadow-opacity: 0.5;
+  --glass-grain-opacity: 0.17;
+  --nav-shadow-opacity: 0.4;
+  --nav-glass-saturation: 1.2;
+  --energy-grid-opacity: 1;
+  --metadata-opacity: 0.8;
+  --copyright-opacity: 0.85;
+  --quiet-detail-opacity: 0.4;
+  --quiet-control-opacity: 0.7;
+  --empty-caption-opacity: 0.5;
 }
 
 .light {
-  // Light Theme (Editorial Soft Blue)
-  --clr-brand-surface-rgb: 220, 232, 248; // Soft Blue background
-  --clr-brand-surface-low-rgb:
-    205, 217, 233; // Darker Blue for containers in Light mode
-  --clr-brand-on-surface-rgb: 73, 86, 103; // #495667 (Inverse On Surface)
-  --clr-brand-on-surface-variant-rgb: 105, 119, 137; // #697789 (Outline/Muted)
-  --clr-brand-primary-rgb: 38, 109, 17; // #266D11 (Deep Green for readability)
-  --clr-brand-secondary-rgb: 137, 81, 0; // #895100 (Deep Orange)
-  --clr-brand-tertiary-rgb: 0, 72, 90; // #00485A (Deep Cyan)
+  // Light Theme: warm stone surfaces and restrained, readable brand accents.
+  --clr-brand-surface-rgb: 231, 229, 223; // #E7E5DF
+  --clr-brand-surface-low-rgb: 222, 220, 213; // #DEDCD5
+  --clr-brand-on-surface-rgb: 69, 75, 71; // #454B47
+  --clr-brand-on-surface-variant-rgb: 83, 90, 84; // #535A54
+  --clr-brand-primary-rgb: 67, 94, 64; // #435E40 - sage green
+  --clr-brand-secondary-rgb: 115, 81, 54; // #735136 - clay orange
+  --clr-brand-tertiary-rgb: 55, 91, 96; // #375B60 - muted cyan
 
   --clr-brand-surface: rgb(var(--clr-brand-surface-rgb));
   --clr-brand-surface-low: rgb(var(--clr-brand-surface-low-rgb));
   --clr-brand-on-surface: rgb(var(--clr-brand-on-surface-rgb));
   --clr-brand-on-surface-variant: rgb(var(--clr-brand-on-surface-variant-rgb));
   --clr-brand-primary: rgb(var(--clr-brand-primary-rgb));
-  --clr-brand-on-primary: #ffffff;
+  --clr-brand-on-primary: #f3f1eb;
   --clr-brand-secondary: rgb(var(--clr-brand-secondary-rgb));
   --clr-brand-tertiary: rgb(var(--clr-brand-tertiary-rgb));
-  --clr-brand-danger: #dc2626;
+  --clr-brand-danger: #913f3f;
+  --glass-sheen-start: 0.06;
+  --glass-sheen-end: 0.02;
+  --glass-warm-glow: 0.025;
+  --glass-cool-glow: 0.03;
+  --glass-shadow-opacity: 0.10;
+  --glass-grain-opacity: 0.04;
+  --nav-shadow-opacity: 0.10;
+  --nav-glass-saturation: 1;
+  --energy-grid-opacity: 0.18;
+  --metadata-opacity: 1;
+  --copyright-opacity: 1;
+  --quiet-detail-opacity: 1;
+  --quiet-control-opacity: 1;
+  --empty-caption-opacity: 1;
 }
 
 html,

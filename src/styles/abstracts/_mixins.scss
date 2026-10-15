@@ -43,16 +43,16 @@
   // Depth comes from the gradients, without stacking backdrop filters per card.
   background:
     linear-gradient($angle,
-      rgba(var(#{$color-rgb}), 0.30) 0%,
-      rgba(var(#{$color-rgb}), 0.08) 40%,
+      rgba(var(#{$color-rgb}), var(--glass-sheen-start)) 0%,
+      rgba(var(#{$color-rgb}), var(--glass-sheen-end)) 40%,
       rgba(0, 0, 0, 0) 70%
     ),
-    radial-gradient(ellipse at 90% 85%, rgba(var(--clr-brand-secondary-rgb), 0.14), transparent 65%),
-    radial-gradient(ellipse at 20% 90%, rgba(var(--clr-brand-tertiary-rgb), 0.16), transparent 60%),
+    radial-gradient(ellipse at 90% 85%, rgba(var(--clr-brand-secondary-rgb), var(--glass-warm-glow)), transparent 65%),
+    radial-gradient(ellipse at 20% 90%, rgba(var(--clr-brand-tertiary-rgb), var(--glass-cool-glow)), transparent 60%),
     rgba(var(--clr-brand-surface-rgb), 0.78);
   border: 1px solid rgba(var(#{$color-rgb}), 0.25);
   box-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.5),
+    0 4px 30px rgba(0, 0, 0, var(--glass-shadow-opacity)),
     inset 0 1px 0 rgba(var(#{$color-rgb}), 0.22),
     inset 0 0 0 1px rgba(var(--clr-brand-on-surface-rgb), 0.04);
   position: relative;
@@ -67,7 +67,7 @@
     border-radius: inherit;
     background: url('/textures/grain.svg') repeat;
     background-size: 128px 128px;
-    opacity: 0.17;
+    opacity: var(--glass-grain-opacity);
     pointer-events: none;
   }
 }
@@ -130,6 +130,7 @@
   inset: 0;
   pointer-events: none;
   mix-blend-mode: screen;
+  opacity: var(--energy-grid-opacity);
   -webkit-mask-image:
     linear-gradient(to right, #000 1px, transparent 1px),
     linear-gradient(to bottom, #000 1px, transparent 1px);

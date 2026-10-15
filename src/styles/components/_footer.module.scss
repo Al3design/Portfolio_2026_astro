@@ -60,7 +60,7 @@
     font-family: semantic-font(mono);
     font-size: 10px;
     color: semantic-color(brand-on-surface-variant);
-    opacity: 0.85;
+    opacity: var(--copyright-opacity);
     text-transform: uppercase;
     letter-spacing: ls(wide)st;
   }

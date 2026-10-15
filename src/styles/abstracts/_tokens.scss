@@ -7,12 +7,12 @@ $active-theme: $dark;
 $enable-media-query-dark-mode: false;
 
 
-$color-text-default: $color-neutral-900;
-$color-background-default: $color-neutral-100;
-$color-text-muted: $color-neutral-600;
-$color-text-interactive-default: $color-primary-500;
-$color-text-interactive-hover: $color-accent-500;
-$color-accent-default: $color-primary-500;
+$color-text-default: var(--clr-brand-on-surface);
+$color-background-default: var(--clr-brand-surface);
+$color-text-muted: var(--clr-brand-on-surface-variant);
+$color-text-interactive-default: var(--clr-brand-primary);
+$color-text-interactive-hover: var(--clr-brand-tertiary);
+$color-accent-default: var(--clr-brand-primary);
 
 $body-font-family: $font-family-base;
 $body-font-size: $font-size-300;

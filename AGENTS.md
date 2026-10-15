@@ -4,6 +4,10 @@ This file provides guidance to AI coding agents when working with code in this r
 
 ## Commands
 
+### Browser verification
+
+Preferir e2e y WebMCP para verificaciones funcionales con resultados compactos; usar capturas solo cuando aporten evidencia visual. Leer `docs/TESTING_MCP.md` y `node_modules/e2e/skills/e2e/SKILL.md` antes de escribir/ejecutar pruebas e2e. Config MCP de este proyecto: `C:/www/Portfolio_2026_astro/e2e.config.ts`. No iniciar otro Tina sobre puertos ocupados. Los tests deterministas no necesitan modelos ni API keys.
+
 ```bash
 npm run dev        # Start TinaCMS + Astro dev server (always use this, not astro dev alone)
 npm run build      # Build TinaCMS then Astro for production

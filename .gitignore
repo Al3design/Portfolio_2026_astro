@@ -1,5 +1,7 @@
 # build output
 dist/
+.e2e/
+.playwright-mcp/
 
 # generated types
 .astro/

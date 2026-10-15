@@ -6,8 +6,10 @@ import { Sun, Moon, Rss, Code } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { useState, useEffect } from 'react';
+import { flushSync } from 'react-dom';
 import styles from '@/styles/components/_navigation.module.scss';
 import { clsx } from 'clsx';
+import { registerWebTools, publicPageState } from '@/lib/webmcp';
 
 const navLinks = [
   { name: 'PROJECTS', href: '/', index: '01' },
@@ -67,6 +69,35 @@ export default function Navigation({ pathname = '/' }: { pathname?: string }) {
       document.documentElement.classList.remove('light');
     }
   }, []);
+
+  useEffect(() => registerWebTools([
+    {
+      name: 'portfolio_get_state',
+      description: 'Read the current public page, theme and rendered heading colors.',
+      inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+      execute: publicPageState,
+      annotations: { readOnlyHint: true },
+    },
+    {
+      name: 'portfolio_set_theme',
+      description: 'Switch the portfolio to light or dark theme and save that preference.',
+      inputSchema: {
+        type: 'object',
+        properties: { theme: { type: 'string', enum: ['light', 'dark'], description: 'The desired color theme.' } },
+        required: ['theme'],
+        additionalProperties: false,
+      },
+      execute: ({ theme: requestedTheme }) => {
+        if (requestedTheme !== 'light' && requestedTheme !== 'dark') {
+          return { error: 'theme must be light or dark' };
+        }
+        flushSync(() => setTheme(requestedTheme));
+        localStorage.setItem('theme', requestedTheme);
+        document.documentElement.classList.toggle('light', requestedTheme === 'light');
+        return publicPageState();
+      },
+    },
+  ]), []);
 
   // Scroll lock while menu is open — html+body overflow hidden (modern, safe)
   useEffect(() => {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { flushSync } from 'react-dom';
 import { useTina, tinaField } from 'tinacms/dist/react';
 import { motion } from 'motion/react';
 import { Folder, ArrowRight, ExternalLink, RotateCcw } from 'lucide-react';
@@ -13,6 +14,7 @@ import { clsx } from 'clsx';
 import { cleanTitle, formatTitle } from '@/helpers/text-helpers';
 import Breadcrumb from '@/components/Breadcrumb';
 import MarkdownExportMenu from '@/components/MarkdownExportMenu';
+import { registerWebTools } from '@/lib/webmcp';
 
 interface ExportData {
   content: string;
@@ -43,6 +45,39 @@ export default function ClientHome({ projects, query, variables, data, exportDat
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => registerWebTools([{
+    name: 'portfolio_browse_projects',
+    description: 'Filter the public projects by category, choose cards or list, and return matching project links.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        category: { type: 'string', enum: ['all', ...PROJECT_CATEGORIES.map(c => c.value)], description: 'Project category; all resets the filter.' },
+        layout: { type: 'string', enum: ['cards', 'list'], description: 'How to display the matching projects.' },
+      },
+      required: ['category', 'layout'],
+      additionalProperties: false,
+    },
+    execute: ({ category, layout: requestedLayout }) => {
+      if (typeof category !== 'string' || !['all', ...PROJECT_CATEGORIES.map(c => c.value)].includes(category)) {
+        return { error: 'Unknown category', categories: ['all', ...PROJECT_CATEGORIES.map(c => c.value)] };
+      }
+      if (requestedLayout !== 'cards' && requestedLayout !== 'list') {
+        return { error: 'layout must be cards or list' };
+      }
+      flushSync(() => {
+        setActiveFilter(category);
+        setLayout(requestedLayout);
+      });
+      localStorage.setItem('portfolio-filter', category);
+      localStorage.setItem('portfolio-layout', requestedLayout);
+      const matching = projects.filter(p => category === 'all' || p.categories?.includes(category));
+      return {
+        category, layout: requestedLayout, total: matching.length,
+        projects: matching.slice(0, 25).map(p => ({ title: cleanTitle(p.title), href: `/projects/${p.slug}` })),
+      };
+    },
+  }]), [projects]);
 
   // Filtered projects — 'all' shows everything, otherwise match categories[]
   const filteredProjects = activeFilter === 'all'

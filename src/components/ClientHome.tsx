@@ -216,19 +216,12 @@ export default function ClientHome({ projects, query, variables, data, exportDat
                               <source media="(max-width: 768px)" srcSet={featuredProject.image} />
                               <img
                                 src={featuredProject.imagePortrait ?? featuredProject.image}
-                                alt={cleanTitle(featuredProject.title)}
+                                alt={featuredProject.imageAlt || cleanTitle(featuredProject.title)}
                                 className={styles.home__featuredImage}
                                 referrerPolicy="no-referrer"
                               />
                             </picture>
-                          ) : (
-                            <img
-                              src="https://picsum.photos/seed/home-main/1920/1080"
-                              alt={cleanTitle(featuredProject.title)}
-                              className={styles.home__featuredImage}
-                              referrerPolicy="no-referrer"
-                            />
-                          )}
+                          ) : null}
                         </div>
 
                         <div className={styles.home__featuredInfo}>
@@ -277,7 +270,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
                             <source media="(max-width: 768px)" srcSet={project.image} />
                             <img
                               src={project.imagePortrait ?? project.image}
-                              alt={cleanTitle(project.title)}
+                              alt={project.imageAlt || cleanTitle(project.title)}
                               className={styles.home__projectCardImage}
                               referrerPolicy="no-referrer"
                             />

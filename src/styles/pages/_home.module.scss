@@ -427,6 +427,7 @@
   &__projectGrid {
     display: grid;
     gap: size(12);
+    align-items: start;
 
     @include mq(md) {
       grid-template-columns: repeat(2, 1fr);
@@ -434,14 +435,12 @@
   }
 
   &__projectLink {
-    height: 100%;
     display: block;
   }
 
   &__projectCard {
     border-radius: radius(soft);
     padding: 0;
-    height: 100%;
     display: flex;
     flex-direction: column;
     transition: transform 220ms ease, border-color 220ms ease;
@@ -481,14 +480,22 @@
     &ImageContainer {
       position: relative;
       aspect-ratio: 16 / 9;
+      overflow: hidden;
+      flex-shrink: 0;
 
-      @include mq(md) {
-        // aspect-ratio: 3 / 4;
+      picture {
+        position: absolute;
+        inset: 0;
+        display: block;
       }
     }
 
     &Image {
+      display: block;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      object-position: top;
       opacity: 0.8;
     }
 

@@ -9,6 +9,7 @@ import "@/styles/main.scss";
 import { getEntry } from 'astro:content';
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { cleanTitle } from '@/helpers/text-helpers';
 import type { SiteSection, SiteLanguage, SiteLanguageLinks } from '@/lib/site-navigation';
 
 const footerEntry = await getEntry('global', 'footer');
@@ -22,6 +23,9 @@ interface Props {
   language?: SiteLanguage;
   languageLinks?: SiteLanguageLinks;
   noIndex?: boolean;
+  socialImage?: string;
+  socialImageAlt?: string;
+  pageType?: 'website' | 'article';
 }
 
 const {
@@ -31,8 +35,14 @@ const {
   language = 'en',
   languageLinks,
   noIndex = false,
+  socialImage = '/banner-background.png',
+  socialImageAlt = 'Al3Design · Alejandro Delgado',
+  pageType = 'website',
 } = Astro.props;
 const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev');
+const metaTitle = cleanTitle(title).replace(/\s+/g, ' ');
+const socialImageUrl = new URL(socialImage, noIndex ? Astro.url.origin : pageUrl.origin);
+const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter(([, href]) => !!href && !href.startsWith('/revision/'));
 ---
 <html lang={language}>
   <head>
@@ -46,9 +56,11 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <title>{metaTitle}</title>
     <meta name="description" content={description} />
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
+    {!noIndex && <link rel="canonical" href={pageUrl} />}
+    {alternatePages.map(([locale, href]) => <link rel="alternate" hreflang={locale} href={new URL(href!, pageUrl.origin)} />)}
     <meta name="keywords" content="Multimedia Designer, Creative Developer, UX/UI Design, Portfolio, Editorial Design, Alejandro Delgado, Al3Design, Motion Design, Web Development" />
     <meta name="author" content="Alejandro Delgado" />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" />
@@ -58,19 +70,21 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
 
     <!-- OpenGraph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={pageType} />
     <meta property="og:locale" content={language === 'es' ? 'es_AR' : 'en_US'} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:site_name" content="Al3Design" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={metaTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/banner-background.png" />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content={socialImageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={metaTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/banner-background.png" />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
 
     <style is:global>
       :root {

@@ -71,3 +71,11 @@ La migración `scripts/consolidate-academic-locales.mjs` leyó los cuatro docume
 ## Pendientes de cierre
 
 Según AGENTS.md, sin suites ni capturas por tanda. Pendientes del orquestador: schema/queries, abrir/editar/guardar cada idioma en Tina, preview/exportaciones coincidentes, rutas/redirecciones, legacy, teclado/subtítulos y ausencia de borradores/medios locales en el build y RSS. Pruebas unitarias preparadas en tests/article-blocks.test.mjs y tests/project-locales.test.mjs, sin ejecutar. El error anterior de apertura en Tina no tiene causa confirmada ni se declara resuelto por consolidar los documentos.
+
+## Metadatos al compartir articulos
+
+ProjectDocument entrega la portada y su texto alternativo a MainLayout, que construye URL absoluta para OpenGraph/Twitter, titulo sin el marcador de estilo //, og:type article, canonical y alternates de idioma disponibles. Se reutilizan image/imageAlt/imageCaption/title y los enlaces de idiomas existentes. Los previews conservan noindex y no generan canonical o alternates publicos; sus medios locales se resuelven contra el origen de desarrollo. Estos cambios requieren control final antes de publicar una nueva tanda.
+
+## Enlaces de referencia destacados — 2026-10-19
+
+Los enlaces de secciones usan una accion visual compartida: globo para web, marca GitHub cuando el hostname del href corresponde a github.com, texto primario subrayado, fondo tenue y flecha externa. Mantienen apertura en otra pestana, nombre accesible con aviso, foco visible y adaptacion de texto en mobile. La eleccion del icono depende del enlace existente en Tina; no agrega campos ni modifica su esquema. Aplicable a GitCron, OdontoPau y futuras fichas ES/EN. Sin build, pruebas ni capturas por tanda.

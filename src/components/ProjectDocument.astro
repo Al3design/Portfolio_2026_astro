@@ -23,7 +23,7 @@ const reviewLabel = draft ? (language === 'es' ? 'Borrador' : 'Draft') : (langua
 const exportContent = structured ? articleBlocksMarkdown(metadata.contentBlocks) : source.body;
 const exportMetadata = { ...metadata, locales: undefined, contentBlocks: undefined };
 ---
-<MainLayout title={`${metadata.title} | Al3Design${preview ? ` · ${reviewLabel}` : ''}`} description={metadata.description} language={language} languageLinks={projectLanguageLinks(documentSlug, preview)} noIndex={preview}>
+<MainLayout title={`${metadata.title} | Al3Design${preview ? ` · ${reviewLabel}` : ''}`} description={metadata.description} language={language} languageLinks={projectLanguageLinks(documentSlug, preview)} noIndex={preview} socialImage={metadata.image} socialImageAlt={metadata.imageAlt || metadata.imageCaption || metadata.title} pageType="article">
   <ProjectDetailLayout client:load project={{...source.metadata, slug: documentSlug}} language={language} query={tinaProps.query} variables={tinaProps.variables} data={tinaProps.data} nextLink={nextLink} exportData={{content: exportContent, metadata: exportMetadata, filename: `${documentSlug}-${language}${preview ? '-draft' : ''}.md`}}>
     <Fragment slot="header-node">{preview && <aside class="article-draft-notice">
       {draft

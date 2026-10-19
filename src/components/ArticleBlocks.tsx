@@ -1,4 +1,6 @@
 import { useId } from 'react';
+import { Globe, ArrowUpRight } from 'lucide-react';
+import { siGithub } from 'simple-icons';
 import { tinaField } from 'tinacms/dist/react';
 import { Tag } from '@/components/UI';
 import { articleBlockKind, articleImageHref, paragraphs, type ArticleBlock, type ArticleImage } from '@/lib/article-blocks';
@@ -19,7 +21,11 @@ function Block({ block, language }: { block: ArticleBlock; language: 'es' | 'en'
   const referenceHref = articleImageHref(block.href);
   const referenceLabel = block.linkLabel || (language === 'es' ? 'Ver referencia' : 'View reference');
   const referenceNewTab = language === 'es' ? 'se abre en una pestaña nueva' : 'opens in a new tab';
-  const textContent = <>{paragraphs(block.text).map((text, index) => <p key={index}>{text}</p>)}{block.bullets?.length ? <ul>{block.bullets.map((text, index) => <li key={index}>{text}</li>)}</ul> : null}{referenceHref && <p><a href={referenceHref} target="_blank" rel="noopener noreferrer" aria-label={`${referenceLabel} (${referenceNewTab})`} data-tina-field={tinaField(block, 'href')}>{referenceLabel}<span aria-hidden="true"> ↗</span></a></p>}</>;
+  const githubReference = /^https:\/\/(?:www\.)?github\.com(?:\/|$)/i.test(referenceHref ?? '');
+  const textContent = <>{paragraphs(block.text).map((text, index) => <p key={index}>{text}</p>)}{block.bullets?.length ? <ul>{block.bullets.map((text, index) => <li key={index}>{text}</li>)}</ul> : null}{referenceHref && <div className="article-reference"><a className="article-reference-link" href={referenceHref} target="_blank" rel="noopener noreferrer" aria-label={`${referenceLabel} (${referenceNewTab})`} data-tina-field={tinaField(block, 'href')}>
+    {githubReference ? <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d={siGithub.path} /></svg> : <Globe size={22} aria-hidden="true" />}
+    <span>{referenceLabel}</span><ArrowUpRight size={18} aria-hidden="true" />
+  </a></div>}</>;
   switch (articleBlockKind(block)) {
     case 'section': return block.collapsed
       ? <details className="article-transcript"><summary>{block.title}</summary>{textContent}</details>

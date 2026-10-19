@@ -4,6 +4,7 @@ import {
   siTelegram, siDiscord, siBluesky, siPinterest,
 } from 'simple-icons';
 import styles from '@/styles/components/_footer.module.scss';
+import BrandMark from '@/components/BrandMark';
 
 type SimpleIcon = { path: string; title: string };
 
@@ -53,7 +54,7 @@ export default function Footer({ copyright, links }: Props) {
     <footer className={styles.footer}>
       <div className={styles.footer__content}>
         <div className={styles.footer__logo}>
-          Al3Design
+          <BrandMark />Al3Design
         </div>
 
         <div className={styles.footer__links}>

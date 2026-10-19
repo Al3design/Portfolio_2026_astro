@@ -9,15 +9,18 @@ import "@/styles/main.scss";
 import { getEntry } from 'astro:content';
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import type { SiteSection, SiteLanguage } from '@/lib/site-navigation';
+import type { SiteSection, SiteLanguage, SiteLanguageLinks } from '@/lib/site-navigation';
 
 const footerEntry = await getEntry('global', 'footer');
+// Set to 'square' to restore the preserved original grid and its animation.
+const backgroundPattern: 'hexagonal' | 'square' = 'hexagonal';
 
 interface Props {
   title?: string;
   description?: string;
   section?: SiteSection;
   language?: SiteLanguage;
+  languageLinks?: SiteLanguageLinks;
   noIndex?: boolean;
 }
 
@@ -26,6 +29,7 @@ const {
   description = "Portfolio of Alejandro Delgado, a Multimedia Designer and Creative Developer specializing in high-end digital experiences, editorial design, and technical precision.",
   section = 'portfolio',
   language = 'en',
+  languageLinks,
   noIndex = false,
 } = Astro.props;
 const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev');
@@ -47,7 +51,10 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
     <meta name="keywords" content="Multimedia Designer, Creative Developer, UX/UI Design, Portfolio, Editorial Design, Alejandro Delgado, Al3Design, Motion Design, Web Development" />
     <meta name="author" content="Alejandro Delgado" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
 
     <!-- OpenGraph -->
@@ -83,19 +90,20 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">{language === 'es' ? 'Saltar al contenido' : 'Skip to content'}</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNVXGZVD"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    {section !== 'shop' && <div class="bg-energy-grid" aria-hidden="true">
+    {section !== 'shop' && <div class="bg-energy-grid" data-energy-grid data-energy-pattern={backgroundPattern} aria-hidden="true">
       <div class="eg-spot eg-spot--tertiary"></div>
       <div class="eg-spot eg-spot--secondary"></div>
       <div class="eg-spot eg-spot--primary"></div>
     </div>}
 
-    <Navigation client:load pathname={Astro.url.pathname} section={section} language={language} />
-    <main>
+    <Navigation client:load pathname={Astro.url.pathname} section={section} language={language} languageLinks={languageLinks} />
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer
@@ -103,6 +111,34 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev
       copyright={footerEntry?.data?.copyright}
       links={footerEntry?.data?.links}
     />
+
+    <script>
+      import { setupEnergyGridPointer } from '@/lib/energy-grid-pointer';
+      import { setupHexagonalGridPointer } from '@/lib/hexagonal-grid-pointer';
+
+      let disposeGrid = () => {};
+      const mountGrid = () => {
+        disposeGrid();
+        const hexagonal = document.querySelector('[data-energy-pattern="hexagonal"]');
+        disposeGrid = hexagonal ? setupHexagonalGridPointer() : setupEnergyGridPointer();
+      };
+      const stopGrid = () => disposeGrid();
+      const restoreGrid = (event: PageTransitionEvent) => {
+        if (event.persisted) mountGrid();
+      };
+      mountGrid();
+      document.addEventListener('astro:page-load', mountGrid);
+      document.addEventListener('astro:before-swap', stopGrid);
+      window.addEventListener('pagehide', stopGrid);
+      window.addEventListener('pageshow', restoreGrid);
+      if (import.meta.hot) import.meta.hot.dispose(() => {
+        disposeGrid();
+        document.removeEventListener('astro:page-load', mountGrid);
+        document.removeEventListener('astro:before-swap', stopGrid);
+        window.removeEventListener('pagehide', stopGrid);
+        window.removeEventListener('pageshow', restoreGrid);
+      });
+    </script>
 
   </body>
 </html>

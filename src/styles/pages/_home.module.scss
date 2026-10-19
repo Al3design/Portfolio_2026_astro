@@ -8,7 +8,10 @@
 
   &__breadcrumbRow {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: size(4);
+    @include mq(sm) { align-items: center; }
     justify-content: space-between;
     padding-top: size(20);
     padding-bottom: size(8);
@@ -295,36 +298,37 @@
   }
 
   &__listItems {
+    display: grid;
+    gap: size(6);
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
   &__listItem {
+    @include glass("--clr-brand-primary-rgb", 45deg);
+
+    .home__listItems > li:nth-child(3n + 2) & {
+      @include glass("--clr-brand-secondary-rgb", 135deg);
+      border-color: rgba(var(--clr-brand-tertiary-rgb), 0.15);
+    }
+    .home__listItems > li:nth-child(3n + 3) & {
+      @include glass("--clr-brand-tertiary-rgb", 225deg);
+      border-color: rgba(var(--clr-brand-tertiary-rgb), 0.15);
+    }
+
+    border-color: rgba(var(--clr-brand-tertiary-rgb), 0.15);
+    border-radius: radius(soft);
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
     gap: size(5);
-    padding: size(8) 0;
+    padding: size(6);
+    @include mq(md) { padding: size(8); }
     text-decoration: none;
     position: relative;
 
-    // Subtle row separator via gradient — no 1px solid border
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(
-        to right,
-        rgba(var(--clr-brand-on-surface-rgb), 0.07),
-        transparent 70%
-      );
-    }
-
-    &:hover {
+    &:is(:hover, :focus-visible) {
       .home__listItemArrow {
         transform: translateY(6px) translateX(2px);
         color: semantic-color(brand-primary);
@@ -353,6 +357,8 @@
   }
 
   &__listItemContent {
+    min-width: 0;
+    overflow-wrap: anywhere;
     display: flex;
     flex-direction: column;
     gap: size(4);

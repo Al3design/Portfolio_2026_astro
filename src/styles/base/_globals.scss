@@ -249,3 +249,22 @@ article {
 .bg-energy-grid {
   @include energy-grid-bg();
 }
+
+// Original square mode remains above; this variant only overrides the pattern.
+.bg-energy-grid[data-energy-pattern='hexagonal'] {
+  @include hexagonal-grid-bg();
+}
+
+.skip-link {
+  position: fixed;
+  top: size(2);
+  left: var(--site-gutter);
+  z-index: 300;
+  padding: size(3) size(4);
+  background: semantic-color(brand-surface);
+  color: semantic-color(brand-on-surface);
+  transform: translateY(-200%);
+  &:focus { transform: none; }
+}
+
+#main-content { scroll-margin-top: calc(#{layout(nav-height)} + #{size(12)}); }

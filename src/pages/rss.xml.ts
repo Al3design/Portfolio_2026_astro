@@ -2,6 +2,8 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 import matter from 'gray-matter';
+import { projectSource, projectIsPublished } from '@/lib/project-editorial';
+import { localizedProject } from '@/lib/project-locales';
 
 // gray-matter reads image directly from raw MDX — p.data.image is unreliable in Astro v6
 // (same pattern used in index.astro for categories)
@@ -37,18 +39,19 @@ export async function GET(context: APIContext) {
   const site = context.site!;
 
   const items = projects
-    .filter(p => p.data.showInPortfolio !== false)
-    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+    .filter(p => projectIsPublished(p.id) && projectSource(p.id).metadata.showInPortfolio !== false && p.data.date)
+    .sort((a, b) => new Date(b.data.date!).getTime() - new Date(a.data.date!).getTime())
     .map(p => {
-      const title = p.data.title.replace(/\s*\/\/\s*/g, ' ');
-      const description = p.data.description ?? '';
+      const localized = localizedProject(projectSource(p.id).metadata);
+      const title = (localized.title ?? p.data.title).replace(/\s*\/\/\s*/g, ' ');
+      const description = localized.description ?? '';
       const projectUrl = new URL(`/projects/${p.id}`, site).href;
       const imageUrl = toAbsoluteUrl(imageMap[p.id] ?? null, site);
 
       const contentHtml = [
         imageUrl ? `<img src="${imageUrl}" alt="${title}" style="max-width:100%;border-radius:4px;display:block;margin-bottom:16px;" />` : '',
         description ? `<p>${description}</p>` : '',
-        p.data.role ? `<p><strong>Role:</strong> ${p.data.role}</p>` : '',
+        localized.role ? `<p><strong>Role:</strong> ${localized.role}</p>` : '',
         p.data.stack?.length ? `<p><strong>Stack:</strong> ${p.data.stack.join(', ')}</p>` : '',
         `<p><a href="${projectUrl}">View project &rarr;</a></p>`,
       ].filter(Boolean).join('\n');
@@ -62,7 +65,7 @@ export async function GET(context: APIContext) {
       return {
         title,
         description,
-        pubDate: new Date(p.data.date),
+        pubDate: new Date(p.data.date!),
         link: `/projects/${p.id}`,
         categories: p.data.stack ?? [],
         content: contentHtml,

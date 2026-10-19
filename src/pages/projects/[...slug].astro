@@ -1,71 +1,26 @@
 ---
-import { getCollection, render } from 'astro:content';
-import { client } from '../../../tina/__generated__/client';
-import MainLayout from '@/layouts/MainLayout.astro';
-import ProjectDetailLayout from '@/components/ProjectDetailLayout';
-import customComponents from '@/components/mdx';
-import matter from 'gray-matter';
+import { getCollection } from 'astro:content';
+import ProjectDocument from '@/components/ProjectDocument.astro';
+import { projectSource, projectIsPublished } from '@/lib/project-editorial';
+import { projectLanguages, projectDefaultLanguage, projectUrl } from '@/lib/project-locales';
+import type { SiteLanguage } from '@/lib/site-navigation';
 
 export async function getStaticPaths() {
-  const allProjects = await getCollection('projects');
-  const sorted = allProjects
-    .filter(p => p.data.showInPortfolio !== false)
-    .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
-
-  return sorted.map((entry, index) => {
-    const next = sorted[(index + 1) % sorted.length];
+  const entries = await getCollection('projects');
+  const sorted = entries
+    .filter(entry => projectIsPublished(entry.id) && projectSource(entry.id).metadata.showInPortfolio !== false)
+    .map(entry => projectSource(entry.id))
+    .sort((a, b) => (a.metadata.order ?? 0) - (b.metadata.order ?? 0));
+  return sorted.flatMap((item, index) => projectLanguages(item.metadata).map(language => {
+    const others = [...sorted.slice(index + 1), ...sorted.slice(0, index)];
+    const next = others.find(other => projectLanguages(other.metadata).includes(language)) ?? others[0] ?? item;
+    const nextLanguage = projectLanguages(next.metadata).includes(language) ? language : projectDefaultLanguage(next.metadata);
     return {
-      params: { slug: entry.id },
-      props: { entry, nextSlug: next.id },
+      params: {slug: projectUrl(item.slug, item.metadata, language).replace('/projects/', '')},
+      props: {documentSlug: item.slug, language, nextLink: projectUrl(next.slug, next.metadata, nextLanguage)},
     };
-  });
+  }));
 }
-
-const { entry, nextSlug } = Astro.props;
-const { Content } = await render(entry);
-const tinaProps = await client.queries.projects({ relativePath: `${entry.id}.mdx` });
-
-const projectData = {
-  ...entry.data,
-  slug: entry.id
-};
-
-const rawFiles = import.meta.glob<string>(
-  '../../content/projects/*.mdx',
-  { eager: true, query: '?raw', import: 'default' }
-);
-const matchedPath = Object.keys(rawFiles).find(p =>
-  p.split('/').pop()!.replace('.mdx', '').toLowerCase() === entry.id
-);
-const rawBody = matchedPath ? matter(rawFiles[matchedPath]).content : '';
-
-const exportMetadata: Record<string, unknown> = {
-  title: entry.data.title,
-  year: entry.data.year,
-  type: entry.data.type,
-  role: entry.data.role,
-  client: entry.data.client,
-  status: entry.data.status,
-  impact: entry.data.impact,
-  description: entry.data.description,
-  stack: entry.data.stack,
-};
+interface Props { documentSlug: string; language: SiteLanguage; nextLink: string; }
 ---
-
-<MainLayout title={`${entry.data.title} | Al3Design`}>
-  <ProjectDetailLayout
-    client:load
-    project={projectData}
-    query={tinaProps.query}
-    variables={tinaProps.variables}
-    data={tinaProps.data}
-    nextLink={`/projects/${nextSlug}`}
-    exportData={{
-      content: rawBody,
-      metadata: exportMetadata,
-      filename: `${entry.id}.md`,
-    }}
-  >
-    <Content components={customComponents} />
-  </ProjectDetailLayout>
-</MainLayout>
+<ProjectDocument {...Astro.props} />

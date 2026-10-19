@@ -190,6 +190,18 @@
     .eg-spot--secondary::before {
       animation: eg-focus-secondary 42s ease-in-out infinite;
     }
+
+    // Take over one existing light; the grid mask and gradient stay unchanged.
+    @media (hover: hover) and (pointer: fine) {
+      .eg-spot--primary[data-pointer-driven]::before {
+        animation: none;
+        transform: translate3d(var(--eg-pointer-x), var(--eg-pointer-y), 0);
+      }
+    }
+  }
+
+  &[data-suspended] .eg-spot::before {
+    animation-play-state: paused;
   }
 }
 
@@ -212,4 +224,165 @@
   25% { transform: translate(90vw, 40vh); }
   50% { transform: translate(40vw, 12vh); }
   75% { transform: translate(8vw, 60vh); }
+}
+
+// Independent, lightweight interpretation of a cursor-lit hexagonal lattice.
+// Keep the original energy-grid mixins/keyframes intact for square mode.
+@mixin hexagonal-grid-bg() {
+  .eg-spot {
+    -webkit-mask-image: url('/textures/hexagonal-grid.svg');
+    mask-image: url('/textures/hexagonal-grid.svg');
+    -webkit-mask-size: 84px 48.4974226px;
+    mask-size: 84px 48.4974226px;
+    -webkit-mask-repeat: repeat;
+    mask-repeat: repeat;
+    mask-mode: alpha;
+  }
+
+  // No resting lattice: only the bounded light pools reveal disconnected areas.
+  .eg-spot::before {
+    background: radial-gradient(circle closest-side,
+      rgba(var(--clr-brand-primary-rgb), 0.72) 0%,
+      rgba(var(--clr-brand-primary-rgb), 0.38) 22%,
+      rgba(var(--clr-brand-primary-rgb), 0.09) 48%,
+      transparent 72%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .eg-spot--primary::before { animation: hex-focus-primary 30s ease-in-out infinite; }
+    .eg-spot--tertiary::before { animation: hex-focus-tertiary 37s ease-in-out infinite; }
+    .eg-spot--secondary::before { animation: hex-focus-secondary 43s ease-in-out infinite; }
+
+    @media (hover: hover) and (pointer: fine) {
+      .eg-spot--primary[data-pointer-driven]::before {
+        animation: none;
+        width: min(220px, 90vw);
+        top: calc(-1 * min(110px, 45vw));
+        left: calc(-1 * min(110px, 45vw));
+        opacity: var(--hex-tip-opacity, 1);
+        background: radial-gradient(circle closest-side,
+          rgba(var(--clr-brand-primary-rgb), 1) 0%,
+          rgba(var(--clr-brand-primary-rgb), 0.98) 12%,
+          rgba(var(--clr-brand-primary-rgb), 0.95) 24%,
+          rgba(var(--clr-brand-primary-rgb), 0.38) 48%,
+          transparent 78%);
+        transform: translate3d(var(--eg-pointer-x), var(--eg-pointer-y), 0);
+      }
+    }
+  }
+
+  .hex-trail-light {
+    position: absolute;
+    width: 180px;
+    aspect-ratio: 1;
+    top: -90px;
+    left: -90px;
+    pointer-events: none;
+    opacity: 0;
+    // Filter the already-masked child, so bloom spreads around the strokes themselves.
+    filter: drop-shadow(0 0 2px rgba(var(--clr-brand-tertiary-rgb), 0.95))
+      drop-shadow(0 0 6px rgba(var(--clr-brand-tertiary-rgb), 0.65));
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle closest-side,
+        rgba(var(--clr-brand-on-surface-rgb), 0.96) 0%,
+        rgba(var(--clr-brand-tertiary-rgb), 0.95) 16%,
+        rgba(var(--clr-brand-tertiary-rgb), 0.55) 38%,
+        rgba(var(--clr-brand-tertiary-rgb), 0.12) 64%, transparent 90%);
+      -webkit-mask: url('/textures/hexagonal-grid.svg') var(--hex-trail-mask-x, 0px) var(--hex-trail-mask-y, 0px) / 84px 48.4974226px repeat;
+      mask: url('/textures/hexagonal-grid.svg') var(--hex-trail-mask-x, 0px) var(--hex-trail-mask-y, 0px) / 84px 48.4974226px repeat;
+    }
+  }
+
+  // Bounded light follows continuously; both masked layers keep the lattice fixed.
+  .hex-hot-cell {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    left: -140px;
+    top: -140px;
+    pointer-events: none;
+    opacity: 0;
+    isolation: isolate;
+    z-index: 1;
+    transition: opacity 120ms ease-out;
+    filter: drop-shadow(0 0 3px rgba(var(--clr-brand-secondary-rgb), 0.9))
+      drop-shadow(0 0 7px rgba(var(--clr-brand-secondary-rgb), 0.5))
+      drop-shadow(0 0 5px rgba(var(--clr-brand-primary-rgb), 0.65));
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle 90px at center,
+        rgba(var(--clr-brand-secondary-rgb), 1) 0%,
+        rgba(var(--clr-brand-secondary-rgb), 0.92) 18%,
+        rgba(var(--clr-brand-secondary-rgb), 0.65) 36%,
+        rgba(var(--clr-brand-tertiary-rgb), 0.65) 52%,
+        rgba(var(--clr-brand-tertiary-rgb), 0.15) 70%, transparent 88%);
+      -webkit-mask: url('/textures/hexagonal-grid.svg') var(--hex-mask-x, 0px) var(--hex-mask-y, 0px) / 84px 48.4974226px repeat;
+      mask: url('/textures/hexagonal-grid.svg') var(--hex-mask-x, 0px) var(--hex-mask-y, 0px) / 84px 48.4974226px repeat;
+    }
+
+    &::after {
+      z-index: -1;
+      opacity: 0.55;
+      filter: blur(2px);
+    }
+  }
+
+  // Fixed lattice, expanding radial light: never scale the hexagons themselves.
+  .hex-click-wave {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: -300px;
+    left: -300px;
+    opacity: 0;
+    pointer-events: none;
+    filter: drop-shadow(0 0 2px rgba(var(--clr-brand-tertiary-rgb), 0.95))
+      drop-shadow(0 0 7px rgba(var(--clr-brand-tertiary-rgb), 0.6));
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center,
+        transparent max(0px, calc(var(--hex-wave-radius, 8px) - 42px)),
+        rgba(var(--clr-brand-tertiary-rgb), 0.18) max(0px, calc(var(--hex-wave-radius, 8px) - 28px)),
+        rgba(var(--clr-brand-on-surface-rgb), 0.95) max(0px, calc(var(--hex-wave-radius, 8px) - 5px)),
+        rgba(var(--clr-brand-secondary-rgb), 0.85) var(--hex-wave-radius, 8px),
+        rgba(var(--clr-brand-tertiary-rgb), 0.6) calc(var(--hex-wave-radius, 8px) + 7px),
+        transparent calc(var(--hex-wave-radius, 8px) + 24px));
+      -webkit-mask: url('/textures/hexagonal-grid.svg') var(--hex-wave-mask-x, 0px) var(--hex-wave-mask-y, 0px) / 84px 48.4974226px repeat;
+      mask: url('/textures/hexagonal-grid.svg') var(--hex-wave-mask-x, 0px) var(--hex-wave-mask-y, 0px) / 84px 48.4974226px repeat;
+    }
+  }
+
+  // The variant's animation shorthand must not override the shared hidden-tab pause.
+  &[data-suspended] .eg-spot::before { animation-play-state: paused; }
+}
+
+@keyframes hex-focus-primary {
+  0%, 100% { transform: translate(14vw, 22vh); opacity: 0.25; }
+  25% { transform: translate(66vw, 16vh); opacity: 0.85; }
+  50% { transform: translate(82vw, 58vh); opacity: 0.18; }
+  75% { transform: translate(22vw, 70vh); opacity: 0.7; }
+}
+
+@keyframes hex-focus-tertiary {
+  0%, 100% { transform: translate(78vw, 62vh); opacity: 0.7; }
+  25% { transform: translate(30vw, 80vh); opacity: 0.15; }
+  50% { transform: translate(12vw, 38vh); opacity: 0.65; }
+  75% { transform: translate(60vw, 18vh); opacity: 0.2; }
+}
+
+@keyframes hex-focus-secondary {
+  0%, 100% { transform: translate(55vw, 88vh); opacity: 0.18; }
+  25% { transform: translate(90vw, 40vh); opacity: 0.55; }
+  50% { transform: translate(40vw, 12vh); opacity: 0.12; }
+  75% { transform: translate(8vw, 60vh); opacity: 0.65; }
 }

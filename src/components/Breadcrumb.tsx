@@ -6,26 +6,30 @@ type BreadcrumbPath = string | { name: string; href: string };
 
 export default function Breadcrumb({ paths }: { paths: BreadcrumbPath[] }) {
   return (
-    <div className={`${styles.breadcrumb} print:hidden`}>
-      <Folder size={14} />
-      <div className={styles.breadcrumb__list}>
-        <a href="/" className={styles.breadcrumb__link}>~</a>
-        <span className={styles.breadcrumb__separator} aria-hidden="true">/</span>
-        <a href="/" className={styles.breadcrumb__link}>root</a>
+    <nav className={`${styles.breadcrumb} print:hidden`} aria-label="Breadcrumb">
+      <Folder size={14} aria-hidden="true" />
+      <ol className={styles.breadcrumb__list} role="list">
+        <li className={styles.breadcrumb__item}>
+          <a href="/" className={styles.breadcrumb__link} aria-label="Home">~</a>
+        </li>
+        <li className={styles.breadcrumb__item}>
+          <span className={styles.breadcrumb__separator} aria-hidden="true">/</span>
+          <a href="/" className={styles.breadcrumb__link}>root</a>
+        </li>
         {paths.map((path, index) => {
           const isLink = typeof path === 'object';
           return (
-            <span key={index} className={styles.breadcrumb__list}>
+            <li key={index} className={styles.breadcrumb__item}>
               <span className={styles.breadcrumb__separator} aria-hidden="true">/</span>
               {isLink ? (
-                <a href={path.href} className={styles.breadcrumb__link}>{path.name}</a>
+                <a href={path.href} className={styles.breadcrumb__link} aria-current={index === paths.length - 1 ? 'page' : undefined}>{path.name}</a>
               ) : (
-                <span className={styles.breadcrumb__current}>{path}</span>
+                <span className={styles.breadcrumb__current} aria-current={index === paths.length - 1 ? 'page' : undefined}>{path}</span>
               )}
-            </span>
+            </li>
           );
         })}
-      </div>
-    </div>
+      </ol>
+    </nav>
   );
 }

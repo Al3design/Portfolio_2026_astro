@@ -3,13 +3,16 @@ import { getCollection } from 'astro:content';
 import { client } from '../../tina/__generated__/client';
 import MainLayout from '@/layouts/MainLayout.astro';
 import ClientArchive from '@/components/ClientArchive';
+import { projectIsPublished, projectSource } from '@/lib/project-editorial';
+import { localizedProject } from '@/lib/project-locales';
 
 const tinaProps = await client.queries.pages({ relativePath: 'archive.mdx' });
 const title = (tinaProps.data.pages as any).title ?? 'Project Archive';
 
 const allProjects = await getCollection('projects');
 const projects = allProjects
-  .map(p => ({ ...p.data, slug: p.id }))
+  .filter(p => projectIsPublished(p.id))
+  .map(p => ({ ...p.data, ...localizedProject(projectSource(p.id).metadata), slug: p.id }))
   .sort((a, b) => {
     const yearA = parseInt(a.year || '0');
     const yearB = parseInt(b.year || '0');

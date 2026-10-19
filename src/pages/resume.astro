@@ -3,13 +3,26 @@ import { getCollection } from 'astro:content';
 import { client } from '../../tina/__generated__/client';
 import MainLayout from '@/layouts/MainLayout.astro';
 import ClientResume from '@/components/ClientResume';
+import { projectIsPublished, projectSource, projectSources } from '@/lib/project-editorial';
+import { localizedProject, projectLanguages, projectDefaultLanguage, projectUrl } from '@/lib/project-locales';
+import type { RelatedProjectLink } from '@/lib/experience-links';
 
 const tinaProps = await client.queries.pages({ relativePath: 'resume.mdx' });
 const pageData = tinaProps.data.pages as any;
 
 const projects = await getCollection('projects');
+function relatedProjects(experienceSlug: string): RelatedProjectLink[] {
+  return projectSources.filter(item => item.metadata.experienceSlug === experienceSlug).flatMap(item => {
+    const publicPage = projectIsPublished(item.slug) && item.metadata.showInPortfolio !== false;
+    if (!publicPage && !import.meta.env.DEV) return [];
+    const language = projectLanguages(item.metadata).includes('en') ? 'en' : projectDefaultLanguage(item.metadata);
+    const copy = localizedProject(item.metadata, language);
+    return [{title: copy.title ?? item.slug, href: projectUrl(item.slug, item.metadata, language, !publicPage), draft: !publicPage}];
+  });
+}
 const jobs = projects
-  .map(p => p.data)
+  .filter(p => projectIsPublished(p.id))
+  .map(p => ({...p.data, ...localizedProject(projectSource(p.id).metadata), slug: p.id, relatedProjects: relatedProjects(p.id)}))
   .filter(p => p.showInResume)
   .sort((a, b) => (a.order || 99) - (b.order || 99));
 
@@ -24,6 +37,7 @@ const exportContent = jobs.map(job => {
     parts.push('\n**Highlights:**');
     job.points.forEach((pt: string) => parts.push(`- ${pt}`));
   }
+  if (job.relatedProjects.length) parts.push('\n**Related projects:**\n' + job.relatedProjects.map(item => `- [${item.title.replace(/\s*\/\/\s*/g, ' ')}](${item.href})${item.draft ? ' (Draft)' : ''}`).join('\n'));
   return parts.join('\n');
 }).join('\n\n---\n\n');
 

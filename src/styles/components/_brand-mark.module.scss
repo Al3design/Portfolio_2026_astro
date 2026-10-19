@@ -1,0 +1,24 @@
+@use '../abstracts' as *;
+
+.mark {
+  display: inline-grid;
+  width: 24px;
+  aspect-ratio: 736.93 / 824.34;
+  flex: 0 0 auto;
+
+  @include mq(md) { width: 30px; }
+
+  img { grid-area: 1 / 1; width: 100%; height: 100%; object-fit: contain; }
+  &__color, &__print { display: none; }
+  &__white { display: block; }
+
+  :global(html.light) & {
+    .mark__color { display: block; }
+    .mark__white { display: none; }
+  }
+
+  @media print {
+    &__color, &__white { display: none !important; }
+    &__print { display: block; }
+  }
+}

@@ -23,6 +23,9 @@
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
+    gap: size(2);
     font-size: fs("400");
     font-weight: fw(bold);
     letter-spacing: ls(tight);

@@ -5,13 +5,14 @@
 import { Sun, Moon, Rss, Code } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import styles from '@/styles/components/_navigation.module.scss';
 import { clsx } from 'clsx';
 import { registerWebTools, publicPageState } from '@/lib/webmcp';
-import { siteNavigation, type SiteSection, type SiteLanguage } from '@/lib/site-navigation';
+import { siteNavigation, type SiteSection, type SiteLanguage, type SiteLanguageLinks } from '@/lib/site-navigation';
 import { shopRoutes } from '@/data/shop-demo';
+import BrandMark from '@/components/BrandMark';
 
 // Stagger variants for overlay links
 const overlayVariants: Variants = {
@@ -44,10 +45,11 @@ const linkItemVariants: Variants = {
   exit: { opacity: 0, x: 16, transition: { duration: 0.15 } },
 };
 
-export default function Navigation({ pathname = '/', section = 'portfolio', language = 'en' }: { pathname?: string; section?: SiteSection; language?: SiteLanguage }) {
+export default function Navigation({ pathname = '/', section = 'portfolio', language = 'en', languageLinks }: { pathname?: string; section?: SiteSection; language?: SiteLanguage; languageLinks?: SiteLanguageLinks }) {
   const navLinks = siteNavigation(section, language);
   const shop = section === 'shop';
   const spanish = language === 'es';
+  const translations: SiteLanguageLinks = languageLinks ?? (shop ? shopRoutes : { [language]: pathname });
   const themeStorageKey = shop ? 'shop-theme' : 'theme';
   const defaultTheme = shop ? 'light' : 'dark';
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -58,6 +60,26 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
   });
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [contained, setContained] = useState(false);
+  const sentinelRef = useRef<HTMLSpanElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  // Observe one threshold instead of updating React on every scroll event.
+  useEffect(() => {
+    if (!mounted || shop || !sentinelRef.current) return;
+    if (!('IntersectionObserver' in window)) {
+      setContained(true);
+      return;
+    }
+    setContained(window.scrollY > 64);
+    const observer = new IntersectionObserver(([entry]) => {
+      setContained(!entry.isIntersecting && entry.boundingClientRect.top < 0);
+    });
+    observer.observe(sentinelRef.current);
+    return () => observer.disconnect();
+  }, [mounted, shop]);
 
   // Hydration guard + restore theme class on mount
   useEffect(() => {
@@ -122,14 +144,39 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
 
   useEffect(() => {
     if (!menuOpen) return;
+    const menu = menuRef.current;
+    if (!menu) return;
+    const background = [navRef.current, ...document.querySelectorAll<HTMLElement>('main, footer, .skip-link')]
+      .filter((element): element is HTMLElement => !!element);
+    const previous = background.map(element => element.inert);
+    background.forEach(element => { element.inert = true; });
+    const focusable = () => Array.from(menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex="0"]'))
+      .filter(element => element.getClientRects().length > 0);
+    focusable()[0]?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        event.preventDefault();
         setMenuOpen(false);
-        document.querySelector<HTMLButtonElement>('button[aria-label="Close navigation"]')?.focus();
+      }
+      if (event.key === 'Tab') {
+        const items = focusable();
+        const index = items.indexOf(document.activeElement as HTMLElement);
+        if (index === -1 || (event.shiftKey ? index === 0 : index === items.length - 1)) {
+          event.preventDefault();
+          items[event.shiftKey ? items.length - 1 : 0]?.focus();
+        }
       }
     };
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const closeOnDesktop = () => { if (desktop.matches) setMenuOpen(false); };
+    desktop.addEventListener('change', closeOnDesktop);
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      desktop.removeEventListener('change', closeOnDesktop);
+      background.forEach((element, index) => { element.inert = previous[index]; });
+      if (!desktop.matches) triggerRef.current?.focus();
+    };
   }, [menuOpen]);
 
   const toggleTheme = () => {
@@ -143,6 +190,20 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
     }
   };
 
+  const languageSelector = (
+    <div className={styles.nav__languages} role="group" aria-label={spanish ? 'Idioma de la página' : 'Page language'}>
+      {(['es', 'en'] as const).map(locale => {
+        const href = translations[locale];
+        const label = locale === 'en' ? 'Switch to English' : 'Cambiar a español';
+        return href ? (
+          <a key={locale} href={href} lang={locale} hrefLang={locale} className={styles.nav__language} aria-label={label} aria-current={locale === language ? 'page' : undefined}>{locale.toUpperCase()}</a>
+        ) : (
+          <button key={locale} type="button" className={styles.nav__language} disabled lang={locale} aria-label={`${label}: ${spanish ? 'traducción pendiente' : 'translation pending'}`} title={spanish ? 'Traducción pendiente' : 'Translation pending'}>{locale.toUpperCase()}</button>
+        );
+      })}
+    </div>
+  );
+
   const themeIcon = shop ? (
     <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.6" />
@@ -152,9 +213,9 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
 
   if (!mounted) {
     return (
-      <nav className={clsx(styles.nav, shop && styles['nav--shop'], 'opacity-0')}>
+      <nav className={clsx(styles.nav, shop ? styles['nav--shop'] : styles['nav--localized'], 'opacity-0')}>
         <div className={styles.nav__logo}>
-          <span>Al3</span>Design<span>;</span>
+          <BrandMark /><span><span className={styles.nav__prefix}>Al3</span>Design</span>
         </div>
       </nav>
     );
@@ -162,10 +223,11 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
 
   return (
     <>
+      {!shop && <span ref={sentinelRef} className={styles.scrollSentinel} aria-hidden="true" />}
       {shop && <p className={styles.shopNotice}>{spanish ? 'Exploración de diseño · piezas y renders de ejemplo' : 'Design exploration · sample pieces and renders'}</p>}
-      <nav className={clsx(styles.nav, shop && styles['nav--shop'])}>
+      <nav ref={navRef} data-contained={!shop && contained} className={clsx(styles.nav, shop ? styles['nav--shop'] : styles['nav--localized'])}>
         <a href={shop ? shopRoutes[language] : '/'} className={styles.nav__logo} onClick={() => setMenuOpen(false)}>
-          <span>Al3</span>Design<span>;</span>
+          <BrandMark /><span><span className={styles.nav__prefix}>Al3</span>Design</span>
         </a>
 
         {/* Desktop links */}
@@ -197,7 +259,7 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
 
         {/* Right-side actions */}
         <div className={styles.nav__actions}>
-          {shop && (['es', 'en'] as const).map(locale => <a key={locale} href={shopRoutes[locale]} className={styles.nav__language} aria-label={locale === 'en' ? 'Switch to English' : 'Cambiar a español'} aria-current={locale === language ? 'page' : undefined} hrefLang={locale}>{locale.toUpperCase()}</a>)}
+          {languageSelector}
           {/* Theme toggle — always visible */}
           <button onClick={toggleTheme} className={styles.nav__btn} aria-label="Toggle theme">
             {themeIcon}
@@ -213,6 +275,7 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
 
           {/* Mobile hamburger — terminal >_ icon */}
           <button
+            ref={triggerRef}
             className={clsx(styles.nav__terminal_btn, menuOpen && styles['nav__terminal_btn--active'])}
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
@@ -247,6 +310,7 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            ref={menuRef}
             className={styles.mobile_overlay}
             variants={panelVariants}
             initial="hidden"
@@ -256,6 +320,7 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
             role="dialog"
             aria-label="Navigation menu"
           >
+            <button className={styles.mobile_overlay__close} onClick={() => setMenuOpen(false)} aria-label="Close navigation">✕</button>
             {/* Overlay header */}
             <div className={styles.mobile_overlay__header}>
               <a
@@ -263,7 +328,7 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
                 className={clsx(styles.nav__logo, styles['nav__logo--overlay'])}
                 onClick={() => setMenuOpen(false)}
               >
-                <span>Al3</span>Design<span>;</span>
+                <BrandMark /><span><span className={styles.nav__prefix}>Al3</span>Design</span>
               </a>
 
               <div className={styles.mobile_overlay__meta}>
@@ -309,6 +374,7 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
             {/* Footer actions */}
             <div className={styles.mobile_overlay__footer}>
               <div className={styles.mobile_overlay__actions}>
+                {languageSelector}
                 <button
                   className={clsx(styles.nav__btn, styles['nav__btn--overlay'])}
                   onClick={toggleTheme}

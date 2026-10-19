@@ -9,9 +9,10 @@ import { Search, Download, ChevronRight, Check, X, Folder } from 'lucide-react';
 import { SyntaxCard, Tag, KeyValue } from '@/components/UI';
 import styles from '@/styles/pages/_resume.module.scss';
 import { clsx } from 'clsx';
-import { formatTitle } from '@/helpers/text-helpers';
+import { formatTitle, cleanTitle } from '@/helpers/text-helpers';
 import Breadcrumb from '@/components/Breadcrumb';
 import MarkdownExportMenu from '@/components/MarkdownExportMenu';
+import { experienceId, type RelatedProjectLink } from '@/lib/experience-links';
 
 interface ExportData {
   content: string;
@@ -75,6 +76,8 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
 
   const experiences = useMemo(() => {
     return jobs.map(job => ({
+      id: job.slug ? experienceId(job.slug) : undefined,
+      relatedProjects: (job.relatedProjects ?? []) as RelatedProjectLink[],
       role: (job.role || job.title || '') as string,
       company: (job.client || '') as string,
       period: (job.year || '') as string,
@@ -90,6 +93,18 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
+  // Cards mount after hydration; resolve incoming Resume anchors once they exist.
+  useEffect(() => {
+    if (!mounted) return;
+    const revealExperience = () => {
+      let id: string;
+      try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+      if (id.startsWith('experience-')) document.getElementById(id)?.scrollIntoView({block: 'start', behavior: 'instant'});
+    };
+    revealExperience();
+    window.addEventListener('hashchange', revealExperience);
+    return () => window.removeEventListener('hashchange', revealExperience);
+  }, [mounted]);
 
   const availableTags = useMemo(() => {
     const tags = new Set<string>();
@@ -253,6 +268,8 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
                 {filteredExperiences.map((exp) => (
                   <motion.div
                     key={exp.company + exp.role}
+                    id={exp.id}
+                    className={styles.resume__experienceAnchor}
                     layout
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -289,6 +306,12 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
                           </div>
                         </>
                       )}
+                      {exp.relatedProjects.length > 0 && <div className={styles.resume__relatedProjects}>
+                        <h4>Related projects</h4>
+                        <ul>{exp.relatedProjects.map(item => <li key={item.href}>
+                          <a href={item.href}>{cleanTitle(item.title)}</a>{item.draft && <span> · Draft</span>}
+                        </li>)}</ul>
+                      </div>}
                     </SyntaxCard>
                   </motion.div>
                 ))}

@@ -1,0 +1,21 @@
+@use '../abstracts' as *;
+
+// Project geometry and content styles come from the shared ProjectDetailView.
+// Only local editorial controls need their own styles.
+.review {
+  min-width: 0;
+  figcaption { color: semantic-color(brand-on-surface-variant); font-size: fs('100'); line-height: lh(relaxed); }
+}
+.description {
+  margin-top: size(6);
+  summary { cursor: pointer; color: semantic-color(brand-primary); min-height: 44px; }
+  p { margin-top: size(3); }
+}
+.notes {
+  margin-top: size(16); margin-bottom: size(20); padding: size(5) size(6);
+  background: semantic-color(brand-surface-low);
+  color: semantic-color(brand-on-surface-variant);
+  summary { cursor: pointer; min-height: 44px; line-height: lh(relaxed); color: semantic-color(brand-secondary); font-family: semantic-font(mono); font-size: fs('100'); }
+  p, li { line-height: lh(relaxed); margin-top: size(3); }
+  ul { list-style: disc; padding-left: size(5); }
+}

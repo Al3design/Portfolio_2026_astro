@@ -233,8 +233,8 @@ const s = {
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 
 function buildEditUrl(relativePath: string): string {
-  const encoded = encodeURIComponent(relativePath);
-  return `#/collections/projects/${encoded}`;
+  const documentPath = relativePath.replace(/\.mdx$/, '').split('/').map(encodeURIComponent).join('/');
+  return `#/collections/edit/projects/~/${documentPath}`;
 }
 
 function resolveImagePath(path?: string): string | undefined {

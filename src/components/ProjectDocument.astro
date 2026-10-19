@@ -1,0 +1,35 @@
+---
+import { getEntry, render } from 'astro:content';
+import { client } from '../../tina/__generated__/client';
+import MainLayout from '@/layouts/MainLayout.astro';
+import ProjectDetailLayout from '@/components/ProjectDetailLayout';
+import customComponents from '@/components/mdx';
+import { projectSource, projectLanguageLinks } from '@/lib/project-editorial';
+import { localizedProject } from '@/lib/project-locales';
+import { articleBlocksMarkdown } from '@/lib/article-blocks';
+import type { SiteLanguage } from '@/lib/site-navigation';
+
+interface Props { documentSlug: string; language: SiteLanguage; preview?: boolean; nextLink?: string; }
+const {documentSlug, language, preview = false, nextLink} = Astro.props;
+const entry = await getEntry('projects', documentSlug);
+if (!entry) throw new Error(`Missing project document: ${documentSlug}`);
+const source = projectSource(documentSlug);
+const metadata = localizedProject(source.metadata, language);
+const tinaProps = await client.queries.projects({ relativePath: source.relativePath });
+const {Content} = await render(entry);
+const structured = ['blocks', 'bilingual'].includes(source.metadata.contentFormat ?? '');
+const draft = source.metadata.publicationStatus === 'draft';
+const reviewLabel = draft ? (language === 'es' ? 'Borrador' : 'Draft') : (language === 'es' ? 'Revisión local' : 'Local review');
+const exportContent = structured ? articleBlocksMarkdown(metadata.contentBlocks) : source.body;
+const exportMetadata = { ...metadata, locales: undefined, contentBlocks: undefined };
+---
+<MainLayout title={`${metadata.title} | Al3Design${preview ? ` · ${reviewLabel}` : ''}`} description={metadata.description} language={language} languageLinks={projectLanguageLinks(documentSlug, preview)} noIndex={preview}>
+  <ProjectDetailLayout client:load project={{...source.metadata, slug: documentSlug}} language={language} query={tinaProps.query} variables={tinaProps.variables} data={tinaProps.data} nextLink={nextLink} exportData={{content: exportContent, metadata: exportMetadata, filename: `${documentSlug}-${language}${preview ? '-draft' : ''}.md`}}>
+    <Fragment slot="header-node">{preview && <aside class="article-draft-notice">
+      {draft
+        ? (language === 'es' ? 'BORRADOR · Revisión local. Fechas, créditos y medios pendientes de aprobación.' : 'DRAFT · Local review. Dates, credits and media await approval.')
+        : (language === 'es' ? 'REVISIÓN LOCAL · Edición del documento en Tina.' : 'LOCAL REVIEW · Editing the document in Tina.')}
+    </aside>}</Fragment>
+    <Content components={customComponents} />
+  </ProjectDetailLayout>
+</MainLayout>

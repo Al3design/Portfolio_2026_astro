@@ -6,6 +6,8 @@ import ClientHome from '@/components/ClientHome';
 // gray-matter is a transitive dependency (via Astro). Used to parse custom
 // frontmatter fields that Astro v6's content layer doesn't expose via p.data.
 import matter from 'gray-matter';
+import { projectSource, projectIsPublished } from '@/lib/project-editorial';
+import { localizedProject } from '@/lib/project-locales';
 
 const tinaProps = await client.queries.pages({ relativePath: 'home.mdx' });
 const homeData = tinaProps.data.pages as any;
@@ -24,9 +26,10 @@ for (const [filePath, content] of Object.entries(rawMdxFiles)) {
 }
 
 const projects = allProjects
-  .filter(p => p.data.showInPortfolio !== false)
+  .filter(p => projectIsPublished(p.id) && projectSource(p.id).metadata.showInPortfolio !== false)
   .map(p => ({
     ...p.data,
+    ...localizedProject(projectSource(p.id).metadata),
     slug: p.id,
     categories: categoryMap[p.id] ?? [],
   }))

@@ -7,7 +7,17 @@ const projectsCollection = defineCollection({
     _template: z.string().optional(), // used by TinaCMS
     title: z.string(),
     year: z.string().optional(),
-    date: z.string().or(z.date()), // Para el formato YYYY-MM-DD
+    date: z.string().or(z.date()).optional(), // Unknown dates remain empty in drafts.
+    publicationStatus: z.enum(['draft', 'published']).optional(),
+    language: z.enum(['es', 'en']).optional(),
+    translationKey: z.string().optional(),
+    experienceSlug: z.string().optional(),
+    contentFormat: z.enum(['blocks', 'legacy', 'bilingual']).optional(),
+    locales: z.object({
+      es: z.record(z.string(), z.unknown()).optional(),
+      en: z.record(z.string(), z.unknown()).optional(),
+    }).optional(),
+    contentBlocks: z.array(z.record(z.string(), z.unknown())).optional(),
     type: z.string().optional(),
     description: z.string().optional(),
     stack: z.array(z.string()).optional(),
@@ -16,6 +26,9 @@ const projectsCollection = defineCollection({
     order: z.number().optional(),
     image: z.string().optional(),
     imagePortrait: z.string().optional(),
+    imageAlt: z.string().optional(),
+    imageCaption: z.string().optional(),
+    imageCredit: z.string().optional(),
     showInResume: z.boolean().default(false),
     showInPortfolio: z.boolean().default(false),
     points: z.array(z.string()).optional(),

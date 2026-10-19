@@ -3,7 +3,10 @@
 .projectDetail {
   &__breadcrumbRow {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: size(4);
+    align-items: flex-start;
+    @include mq(sm) { align-items: center; }
     justify-content: space-between;
     padding-top: size(20);
     padding-bottom: size(8);
@@ -205,7 +208,30 @@
     position: relative;
   }
 
+  &__heroCaption {
+    margin-top: size(3);
+    color: semantic-color(brand-on-surface-variant);
+    font-size: fs('100');
+    line-height: lh(relaxed);
+    small { display: block; margin-top: size(1); }
+  }
+
+  &__experienceLink {
+    align-items: center;
+    gap: size(4);
+    min-height: 44px;
+    text-decoration: none;
+
+    > span { min-width: 0; overflow-wrap: anywhere; }
+    > span:last-child { display: inline-flex; align-items: center; gap: size(2); }
+    svg { flex-shrink: 0; }
+    &:hover > span:last-child { color: semantic-color(brand-tertiary); }
+  }
+
   &__heroImage {
+    display: block;
+    margin-inline: auto;
+    max-width: 100%;
     object-fit: cover;
     opacity: 0.9;
     transition: transform 0.7s ease;
@@ -240,6 +266,7 @@
       border-radius: 50%;
       background: semantic-color(brand-primary);
       animation: pulse 2s infinite;
+      @media (prefers-reduced-motion: reduce) { animation: none; }
     }
   }
 
@@ -252,7 +279,45 @@
     }
   }
 
+  // Opaque reading core, softly feathered edges and the shared monochrome grain.
+  // Only decorative pseudo-elements fade; text and interactions stay untouched.
+  &__content,
+  &__heroCaption {
+    --reading-feather: #{size(12)};
+    position: relative;
+    isolation: isolate;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: calc(-1 * var(--reading-feather));
+      pointer-events: none;
+      -webkit-mask-image:
+        linear-gradient(to right, transparent, #000 var(--reading-feather), #000 calc(100% - var(--reading-feather)), transparent),
+        linear-gradient(to bottom, transparent, #000 var(--reading-feather), #000 calc(100% - var(--reading-feather)), transparent);
+      mask-image:
+        linear-gradient(to right, transparent, #000 var(--reading-feather), #000 calc(100% - var(--reading-feather)), transparent),
+        linear-gradient(to bottom, transparent, #000 var(--reading-feather), #000 calc(100% - var(--reading-feather)), transparent);
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+    }
+
+    &::before {
+      z-index: -2;
+      background-color: rgba(var(--clr-brand-surface-rgb), 0.78);
+    }
+
+    &::after {
+      z-index: -1;
+      background: url('/textures/grain.svg') repeat;
+      background-size: 128px 128px;
+      opacity: var(--glass-grain-opacity);
+    }
+  }
+
   &__content {
+    min-width: 0;
     @include mq(lg) {
       grid-column: span 8;
     }

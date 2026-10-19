@@ -1,6 +1,9 @@
 import { defineConfig } from "tinacms";
 import { PortfolioDashboard } from "./dashboard/PortfolioDashboard";
 import { PROJECT_CATEGORIES } from "../src/lib/categories";
+import { articleBlockTemplates } from './article-blocks';
+import { articleLocaleFields } from './article-locales';
+import { projectEditorRoute, localEditorHostname } from '../src/lib/project-editor-route';
 
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -33,12 +36,22 @@ export default defineConfig({
         path: "src/content/projects",
         format: "mdx",
         ui: {
+          defaultItem: { publicationStatus: 'draft', contentFormat: 'bilingual', language: 'es', showInPortfolio: true, showInResume: false },
           router: ({ document }: { document: any }) => {
-            const path = document._sys.relativePath.replace('.mdx', '');
-            return `/projects/${path}`;
+            const local = typeof window !== 'undefined' && localEditorHostname(window.location.hostname);
+            return projectEditorRoute(document, local);
           },
         },
         fields: [
+          { type: 'string', name: 'publicationStatus', label: 'Publicación', options: [{ value: 'draft', label: 'Borrador (solo revisión local)' }, { value: 'published', label: 'Publicado' }], description: 'Los borradores se excluyen del sitio, archivo, CV y RSS. Publicar requiere revisión y despliegue.' },
+          { type: 'string', name: 'language', label: 'Idioma principal', options: ['es', 'en'] },
+          { type: 'string', name: 'translationKey', label: 'Vínculo ES/EN', description: 'Misma clave en ambas versiones, por ejemplo mundo. Archivos separados: mundo-es y mundo-en.' },
+          { type: 'string', name: 'experienceSlug', label: 'Experiencia relacionada en Resume', description: 'Slug del trabajo existente, por ejemplo around. Alimenta la fila VER EXPERIENCIA / EN RESUME de la tarjeta Estado y el enlace inverso en Resume. No crea otro empleo ni duplica los datos de la ficha técnica.' },
+          { type: 'string', name: 'contentFormat', label: 'Formato del cuerpo', options: [{ value: 'bilingual', label: 'Un artículo ES/EN' }, { value: 'blocks', label: 'Bloques de un idioma (anterior)' }, { value: 'legacy', label: 'MDX existente' }], description: 'En ES/EN, completá Español e English; los campos de texto de raíz quedan para documentos anteriores. No cambiar un artículo existente sin migrar su contenido.' },
+          { type: 'object', name: 'locales', label: 'Textos por idioma', fields: [
+            { type: 'object', name: 'es', label: 'Español', fields: articleLocaleFields() },
+            { type: 'object', name: 'en', label: 'English', fields: articleLocaleFields() },
+          ] },
           {
             type: "string",
             name: "_template",
@@ -51,6 +64,7 @@ export default defineConfig({
             type: "string",
             name: "title",
             label: "Title",
+            description: 'Nombre del documento en Tina. En modo ES/EN los títulos visibles se editan dentro de cada idioma.',
             isTitle: true,
             required: true,
           },
@@ -105,6 +119,10 @@ export default defineConfig({
             name: "imagePortrait",
             label: "Card Image (Portrait 3:4)",
           },
+          { type: 'string', name: 'imageAlt', label: 'Texto alternativo de portada' },
+          { type: 'string', name: 'imageCaption', label: 'Epígrafe de portada' },
+          { type: 'string', name: 'imageCredit', label: 'Crédito de portada' },
+          { type: 'string', name: 'status', label: 'Estado del trabajo', description: 'Estado real del proyecto, independiente de publicación: por ejemplo Trabajo académico o En desarrollo.' },
           {
             type: "boolean",
             name: "showInResume",
@@ -148,6 +166,7 @@ export default defineConfig({
             label: "Body",
             isBody: true,
           },
+          { type: 'object', name: 'contentBlocks', label: 'Contenido del artículo (bloques)', list: true, templates: articleBlockTemplates },
         ],
       },
 

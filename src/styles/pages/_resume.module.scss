@@ -1,9 +1,20 @@
 @use "../abstracts" as *;
 
 .resume {
+  &__experienceAnchor { scroll-margin-block-start: size(40); }
+  &__relatedProjects {
+    margin-top: size(6);
+    h4 { font-family: semantic-font(mono); font-size: fs('100'); color: semantic-color(brand-on-surface-variant); text-transform: uppercase; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    a { display: inline-block; min-height: 44px; padding-block: size(2); font-family: semantic-font(body); font-size: fs('300'); line-height: lh(relaxed); overflow-wrap: anywhere; color: semantic-color(brand-primary); text-decoration: underline; text-underline-offset: 4px; }
+    li > span { font-family: semantic-font(mono); font-size: fs('100'); color: semantic-color(brand-on-surface-variant); }
+  }
   &__breadcrumbRow {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: size(4);
+    @include mq(sm) { align-items: center; }
     justify-content: space-between;
     padding-top: size(20);
     padding-bottom: size(8);

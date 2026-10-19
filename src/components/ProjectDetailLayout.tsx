@@ -1,30 +1,12 @@
 import { useTina, tinaField } from 'tinacms/dist/react';
-import { Database, ArrowRight, Code } from 'lucide-react';
-import { Tag } from '@/components/UI';
-import Breadcrumb from '@/components/Breadcrumb';
-
-import { formatTitle, cleanTitle } from '@/helpers/text-helpers';
-import styles from '@/styles/pages/_project-detail.module.scss';
-import MarkdownExportMenu from '@/components/MarkdownExportMenu';
-import React from 'react';
-
-interface ExportData {
-  content: string;
-  metadata: Record<string, unknown>;
-  filename: string;
-}
-
-type ProjectData = {
-  title: string;
-  type?: string;
-  status?: string;
-  role?: string;
-  client?: string;
-  image?: string;
-  stack?: string[];
-  timeline?: string;
-  codeSnippet?: string;
-};
+import type React from 'react';
+import ProjectDetailView, { type ProjectData, type ExportData } from '@/components/ProjectDetailView';
+import ArticleBlocks from '@/components/ArticleBlocks';
+import { articleBlocksMarkdown } from '@/lib/article-blocks';
+import { projectLabels } from '@/lib/project-labels';
+import { localizedProject, projectDefaultLanguage } from '@/lib/project-locales';
+import { experienceUrl } from '@/lib/experience-links';
+import type { SiteLanguage } from '@/lib/site-navigation';
 
 interface ProjectDetailLayoutProps {
   project: any;           // se mantiene para breadcrumbs (project.slug) y exportData
@@ -35,180 +17,35 @@ interface ProjectDetailLayoutProps {
   nextLink?: string;
   children?: React.ReactNode;
   exportData?: ExportData;
+  language?: SiteLanguage;
 }
 
-export default function ProjectDetailLayout({ project, query, variables, data, headerNode, nextLink, children, exportData }: ProjectDetailLayoutProps) {
+export default function ProjectDetailLayout({ project, query, variables, data, headerNode, nextLink, children, exportData, language: requestedLanguage }: ProjectDetailLayoutProps) {
   const { data: tinaData } = useTina({ query, variables, data });
-  const frontmatter = tinaData.projects as ProjectData;
-
+  // Keep server frontmatter available while the local Tina schema regenerates.
+  // Once returned by Tina, edited fields take precedence (including empty values).
+  const document = { ...project, ...tinaData.projects };
+  const language = requestedLanguage ?? projectDefaultLanguage(document);
+  const current = localizedProject(document, language);
+  const structured = document.contentFormat === 'blocks' || document.contentFormat === 'bilingual';
+  const currentExport = exportData && structured ? {
+    ...exportData,
+    content: articleBlocksMarkdown(current.contentBlocks ?? []),
+    metadata: { title: current.title, description: current.description, language, publicationStatus: current.publicationStatus, experienceSlug: current.experienceSlug, categories: current.categories, stack: current.stack, role: current.role, client: current.client, status: current.status, date: current.date, image: current.image, imageAlt: current.imageAlt, imageCaption: current.imageCaption, imageCredit: current.imageCredit },
+  } : exportData;
   return (
-    <div className={styles.projectDetail}>
-      <div className="page-container">
-        {headerNode}
-
-        <div className={styles.projectDetail__breadcrumbRow}>
-          <Breadcrumb
-            paths={[
-              { name: 'projects', href: '/' },
-              ...(project.slug?.includes('/')
-                ? project.slug.split('/').slice(0, -1).map((s: string) => s.charAt(0).toUpperCase() + s.slice(1))
-                : []),
-              cleanTitle(frontmatter.title)
-            ]}
-          />
-          {exportData && <MarkdownExportMenu {...exportData} />}
-        </div>
-
-        {/* Header Section */}
-        <header className={styles.projectDetail__header}>
-          <div className={styles.projectDetail__headerInfo}>
-            <div
-              className={styles.projectDetail__typeTag}
-              data-tina-field={tinaField(frontmatter, 'type')}
-            >
-              <Database size={14} />
-              <span>{frontmatter.type}</span>
-            </div>
-            <h1
-              className={styles.projectDetail__title}
-              data-tina-field={tinaField(frontmatter, 'title')}
-            >
-              {formatTitle(frontmatter.title)}
-            </h1>
-          </div>
-
-          <div className={styles.projectDetail__sidebarHeader}>
-            <div className={styles.projectDetail__meta}>
-              <div className={styles.projectDetail__metaRow}>
-                <span>STATUS</span>
-                <span
-                  className={styles.projectDetail__status}
-                  data-tina-field={tinaField(frontmatter, 'status')}
-                >
-                  {frontmatter.status || 'DEPLOYED'}
-                </span>
-              </div>
-              <div className={styles.projectDetail__infoList}>
-                <div className={styles.projectDetail__infoItem}>
-                  <span className={styles.projectDetail__infoItemKey}>Role</span>
-                  <span
-                    className={styles.projectDetail__infoItemVal}
-                    data-tina-field={tinaField(frontmatter, 'role')}
-                  >
-                    {frontmatter.role || 'Lead Designer'}
-                  </span>
-                </div>
-                <div className={styles.projectDetail__infoItem}>
-                  <span className={styles.projectDetail__infoItemKey}>Timeline</span>
-                  <span
-                    className={styles.projectDetail__infoItemVal}
-                    data-tina-field={tinaField(frontmatter, 'timeline')}
-                  >
-                    {frontmatter.timeline || '12 Weeks'}
-                  </span>
-                </div>
-                <div className={styles.projectDetail__infoItem}>
-                  <span className={styles.projectDetail__infoItemKey}>Client</span>
-                  <span
-                    className={styles.projectDetail__infoItemVal}
-                    data-tina-field={tinaField(frontmatter, 'client')}
-                  >
-                    {frontmatter.client || 'Nexus Financial'}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* Main Feature Image */}
-        {frontmatter.image && (
-          <div
-            className={styles.projectDetail__hero}
-            data-tina-field={tinaField(frontmatter, 'image')}
-          >
-            <div className={styles.projectDetail__heroFrame}>
-              <img
-                src={(() => {
-                  const rawImg = frontmatter.image;
-                  if (!rawImg) return '';
-                  const img = rawImg.replace(/['"]+/g, '');
-                  if (img.includes('http')) {
-                    const httpIndex = img.indexOf('http');
-                    return img.substring(httpIndex);
-                  }
-                  return img.startsWith('/') ? img : `/${img}`;
-                })()}
-                alt={cleanTitle(frontmatter.title)}
-                className={styles.projectDetail__heroImage}
-                referrerPolicy="no-referrer"
-              />
-              <div className={styles.projectDetail__liveBadge}>
-                <div className={styles.projectDetail__liveBadgeDot}></div>
-                Live Preview
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className={styles.projectDetail__mainGrid}>
-          <article className={styles.projectDetail__content}>
-            {children}
-          </article>
-
-          {/* Sidebar */}
-          <aside className={styles.projectDetail__sidebar}>
-            <div className={styles.projectDetail__stickyCard}>
-              <div className={styles.projectDetail__stickyHeader}>
-                specs.json
-              </div>
-
-              <div className={styles.projectDetail__stickyBody}>
-                <div className={styles.projectDetail__stickyTitle}>
-                  <Code size={18} />
-                  <h3>Technical Specs</h3>
-                </div>
-
-                <div
-                  className={styles.projectDetail__specGroup}
-                  data-tina-field={tinaField(frontmatter, 'stack')}
-                >
-                  <h4 className={styles.projectDetail__specGroupLabel}>STACK</h4>
-                  <div className={styles.projectDetail__tagStack}>
-                    {Array.isArray(frontmatter.stack)
-                      ? frontmatter.stack.map((s: string) => <Tag key={s}>{s}</Tag>)
-                      : <Tag>{frontmatter.stack}</Tag>}
-                  </div>
-                </div>
-
-                {frontmatter.codeSnippet && (
-                  <div
-                    className={styles.projectDetail__specGroup}
-                    data-tina-field={tinaField(frontmatter, 'codeSnippet')}
-                  >
-                    <h4 className={styles.projectDetail__specGroupLabel}>CODE BLUEPRINT</h4>
-                    <div className={styles.projectDetail__codeCard}>
-                      <pre className={styles.projectDetail__codePre}>
-                        <code>{frontmatter.codeSnippet}</code>
-                      </pre>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {nextLink ? (
-              <a href={nextLink} className={styles.projectDetail__nextBtn}>
-                NEXT PROJECT <ArrowRight size={18} />
-              </a>
-            ) : (
-              <button className={styles.projectDetail__nextBtn}>
-                NEXT PROJECT <ArrowRight size={18} />
-              </button>
-            )}
-          </aside>
-        </div>
-      </div>
-    </div>
+    <ProjectDetailView
+      frontmatter={current as ProjectData}
+      sharedFrontmatter={document}
+      imageAlt={current.imageAlt || undefined}
+      labels={projectLabels(language)}
+      slug={project.slug}
+      headerNode={headerNode}
+      nextLink={nextLink}
+      experienceLink={document.experienceSlug ? experienceUrl(document.experienceSlug) : undefined}
+      exportData={currentExport}
+    >
+      {structured ? <div data-tina-field={tinaField(current, 'contentBlocks')}><ArticleBlocks blocks={current.contentBlocks ?? []} language={language} /></div> : children}
+    </ProjectDetailView>
   );
 }

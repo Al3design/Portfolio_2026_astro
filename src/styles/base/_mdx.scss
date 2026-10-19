@@ -59,3 +59,54 @@
   height: auto;
   display: block;
 }
+
+.article-figure {
+  margin-block: size(10);
+  min-width: 0;
+  video { aspect-ratio: 16 / 9; background: semantic-color(brand-surface-low); }
+  .mdx-image-wrapper { margin-block: 0; border: none; }
+  figcaption {
+    margin-top: size(3);
+    color: semantic-color(brand-on-surface-variant);
+    font-size: fs('100');
+    line-height: lh(relaxed);
+    small { display: block; margin-top: size(1); }
+    a { display: inline-flex; align-items: center; min-height: 44px; color: semantic-color(brand-primary); text-underline-offset: 0.2em; }
+  }
+}
+.article-gallery-columns {
+  margin-block: size(16);
+  column-width: 20rem;
+  column-count: 1;
+  column-gap: size(8);
+
+  @include mq(md) { column-count: 2; }
+
+  > .article-figure {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    margin: 0 0 size(8);
+    break-inside: avoid;
+  }
+}
+.article-gallery-previews {
+  align-items: start;
+  > .article-figure { margin: 0; }
+  .mdx-image-wrapper { position: relative; aspect-ratio: 3 / 4; }
+  .mdx-image-wrapper > a { position: absolute; inset: 0; display: block; }
+  .mdx-image-wrapper > a:focus-visible { outline-offset: -4px; }
+  .mdx-image { height: 100%; object-fit: cover; object-position: top; }
+}
+.article-tags { display: flex; flex-wrap: wrap; gap: size(2); }
+.article-transcript {
+  margin-block: size(6);
+  summary { cursor: pointer; min-height: 44px; color: semantic-color(brand-primary); }
+}
+.article-draft-notice {
+  padding: size(4);
+  background: semantic-color(brand-surface-low);
+  color: semantic-color(brand-on-surface-variant);
+  font-family: semantic-font(mono);
+  font-size: fs('100');
+}

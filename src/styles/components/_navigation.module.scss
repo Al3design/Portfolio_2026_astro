@@ -3,6 +3,15 @@
 // ──────────────────────────────────────────────
 // NAV BAR
 // ──────────────────────────────────────────────
+.scrollSentinel {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
 .nav {
   position: fixed;
   top: size(4);
@@ -18,60 +27,53 @@
   border-radius: 12px;
   z-index: 200;
 
-  // Readable fallback; real backdrop glass is limited to this shallow bar.
-  background: linear-gradient(
-    135deg,
-    rgba(var(--clr-brand-surface-rgb), 0.92) 0%,
-    rgba(var(--clr-brand-surface-low-rgb), 0.88) 100%
-  );
-  border: 1px solid rgba(var(--clr-brand-on-surface-rgb), 0.12);
-  box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, var(--nav-shadow-opacity)),
-    inset 0 1px 0 rgba(var(--clr-brand-on-surface-rgb), 0.15);
+  // The surface fades in while the portfolio's outer groups move inward.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(var(--clr-brand-surface-rgb), 0.94), rgba(var(--clr-brand-surface-low-rgb), 0.9));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, var(--nav-shadow-opacity)), inset 0 0 0 1px rgba(var(--clr-brand-tertiary-rgb), 0.15);
+    opacity: 0;
+    transition: opacity 380ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    @supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+      background: linear-gradient(135deg, rgba(var(--clr-brand-surface-rgb), 0.72), rgba(var(--clr-brand-surface-low-rgb), 0.58));
+      backdrop-filter: blur(8px) saturate(var(--nav-glass-saturation));
+      -webkit-backdrop-filter: blur(8px) saturate(var(--nav-glass-saturation));
+    }
+    @media (prefers-reduced-motion: reduce) { transition: none; }
+  }
+
+  &[data-contained='true']::before { opacity: 1; }
 
   @include mq(md) {
     top: size(6);
     padding: 0 size(12);
     border-radius: 16px;
 
-    background: linear-gradient(
-      135deg,
-      rgba(var(--clr-brand-surface-rgb), 0.94) 0%,
-      rgba(var(--clr-brand-surface-low-rgb), 0.9) 100%
-    );
-  }
-
-  @supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
-    background: linear-gradient(135deg,
-      rgba(var(--clr-brand-surface-rgb), 0.72),
-      rgba(var(--clr-brand-surface-low-rgb), 0.58));
-    backdrop-filter: blur(8px) saturate(var(--nav-glass-saturation));
-    -webkit-backdrop-filter: blur(8px) saturate(var(--nav-glass-saturation));
   }
 
   // ── Logo ──
   &__logo {
     display: flex;
     align-items: center;
+    gap: size(2);
     font-size: fs("400");
     letter-spacing: ls(tight);
     font-weight: fw(bold);
     color: semantic-color(brand-primary);
     z-index: 210; // stays above overlay
 
-    span:first-child {
-      color: semantic-color(brand-on-surface);
-      font-weight: fw(bold);
-    }
-
-    > span:nth-of-type(2) {
-      display: none;
-    }
-
     &--overlay {
       font-size: fs("500");
     }
   }
+
+  &__prefix { color: semantic-color(brand-on-surface); }
 
   // ── Desktop links ──
   &__links {
@@ -132,16 +134,26 @@
     @include mq(lg) { display: block; }
   }
 
+  &__languages {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
   &__language {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-width: 44px;
     min-height: 44px;
+    padding: 0;
+    border: none;
+    background: none;
     font-family: semantic-font(mono);
     font-size: fs('100');
     color: semantic-color(brand-primary);
     &[aria-current='page'] { text-decoration: underline; text-underline-offset: 7px; }
+    &:disabled { color: semantic-color(brand-on-surface-variant); opacity: var(--quiet-control-opacity); cursor: default; }
   }
 
   &__btn {
@@ -220,6 +232,36 @@
   }
 }
 
+.nav--localized {
+  --nav-content-inset: #{size(2)};
+  padding-inline: var(--nav-content-inset);
+  // At the top, align the outer groups with the body's shared gutter.
+  // Reserved padding keeps the middle links stable; translate never scales text.
+  > .nav__logo { translate: calc(-1 * var(--nav-content-inset)) 0; }
+  > .nav__actions { translate: var(--nav-content-inset) 0; }
+  > .nav__logo, > .nav__actions { transition: translate 380ms cubic-bezier(0.22, 1, 0.36, 1); }
+  &[data-contained='true'] {
+    > .nav__logo, > .nav__actions { translate: 0 0; }
+  }
+  .nav__actions { gap: size(1); }
+  .nav__language { min-width: 30px; }
+  .nav__btn { min-width: 36px; min-height: 44px; padding: size(1); }
+  .nav__terminal_btn { width: 36px; height: 44px; }
+
+  @include mq(md) { --nav-content-inset: #{size(12)}; }
+  @include mq(lg) {
+    .nav__actions { gap: size(4); }
+    .nav__language { min-width: 36px; }
+  }
+
+  // A timed state transition stays soft even when one wheel/touch event jumps
+  // past the threshold. Scroll-linked progress could finish in a single frame.
+  @media (prefers-reduced-motion: reduce) {
+    > .nav__logo, > .nav__actions { animation: none; transition: none; translate: 0 0; }
+    &::before { animation: none; transition: none; }
+  }
+}
+
 .shopNotice {
   display: flex;
   justify-content: center;
@@ -233,6 +275,7 @@
 }
 
 .nav--shop {
+  &::before { display: none; }
   position: relative;
   inset: auto;
   transform: none;
@@ -281,7 +324,7 @@
 
   position: fixed;
   inset: 0;
-  z-index: 190;
+  z-index: 220;
   display: flex;
   flex-direction: column;
   height: 100dvh; // exact viewport height, no overflow
@@ -290,8 +333,22 @@
   touch-action: none; // prevents touch scroll bleed-through on iOS Safari
   border: none;
 
-  // Additional deep overlay tinting
-  background-color: rgba(var(--clr-brand-surface-rgb), 0.1);
+  &__close {
+    position: absolute;
+    top: size(6);
+    right: var(--site-gutter);
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: radius(soft);
+    background: semantic-color(brand-surface-low);
+    color: semantic-color(brand-on-surface);
+    cursor: pointer;
+  }
+
+  // Opaque card surface keeps page content from showing through the menu.
+  // Preserve the card gradients above it, without relying on blur or texture.
+  background-color: semantic-color(brand-surface-low);
 
   // Keep the full menu through tablet widths.
   @include mq(lg) {

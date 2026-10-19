@@ -8,6 +8,9 @@ export const PROJECT_CATEGORIES = [
   { value: "web-dev", label: "Web Dev"     },
   { value: "mobile",  label: "Mobile App"  },
   { value: "systems", label: "Systems"     },
+  { value: "3d", label: "3D" },
+  { value: "animation", label: "Animation" },
+  { value: "academic", label: "Academic" },
 ] as const;
 
 type ProjectCategoryValue = typeof PROJECT_CATEGORIES[number]['value'];

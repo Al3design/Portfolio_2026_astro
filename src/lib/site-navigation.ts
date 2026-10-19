@@ -1,5 +1,6 @@
 export type SiteSection = 'portfolio' | 'shop';
 export type SiteLanguage = 'es' | 'en';
+export type SiteLanguageLinks = Partial<Record<SiteLanguage, string>>;
 
 export function siteNavigation(section: SiteSection, language: SiteLanguage) {
   if (section === 'shop') {

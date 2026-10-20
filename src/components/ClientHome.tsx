@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { useTina, tinaField } from 'tinacms/dist/react';
 import { motion } from 'motion/react';
-import { Folder, ArrowLeft, ArrowRight, ExternalLink, RotateCcw } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown, ExternalLink, LayoutGrid, List, RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { SyntaxCard, Tag, KeyValue } from '@/components/UI';
 
 
@@ -30,23 +30,21 @@ const PROJECTS_PER_PAGE = 3;
 export default function ClientHome({ projects, query, variables, data, exportData }: Props) {
   const { data: tinaData } = useTina({ query, variables, data });
   const page = tinaData.pages as PageHome;
-  const [layout, setLayout] = useState<'cards' | 'list'>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('portfolio-layout') as 'cards' | 'list') ?? 'cards';
-    }
-    return 'cards';
-  });
-  const [activeFilter, setActiveFilter] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('portfolio-filter') ?? 'all';
-    }
-    return 'all';
-  });
+  // The server and the first client render must use identical preferences.
+  const [layout, setLayout] = useState<'cards' | 'list'>('cards');
+  const [activeFilter, setActiveFilter] = useState<string>('all');
   const [mounted, setMounted] = useState(false);
   const [requestedPage, setRequestedPage] = useState(1);
   const resultsSummary = useRef<HTMLParagraphElement>(null);
+  const mobileFilters = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
+    const storedLayout = localStorage.getItem('portfolio-layout');
+    const storedFilter = localStorage.getItem('portfolio-filter');
+    if (storedLayout === 'cards' || storedLayout === 'list') setLayout(storedLayout);
+    if (storedFilter !== null && (storedFilter === 'all' || PROJECT_CATEGORIES.some(category => category.value === storedFilter))) {
+      setActiveFilter(storedFilter);
+    }
     const initialPage = Number(new URLSearchParams(window.location.search).get('page'));
     if (Number.isSafeInteger(initialPage) && initialPage > 0) setRequestedPage(initialPage);
     setMounted(true);
@@ -123,6 +121,28 @@ export default function ClientHome({ projects, query, variables, data, exportDat
     setActiveFilter(filter);
     setRequestedPage(1);
     localStorage.setItem('portfolio-filter', filter);
+    if (mobileFilters.current?.open) {
+      mobileFilters.current.open = false;
+      mobileFilters.current.querySelector('summary')?.focus();
+    }
+  }
+
+  function selectLayout(nextLayout: 'cards' | 'list') {
+    setLayout(nextLayout);
+    localStorage.setItem('portfolio-layout', nextLayout);
+  }
+
+  function filterTags() {
+    return (
+      <div className={styles.home__filterTags}>
+        <Tag active={activeFilter === 'all'} onClick={() => selectFilter('all')}>All Output</Tag>
+        {PROJECT_CATEGORIES.map(cat => (
+          <Tag key={cat.value} active={activeFilter === cat.value} onClick={() => selectFilter(cat.value)}>
+            {cat.label}
+          </Tag>
+        ))}
+      </div>
+    );
   }
 
   function selectPage(nextPage: number) {
@@ -169,43 +189,55 @@ export default function ClientHome({ projects, query, variables, data, exportDat
       <div className={styles.home__grid}>
         {/* Sidebar Filters */}
         <aside className={styles.home__sidebar}>
-          <SyntaxCard label="Filters">
-            <div className={clsx(styles.home__filterGroup, mounted ? styles['home__filterGroup--ready'] : styles['home__filterGroup--hydrating'])}>
-              <div className={styles.home__filterTags}>
-                <Tag
-                  active={activeFilter === 'all'}
-                  onClick={() => selectFilter('all')}
-                >
-                  All Output
-                </Tag>
-                {PROJECT_CATEGORIES.map(cat => (
-                  <Tag
-                    key={cat.value}
-                    active={activeFilter === cat.value}
-                    onClick={() => selectFilter(cat.value)}
-                  >
-                    {cat.label}
-                  </Tag>
-                ))}
+          <div className={clsx(styles.home__mobileControls, !mounted && styles['home__filterGroup--hydrating'])}>
+            <details
+              ref={mobileFilters}
+              className={styles.home__mobileFilters}
+              onKeyDown={event => {
+                if (event.key === 'Escape' && mobileFilters.current?.open) {
+                  event.preventDefault();
+                  mobileFilters.current.open = false;
+                  mobileFilters.current.querySelector('summary')?.focus();
+                }
+              }}
+            >
+              <summary
+                className={styles.home__mobileControl}
+                aria-label={`Filters: ${PROJECT_CATEGORIES.find(cat => cat.value === activeFilter)?.label ?? 'All Output'}, ${filteredProjects.length} projects`}
+                title="Filters"
+              >
+                <SlidersHorizontal size={18} aria-hidden="true" />
+                <span className={styles.home__filterCount} aria-hidden="true">{filteredProjects.length}</span>
+                <ChevronDown size={14} aria-hidden="true" />
+              </summary>
+              <div className={styles.home__mobileFilterPanel}>
+                {filterTags()}
               </div>
+            </details>
+            <div className={styles.home__mobileLayouts} role="group" aria-label="Project layout">
+              <button type="button" className={styles.home__mobileControl} aria-label="Cards" title="Cards" aria-pressed={layout === 'cards'} onClick={() => selectLayout('cards')}>
+                <LayoutGrid size={18} aria-hidden="true" />
+              </button>
+              <button type="button" className={styles.home__mobileControl} aria-label="List" title="List" aria-pressed={layout === 'list'} onClick={() => selectLayout('list')}>
+                <List size={18} aria-hidden="true" />
+              </button>
             </div>
-
-
-          </SyntaxCard>
-<SyntaxCard label="Layout">
-            <div className={clsx(styles.home__filterGroup, mounted ? styles['home__filterGroup--ready'] : styles['home__filterGroup--hydrating'])}>
-              <div className={styles.home__filterTags}>
-<Tag active={layout === 'cards'} onClick={() => {
-                  setLayout('cards');
-                  localStorage.setItem('portfolio-layout', 'cards');
-                }}>Cards</Tag>
-                <Tag active={layout === 'list'} onClick={() => {
-                  setLayout('list');
-                  localStorage.setItem('portfolio-layout', 'list');
-                }}>List</Tag>
+          </div>
+          <div className={styles.home__desktopControls}>
+            <SyntaxCard label="Filters">
+              <div className={clsx(styles.home__filterGroup, mounted ? styles['home__filterGroup--ready'] : styles['home__filterGroup--hydrating'])}>
+                {filterTags()}
               </div>
-            </div>
-          </SyntaxCard>
+            </SyntaxCard>
+            <SyntaxCard label="Layout">
+              <div className={clsx(styles.home__filterGroup, mounted ? styles['home__filterGroup--ready'] : styles['home__filterGroup--hydrating'])}>
+                <div className={styles.home__filterTags}>
+                  <Tag active={layout === 'cards'} onClick={() => selectLayout('cards')}>Cards</Tag>
+                  <Tag active={layout === 'list'} onClick={() => selectLayout('list')}>List</Tag>
+                </div>
+              </div>
+            </SyntaxCard>
+          </div>
 
             <div className={styles.home__statusInfo}>
               <KeyValue k="status"   v={`"${page.status   || 'available_for_hire'}",`} data-tina-field={tinaField(page, 'status')} />

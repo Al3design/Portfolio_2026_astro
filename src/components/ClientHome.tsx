@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { useTina, tinaField } from 'tinacms/dist/react';
 import { motion } from 'motion/react';
-import { Folder, ArrowRight, ExternalLink, RotateCcw } from 'lucide-react';
+import { Folder, ArrowLeft, ArrowRight, ExternalLink, RotateCcw } from 'lucide-react';
 import { SyntaxCard, Tag, KeyValue } from '@/components/UI';
 
 
@@ -25,6 +25,8 @@ interface ExportData {
 type PageHome = { title?: string; mission?: string; status?: string; location?: string; timezone?: string };
 type Props = { projects: any[]; query: string; variables: object; data: any; exportData?: ExportData };
 
+const PROJECTS_PER_PAGE = 3;
+
 export default function ClientHome({ projects, query, variables, data, exportData }: Props) {
   const { data: tinaData } = useTina({ query, variables, data });
   const page = tinaData.pages as PageHome;
@@ -41,40 +43,53 @@ export default function ClientHome({ projects, query, variables, data, exportDat
     return 'all';
   });
   const [mounted, setMounted] = useState(false);
+  const [requestedPage, setRequestedPage] = useState(1);
+  const resultsSummary = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
+    const initialPage = Number(new URLSearchParams(window.location.search).get('page'));
+    if (Number.isSafeInteger(initialPage) && initialPage > 0) setRequestedPage(initialPage);
     setMounted(true);
   }, []);
 
   useEffect(() => registerWebTools([{
     name: 'portfolio_browse_projects',
-    description: 'Filter the public projects by category, choose cards or list, and return matching project links.',
+    description: 'Filter the public projects, choose cards or list, and browse three matching projects per page.',
     inputSchema: {
       type: 'object',
       properties: {
         category: { type: 'string', enum: ['all', ...PROJECT_CATEGORIES.map(c => c.value)], description: 'Project category; all resets the filter.' },
         layout: { type: 'string', enum: ['cards', 'list'], description: 'How to display the matching projects.' },
+        page: { type: 'integer', minimum: 1, description: 'Page number, starting at 1. Defaults to the first page.' },
       },
       required: ['category', 'layout'],
       additionalProperties: false,
     },
-    execute: ({ category, layout: requestedLayout }) => {
+    execute: ({ category, layout: requestedLayout, page: pageNumber = 1 }) => {
       if (typeof category !== 'string' || !['all', ...PROJECT_CATEGORIES.map(c => c.value)].includes(category)) {
         return { error: 'Unknown category', categories: ['all', ...PROJECT_CATEGORIES.map(c => c.value)] };
       }
       if (requestedLayout !== 'cards' && requestedLayout !== 'list') {
         return { error: 'layout must be cards or list' };
       }
+      if (typeof pageNumber !== 'number' || !Number.isSafeInteger(pageNumber) || pageNumber < 1) {
+        return { error: 'page must be a positive integer' };
+      }
+      const matching = projects.filter(p => category === 'all' || p.categories?.includes(category));
+      const totalPages = Math.max(1, Math.ceil(matching.length / PROJECTS_PER_PAGE));
+      const selectedPage = Math.min(pageNumber, totalPages);
       flushSync(() => {
         setActiveFilter(category);
         setLayout(requestedLayout);
+        setRequestedPage(selectedPage);
       });
       localStorage.setItem('portfolio-filter', category);
       localStorage.setItem('portfolio-layout', requestedLayout);
-      const matching = projects.filter(p => category === 'all' || p.categories?.includes(category));
       return {
         category, layout: requestedLayout, total: matching.length,
-        projects: matching.slice(0, 25).map(p => ({ title: cleanTitle(p.title), href: `/projects/${p.slug}` })),
+        page: selectedPage, pageSize: PROJECTS_PER_PAGE, totalPages,
+        projects: matching.slice((selectedPage - 1) * PROJECTS_PER_PAGE, selectedPage * PROJECTS_PER_PAGE)
+          .map(p => ({ title: cleanTitle(p.title), href: `/projects/${p.slug}` })),
       };
     },
   }]), [projects]);
@@ -86,11 +101,41 @@ export default function ClientHome({ projects, query, variables, data, exportDat
         Array.isArray(p.categories) && p.categories.includes(activeFilter)
       );
 
-  const featuredProject = filteredProjects[0];
+  const totalPages = Math.max(1, Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE));
+  const currentPage = Math.min(requestedPage, totalPages);
+  const pageOffset = (currentPage - 1) * PROJECTS_PER_PAGE;
+  const visibleProjects = filteredProjects.slice(pageOffset, pageOffset + PROJECTS_PER_PAGE);
+  const featuredProject = visibleProjects[0];
+  const visiblePageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1)
+    .filter(number => number === 1 || number === totalPages || Math.abs(number - currentPage) <= 1);
 
-  // Group filtered projects by type for list view
+  // Preserve the page when following an article and returning to the home page.
+  // Keep Astro's existing history state and unrelated query parameters intact.
+  useEffect(() => {
+    if (!mounted) return;
+    const url = new URL(window.location.href);
+    if (currentPage > 1) url.searchParams.set('page', String(currentPage));
+    else url.searchParams.delete('page');
+    if (url.href !== window.location.href) window.history.replaceState(window.history.state, '', url.href);
+  }, [mounted, currentPage]);
+
+  function selectFilter(filter: string) {
+    setActiveFilter(filter);
+    setRequestedPage(1);
+    localStorage.setItem('portfolio-filter', filter);
+  }
+
+  function selectPage(nextPage: number) {
+    const destination = Math.max(1, Math.min(nextPage, totalPages));
+    if (destination === currentPage) return;
+    flushSync(() => setRequestedPage(destination));
+    resultsSummary.current?.focus({ preventScroll: true });
+    resultsSummary.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  }
+
+  // Group only this page's projects; filtering and ordering happen before slicing.
   const groupedProjects = Object.entries(
-    filteredProjects.reduce((acc: Record<string, any[]>, p) => {
+    visibleProjects.reduce((acc: Record<string, any[]>, p) => {
       const key = p.type || 'Other';
       (acc[key] = acc[key] || []).push(p);
       return acc;
@@ -129,10 +174,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
               <div className={styles.home__filterTags}>
                 <Tag
                   active={activeFilter === 'all'}
-                  onClick={() => {
-                    setActiveFilter('all');
-                    localStorage.setItem('portfolio-filter', 'all');
-                  }}
+                  onClick={() => selectFilter('all')}
                 >
                   All Output
                 </Tag>
@@ -140,10 +182,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
                   <Tag
                     key={cat.value}
                     active={activeFilter === cat.value}
-                    onClick={() => {
-                      setActiveFilter(cat.value);
-                      localStorage.setItem('portfolio-filter', cat.value);
-                    }}
+                    onClick={() => selectFilter(cat.value)}
                   >
                     {cat.label}
                   </Tag>
@@ -177,7 +216,65 @@ export default function ClientHome({ projects, query, variables, data, exportDat
         </aside>
 
         {/* Project Grid */}
-        <div className={styles.home__projects}>
+        <div className={styles.home__projects} id="portfolio-results">
+          <div className={styles.home__resultsHeader}>
+            <p
+              ref={resultsSummary}
+              className={styles.home__resultsSummary}
+              tabIndex={-1}
+              role="status"
+              aria-atomic="true"
+            >
+              {filteredProjects.length > 0
+                ? `Showing ${pageOffset + 1}–${pageOffset + visibleProjects.length} of ${filteredProjects.length} projects · Page ${currentPage} of ${totalPages}`
+                : 'No projects match this filter'}
+            </p>
+            {totalPages > 1 && (
+              <nav className={styles.home__pagination} aria-label="Project pagination">
+                <button
+                  type="button"
+                  className={styles.home__pageButton}
+                  disabled={currentPage === 1}
+                  onClick={() => selectPage(currentPage - 1)}
+                  aria-controls="portfolio-results"
+                  aria-label="Previous page"
+                >
+                  <ArrowLeft size={16} aria-hidden="true" />
+                  <span className={styles.home__pageDirection}>Previous</span>
+                </button>
+                <ol className={styles.home__pageNumbers}>
+                  {visiblePageNumbers.map((number, index) => (
+                    <li key={number}>
+                      {index > 0 && number - visiblePageNumbers[index - 1] > 1 && (
+                        <span className={styles.home__pageEllipsis} aria-hidden="true">…</span>
+                      )}
+                      <button
+                        type="button"
+                        className={styles.home__pageButton}
+                        aria-current={number === currentPage ? 'page' : undefined}
+                        aria-label={`Page ${number}`}
+                        aria-controls="portfolio-results"
+                        onClick={() => selectPage(number)}
+                      >
+                        {String(number).padStart(2, '0')}
+                      </button>
+                    </li>
+                  ))}
+                </ol>
+                <button
+                  type="button"
+                  className={styles.home__pageButton}
+                  disabled={currentPage === totalPages}
+                  onClick={() => selectPage(currentPage + 1)}
+                  aria-controls="portfolio-results"
+                  aria-label="Next page"
+                >
+                  <span className={styles.home__pageDirection}>Next</span>
+                  <ArrowRight size={16} aria-hidden="true" />
+                </button>
+              </nav>
+            )}
+          </div>
           {/* Empty state when filter has no matches */}
           {filteredProjects.length === 0 && (
             <motion.div
@@ -188,10 +285,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
               <p>// no output matches this filter</p>
               <button
                 className={styles.home__emptyReset}
-                onClick={() => {
-                  setActiveFilter('all');
-                  localStorage.setItem('portfolio-filter', 'all');
-                }}
+                onClick={() => selectFilter('all')}
               >
                 clear filter →
               </button>
@@ -203,6 +297,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
               {/* Featured Project */}
               {featuredProject && (
                 <motion.div
+                  key={featuredProject.slug}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -254,7 +349,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
               )}
 
               <div className={styles.home__projectGrid}>
-                {filteredProjects.slice(1).map((project, i) => (
+                {visibleProjects.slice(1).map((project, i) => (
                   <motion.div
                     key={project.slug}
                     initial={{ opacity: 0, y: 20 }}
@@ -379,6 +474,8 @@ export default function ClientHome({ projects, query, variables, data, exportDat
               ))}
             </div>
           ))}
+
+
         </div>
       </div>
     </div>

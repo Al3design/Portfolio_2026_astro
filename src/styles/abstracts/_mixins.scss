@@ -38,6 +38,23 @@
   line-height: $heading-line-height;
 }
 
+// Shared opacity response for controls; reuse the existing surface palette.
+@mixin control-surface($rest-opacity: 0.8, $focus-within: false) {
+  background-color: rgba(var(--clr-brand-surface-low-rgb), $rest-opacity);
+  transition: color 0.15s ease, background-color 0.15s ease;
+
+  &:hover:not(:disabled),
+  &:focus-visible {
+    background-color: rgba(var(--clr-brand-surface-low-rgb), 0.99);
+  }
+
+  @if $focus-within {
+    &:focus-within {
+      background-color: rgba(var(--clr-brand-surface-low-rgb), 0.99);
+    }
+  }
+}
+
 @mixin glass($color-rgb: "--clr-brand-on-surface-rgb", $angle: 135deg) {
   // Frosted material: paint soft color fields and a reusable grain tile once.
   // Depth comes from the gradients, without stacking backdrop filters per card.

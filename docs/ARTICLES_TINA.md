@@ -79,3 +79,11 @@ ProjectDocument entrega la portada y su texto alternativo a MainLayout, que cons
 ## Enlaces de referencia destacados — 2026-10-19
 
 Los enlaces de secciones usan una accion visual compartida: globo para web, marca GitHub cuando el hostname del href corresponde a github.com, texto primario subrayado, fondo tenue y flecha externa. Mantienen apertura en otra pestana, nombre accesible con aviso, foco visible y adaptacion de texto en mobile. La eleccion del icono depende del enlace existente en Tina; no agrega campos ni modifica su esquema. Aplicable a GitCron, OdontoPau y futuras fichas ES/EN. Sin build, pruebas ni capturas por tanda.
+
+## Paginacion de la home — 2026-10-20
+
+La home presenta hasta tres proyectos por pagina: un destacado y dos tarjetas en CARDS, o tres entradas en LIST. Primero se aplica el filtro y luego se divide el resultado. Cambiar de filtro vuelve a la primera pagina; cambiar de layout conserva la pagina. La URL conserva `?page=N` para volver desde una ficha. La ultima pagina puede tener menos de tres proyectos.
+
+No cambia el esquema de TinaCMS ni los documentos: se conserva el orden editorial existente y el guard de publicacion. Los nuevos proyectos publicados pasan a integrar las paginas en el siguiente build/despliegue. El limite de tres es una constante de interfaz, no un campo editable en Tina. La exportacion Markdown mantiene el catalogo publicado completo.
+
+La paginacion se realiza en React: se renderiza el grupo visible, pero los metadatos del catalogo publicado siguen llegando completos como props. WebMCP admite una pagina opcional y devuelve ese mismo grupo de tres. Implementacion local revisada por lectura del diff; sin compilacion, pruebas ni inspeccion visual en esta tanda, conforme a AGENTS.md.

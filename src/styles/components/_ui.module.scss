@@ -43,13 +43,7 @@
     color: semantic-color(brand-primary);
   }
 
-  &--interactive {
-    cursor: pointer;
-    appearance: none;
-    font-family: inherit;
-  }
-
-  &:hover {
+  &:not(.tag--interactive):hover {
     color: semantic-color(brand-primary);
     background: rgba(var(--clr-brand-primary-rgb), 0.06);
   }
@@ -57,6 +51,25 @@
   &:focus-visible {
     outline: 2px solid semantic-color(brand-primary);
     outline-offset: -2px;
+  }
+
+  &--interactive {
+    @include control-surface;
+    cursor: pointer;
+    appearance: none;
+    font-family: inherit;
+
+    &:hover,
+    &:focus-visible {
+      color: semantic-color(brand-primary);
+    }
+
+    &[aria-pressed="true"] {
+      background-image: linear-gradient(
+        rgba(var(--clr-brand-primary-rgb), 0.1),
+        rgba(var(--clr-brand-primary-rgb), 0.1)
+      );
+    }
   }
 }
 

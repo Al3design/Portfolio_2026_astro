@@ -7,10 +7,10 @@
 }
 
 .trigger {
+  @include control-surface($focus-within: true);
   display: inline-flex;
   align-items: stretch;
   border-radius: radius(soft);
-  background: rgba(var(--clr-brand-surface-low-rgb), 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
   button {
@@ -73,6 +73,7 @@
 }
 
 .dropdown {
+  @include control-surface(0.96, $focus-within: true);
   position: absolute;
   top: 100%;
   right: 0;
@@ -81,14 +82,14 @@
   margin-top: size(1);
   padding: size(1) 0;
   border-radius: radius(soft);
-  background: rgba(var(--clr-brand-surface-low-rgb), 0.96);
   border: 1px solid rgba(255, 255, 255, 0.08);
   opacity: 0;
   transform: translateY(-4px);
   pointer-events: none;
   transition:
     opacity 0.15s ease,
-    transform 0.15s ease;
+    transform 0.15s ease,
+    background-color 0.15s ease;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 
   button {
@@ -100,6 +101,7 @@
     transform: translateY(0);
     pointer-events: auto;
   }
+
 }
 
 .item {

@@ -26,7 +26,7 @@ const jobs = projects
   .filter(p => p.showInResume)
   .sort((a, b) => (a.order || 99) - (b.order || 99));
 
-const exportContent = jobs.map(job => {
+const experienceContent = jobs.map(job => {
   const parts = [`## ${job.role || job.title}`];
   if (job.client) parts.push(`**Company:** ${job.client}`);
   if (job.year) parts.push(`**Period:** ${job.year}`);
@@ -40,6 +40,18 @@ const exportContent = jobs.map(job => {
   if (job.relatedProjects.length) parts.push('\n**Related projects:**\n' + job.relatedProjects.map(item => `- [${item.title.replace(/\s*\/\/\s*/g, ' ')}](${item.href})${item.draft ? ' (Draft)' : ''}`).join('\n'));
   return parts.join('\n');
 }).join('\n\n---\n\n');
+
+const skillsContent = (pageData.skillGroups ?? []).map((group: { category: string; items: { name: string; value: string }[] }) =>
+  `### ${group.category}\n\n${(group.items ?? []).map(item => `- **${item.name}:** ${item.value}`).join('\n')}`
+).join('\n\n');
+const educationContent = (pageData.education ?? []).map((entry: { degree?: string; institution?: string; year?: string }) =>
+  `- ${[entry.degree, entry.institution, entry.year].filter(Boolean).join(' — ')}`
+).join('\n');
+const exportContent = [
+  experienceContent,
+  skillsContent && `## Skills\n\n${skillsContent}`,
+  educationContent && `## Education\n\n${educationContent}`,
+].filter(Boolean).join('\n\n---\n\n');
 
 const exportMetadata = {
   title: pageData.title || 'Resume',

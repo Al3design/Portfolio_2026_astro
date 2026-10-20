@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { useTina, tinaField } from 'tinacms/dist/react';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Download, ChevronRight, Check, X, Folder } from 'lucide-react';
+import { Download, ChevronRight, Check, X, Folder } from 'lucide-react';
 
 import { SyntaxCard, Tag, KeyValue } from '@/components/UI';
 import styles from '@/styles/pages/_resume.module.scss';
@@ -19,35 +19,6 @@ interface ExportData {
   metadata: Record<string, unknown>;
   filename: string;
 }
-
-const DEFAULT_SKILLS = [
-  { category: 'DESIGN ARCHITECTURE', items: [
-    { name: 'Design Systems', value: '95%' },
-    { name: 'Interaction Design', value: '90%' },
-    { name: 'Wireframing', value: '95%' },
-    { name: 'Prototyping (Figma)', value: '98%' },
-  ]},
-  { category: 'FRONT-END EXECUTION', items: [
-    { name: 'HTML/Semantic DOM', value: '95%' },
-    { name: 'CSS/SASS/Tokens', value: '98%' },
-    { name: 'JavaScript (ES6+)', value: '85%' },
-    { name: 'React Basics', value: '75%' },
-  ]},
-  { category: 'METHODOLOGIES', items: [
-    { name: 'Agile/Scrum', value: 'Yes' },
-    { name: 'Atomic Design', value: 'Yes' },
-    { name: 'A/B Testing', value: 'Yes' },
-    { name: 'WCAG Accessibility', value: 'Yes' },
-  ]}
-];
-
-const DEFAULT_EDUCATION = [
-  {
-    degree: 'Bachelor of Fine Arts in Interaction Design',
-    institution: 'California College of the Arts',
-    year: 'Class of 2015',
-  },
-];
 
 type SkillItem  = { name: string; value: string };
 type SkillGroup = { category: string; items: SkillItem[] };
@@ -68,11 +39,8 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
   const page = tinaData.pages as PageResume;
   const contactEmail = page.email?.trim();
 
-  const skills = (page.skillGroups && page.skillGroups.length > 0)
-    ? page.skillGroups
-    : DEFAULT_SKILLS;
-
-  const education = (page.education && page.education.length > 0) ? page.education : DEFAULT_EDUCATION;
+  const skills = page.skillGroups ?? [];
+  const education = page.education ?? [];
 
   const experiences = useMemo(() => {
     return jobs.map(job => ({
@@ -110,7 +78,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
     const tags = new Set<string>();
     experiences.forEach(exp => exp.stack.forEach(s => tags.add(s.toUpperCase())));
     return Array.from(tags).sort();
-  }, []);
+  }, [experiences]);
 
   const filteredExperiences = useMemo(() => {
     return experiences.filter(exp => {
@@ -124,7 +92,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
         activeTags.every(tag => exp.stack.some(s => s.toUpperCase() === tag.toUpperCase()));
       return matchesSearch && matchesTags;
     });
-  }, [searchQuery, activeTags]);
+  }, [experiences, searchQuery, activeTags]);
 
   const toggleTag = (tag: string) => {
     setActiveTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
@@ -133,8 +101,8 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
   const clearAll = () => { setSearchQuery(''); setActiveTags([]); };
 
   const downloadATS = () => {
-    let cvContent = `ALEXANDRO DELGADO - UX/UI Web Designer\n\n`;
-    cvContent += `Location: Buenos Aires, Argentina\n`;
+    let cvContent = `ALEJANDRO DELGADO - ${cleanTitle(page.title)}\n\n`;
+    if (page.location) cvContent += `Location: ${page.location}\n`;
     if (contactEmail) cvContent += `Email: ${contactEmail}\n`;
     cvContent += `\n`;
     cvContent += `EXPERIENCE\n\n`;
@@ -142,9 +110,24 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
       cvContent += `${exp.role} at ${exp.company} (${exp.period})\n`;
       if (exp.type) cvContent += `Type: ${exp.type}\n`;
       if (exp.description) cvContent += `${exp.description}\n`;
+      exp.points.forEach(point => { cvContent += `- ${point}\n`; });
       if (exp.stack && exp.stack.length > 0) cvContent += `Tech Stack: ${exp.stack.join(', ')}\n`;
       cvContent += `\n`;
     });
+    if (skills.length) {
+      cvContent += `SKILLS\n\n`;
+      skills.forEach(group => {
+        cvContent += `${group.category}\n`;
+        group.items.forEach(item => { cvContent += `${item.name}: ${item.value}\n`; });
+        cvContent += `\n`;
+      });
+    }
+    if (education.length) {
+      cvContent += `EDUCATION\n\n`;
+      education.forEach(entry => {
+        cvContent += [entry.degree, entry.institution, entry.year].filter(Boolean).join(' — ') + '\n';
+      });
+    }
     const blob = new Blob([cvContent], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -320,7 +303,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
           </section>
 
           {/* 02. System Constraints — Skills */}
-          <section className={styles.resume__section}>
+          {skills.length > 0 && <section className={styles.resume__section}>
             <div className={styles.resume__sectionHeader}>
               <span>02.</span>
               <h2>System Constraints</h2>
@@ -363,10 +346,10 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
                 </motion.div>
               ))}
             </div>
-          </section>
+          </section>}
 
           {/* 03. Base Compilation — Education */}
-          <section className={styles.resume__footer}>
+          {education.length > 0 && <section className={styles.resume__footer}>
             <div className={styles.resume__sectionHeader}>
               <span>03.</span>
               <h2>Base Compilation</h2>
@@ -389,7 +372,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
                 </div>
               </SyntaxCard>
             ))}
-          </section>
+          </section>}
 
         </div>
       </div>

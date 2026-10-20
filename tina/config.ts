@@ -374,7 +374,7 @@ export default defineConfig({
                       {
                         type: "string",
                         name: "value",
-                        label: "Proficiency (e.g. 95% or Yes)",
+                        label: "Usage / task",
                         required: true,
                       },
                     ],

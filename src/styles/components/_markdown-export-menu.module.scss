@@ -8,10 +8,9 @@
 
 .trigger {
   @include control-surface($focus-within: true);
+  @include control-edge;
   display: inline-flex;
   align-items: stretch;
-  border-radius: radius(soft);
-  border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
   button {
     border-style: hidden;
@@ -19,17 +18,12 @@
 }
 
 .triggerMain {
+  @include compact-control;
   display: inline-flex;
   align-items: center;
   gap: size(2);
   padding: size(2) size(3);
   background: transparent;
-  color: semantic-color(brand-on-surface-variant);
-  font-family: semantic-font(mono);
-  font-size: 10px;
-  font-weight: fw(bold);
-  text-transform: uppercase;
-  letter-spacing: ls(wide);
   cursor: pointer;
   transition:
     color 0.15s ease,
@@ -49,13 +43,13 @@
 }
 
 .triggerArrow {
+  @include compact-control;
   display: inline-flex;
   align-items: center;
   padding: size(2) size(2);
   background: transparent;
-  color: semantic-color(brand-on-surface-variant);
   cursor: pointer;
-  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 1px solid rgba(var(--clr-brand-on-surface-rgb), $ghost-border-opacity);
   transition:
     color 0.15s ease,
     background-color 0.15s ease;

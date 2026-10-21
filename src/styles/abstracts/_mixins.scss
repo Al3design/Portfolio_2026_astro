@@ -7,6 +7,7 @@
 @use "typography" as *;
 @use "breakpoints" as *;
 @use "tokens" as *;
+@use "functions" as *;
 
 @mixin mq($size) {
   @if map.has-key($breakpoints, $size) {
@@ -53,6 +54,31 @@
       background-color: rgba(var(--clr-brand-surface-low-rgb), 0.99);
     }
   }
+}
+
+// Compact desktop controls, with larger targets for touch input.
+@mixin compact-control {
+  min-width: size(8);
+  min-height: size(8);
+  padding: size(2);
+  border-radius: radius(soft);
+  color: semantic-color(brand-on-surface-variant);
+  font-family: semantic-font(mono);
+  font-size: fs("100");
+  font-weight: fw(bold);
+  letter-spacing: ls(wide);
+  text-transform: uppercase;
+  @media (pointer: coarse) { min-width: size(12); min-height: size(12); }
+  &:focus-visible {
+    outline: 2px solid semantic-color(brand-primary);
+    outline-offset: -2px;
+  }
+}
+
+@mixin control-edge {
+  border: 0;
+  border-radius: radius(soft);
+  box-shadow: inset 0 0 0 1px rgba(var(--clr-brand-on-surface-rgb), $ghost-border-opacity);
 }
 
 @mixin glass($color-rgb: "--clr-brand-on-surface-rgb", $angle: 135deg) {

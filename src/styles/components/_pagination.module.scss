@@ -1,0 +1,42 @@
+@use "../abstracts" as *;
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: size(1);
+  margin-inline-start: auto;
+  max-width: 100%;
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: size(1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li { display: flex; align-items: center; gap: size(1); }
+}
+
+.button {
+  @include control-surface;
+  @include compact-control;
+  @include control-edge;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  appearance: none;
+  &[aria-current="page"] {
+    color: semantic-color(brand-primary);
+    background-image: linear-gradient(rgba(var(--clr-brand-primary-rgb), 0.06), rgba(var(--clr-brand-primary-rgb), 0.06));
+  }
+  &:hover:not(:disabled) { color: semantic-color(brand-primary); }
+  &:disabled { opacity: 0.4; cursor: default; }
+}
+
+.ellipsis { color: semantic-color(brand-on-surface-variant); font-family: semantic-font(mono); }

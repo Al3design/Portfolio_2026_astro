@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { useTina, tinaField } from 'tinacms/dist/react';
 import { motion } from 'motion/react';
-import { ArrowLeft, ArrowRight, ChevronDown, ExternalLink, LayoutGrid, List, RotateCcw, SlidersHorizontal } from 'lucide-react';
+import { ArrowRight, ChevronDown, ExternalLink, LayoutGrid, List, RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { SyntaxCard, Tag, KeyValue } from '@/components/UI';
 
 
@@ -14,6 +14,7 @@ import { clsx } from 'clsx';
 import { cleanTitle, formatTitle } from '@/helpers/text-helpers';
 import Breadcrumb from '@/components/Breadcrumb';
 import MarkdownExportMenu from '@/components/MarkdownExportMenu';
+import Pagination from '@/components/Pagination';
 import { registerWebTools } from '@/lib/webmcp';
 
 interface ExportData {
@@ -104,8 +105,6 @@ export default function ClientHome({ projects, query, variables, data, exportDat
   const pageOffset = (currentPage - 1) * PROJECTS_PER_PAGE;
   const visibleProjects = filteredProjects.slice(pageOffset, pageOffset + PROJECTS_PER_PAGE);
   const featuredProject = visibleProjects[0];
-  const visiblePageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1)
-    .filter(number => number === 1 || number === totalPages || Math.abs(number - currentPage) <= 1);
 
   // Preserve the page when following an article and returning to the home page.
   // Keep Astro's existing history state and unrelated query parameters intact.
@@ -261,51 +260,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
                 ? `Showing ${pageOffset + 1}–${pageOffset + visibleProjects.length} of ${filteredProjects.length} projects · Page ${currentPage} of ${totalPages}`
                 : 'No projects match this filter'}
             </p>
-            {totalPages > 1 && (
-              <nav className={styles.home__pagination} aria-label="Project pagination">
-                <button
-                  type="button"
-                  className={styles.home__pageButton}
-                  disabled={currentPage === 1}
-                  onClick={() => selectPage(currentPage - 1)}
-                  aria-controls="portfolio-results"
-                  aria-label="Previous page"
-                >
-                  <ArrowLeft size={16} aria-hidden="true" />
-                  <span className={styles.home__pageDirection}>Previous</span>
-                </button>
-                <ol className={styles.home__pageNumbers}>
-                  {visiblePageNumbers.map((number, index) => (
-                    <li key={number}>
-                      {index > 0 && number - visiblePageNumbers[index - 1] > 1 && (
-                        <span className={styles.home__pageEllipsis} aria-hidden="true">…</span>
-                      )}
-                      <button
-                        type="button"
-                        className={styles.home__pageButton}
-                        aria-current={number === currentPage ? 'page' : undefined}
-                        aria-label={`Page ${number}`}
-                        aria-controls="portfolio-results"
-                        onClick={() => selectPage(number)}
-                      >
-                        {String(number).padStart(2, '0')}
-                      </button>
-                    </li>
-                  ))}
-                </ol>
-                <button
-                  type="button"
-                  className={styles.home__pageButton}
-                  disabled={currentPage === totalPages}
-                  onClick={() => selectPage(currentPage + 1)}
-                  aria-controls="portfolio-results"
-                  aria-label="Next page"
-                >
-                  <span className={styles.home__pageDirection}>Next</span>
-                  <ArrowRight size={16} aria-hidden="true" />
-                </button>
-              </nav>
-            )}
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={selectPage} controlsId="portfolio-results" />
           </div>
           {/* Empty state when filter has no matches */}
           {filteredProjects.length === 0 && (

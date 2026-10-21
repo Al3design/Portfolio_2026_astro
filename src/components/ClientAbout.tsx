@@ -18,9 +18,9 @@ const ICON_MAP: Record<string, React.ReactNode> = {
 
 type Philosophy = { icon?: string; accent?: string; title: string; description?: string };
 type PageAbout  = { title: string; mission?: string; body?: any; philosophies?: Philosophy[] };
-type Props      = { query: string; variables: object; data: any };
+type Props      = { query: string; variables: object; data: any; location?: string };
 
-export default function ClientAbout({ query, variables, data }: Props) {
+export default function ClientAbout({ query, variables, data, location }: Props) {
   const { data: tinaData } = useTina({ query, variables, data });
   const page = tinaData.pages as PageAbout;
   const philosophies = page.philosophies ?? [];
@@ -34,13 +34,13 @@ export default function ClientAbout({ query, variables, data }: Props) {
         <section className={styles.about__hero}>
           <div>
             <div className={styles.about__subtitle}>
-              <span className={styles.about__subtitleHighlight}>{"//"}</span> THE ARCHITECT
+              <span className={styles.about__subtitleHighlight}>{"//"}</span> MULTIMEDIA DESIGNER
             </div>
             <h1
               className={styles.about__title}
               data-tina-field={tinaField(page, 'title')}
             >
-              {formatTitle(page.title || "Bridging \\n // Logic & Soul")}
+              {formatTitle(page.title || 'About')}
             </h1>
             <div className={styles.about__accent}></div>
           </div>
@@ -53,16 +53,16 @@ export default function ClientAbout({ query, variables, data }: Props) {
               <TinaMarkdown content={page.body} />
             </div>
 
-            <div className={`pt-10 border-t border-[rgba(var(--clr-brand-on-surface-rgb),0.05)]`}>
-              <KeyValue k="Location =" v={'"Global_Remote";'} className={styles.about__keyValue} />
-            </div>
+            {location && <div>
+              <KeyValue k="Location" v={location} className={styles.about__keyValue} />
+            </div>}
           </div>
         </section>
 
         <section className={styles.about__section}>
           <div className={styles.about__philosophyHeader}>
             <span><Monitor size={24} /></span>
-            <h2>Core Philosophy</h2>
+            <h2>How I work</h2>
           </div>
 
           <div className={styles.about__philosophyGrid}>

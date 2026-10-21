@@ -3,7 +3,11 @@ import { client } from '../../tina/__generated__/client';
 import MainLayout from '@/layouts/MainLayout.astro';
 import ClientAbout from '@/components/ClientAbout';
 
-const tinaProps = await client.queries.pages({ relativePath: 'about.mdx' });
+const [tinaProps, resumeProps] = await Promise.all([
+  client.queries.pages({ relativePath: 'about.mdx' }),
+  client.queries.pages({ relativePath: 'resume.mdx' }),
+]);
+const location = (resumeProps.data.pages as { location?: string }).location?.trim();
 const title = (tinaProps.data.pages as any).title ?? 'About';
 ---
 
@@ -13,5 +17,6 @@ const title = (tinaProps.data.pages as any).title ?? 'About';
     query={tinaProps.query}
     variables={tinaProps.variables}
     data={tinaProps.data}
+    location={location}
   />
 </MainLayout>

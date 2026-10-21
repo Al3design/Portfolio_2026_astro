@@ -14,14 +14,12 @@
 
   &__hero {
     display: grid;
-    gap: size(20);
-    margin-bottom: size(40);
+    grid-template-columns: minmax(0, 1fr);
+    gap: size(8);
+    margin-bottom: size(16);
     align-items: start;
 
-    @include mq(lg) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: size(32);
-    }
+    @include mq(md) { gap: size(12); }
   }
 
   &__title {
@@ -37,7 +35,9 @@
 
   &__content {
     @include glass("--clr-brand-tertiary-rgb", 215deg);
-    padding: size(10);
+    width: 100%;
+    min-width: 0;
+    padding: size(6);
     border-radius: radius(soft);
     display: flex;
     flex-direction: column;
@@ -47,6 +47,7 @@
     line-height: lh(relaxed);
 
     @include mq(md) {
+      padding: size(10);
       font-size: fs("500");
     }
   }

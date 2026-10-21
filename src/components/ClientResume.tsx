@@ -144,7 +144,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
 
         {/* Search Bar Section */}
         <section className={styles.resume__search}>
-          <p className={styles.resume__searchLabel}>Refine your search</p>
+          <p id="resume-search-label" className={styles.resume__searchLabel}>Refine your search</p>
           <div className={styles.resume__terminal}>
             <div className={styles.resume__terminalHeader}>
               <div className={styles.resume__terminalDots}>
@@ -163,6 +163,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
                 <div className={styles.resume__inputWrapper}>
                   <input
                     type="text"
+                    aria-labelledby="resume-search-label"
                     placeholder="Search for keywords, skills, or roles..."
                     className={styles.resume__input}
                     value={searchQuery}
@@ -176,7 +177,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
               <div className={styles.resume__filters}>
                 <div className={styles.resume__tags}>
                   {availableTags.map(tag => (
-                    <button key={tag} onClick={() => toggleTag(tag)} className={styles.resume__tagBtn}>
+                    <button type="button" key={tag} aria-pressed={activeTags.includes(tag)} onClick={() => toggleTag(tag)} className={styles.resume__tagBtn}>
                       <Tag active={activeTags.includes(tag)}>{tag}</Tag>
                     </button>
                   ))}

@@ -19,6 +19,7 @@ export default function MarkdownExportMenu({
 }: MarkdownExportMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -60,10 +61,16 @@ export default function MarkdownExportMenu({
   }, []);
 
   const handleCopy = async () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setCopied(false);
+    setCopyFailed(false);
     const { success } = await copyToClipboard();
     if (success) {
       setCopied(true);
       timeoutRef.current = setTimeout(() => setCopied(false), 2000);
+    } else {
+      setCopyFailed(true);
+      timeoutRef.current = setTimeout(() => setCopyFailed(false), 8000);
     }
     close();
   };
@@ -83,6 +90,7 @@ export default function MarkdownExportMenu({
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
+      {copyFailed && <p className={styles.feedback} role="status">Could not copy. Use “Download .md” in the export menu.</p>}
       <div className={styles.trigger}>
         <button
           type="button"

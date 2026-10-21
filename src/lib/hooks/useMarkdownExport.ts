@@ -77,8 +77,10 @@ export function useMarkdownExport({
     const a = document.createElement('a');
     a.href = url;
     a.download = customFilename ?? filename;
+    document.body.appendChild(a);
     a.click();
-    URL.revokeObjectURL(url);
+    a.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 2000);
   }, [generateMarkdown, filename]);
 
   return { generateMarkdown, copyToClipboard, downloadAsFile };

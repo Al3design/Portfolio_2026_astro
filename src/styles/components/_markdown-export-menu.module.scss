@@ -6,6 +6,23 @@
   margin-left: auto;
 }
 
+.feedback {
+  @include control-surface(0.99);
+  @include control-edge;
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-end: 0;
+  z-index: 250;
+  width: size(64);
+  max-width: calc(100vw - #{size(8)});
+  margin: size(1) 0 0;
+  padding: size(3);
+  color: semantic-color(brand-on-surface);
+  font-family: semantic-font(mono);
+  font-size: fs("100");
+  line-height: 1.6;
+}
+
 .trigger {
   @include control-surface($focus-within: true);
   @include control-edge;

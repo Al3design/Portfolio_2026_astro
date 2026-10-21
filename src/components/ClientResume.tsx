@@ -13,6 +13,7 @@ import { formatTitle, cleanTitle } from '@/helpers/text-helpers';
 import Breadcrumb from '@/components/Breadcrumb';
 import MarkdownExportMenu from '@/components/MarkdownExportMenu';
 import { experienceId, type RelatedProjectLink } from '@/lib/experience-links';
+import { formatAtsResume, formatResumeMarkdown } from '@/lib/ats-cv';
 
 interface ExportData {
   content: string;
@@ -82,7 +83,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
 
   const filteredExperiences = useMemo(() => {
     return experiences.filter(exp => {
-      const searchTerms = searchQuery.toLowerCase();
+      const searchTerms = searchQuery.trim().toLowerCase();
       const matchesSearch =
         exp.role.toLowerCase().includes(searchTerms) ||
         exp.company.toLowerCase().includes(searchTerms) ||
@@ -100,41 +101,33 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
 
   const clearAll = () => { setSearchQuery(''); setActiveTags([]); };
 
+  const isFiltered = Boolean(searchQuery.trim() || activeTags.length);
+  const selectionKey = [searchQuery.trim(), ...activeTags].join(' ').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+  const filenameSuffix = isFiltered ? `_selection${selectionKey ? `_${selectionKey}` : ''}` : '';
+  const selectedResume = {
+    name: 'ALEJANDRO DELGADO', title: cleanTitle(page.title),
+    location: page.location, email: contactEmail, website: 'https://al3design.dev',
+    experiences: filteredExperiences, skills, education,
+  };
+  const selectedExport = exportData && {
+    ...exportData,
+    content: formatResumeMarkdown(selectedResume),
+    metadata: { ...exportData.metadata, title: page.title, location: page.location, email: contactEmail || undefined, status: page.status, selection: isFiltered ? [searchQuery.trim(), ...activeTags].filter(Boolean).join(', ') : 'All experiences', experienceCount: filteredExperiences.length },
+    filename: `cv-alejandro-delgado${filenameSuffix}.md`,
+  };
+
   const downloadATS = () => {
-    let cvContent = `ALEJANDRO DELGADO - ${cleanTitle(page.title)}\n\n`;
-    if (page.location) cvContent += `Location: ${page.location}\n`;
-    if (contactEmail) cvContent += `Email: ${contactEmail}\n`;
-    cvContent += `\n`;
-    cvContent += `EXPERIENCE\n\n`;
-    filteredExperiences.forEach(exp => {
-      cvContent += `${exp.role} at ${exp.company} (${exp.period})\n`;
-      if (exp.type) cvContent += `Type: ${exp.type}\n`;
-      if (exp.description) cvContent += `${exp.description}\n`;
-      exp.points.forEach(point => { cvContent += `- ${point}\n`; });
-      if (exp.stack && exp.stack.length > 0) cvContent += `Tech Stack: ${exp.stack.join(', ')}\n`;
-      cvContent += `\n`;
-    });
-    if (skills.length) {
-      cvContent += `SKILLS\n\n`;
-      skills.forEach(group => {
-        cvContent += `${group.category}\n`;
-        group.items.forEach(item => { cvContent += `${item.name}: ${item.value}\n`; });
-        cvContent += `\n`;
-      });
-    }
-    if (education.length) {
-      cvContent += `EDUCATION\n\n`;
-      education.forEach(entry => {
-        cvContent += [entry.degree, entry.institution, entry.year].filter(Boolean).join(' — ') + '\n';
-      });
-    }
-    const blob = new Blob([cvContent], { type: 'text/plain' });
+    if (!filteredExperiences.length) return;
+    const cvContent = formatAtsResume(selectedResume);
+    const blob = new Blob([cvContent], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Alejandro_Delgado_ATS_CV.txt';
+    a.download = `Alejandro_Delgado_ATS_CV${filenameSuffix}.txt`;
+    document.body.appendChild(a);
     a.click();
-    URL.revokeObjectURL(url);
+    a.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 2000);
   };
 
   const downloadCustom = () => { window.print(); };
@@ -146,7 +139,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
       <div className={styles.resume}>
         <div className={styles.resume__breadcrumbRow}>
           <Breadcrumb paths={['resume']} />
-          {exportData && <MarkdownExportMenu {...exportData} />}
+          {selectedExport && <MarkdownExportMenu {...selectedExport} />}
         </div>
 
         {/* Search Bar Section */}
@@ -192,7 +185,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
                   )}
                 </div>
                 <div className={styles.resume__downloads}>
-                  <button className={styles.resume__downloadBtn} onClick={downloadATS}>
+                  <button type="button" className={styles.resume__downloadBtn} onClick={downloadATS} disabled={!filteredExperiences.length} title={isFiltered ? `Download ATS CV with ${filteredExperiences.length} matching experiences` : 'Download ATS CV with all experiences'} aria-label={isFiltered ? 'Download filtered ATS CV' : 'Download complete ATS CV'}>
                     <Download size={14} /> ATS CV
                   </button>
                   <button className={styles.resume__downloadBtn} onClick={downloadCustom}>

@@ -10,6 +10,7 @@ import { getEntry } from 'astro:content';
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { cleanTitle } from '@/helpers/text-helpers';
+import { canonicalPageUrl } from '@/lib/site-seo';
 import type { SiteSection, SiteLanguage, SiteLanguageLinks } from '@/lib/site-navigation';
 
 const footerEntry = await getEntry('global', 'footer');
@@ -30,7 +31,7 @@ interface Props {
 
 const {
   title = "Al3Design | Alejandro Delgado - Multimedia Designer",
-  description = "Portfolio of Alejandro Delgado, a Multimedia Designer and Creative Developer specializing in high-end digital experiences, editorial design, and technical precision.",
+  description = "Portfolio of Alejandro Delgado, a multimedia designer in Buenos Aires working across UX/UI, web development, graphic design, 3D and animation.",
   section = 'portfolio',
   language = 'en',
   languageLinks,
@@ -39,7 +40,7 @@ const {
   socialImageAlt = 'Al3Design · Alejandro Delgado',
   pageType = 'website',
 } = Astro.props;
-const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://al3design.dev');
+const pageUrl = canonicalPageUrl(Astro.url.pathname, Astro.site ?? 'https://al3design.dev');
 const metaTitle = cleanTitle(title).replace(/\s+/g, ' ');
 const socialImageUrl = new URL(socialImage, noIndex ? Astro.url.origin : pageUrl.origin);
 const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter(([, href]) => !!href && !href.startsWith('/revision/'));
@@ -60,7 +61,7 @@ const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter
     <meta name="description" content={description} />
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
     {!noIndex && <link rel="canonical" href={pageUrl} />}
-    {alternatePages.map(([locale, href]) => <link rel="alternate" hreflang={locale} href={new URL(href!, pageUrl.origin)} />)}
+    {alternatePages.map(([locale, href]) => <link rel="alternate" hreflang={locale} href={canonicalPageUrl(href!, pageUrl.origin)} />)}
     <meta name="keywords" content="Multimedia Designer, Creative Developer, UX/UI Design, Portfolio, Editorial Design, Alejandro Delgado, Al3Design, Motion Design, Web Development" />
     <meta name="author" content="Alejandro Delgado" />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256" />

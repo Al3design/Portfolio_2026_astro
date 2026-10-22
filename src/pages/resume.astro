@@ -14,7 +14,7 @@ const projects = await getCollection('projects');
 function relatedProjects(experienceSlug: string): RelatedProjectLink[] {
   return projectSources.filter(item => item.metadata.experienceSlug === experienceSlug).flatMap(item => {
     const publicPage = projectIsPublished(item.slug) && item.metadata.showInPortfolio !== false;
-    if (!publicPage && !import.meta.env.DEV) return [];
+    if (!publicPage && import.meta.env.MODE !== 'development') return [];
     const language = projectLanguages(item.metadata).includes('en') ? 'en' : projectDefaultLanguage(item.metadata);
     const copy = localizedProject(item.metadata, language);
     return [{title: copy.title ?? item.slug, href: projectUrl(item.slug, item.metadata, language, !publicPage), draft: !publicPage}];
@@ -62,7 +62,7 @@ const exportMetadata = {
 };
 ---
 
-<MainLayout title={`Resume | ${pageData.title}`}>
+<MainLayout title={`Resume | Alejandro Delgado — ${pageData.title}`} description={`Professional experience, skills and education of Alejandro Delgado, ${pageData.title || 'Multimedia Designer'}${pageData.location ? ` based in ${pageData.location}` : ''}. Filter experience and download a tailored CV.`}>
   <ClientResume
     client:load
     jobs={jobs}

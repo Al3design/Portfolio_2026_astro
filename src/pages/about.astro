@@ -8,10 +8,9 @@ const [tinaProps, resumeProps] = await Promise.all([
   client.queries.pages({ relativePath: 'resume.mdx' }),
 ]);
 const location = (resumeProps.data.pages as { location?: string }).location?.trim();
-const title = (tinaProps.data.pages as any).title ?? 'About';
 ---
 
-<MainLayout title={`About | ${title}`}>
+<MainLayout title={`About Alejandro Delgado | Al3Design`} description={`${(tinaProps.data.pages as any).mission || 'Multimedia design across UX/UI, web development and 3D.'} Learn about Alejandro Delgado's work, tools and approach to design and implementation.`}>
   <ClientAbout
     client:load
     query={tinaProps.query}

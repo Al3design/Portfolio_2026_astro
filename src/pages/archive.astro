@@ -20,7 +20,7 @@ const projects = allProjects
   });
 ---
 
-<MainLayout title={`Archive | ${title}`}>
+<MainLayout title={`${title} | Al3Design`} description={(tinaProps.data.pages as any).subtitle || 'Browse published work by Alejandro Delgado across interface design, web development, 3D and animation.'}>
   <ClientArchive
     client:load
     projects={projects}

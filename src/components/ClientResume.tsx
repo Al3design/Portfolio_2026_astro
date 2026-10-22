@@ -59,12 +59,8 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
 
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTags, setActiveTags] = useState<string[]>([]);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => { setMounted(true); }, []);
-  // Cards mount after hydration; resolve incoming Resume anchors once they exist.
+  // Resolve incoming Resume anchors after the server-rendered cards hydrate.
   useEffect(() => {
-    if (!mounted) return;
     const revealExperience = () => {
       let id: string;
       try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
@@ -73,7 +69,7 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
     revealExperience();
     window.addEventListener('hashchange', revealExperience);
     return () => window.removeEventListener('hashchange', revealExperience);
-  }, [mounted]);
+  }, []);
 
   const availableTags = useMemo(() => {
     const tags = new Set<string>();
@@ -131,8 +127,6 @@ export default function ClientResume({ jobs, query, variables, data, exportData 
   };
 
   const downloadCustom = () => { window.print(); };
-
-  if (!mounted) return null;
 
   return (
     <div className="page-container">

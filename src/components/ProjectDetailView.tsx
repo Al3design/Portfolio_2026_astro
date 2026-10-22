@@ -1,5 +1,5 @@
 import { tinaField } from 'tinacms/dist/react';
-import { Database, ArrowRight, Code } from 'lucide-react';
+import { Database, ArrowRight, ChevronDown, Code } from 'lucide-react';
 import { Tag } from '@/components/UI';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -54,93 +54,85 @@ interface ProjectDetailViewProps {
 // One visual template for Tina-backed projects and local editorial drafts.
 export default function ProjectDetailView({ frontmatter, sharedFrontmatter, slug, headerNode, exportMenuNode, footerNode, heroBadge, imageAlt, labels, nextLink, children, exportData, experienceLink }: ProjectDetailViewProps) {
   const text = { ...defaultLabels, ...labels };
+  const status = <span
+    className={styles.projectDetail__status}
+    data-tina-field={tinaField(frontmatter, 'status')}
+  >{frontmatter.status || 'DEPLOYED'}</span>;
+  const projectInfo = <div className={styles.projectDetail__infoList}>
+    {([
+      ['role', text.role, frontmatter.role || 'Lead Designer'],
+      ['timeline', text.timeline, frontmatter.timeline || '12 Weeks'],
+      ['client', text.client, frontmatter.client || 'Nexus Financial'],
+    ] as const).map(([field, label, value]) => <div key={field} className={styles.projectDetail__infoItem}>
+      <span className={styles.projectDetail__infoItemKey}>{label}</span>
+      <span className={styles.projectDetail__infoItemVal} data-tina-field={tinaField(frontmatter, field)}>{value}</span>
+    </div>)}
+    {experienceLink && <a
+      className={`${styles.projectDetail__infoItem} ${styles.projectDetail__experienceLink}`}
+      href={experienceLink}
+      data-tina-field={tinaField(sharedFrontmatter ?? frontmatter, 'experienceSlug')}
+    >
+      <span className={styles.projectDetail__infoItemKey}>{text.experience}</span>
+      <span className={styles.projectDetail__infoItemVal}>{text.experienceDestination}<ArrowRight size={14} aria-hidden="true" /></span>
+    </a>}
+  </div>;
+  const exportMenu = exportMenuNode ?? (exportData && <MarkdownExportMenu {...exportData} />);
   return (
     <div className={styles.projectDetail}>
       <div className="page-container">
         {headerNode}
 
-        <div className={styles.projectDetail__breadcrumbRow}>
-          <Breadcrumb
-            paths={[
-              { name: text.projects, href: '/' },
-              ...(slug?.includes('/')
-                ? slug.split('/').slice(0, -1).map((s: string) => s.charAt(0).toUpperCase() + s.slice(1))
-                : []),
-              cleanTitle(frontmatter.title)
-            ]}
-          />
-          {exportMenuNode ?? (exportData && <MarkdownExportMenu {...exportData} />)}
+        <div className={styles.projectDetail__intro}>
+          <div className={styles.projectDetail__breadcrumbRow}>
+            <Breadcrumb
+              paths={[
+                { name: text.projects, href: '/' },
+                ...(slug?.includes('/')
+                  ? slug.split('/').slice(0, -1).map((s: string) => s.charAt(0).toUpperCase() + s.slice(1))
+                  : []),
+                cleanTitle(frontmatter.title)
+              ]}
+            />
+          </div>
+
+          {/* Header Section */}
+          <header className={styles.projectDetail__header}>
+            <div className={styles.projectDetail__headerInfo}>
+              <div
+                className={styles.projectDetail__typeTag}
+                data-tina-field={tinaField(frontmatter, 'type')}
+              >
+                <Database size={14} />
+                <span>{frontmatter.type}</span>
+              </div>
+              <h1
+                className={styles.projectDetail__title}
+                data-tina-field={tinaField(frontmatter, 'title')}
+              >
+                {formatTitle(frontmatter.title)}
+              </h1>
+            </div>
+
+            <div className={styles.projectDetail__sidebarHeader}>
+              <div className={`${styles.projectDetail__meta} ${styles.projectDetail__desktopMeta}`}>
+                <div className={styles.projectDetail__metaRow}>
+                  <span>{text.status}</span>
+                  {status}
+                </div>
+                {projectInfo}
+              </div>
+              <details className={styles.projectDetail__mobileMeta}>
+                <summary className={styles.projectDetail__metaSummary}>
+                  <span>{text.status}</span>
+                  {status}
+                  <ChevronDown size={16} aria-hidden="true" />
+                </summary>
+                {projectInfo}
+              </details>
+            </div>
+          </header>
+          {exportMenu && <div className={styles.projectDetail__export}>{exportMenu}</div>}
         </div>
-
-        {/* Header Section */}
-        <header className={styles.projectDetail__header}>
-          <div className={styles.projectDetail__headerInfo}>
-            <div
-              className={styles.projectDetail__typeTag}
-              data-tina-field={tinaField(frontmatter, 'type')}
-            >
-              <Database size={14} />
-              <span>{frontmatter.type}</span>
-            </div>
-            <h1
-              className={styles.projectDetail__title}
-              data-tina-field={tinaField(frontmatter, 'title')}
-            >
-              {formatTitle(frontmatter.title)}
-            </h1>
-          </div>
-
-          <div className={styles.projectDetail__sidebarHeader}>
-            <div className={styles.projectDetail__meta}>
-              <div className={styles.projectDetail__metaRow}>
-                <span>{text.status}</span>
-                <span
-                  className={styles.projectDetail__status}
-                  data-tina-field={tinaField(frontmatter, 'status')}
-                >
-                  {frontmatter.status || 'DEPLOYED'}
-                </span>
-              </div>
-              <div className={styles.projectDetail__infoList}>
-                <div className={styles.projectDetail__infoItem}>
-                  <span className={styles.projectDetail__infoItemKey}>{text.role}</span>
-                  <span
-                    className={styles.projectDetail__infoItemVal}
-                    data-tina-field={tinaField(frontmatter, 'role')}
-                  >
-                    {frontmatter.role || 'Lead Designer'}
-                  </span>
-                </div>
-                <div className={styles.projectDetail__infoItem}>
-                  <span className={styles.projectDetail__infoItemKey}>{text.timeline}</span>
-                  <span
-                    className={styles.projectDetail__infoItemVal}
-                    data-tina-field={tinaField(frontmatter, 'timeline')}
-                  >
-                    {frontmatter.timeline || '12 Weeks'}
-                  </span>
-                </div>
-                <div className={styles.projectDetail__infoItem}>
-                  <span className={styles.projectDetail__infoItemKey}>{text.client}</span>
-                  <span
-                    className={styles.projectDetail__infoItemVal}
-                    data-tina-field={tinaField(frontmatter, 'client')}
-                  >
-                    {frontmatter.client || 'Nexus Financial'}
-                  </span>
-                </div>
-                {experienceLink && <a
-                  className={`${styles.projectDetail__infoItem} ${styles.projectDetail__experienceLink}`}
-                  href={experienceLink}
-                  data-tina-field={tinaField(sharedFrontmatter ?? frontmatter, 'experienceSlug')}
-                >
-                  <span className={styles.projectDetail__infoItemKey}>{text.experience}</span>
-                  <span className={styles.projectDetail__infoItemVal}>{text.experienceDestination}<ArrowRight size={14} aria-hidden="true" /></span>
-                </a>}
-              </div>
-            </div>
-          </div>
-        </header>
 
         {/* Main Feature Image */}
         {frontmatter.image && (

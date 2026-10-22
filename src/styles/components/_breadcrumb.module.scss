@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 
 .breadcrumb {
-  display: flex;
+  display: none;
   align-items: flex-start;
   flex: 1 1 12rem;
   min-width: 0;
@@ -59,7 +59,8 @@
     color: semantic-color(brand-primary);
   }
 
-  @include mq(sm) {
+  @include mq(md) {
+    display: flex;
     align-items: center;
     gap: size(3);
     > svg { margin-top: 0; }

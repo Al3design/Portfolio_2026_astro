@@ -6,6 +6,11 @@
   margin-left: auto;
 }
 
+.wrapper--compact .triggerLabel {
+  display: none;
+  @include mq(md) { display: inline; }
+}
+
 .feedback {
   @include control-surface(0.99);
   @include control-edge;

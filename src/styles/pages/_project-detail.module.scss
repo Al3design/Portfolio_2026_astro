@@ -1,15 +1,50 @@
 @use "../abstracts" as *;
 
 .projectDetail {
+  &__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: size(6);
+    padding-top: size(8);
+    margin-bottom: size(8);
+
+    @include mq(md) {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0;
+      padding-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
   &__breadcrumbRow {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: size(4);
     align-items: flex-start;
-    @include mq(sm) { align-items: center; }
+    @include mq(md) {
+      display: flex;
+      align-items: center;
+      grid-column: 1;
+      grid-row: 1;
+    }
     justify-content: space-between;
     padding-top: size(20);
     padding-bottom: size(8);
+  }
+
+  &__export {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 0;
+
+    @include mq(md) {
+      align-items: center;
+      grid-column: 2;
+      grid-row: 1;
+      padding-top: size(20);
+      padding-bottom: size(8);
+      padding-inline-start: size(4);
+    }
   }
 
   position: relative;
@@ -79,9 +114,17 @@
 
   &__header {
     display: grid;
-    gap: size(12);
-    margin-bottom: size(20);
+    gap: size(6);
+    margin-bottom: 0;
     align-items: end;
+    min-width: 0;
+
+    @include mq(md) {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      gap: size(12);
+      margin-bottom: size(20);
+    }
 
     @include mq(lg) {
       grid-template-columns: repeat(12, 1fr);
@@ -142,6 +185,49 @@
     flex-direction: column;
     gap: size(6);
     border-radius: radius(soft);
+  }
+
+  &__desktopMeta {
+    display: none;
+    @include mq(md) { display: flex; }
+  }
+
+  &__mobileMeta {
+    @include control-surface($focus-within: true);
+    @include control-edge;
+    min-width: 0;
+
+    @include mq(md) { display: none; }
+
+    > .projectDetail__infoList { padding: 0 size(4) size(4); }
+    .projectDetail__infoItem { gap: size(4); }
+    .projectDetail__infoItemVal { min-width: 0; overflow-wrap: anywhere; }
+    &[open] > summary > svg { transform: rotate(180deg); }
+  }
+
+  &__metaSummary {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: size(3);
+    min-height: size(12);
+    padding: size(3) size(4);
+    color: semantic-color(brand-on-surface-variant);
+    font-family: semantic-font(mono);
+    font-size: fs('100');
+    font-weight: fw(bold);
+    letter-spacing: ls(wide);
+    text-transform: uppercase;
+    list-style: none;
+    cursor: pointer;
+
+    &::-webkit-details-marker { display: none; }
+    > .projectDetail__status { justify-self: end; min-width: 0; overflow-wrap: anywhere; }
+    &:focus-visible {
+      outline: 2px solid semantic-color(brand-primary);
+      outline-offset: -2px;
+      border-radius: radius(soft);
+    }
   }
 
   &__metaRow {

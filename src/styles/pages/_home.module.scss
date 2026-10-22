@@ -7,15 +7,17 @@
   }
 
   &__breadcrumbRow {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: size(4);
-    @include mq(sm) { align-items: center; }
+    @include mq(md) { display: flex; align-items: center; }
     justify-content: space-between;
     padding-top: size(20);
     padding-bottom: size(8);
   }
+
+  &__desktopExport { margin-inline-start: auto; }
 
   &__title {
     @include page-title;
@@ -67,6 +69,7 @@
   &__mobileControls {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: size(3);
@@ -77,6 +80,7 @@
   &__mobileLayouts {
     display: flex;
     gap: size(2);
+    margin-inline-start: auto;
   }
 
   &__mobileFilters {

@@ -167,7 +167,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
       <section className={styles.home__hero}>
         <div className={styles.home__breadcrumbRow}>
           <Breadcrumb paths={['projects']} />
-          {exportData && <MarkdownExportMenu {...exportData} />}
+          {exportData && <div className={styles.home__desktopExport}><MarkdownExportMenu {...exportData} /></div>}
         </div>
 
         <h1
@@ -213,6 +213,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
                 {filterTags()}
               </div>
             </details>
+            {exportData && <MarkdownExportMenu {...exportData} compact />}
             <div className={styles.home__mobileLayouts} role="group" aria-label="Project layout">
               <button type="button" className={styles.home__mobileControl} aria-label="Cards" title="Cards" aria-pressed={layout === 'cards'} onClick={() => selectLayout('cards')}>
                 <LayoutGrid size={18} aria-hidden="true" />

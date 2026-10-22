@@ -10,12 +10,14 @@ interface MarkdownExportMenuProps {
   content: string;
   metadata: Record<string, unknown>;
   filename: string;
+  compact?: boolean;
 }
 
 export default function MarkdownExportMenu({
   content,
   metadata,
   filename,
+  compact = false,
 }: MarkdownExportMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -89,24 +91,24 @@ export default function MarkdownExportMenu({
   };
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef}>
+    <div className={clsx(styles.wrapper, compact && styles['wrapper--compact'])} ref={wrapperRef}>
       {copyFailed && <p className={styles.feedback} role="status">Could not copy. Use “Download .md” in the export menu.</p>}
       <div className={styles.trigger}>
         <button
           type="button"
           className={styles.triggerMain}
           onClick={handleCopy}
-          aria-label="Copy page as Markdown"
+          aria-label={copied ? 'Copied!' : 'Copy page as Markdown'}
         >
           {copied ? (
             <>
               <Check size={12} />
-              Copied!
+              <span className={styles.triggerLabel}>Copied!</span>
             </>
           ) : (
             <>
               <Copy size={12} />
-              Copy page
+              <span className={styles.triggerLabel}>Copy page</span>
             </>
           )}
         </button>

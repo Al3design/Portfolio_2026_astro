@@ -11,6 +11,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { cleanTitle } from '@/helpers/text-helpers';
 import { canonicalPageUrl } from '@/lib/site-seo';
+import { socialImageDetails } from '@/lib/social-images';
 import type { SiteSection, SiteLanguage, SiteLanguageLinks } from '@/lib/site-navigation';
 
 const footerEntry = await getEntry('global', 'footer');
@@ -42,7 +43,8 @@ const {
 } = Astro.props;
 const pageUrl = canonicalPageUrl(Astro.url.pathname, Astro.site ?? 'https://al3design.dev');
 const metaTitle = cleanTitle(title).replace(/\s+/g, ' ');
-const socialImageUrl = new URL(socialImage, noIndex ? Astro.url.origin : pageUrl.origin);
+const shareImage = socialImageDetails(socialImage, socialImageAlt, language);
+const socialImageUrl = new URL(shareImage.path, noIndex ? Astro.url.origin : pageUrl.origin);
 const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter(([, href]) => !!href && !href.startsWith('/revision/'));
 ---
 <html lang={language}>
@@ -78,14 +80,17 @@ const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter
     <meta property="og:title" content={metaTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageUrl} />
-    <meta property="og:image:alt" content={socialImageAlt} />
+    <meta property="og:image:alt" content={shareImage.alt} />
+    {shareImage.width && <meta property="og:image:width" content={shareImage.width} />}
+    {shareImage.height && <meta property="og:image:height" content={shareImage.height} />}
+    {shareImage.type && <meta property="og:image:type" content={shareImage.type} />}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={metaTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageUrl} />
-    <meta name="twitter:image:alt" content={socialImageAlt} />
+    <meta name="twitter:image:alt" content={shareImage.alt} />
 
     <style is:global>
       :root {

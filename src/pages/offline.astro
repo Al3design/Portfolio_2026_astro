@@ -1,0 +1,70 @@
+---
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import offlineStyles from '@/styles/pages/offline-document.scss?inline';
+
+// Embed the existing fonts at build time: the fallback needs no asset requests.
+const require = createRequire(import.meta.url);
+const fontFaces = [
+  ['Inter', 400, '@fontsource/inter/files/inter-latin-400-normal.woff2'],
+  ['Inter', 600, '@fontsource/inter/files/inter-latin-600-normal.woff2'],
+  ['Roboto Mono', 400, '@fontsource/roboto-mono/files/roboto-mono-latin-400-normal.woff2'],
+].map(([family, weight, path]) => {
+  const data = readFileSync(require.resolve(String(path))).toString('base64');
+  return `@font-face{font-family:"${family}";font-style:normal;font-weight:${weight};font-display:swap;src:url(data:font/woff2;base64,${data}) format("woff2")}`;
+}).join('');
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="Revisá tu conexión para seguir explorando el portfolio de Al3Design." />
+    <title>Sin conexión | Al3Design</title>
+    <style is:inline set:html={fontFaces + offlineStyles}></style>
+    <script is:inline>
+      try {
+        if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');
+      } catch { /* The default theme also works when storage is unavailable. */ }
+    </script>
+  </head>
+  <body class="offline">
+    <header class="offline__header">
+      <a class="offline__brand" href="/" aria-label="Al3Design, inicio">Al3<span>Design</span><span aria-hidden="true">.</span></a>
+      <span class="offline__label">PORTFOLIO / ALEJANDRO DELGADO</span>
+    </header>
+    <main class="offline__main" id="main-content">
+      <div>
+        <p class="offline__eyebrow"># CONEXIÓN INTERRUMPIDA</p>
+        <h1 class="offline__title">Sin<br /><span>conexión.</span></h1>
+        <p class="offline__description">No pudimos cargar esta página. Revisá tu conexión y volvé a intentarlo para seguir explorando.</p>
+        <div class="offline__actions">
+          <button class="offline__retry" type="button" id="retry">REINTENTAR <span aria-hidden="true">↗</span></button>
+          <a class="offline__home" href="/">IR AL INICIO <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <aside class="offline__panel" aria-label="Estado de conexión">
+        <svg class="offline__icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m2 2 20 20M8.5 16.5a5 5 0 0 1 7 0M2 8.8a16 16 0 0 1 2.5-1.7M8.5 5.9A16 16 0 0 1 22 8.8M5 12a11 11 0 0 1 2.7-1.6M12 9.5a11 11 0 0 1 7 2.5M12 20h.01" />
+        </svg>
+        <p class="offline__code"><span>conexión</span> = "interrumpida";</p>
+        <p class="offline__status" id="connection-status" role="status">El portfolio te espera. Volvé a intentarlo cuando tengas conexión.</p>
+      </aside>
+    </main>
+    <footer class="offline__footer">Al3Design <span aria-hidden="true">/</span> Diseño, código y otras conexiones.</footer>
+    <script is:inline>
+      document.getElementById('retry').addEventListener('click', () => {
+        // A fallback retains the failed URL; a direct preview returns home.
+        if (/^\/offline\/?$/.test(window.location.pathname)) window.location.assign('/');
+        else window.location.reload();
+      });
+      window.addEventListener('online', () => {
+        document.getElementById('connection-status').textContent = 'Tu dispositivo volvió a conectarse. Reintentá para cargar la página.';
+      });
+      window.addEventListener('offline', () => {
+        document.getElementById('connection-status').textContent = 'El portfolio te espera. Volvé a intentarlo cuando tengas conexión.';
+      });
+    </script>
+  </body>
+</html>

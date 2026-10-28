@@ -1,0 +1,4 @@
+// The offline document embeds its own base styles; regular pages use MainLayout.
+@use '../base/reset';
+@use '../base/globals';
+@use 'offline';

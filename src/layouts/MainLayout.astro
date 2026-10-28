@@ -133,6 +133,19 @@ const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter
     />
 
     <script>
+      // Install only on the published site; keep Tina/local development untouched.
+      if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+        const registerOffline = () => {
+          navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' }).catch((error) => {
+            console.warn('Offline fallback could not be installed.', error);
+          });
+        };
+        if (document.readyState === 'complete') registerOffline();
+        else window.addEventListener('load', registerOffline, { once: true });
+      }
+    </script>
+
+    <script>
       import { setupEnergyGridPointer } from '@/lib/energy-grid-pointer';
       import { setupHexagonalGridPointer } from '@/lib/hexagonal-grid-pointer';
 

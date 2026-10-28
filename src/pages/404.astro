@@ -1,0 +1,30 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import '@/styles/pages/offline.scss';
+---
+
+<MainLayout
+  title="Página no encontrada | Al3Design"
+  description="La página que buscás no existe o cambió de dirección. Volvé al portfolio de Alejandro Delgado."
+  language="es"
+  noIndex
+>
+  <section class="offline__main offline__main--with-topbar" aria-labelledby="not-found-title">
+    <div>
+      <p class="offline__eyebrow"># ERROR 404 / PÁGINA NO ENCONTRADA</p>
+      <h1 class="offline__title" id="not-found-title">Nada<br /><span>por acá.</span></h1>
+      <p class="offline__description">La página que buscás no existe o cambió de dirección. Podés volver al inicio o explorar los proyectos del portfolio.</p>
+      <div class="offline__actions">
+        <a class="offline__retry" href="/">VOLVER AL INICIO <span aria-hidden="true">↗</span></a>
+        <a class="offline__home" href="/archive/">EXPLORAR PROYECTOS <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <aside class="offline__panel" aria-label="Página no encontrada">
+      <svg class="offline__icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z M14 2v6h6 M9.5 13a2.5 2.5 0 0 1 5 .5c0 1.5-2.5 1.5-2.5 3 M12 19h.01" />
+      </svg>
+      <p class="offline__code"><span>página</span> = "no encontrada";</p>
+      <p class="offline__status">Hay más ideas para descubrir. Sigamos por otro camino.</p>
+    </aside>
+  </section>
+</MainLayout>

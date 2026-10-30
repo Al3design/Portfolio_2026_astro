@@ -1,0 +1,84 @@
+{
+  "title": "Soporte para control · Creeper",
+  "status": "draft",
+  "category": "desk",
+  "productionMode": "mixed",
+  "productionNotes": "Impresión en PLA. Stock y pedidos; colores a consultar. Confirmar disponibilidad y entrega antes de responder. Se entrega solo el soporte; comprobar compatibilidad según el control.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Apoyalo sobre una superficie estable y comprobá que el control ajuste bien.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Place on a stable surface and check that your controller fits securely."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Soporte para control · Creeper",
+      "description": "Un soporte de PLA con cara pixelada para apoyar tu control. Consultá la compatibilidad con tu modelo. El control no está incluido."
+    },
+    "en": {
+      "title": "Controller stand · Creeper",
+      "description": "A PLA stand with a pixelated face for your controller. Ask about compatibility with your model. The controller is not included."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-b24d78b3-1df5-4e3c-bde7-8cfee9b20362.jpg",
+      "kind": "photo",
+      "altEs": "Control blanco de Xbox apoyado en un soporte verde con cara pixelada negra y blanca.",
+      "altEn": "White Xbox controller resting on a green stand with a black and white pixelated face."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-4fe453a6-e887-496c-83f3-de06c2145154.jpg",
+      "kind": "photo",
+      "altEs": "Soporte verde con cara pixelada, fotografiado sin el control.",
+      "altEn": "Green stand with a pixelated face, photographed without the controller."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-0dd34c4b-7218-41fa-848d-2b8967f36d54.jpg",
+      "kind": "photo",
+      "altEs": "Vista lateral del soporte verde y su superficie superior curva.",
+      "altEn": "Side view of the green stand and its curved upper surface."
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#75b82a",
+      "es": "Verde lima",
+      "en": "Lime green"
+    },
+    {
+      "hex": "#f3f0e9",
+      "es": "Blanco",
+      "en": "White"
+    },
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    }
+  ]
+}

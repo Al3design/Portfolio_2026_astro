@@ -1,0 +1,67 @@
+{
+  "title": "Maceta acanalada con plato",
+  "status": "draft",
+  "category": "home",
+  "productionMode": "mixed",
+  "productionNotes": "Impresión en PLA. Stock y pedidos; colores a consultar. Confirmar disponibilidad y entrega antes de responder.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Consultá si tiene drenaje antes de plantar directamente.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Ask about drainage before planting directly."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Maceta acanalada con plato",
+      "description": "Una maceta de PLA con forma redondeada y relieve en espiral. Consultá por los colores disponibles."
+    },
+    "en": {
+      "title": "Ribbed planter with saucer",
+      "description": "A rounded PLA planter with spiral ribs. Ask about available colours."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-7580cd8b-65bd-44e9-bef2-df8ea478313b.jpg",
+      "kind": "photo",
+      "altEs": "Maceta beige de relieve acanalado en espiral apoyada sobre un plato oscuro.",
+      "altEn": "Beige planter with spiral ribs resting on a dark saucer."
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#d6bb92",
+      "es": "Beige",
+      "en": "Beige"
+    },
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    }
+  ]
+}

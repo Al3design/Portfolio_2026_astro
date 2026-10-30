@@ -4,6 +4,7 @@ import { PROJECT_CATEGORIES } from "../src/lib/categories";
 import { articleBlockTemplates } from './article-blocks';
 import { articleLocaleFields } from './article-locales';
 import { projectEditorRoute, localEditorHostname } from '../src/lib/project-editor-route';
+import { shopProductCollection } from './shop-products';
 
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -29,6 +30,7 @@ export default defineConfig({
   },
   schema: {
     collections: [
+      shopProductCollection,
       // ─── PROJECTS ──────────────────────────────────────────────────────────
       {
         name: "projects",

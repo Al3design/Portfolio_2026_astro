@@ -1,0 +1,84 @@
+{
+  "title": "Maceta con forma de perro",
+  "status": "draft",
+  "category": "home",
+  "productionMode": "mixed",
+  "productionNotes": "Impresión en PLA. Stock y pedidos; colores a consultar. Confirmar disponibilidad y entrega antes de responder.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Consultá si tiene drenaje antes de plantar directamente.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Ask about drainage before planting directly."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Maceta con forma de perro",
+      "description": "Una maceta de PLA con forma de perro y un pequeño recipiente en la parte de atrás."
+    },
+    "en": {
+      "title": "Dog-shaped planter",
+      "description": "A dog-shaped PLA planter with a small container at the back."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-84353a6d-01e6-42e2-b19b-e7a5a9349975.jpg",
+      "kind": "photo",
+      "altEs": "Maceta con forma de perro beige vista en diagonal sobre una mesa.",
+      "altEn": "Diagonal view of a beige dog-shaped planter on a table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-af378ade-0e85-4dca-9467-b168edde7f97.jpg",
+      "kind": "photo",
+      "altEs": "Maceta con forma de perro beige vista de perfil, con recipiente en la espalda.",
+      "altEn": "Side view of a beige dog-shaped planter with a container on its back."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-a082e1bc-2689-4869-8019-06ade5d11c6f.jpg",
+      "kind": "photo",
+      "altEs": "Vista frontal de una maceta con forma de perro beige, ojos y nariz negros y lengua roja.",
+      "altEn": "Front view of a beige dog-shaped planter with black eyes and nose and a red tongue."
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#d94443",
+      "es": "Rojo",
+      "en": "Red"
+    },
+    {
+      "hex": "#d6bb92",
+      "es": "Beige",
+      "en": "Beige"
+    },
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    }
+  ]
+}

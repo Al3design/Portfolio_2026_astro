@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import MainLayout from './MainLayout.astro';
+import ShopPalette from '../editorial/ShopPalette.astro';
+import { shopCatalogue, shopPieceUrl, shopCollectionUrl, type ShopCatalogueProduct } from '@/lib/shop-catalogue';
+import { bambuFilamentColours } from '@/lib/shop-colours';
+import { shopEditorialDetailKeys, shopEditorialDetailLabels } from '@/lib/shop-editorial';
+import { shopInquiryUrl } from '@/lib/shop-inquiry';
+import ShopWhatsAppLink from '@/components/ShopWhatsAppLink.astro';
+import ShopShare from '@/components/ShopShare.astro';
+import { shopSocialImage } from '@/lib/shop-social-image';
+import { shopOrigin } from '@/lib/shop-origin';
+import { shopRoutes, type ShopLanguage } from '@/data/shop-demo';
+import styles from '@/styles/pages/_shop-review.module.scss';
+import shopStyles from '@/styles/pages/_shop.module.scss';
+import ShopCollection from '@/components/ShopCollection.astro';
+
+interface Props { language: ShopLanguage; product?: ShopCatalogueProduct }
+const { language, product } = Astro.props;
+const en = language === 'en';
+const products = product ? [] : await shopCatalogue();
+const socialPhoto = product ? await shopSocialImage(product.photos[0].image) : undefined;
+const shareUrl = new URL(Astro.url.pathname, shopOrigin(Astro.site!, Astro.url)).href;
+const home = shopRoutes[language];
+const collection = shopCollectionUrl(language);
+const title = en ? 'Printed pieces' : 'Piezas impresas';
+const price = en ? 'Price on enquiry' : 'Precio a consultar';
+const delivery = en ? 'Subject to stock; to be confirmed.' : 'Según stock y a confirmar.';
+const included = en ? 'Only the 3D print is included. Other items in the photos are decorative and are not included.' : 'Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.';
+const intro = en ? 'PLA prints for your home and desk. Find a piece you like and ask about colours and availability.' : 'Piezas de PLA para tu casa y tu escritorio. Elegí la que te guste y consultá colores y disponibilidad.';
+const categories = { home: en ? 'Home & decor' : 'Hogar y deco', desk: en ? 'Desk' : 'Escritorio', organization: en ? 'Organization' : 'Organización', design: en ? 'Design objects' : 'Objetos de diseño' };
+---
+<MainLayout section="shop" language={language} noIndex
+  title={`${product ? product.title[language] : title} · Store 3D · Al3Design`}
+  description={product ? product.description[language] : intro}
+  socialImage={socialPhoto ? new URL(socialPhoto.src, shareUrl).href : undefined}
+  socialImageAlt={product?.photos[0].alt[language]}
+  socialImageMeta={socialPhoto ? { width: 1200, height: 630, type: 'image/jpeg' } : undefined}
+  socialPageUrl={shareUrl}
+  languageLinks={{ es: product ? shopPieceUrl(product.slug, 'es') : shopCollectionUrl('es'), en: product ? shopPieceUrl(product.slug, 'en') : shopCollectionUrl('en') }}
+  shopCollectionHref={collection}
+  shopNotice={en ? 'Real prints · price on enquiry · delivery subject to stock and confirmation' : 'Impresiones reales · precio a consultar · entrega según stock y a confirmar'}
+>
+  <div class={product ? styles.main : `page-container ${shopStyles.shop}`}>
+    {product ? <>
+      <a class={styles.action} href={`${collection}#${product.slug}`}>← {en ? 'Back to all pieces' : 'Volver a todas las piezas'}</a>
+      <header class={styles.intro}>
+        {product.category && <p class={styles.meta}>{categories[product.category]}</p>}
+        <h1>{product.title[language]}</h1>
+        <p>{product.description[language]}</p>
+      </header>
+      <section aria-labelledby="piece-photos">
+        <h2 id="piece-photos">{en ? 'Photos of the print' : 'Fotos de la impresión'}</h2>
+        <div class={styles.gallery}>
+          {product.photos.map((photo, index) => <figure>
+            <Image src={photo.image} alt={photo.alt[language]} format="webp" widths={[480, 800, 1200]} sizes="(min-width: 900px) 50vw, 100vw" width={1200} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <figcaption>{photo.alt[language]}</figcaption>
+          </figure>)}
+        </div>
+      </section>
+      <div class={styles.intro}>
+        <ShopPalette colours={product.palette} legacyColours={product.photographedColours} references={bambuFilamentColours} language={language} />
+        <p><strong>{price}</strong> · {delivery}</p>
+        <p>{included}</p>
+        <div class={styles.inquiry}>
+          <ShopWhatsAppLink href={shopInquiryUrl(product.title[language], language)} describedBy="inquiry-note">
+            {en ? 'Enquire about this piece on WhatsApp' : 'Consultar esta pieza por WhatsApp'} ↗
+          </ShopWhatsAppLink>
+          <p id="inquiry-note">{en ? 'Review the prepared message before sending. Your enquiry does not reserve stock or confirm a purchase.' : 'Revisá el mensaje preparado antes de enviarlo. La consulta no reserva stock ni confirma una compra.'}</p>
+        </div>
+      </div>
+      <section class={styles.fields} aria-labelledby="piece-details">
+        <h2 id="piece-details">{en ? 'About this piece' : 'Sobre esta pieza'}</h2>
+        <dl>{shopEditorialDetailKeys.filter(key => !['price', 'deliveryTime', 'included'].includes(key) && (key !== 'dimensions' || product.details.dimensions?.[language])).map(key => <div>
+          <dt>{shopEditorialDetailLabels[language][key]}</dt>
+          <dd>{product.details[key]?.[language] || (en ? 'To confirm' : 'Por confirmar')}</dd>
+        </div>)}</dl>
+      </section>
+      <ShopShare title={product.title[language]} url={shareUrl} language={language} />
+    </> : <>
+      <header class={shopStyles.shop__sectionHeading}>
+        <div><a class={shopStyles.shop__pieceAction} href={`${home}#collection`}>← {en ? 'Back to the shop' : 'Volver a la tienda'}</a><h1 class={shopStyles.shop__catalogueTitle}>{title}</h1><p class={shopStyles.shop__intro}>{intro}</p></div>
+      </header>
+      <section id="collection" aria-label={en ? 'Collection' : 'Colección'}>
+        <ShopCollection products={products} language={language} />
+      </section>
+      <section id="custom" class={styles.footer} aria-labelledby="custom-title">
+        <h2 id="custom-title">{en ? 'Have another idea?' : '¿Tenés otra idea?'}</h2>
+        <p>{en ? 'Ask about printing a different piece. Colours, availability and delivery are confirmed individually.' : 'Consultá por la impresión de otra pieza. Colores, disponibilidad y entrega se confirman en cada caso.'}</p>
+        <p>{delivery} {included}</p>
+        <div class={styles.inquiry}>
+          <ShopWhatsAppLink href={shopInquiryUrl(en ? 'a custom print' : 'una impresión a medida', language)}>{en ? 'Enquire on WhatsApp' : 'Consultar por WhatsApp'} ↗</ShopWhatsAppLink>
+        </div>
+      </section>
+    </>}
+  </div>
+</MainLayout>

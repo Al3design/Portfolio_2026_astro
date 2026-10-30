@@ -1,0 +1,89 @@
+{
+  "title": "Figura articulada verde y roja",
+  "status": "draft",
+  "category": "design",
+  "productionMode": "mixed",
+  "productionNotes": "Impresión en PLA. Stock y pedidos; colores a consultar. Confirmar disponibilidad y entrega antes de responder.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Mové las articulaciones con suavidad, sin forzarlas.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Move the joints gently without forcing them."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Figura articulada verde y roja",
+      "description": "Una figura de PLA con cuerpo articulado, detalles rojos y ojos grandes."
+    },
+    "en": {
+      "title": "Green and red articulated figure",
+      "description": "A PLA figure with an articulated body, red details and large eyes."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261013_191245.jpg",
+      "kind": "photo",
+      "altEs": "Vista frontal de una figura verde y roja con grandes ojos blancos y negros y cuerpo segmentado.",
+      "altEn": "Front view of a green and red figure with large black and white eyes and a segmented body."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261013_191215.jpg",
+      "kind": "photo",
+      "altEs": "Figura articulada verde y roja vista en diagonal sobre una mesa blanca.",
+      "altEn": "Diagonal view of a green and red articulated figure on a white table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261013_191137.jpg",
+      "kind": "photo",
+      "altEs": "Vista lateral del cuerpo segmentado de la figura verde y roja junto a un bolígrafo azul.",
+      "altEn": "Side view of the segmented green and red figure beside a blue pen."
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#39834b",
+      "es": "Verde",
+      "en": "Green"
+    },
+    {
+      "hex": "#d94443",
+      "es": "Rojo",
+      "en": "Red"
+    },
+    {
+      "hex": "#f3f0e9",
+      "es": "Blanco",
+      "en": "White"
+    },
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    }
+  ]
+}

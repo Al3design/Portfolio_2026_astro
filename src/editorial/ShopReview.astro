@@ -1,0 +1,141 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import ShopPalette from './ShopPalette.astro';
+import styles from '@/styles/pages/_shop-review.module.scss';
+import shopStyles from '@/styles/pages/_shop.module.scss';
+import { shopReviewDrafts, shopReviewPhoto, shopReviewFilamentColours } from '@/lib/shop-review';
+import { shopEditorialDetailKeys, shopEditorialDetailLabels } from '@/lib/shop-editorial';
+import { shopRoutes, type ShopLanguage } from '@/data/shop-demo';
+import { shopInquiryUrl } from '@/lib/shop-inquiry';
+import ShopWhatsAppLink from '@/components/ShopWhatsAppLink.astro';
+
+if (import.meta.env.MODE !== 'development') return new Response(null, { status: 404 });
+interface Props { language?: ShopLanguage; slug?: string; storefrontPreview?: boolean }
+const { language = Astro.params.language, slug = Astro.params.slug, storefrontPreview = false } = Astro.props;
+if (language !== 'es' && language !== 'en') return new Response(null, { status: 404 });
+Astro.response.headers.set('Cache-Control', 'no-store');
+const [drafts, filamentColours] = await Promise.all([shopReviewDrafts(), shopReviewFilamentColours()]);
+const selected = slug ? drafts.find(item => item.slug === slug) : undefined;
+if (slug && !selected) return new Response(null, { status: 404 });
+const en = language === 'en';
+const categoryLabels = {
+  home: en ? 'Home & decor' : 'Hogar y deco',
+  desk: en ? 'Desk' : 'Escritorio',
+  organization: en ? 'Organization' : 'Organización',
+  design: en ? 'Design objects' : 'Objetos de diseño',
+};
+const t = en ? {
+  title: 'Printed pieces', review: 'Store 3D / Local review', draft: 'Draft', pending: 'To confirm',
+  intro: 'Photos of real prints and working descriptions. Review each piece before including it in the collection.',
+  back: 'Back to all pieces', photos: 'Photos of the print',
+  fields: 'Object and delivery details', notes: 'Internal notes',
+  editor: 'Open Tina editor', photoPending: 'Photo pending', original: 'Open original photo',
+  noSale: 'Editorial review. Sales are not enabled for these pieces.',
+  empty: 'No saved drafts yet.', noDescription: 'Description pending.',
+  updated: 'After saving in Tina, reload this page to see the saved content.',
+  status: 'Editorial status', reviewStatus: 'For review',
+} : {
+  title: 'Piezas impresas', review: 'Store 3D / Revisión local', draft: 'Borrador', pending: 'Por confirmar',
+  intro: 'Fotos de impresiones reales y descripciones en preparación. Revisá cada pieza antes de incorporarla a la colección.',
+  back: 'Volver a todas las piezas', photos: 'Fotos de la impresión',
+  fields: 'Datos de la pieza y entrega', notes: 'Notas internas',
+  editor: 'Abrir editor Tina', photoPending: 'Foto pendiente', original: 'Abrir foto original',
+  noSale: 'Revisión editorial. Estas piezas no tienen venta habilitada.',
+  empty: 'Todavía no hay borradores guardados.', noDescription: 'Descripción pendiente.',
+  updated: 'Después de guardar en Tina, recargá esta página para ver el contenido guardado.',
+  status: 'Estado editorial', reviewStatus: 'Para revisar',
+};
+const titleFor = (product: typeof drafts[number]['product']) => product.locales?.[language]?.title?.trim() || t.pending;
+const detailUrl = (id: string, locale: ShopLanguage = language) => storefrontPreview
+  ? `${shopRoutes[locale]}?catalog=real&piece=${encodeURIComponent(id)}`
+  : `/revision/tienda/${locale}/${id}`;
+const collectionLink = (locale: ShopLanguage) => storefrontPreview ? `${shopRoutes[locale]}?catalog=real` : `/revision/tienda/${locale}/`;
+const collectionUrl = collectionLink(language);
+const editorUrl = selected
+  ? `/admin/index.html#/collections/edit/shopProduct/${encodeURIComponent(selected.slug)}`
+  : '/admin/index.html#/collections/shopProduct/~';
+---
+<MainLayout
+  section="shop" language={language} noIndex analytics={false}
+  title={`${selected ? titleFor(selected.product) : t.title} · Store 3D · ${t.draft}`}
+  description={t.intro}
+  languageLinks={{ es: slug ? detailUrl(slug, 'es') : collectionLink('es'), en: slug ? detailUrl(slug, 'en') : collectionLink('en') }}
+  shopCollectionHref={`${collectionUrl}#collection`}
+  shopNotice={en ? 'Local review · photos of real prints · sales not enabled' : 'Revisión local · fotos de impresiones reales · venta no habilitada'}
+>
+    <div id="collection" class={styles.main}>
+      {selected ? <>
+        <a class={styles.action} href={`${collectionUrl}#${selected.slug}`}>← {t.back}</a>
+        <header class={styles.intro}>
+          <p class={styles.meta}>{t.draft}</p>
+          <h1>{titleFor(selected.product)}</h1>
+          <p>{selected.product.locales?.[language]?.description?.trim() || t.noDescription}</p>
+        </header>
+        <section aria-labelledby="review-photos">
+          <h2 id="review-photos">{t.photos}</h2>
+          <div class={styles.gallery}>
+            {(selected.product.photos ?? []).map((photo, index) => {
+              const media = shopReviewPhoto(photo.sourcePath);
+              const alt = (en ? photo.altEn : photo.altEs)?.trim();
+              return media ? <figure>
+                <a href={media.url} aria-label={`${t.original} ${index + 1}`}>
+                  <img src={media.url} alt={alt || t.photoPending} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+                </a>
+                <figcaption>{(en ? photo.captionEn : photo.captionEs) || alt || t.photoPending}</figcaption>
+              </figure> : null;
+            })}
+          </div>
+          {!(selected.product.photos ?? []).some(photo => shopReviewPhoto(photo.sourcePath)) && <p>{t.photoPending}</p>}
+        </section>
+        <div class={styles.intro}>
+          <ShopPalette colours={selected.product.palette} legacyColours={selected.product.photographedColours} references={filamentColours} language={language} />
+          <div class={styles.inquiry}>
+            <ShopWhatsAppLink href={shopInquiryUrl(titleFor(selected.product), language)} describedBy="inquiry-note">
+              {en ? 'Enquire about this piece on WhatsApp' : 'Consultar esta pieza por WhatsApp'} ↗
+            </ShopWhatsAppLink>
+            <p id="inquiry-note">{en
+              ? 'Opens WhatsApp in a new tab with a prepared message. Review it before sending. This enquiry does not reserve stock or confirm a purchase.'
+              : 'Abre WhatsApp en otra pestaña con un mensaje preparado. Revisalo antes de enviarlo. La consulta no reserva stock ni confirma una compra.'}</p>
+          </div>
+        </div>
+        <section aria-labelledby="review-fields" class={styles.fields}>
+          <h2 id="review-fields">{t.fields}</h2>
+          <dl>{shopEditorialDetailKeys.filter(key => key !== 'dimensions' || selected.product.details?.dimensions?.[language]?.trim()).map(key => <div>
+            <dt>{shopEditorialDetailLabels[language][key]}</dt>
+            <dd>{selected.product.details?.[key]?.[language]?.trim() || t.pending}</dd>
+          </div>)}</dl>
+        </section>
+        <details class={styles.notes}>
+          <summary>{t.notes}</summary>
+          <p>{t.status}: {selected.product.status === 'review' ? t.reviewStatus : t.draft}</p>
+          <p lang="es">{selected.product.productionNotes}</p>
+        </details>
+      </> : <>
+        <header class={styles.intro}><p class={styles.meta}>{t.draft}</p><h1>{t.title}</h1><p>{t.intro}</p></header>
+        <div class={shopStyles.shop__products}>
+          {drafts.map(({ slug: id, product }) => {
+            const photo = product.photos?.find(item => shopReviewPhoto(item.sourcePath));
+            const media = shopReviewPhoto(photo?.sourcePath);
+            return <article id={id} class={`${shopStyles.shop__product} ${styles.product}`}>
+              <a class={styles.productLink} href={detailUrl(id)} aria-label={`${en ? 'View piece' : 'Ver pieza'}: ${titleFor(product)}`}>
+                <div class={styles.productImage}>
+                  {media ? <img src={media.url} alt="" loading="lazy" decoding="async" /> : <span>{t.photoPending}</span>}
+                  {media && <span class={shopStyles.shop__imageTag}>{en ? 'Real print' : 'Impresión real'}</span>}
+                </div>
+                <h2>{titleFor(product)}</h2>
+                {product.category && <p class={styles.productCategory}>{categoryLabels[product.category]}</p>}
+                <ShopPalette colours={product.palette} legacyColours={product.photographedColours} references={filamentColours} language={language} compact />
+                <span class={styles.productAction}>{en ? 'View piece' : 'Ver pieza'} ↗</span>
+              </a>
+            </article>;
+          })}
+        </div>
+        {!drafts.length && <p>{t.empty}</p>}
+      </>}
+      <aside class={styles.footer} aria-label={t.review}>
+        <p>{t.noSale}</p>
+        <a class={styles.action} href={editorUrl}>{t.editor}</a>
+        <p>{t.updated}</p>
+      </aside>
+    </div>
+</MainLayout>

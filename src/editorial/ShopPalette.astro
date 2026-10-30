@@ -1,0 +1,22 @@
+---
+import { resolveShopPalette, shopSwatchGradient, type ShopColourId, type ShopPaletteEntry, type ShopFilamentColour } from '@/lib/shop-colours';
+import type { ShopLanguage } from '@/data/shop-demo';
+import styles from '@/styles/pages/_shop-review.module.scss';
+
+interface Props { colours?: ShopPaletteEntry[]; legacyColours?: ShopColourId[]; references: ShopFilamentColour[]; language: ShopLanguage; compact?: boolean }
+const { colours, legacyColours = [], references, language, compact = false } = Astro.props;
+const palette = resolveShopPalette(colours, legacyColours, references);
+const en = language === 'en';
+---
+{palette.length > 0 && <div class:list={[styles.palette, { [styles.paletteCompact]: compact }]}>
+  {!compact && <p class={styles.paletteLabel}>{en ? 'Piece colours' : 'Colores de la pieza'}</p>}
+  <ul role="list" aria-label={en ? 'Piece colours' : 'Colores de la pieza'}>
+    {palette.map(colour => <li title={`${colour[language]} · ${colour.tones.join(' / ')}`}>
+      <span class={styles.swatch} style={{ '--shop-swatch-colour': colour.tones[0], backgroundColor: colour.tones[0], backgroundImage: shopSwatchGradient(colour.tones) }} aria-hidden="true"></span>
+      <span class={styles.colourName}>{colour[language]}</span>
+    </li>)}
+  </ul>
+  {!compact && <p class={styles.paletteNote}>{en
+    ? 'Colours on screen are a guide and may look different on the printed piece. Ask about other colours and combinations.'
+    : 'Los colores en pantalla son orientativos y pueden variar en la pieza impresa. Consultanos por otros colores y combinaciones.'}</p>}
+</div>}

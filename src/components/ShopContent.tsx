@@ -1,19 +1,22 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { ArrowUpRight, Plus, X } from 'lucide-react';
-import { shopCopy, shopDemoProducts, type ShopLanguage } from '@/data/shop-demo';
+import { shopCopy, shopDemoProducts, shopDetailKeys, type ShopDemoProduct, type ShopLanguage } from '@/data/shop-demo';
+import { shopExperienceCopy } from '@/data/shop-experience';
 import { formatTitle } from '@/helpers/text-helpers';
 import { Tag } from '@/components/UI';
 import styles from '@/styles/pages/_shop.module.scss';
 
-type Product = typeof shopDemoProducts[number];
+type Product = ShopDemoProduct;
 type Props = { language: ShopLanguage; imageUrl: string };
 
 export default function ShopContent({ language, imageUrl }: Props) {
   const t = shopCopy[language];
+  const experience = shopExperienceCopy[language];
   const index = language === 'es' ? 0 : 1;
   const [category, setCategory] = useState(0);
   const [selection, setSelection] = useState<Product | 'custom' | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
+  const filters = useRef<HTMLDivElement>(null);
   const visibleProducts = shopDemoProducts.filter(product => !category || product.category === category);
 
   useEffect(() => {
@@ -51,22 +54,33 @@ export default function ShopContent({ language, imageUrl }: Props) {
       <section id="collection" className={styles.shop__collection} aria-labelledby="collection-title">
         <header className={styles.shop__sectionHeading}>
           <div><p className={styles.shop__eyebrow}>{t.collectionLabel}</p><h2 id="collection-title">{t.collectionTitle}</h2></div>
-          <p className={styles.shop__count} aria-live="polite">{String(visibleProducts.length).padStart(2, '0')} {t.pieces}</p>
+          <p className={styles.shop__count} role="status" aria-atomic="true">
+            {String(visibleProducts.length).padStart(2, '0')} {t.pieces} · {t.categories[category]}
+          </p>
         </header>
-        <div className={styles.shop__filters} role="group" aria-label={t.filterLabel}>
+        <div ref={filters} className={styles.shop__filters} role="group" aria-label={t.filterLabel}>
           {t.categories.map((label, i) => (
             <Tag key={label} active={category === i} className={styles.shop__filter} onClick={() => setCategory(i)}>{label}</Tag>
           ))}
         </div>
+        {category !== 0 ? (
+          <div className={styles.shop__filterSummary}>
+            <p>{experience.selectedCategory}: <strong>{t.categories[category]}</strong></p>
+            <button type="button" onClick={() => {
+              setCategory(0);
+              filters.current?.querySelector('button')?.focus();
+            }}>{experience.clearFilter}</button>
+          </div>
+        ) : null}
         <div className={styles.shop__products}>
           {visibleProducts.map(product => (
             <article key={product.id} className={styles.shop__product}>
-              <button type="button" className={styles.shop__imageButton} onClick={() => setSelection(product)} aria-label={`${t.detail}: ${product.names[index]}`}>
+              <button type="button" className={styles.shop__imageButton} onClick={() => setSelection(product)} aria-haspopup="dialog" aria-label={`${t.detail}: ${product.names[index]}`}>
                 {image(product)}<span className={styles.shop__imageTag}>{t.render}</span>
               </button>
               <div className={styles.shop__productHeading}><h3>{product.names[index]}</h3><span>{t.categories[product.category]}</span></div>
               <p className={styles.shop__description}>{product.descriptions[index]}</p>
-              <div className={styles.shop__productTail}><span>{t.price}</span><button type="button" onClick={() => setSelection(product)}>{t.detail}<ArrowUpRight size={14} aria-hidden="true" /></button></div>
+              <div className={styles.shop__productTail}><span>{t.price}</span><button type="button" onClick={() => setSelection(product)} aria-haspopup="dialog" aria-label={`${t.detail}: ${product.names[index]}`}>{t.detail}<ArrowUpRight size={14} aria-hidden="true" /></button></div>
             </article>
           ))}
         </div>
@@ -76,7 +90,7 @@ export default function ShopContent({ language, imageUrl }: Props) {
       <section className={styles.shop__custom} id="custom" aria-labelledby="custom-title">
         <Plus className={styles.shop__customIcon} size={40} aria-hidden="true" />
         <div><p className={styles.shop__eyebrow}>{t.customLabel}</p><h2 id="custom-title">{t.customTitle}</h2><p className={styles.shop__description}>{t.customCopy}</p></div>
-        <button type="button" className={`${styles.shop__button} ${styles['shop__button--secondary']}`} onClick={() => setSelection('custom')}>{t.customButton}<ArrowUpRight size={18} aria-hidden="true" /></button>
+        <button type="button" className={`${styles.shop__button} ${styles['shop__button--secondary']}`} onClick={() => setSelection('custom')} aria-haspopup="dialog">{t.customButton}<ArrowUpRight size={18} aria-hidden="true" /></button>
       </section>
 
       <section className={styles.shop__process} aria-label={t.processTitle}>
@@ -88,21 +102,44 @@ export default function ShopContent({ language, imageUrl }: Props) {
       <dialog ref={dialog} className={styles.shop__dialog} aria-labelledby="shop-dialog-title" onClose={() => setSelection(null)}>
         <button type="button" className={styles.shop__close} onClick={() => dialog.current?.close()} aria-label={t.close}><X size={22} aria-hidden="true" /></button>
         {selection === 'custom' ? (
-          <div className={styles.shop__customDialog}><p className={styles.shop__eyebrow}>{t.customLabel}</p><h2 id="shop-dialog-title">{t.customTitle}</h2><p>{t.customNotice}</p></div>
+          <div className={styles.shop__customDialog}>
+            <p className={styles.shop__eyebrow}>{t.customLabel}</p>
+            <h2 id="shop-dialog-title">{t.customTitle}</h2>
+            <p>{experience.customDifference}</p>
+            <h3 className={styles.shop__detailHeading}>{experience.customScope}</h3>
+            <ul className={styles.shop__customIdeas}>
+              {experience.customIdeas.map(idea => <li key={idea}>{idea}</li>)}
+            </ul>
+            <p>{experience.customPreparation}</p>
+            <p className={styles.shop__notice}>{t.customNotice}</p>
+            <button type="button" className={`${styles.shop__button} ${styles['shop__button--secondary']} ${styles.shop__back}`} onClick={() => dialog.current?.close()}>{t.close}</button>
+          </div>
         ) : selection ? (
           <div className={styles.shop__dialogGrid}>
-            {image(selection)}
+            <figure className={styles.shop__detailFigure}>
+              {image(selection)}
+              <figcaption>{t.render}</figcaption>
+            </figure>
             <div className={styles.shop__dialogCopy}>
               <p className={styles.shop__eyebrow}>{t.concept} / 0{selection.id + 1}</p>
               <h2 id="shop-dialog-title">{selection.names[index]}</h2>
               <p>{selection.descriptions[index]}</p>
+              <p className={styles.shop__category}>{t.categories[selection.category]}</p>
+              <h3 className={styles.shop__detailHeading}>{experience.detailsTitle}</h3>
               <dl className={styles.shop__details}>
-                <div><dt>{t.material}</dt><dd>PLA · {t.pending}</dd></div>
-                <div><dt>{t.dimensions}</dt><dd>{t.pending}</dd></div>
-                <div><dt>{t.price}</dt><dd>{t.pending}</dd></div>
-                <div><dt>{t.delivery}</dt><dd>{t.deliveryValue}</dd></div>
+                {shopDetailKeys.filter(key => key !== 'productionTime' && (key !== 'dimensions' || selection.details.dimensions?.[language]?.trim())).map(key => (
+                  <div key={key}>
+                    <dt>{experience.details[key]}</dt>
+                    <dd>{selection.details[key]?.[language] ?? t.pending}</dd>
+                  </div>
+                ))}
+                <div><dt>{experience.priceLabel}</dt><dd>{t.pending}</dd></div>
+                <div><dt>{experience.deliveryLabel}</dt><dd>{t.deliveryValue}</dd></div>
               </dl>
               <p className={styles.shop__notice}>{t.dialogNotice}</p>
+              <button type="button" className={`${styles.shop__button} ${styles['shop__button--secondary']} ${styles.shop__back}`} onClick={() => dialog.current?.close()}>
+                {experience.backToCollection}
+              </button>
             </div>
           </div>
         ) : null}

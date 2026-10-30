@@ -1,0 +1,40 @@
+---
+import { siWhatsapp } from 'simple-icons';
+
+interface Props { href: string; describedBy?: string }
+const { href, describedBy } = Astro.props;
+---
+<a class="whatsapp-link" href={href} target="_blank" rel="noopener noreferrer" aria-describedby={describedBy}>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={siWhatsapp.path} /></svg>
+  <span><slot /></span>
+</a>
+
+<style lang="scss">
+  @use '../styles/abstracts' as *;
+
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: size(3);
+    max-width: 100%;
+    min-height: 48px;
+    padding: size(3) size(5);
+    border-radius: radius(soft);
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px currentColor;
+    color: semantic-color(brand-primary);
+    font: 11px / 1.5 semantic-font(mono);
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+
+    svg { width: 1.25rem; height: 1.25rem; flex-shrink: 0; fill: currentColor; }
+    &:hover { background: color-mix(in srgb, currentColor 8%, transparent); }
+    &:focus-visible { outline: 2px solid semantic-color(brand-tertiary); outline-offset: 4px; }
+  }
+
+  @media (forced-colors: active) {
+    .whatsapp-link { outline: 1px solid LinkText; }
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import MainLayout from './MainLayout.astro';
+import ShopCollection from '@/components/ShopCollection.astro';
+import { shopCatalogue, shopCollectionUrl } from '@/lib/shop-catalogue';
+import { shopInquiryUrl } from '@/lib/shop-inquiry';
+import ShopWhatsAppLink from '@/components/ShopWhatsAppLink.astro';
+import { shopCopy, shopRoutes, type ShopLanguage } from '@/data/shop-demo';
+import { shopLatestSlugs } from '@/data/shop-release';
+import styles from '@/styles/pages/_shop.module.scss';
+
+interface Props { language: ShopLanguage }
+const { language } = Astro.props;
+const en = language === 'en';
+const t = shopCopy[language];
+const catalogue = await shopCatalogue();
+const products = [
+  ...shopLatestSlugs.map(slug => catalogue.find(piece => piece.slug === slug)!),
+  ...catalogue.filter(piece => !shopLatestSlugs.some(slug => slug === piece.slug)),
+];
+const hero = products.find(piece => piece.slug === 'jarron-acanalado')!;
+---
+<MainLayout section="shop" language={language} noIndex title="Store 3D · Al3Design Objects" description={t.intro} languageLinks={shopRoutes} shopCollectionHref="#collection" shopNotice={en ? 'Real prints · price on enquiry · delivery subject to stock and confirmation' : 'Impresiones reales · precio a consultar · entrega según stock y a confirmar'}>
+  <div class={`page-container ${styles.shop}`}>
+    <section class={styles.shop__hero} aria-labelledby="shop-title">
+      <div>
+        <p class={styles.shop__eyebrow}>{t.eyebrow}</p>
+        <h1 class={styles.shop__title} id="shop-title">{t.title1} <span>{t.title2}</span></h1>
+        <p class={styles.shop__intro}>{t.intro}</p>
+        <a class={`${styles.shop__button} ${styles['shop__button--primary']}`} href="#collection">{t.explore} ↗</a>
+        <div class={styles.shop__heroMeta}><span>{t.place}</span><span aria-hidden="true">/</span><span>{t.physical}</span></div>
+      </div>
+      <figure class={styles.shop__heroFigure}>
+        <div class={styles.shop__photo}><Image src={hero.photos[0].image} alt={hero.photos[0].alt[language]} format="webp" widths={[480, 800, 1200]} sizes="(min-width: 900px) 50vw, 100vw" width={1200} loading="eager" fetchpriority="high" /></div>
+        <figcaption><span>{hero.title[language]}</span><span>{en ? 'Real print' : 'Impresión real'}</span></figcaption>
+      </figure>
+    </section>
+    <section id="collection" class={styles.shop__collection} aria-labelledby="collection-title">
+      <ShopCollection products={products} language={language} limit={3}>
+        <div slot="heading"><p class={styles.shop__eyebrow}>{en ? 'Latest pieces' : 'Últimas piezas'}</p><h2 id="collection-title">{t.collectionTitle}</h2></div>
+      </ShopCollection>
+      <a class={`${styles.shop__button} ${styles['shop__button--primary']} ${styles.shop__collectionLink}`} href={shopCollectionUrl(language)}>{en ? 'View the full collection' : 'Ver toda la colección'} ↗</a>
+    </section>
+    <section class={styles.shop__custom} id="custom" aria-labelledby="custom-title">
+      <div><p class={styles.shop__eyebrow}>{t.customLabel}</p><h2 id="custom-title">{t.customTitle}</h2><p class={styles.shop__description}>{en ? 'Enquire about another print, colours and availability.' : 'Consultá por otra impresión, colores y disponibilidad.'}</p></div>
+      <ShopWhatsAppLink href={shopInquiryUrl(en ? 'a custom print' : 'una impresión a medida', language)}>{en ? 'Enquire on WhatsApp' : 'Consultar por WhatsApp'} ↗</ShopWhatsAppLink>
+    </section>
+    <section class={styles.shop__process} aria-label={en ? 'How to enquire' : 'Cómo consultar'}>
+      <article><span class={styles.shop__index}>01 /</span><h3>{t.step1Title}</h3><p>{en ? 'Explore real prints and open a piece to see its details.' : 'Explorá las impresiones reales y abrí una pieza para ver sus detalles.'}</p></article>
+      <article><span class={styles.shop__index}>02 /</span><h3>{en ? 'Enquire about your piece' : 'Consultá por tu pieza'}</h3><p>{en ? 'Price on enquiry. Ask about colours and availability.' : 'Precio a consultar. Consultá colores y disponibilidad.'}</p></article>
+      <article><span class={styles.shop__index}>03 /</span><h3>{en ? 'Confirm delivery' : 'Confirmá la entrega'}</h3><p>{en ? 'Subject to stock; to be confirmed. Only the 3D print is included. Other items in the photos are decorative and are not included.' : 'Según stock y a confirmar. Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.'}</p></article>
+    </section>
+  </div>
+</MainLayout>

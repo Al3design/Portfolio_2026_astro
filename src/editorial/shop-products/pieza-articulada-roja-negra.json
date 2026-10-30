@@ -1,0 +1,67 @@
+{
+  "title": "Pieza articulada roja y negra",
+  "status": "draft",
+  "category": "design",
+  "productionMode": "mixed",
+  "productionNotes": "Impresión en PLA. Stock y pedidos; colores a consultar. Confirmar disponibilidad y entrega antes de responder.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Mové las articulaciones con suavidad, sin forzarlas.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Move the joints gently without forcing them."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Pieza articulada roja y negra",
+      "description": "Una pieza de PLA en rojo y negro, con partes articuladas."
+    },
+    "en": {
+      "title": "Red and black articulated piece",
+      "description": "A red and black PLA piece with articulated parts."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20260826_110646.jpg",
+      "kind": "photo",
+      "altEs": "Pieza articulada roja y negra sobre una superficie oscura.",
+      "altEn": "Red and black articulated piece on a dark surface."
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#d94443",
+      "es": "Rojo",
+      "en": "Red"
+    },
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    }
+  ]
+}

@@ -77,8 +77,10 @@ const categories = { home: en ? 'Home & decor' : 'Hogar y deco', desk: en ? 'Des
       <section id="custom" class={styles.footer} aria-labelledby="custom-title">
         <h2 id="custom-title">{en ? 'Have another idea?' : '¿Tenés otra idea?'}</h2>
         <p>{en ? 'Ask about printing a different piece. Colours, availability and delivery are confirmed individually.' : 'Consultá por la impresión de otra pieza. Colores, disponibilidad y entrega se confirman en cada caso.'}</p>
-        <ShopWhatsAppLink href={shopInquiryUrl(en ? 'a custom print' : 'una impresión a medida', language)}>{en ? 'Enquire on WhatsApp' : 'Consultar por WhatsApp'} ↗</ShopWhatsAppLink>
         <p>{delivery} {included}</p>
+        <div class={styles.inquiry}>
+          <ShopWhatsAppLink href={shopInquiryUrl(en ? 'a custom print' : 'una impresión a medida', language)}>{en ? 'Enquire on WhatsApp' : 'Consultar por WhatsApp'} ↗</ShopWhatsAppLink>
+        </div>
       </section>
     </>}
   </div>

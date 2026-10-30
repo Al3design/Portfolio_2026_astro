@@ -12,7 +12,7 @@ const en = language === 'en';
   {!compact && <p class={styles.paletteLabel}>{en ? 'Piece colours' : 'Colores de la pieza'}</p>}
   <ul role="list" aria-label={en ? 'Piece colours' : 'Colores de la pieza'}>
     {palette.map(colour => <li title={`${colour[language]} · ${colour.tones.join(' / ')}`}>
-      <span class={styles.swatch} style={{ backgroundColor: colour.tones[0], backgroundImage: shopSwatchGradient(colour.tones) }} aria-hidden="true"></span>
+      <span class={styles.swatch} style={{ '--shop-swatch-colour': colour.tones[0], backgroundColor: colour.tones[0], backgroundImage: shopSwatchGradient(colour.tones) }} aria-hidden="true"></span>
       <span class={styles.colourName}>{colour[language]}</span>
     </li>)}
   </ul>

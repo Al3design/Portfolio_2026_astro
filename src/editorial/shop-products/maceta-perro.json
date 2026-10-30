@@ -1,0 +1,87 @@
+{
+  "title": "Maceta con forma de perro",
+  "status": "draft",
+  "category": "home",
+  "rightsStatus": "licensed",
+  "productionMode": "mixed",
+  "productionNotes": "Nueva tanda aportada por Alejandro el 29/10. Material PLA confirmado por Alejandro para todas las piezas. Stock y pedidos combinados; colores a consultar. Cuidados generales de PLA preparados en R35. Disponibilidad concreta, capacidad y plazo de entrega pendientes; medidas opcionales. No inferir stock de las fotos.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiar con un paño suave apenas humedecido y secar. Mantener lejos del calor y del sol directo. No usar lavavajillas. Consultar el drenaje y las condiciones de uso antes de plantar directamente.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Enquire about drainage and usage conditions before planting directly."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Stock y pedidos combinados; disponibilidad de esta pieza a confirmar.",
+      "en": "Stock and made-to-order options; availability of this piece to be confirmed."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Maceta con forma de perro",
+      "description": "Maceta de PLA con forma de perro sentado y recipiente en la espalda. En beige, con ojos y nariz negros y lengua roja."
+    },
+    "en": {
+      "title": "Dog-shaped planter",
+      "description": "PLA planter shaped like a sitting dog with a container on its back. Shown in beige, with black eyes and nose and a red tongue."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-84353a6d-01e6-42e2-b19b-e7a5a9349975.jpg",
+      "kind": "photo",
+      "altEs": "Maceta con forma de perro beige vista en diagonal sobre una mesa.",
+      "altEn": "Diagonal view of a beige dog-shaped planter on a table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-af378ade-0e85-4dca-9467-b168edde7f97.jpg",
+      "kind": "photo",
+      "altEs": "Maceta con forma de perro beige vista de perfil, con recipiente en la espalda.",
+      "altEn": "Side view of a beige dog-shaped planter with a container on its back."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-a082e1bc-2689-4869-8019-06ade5d11c6f.jpg",
+      "kind": "photo",
+      "altEs": "Vista frontal de una maceta con forma de perro beige, ojos y nariz negros y lengua roja.",
+      "altEn": "Front view of a beige dog-shaped planter with black eyes and nose and a red tongue."
+    }
+  ],
+  "rightsSource": "https://makerworld.com/es/models/2989391-poodle-planter",
+  "rightsNotes": "Confirmación vigente del titular, 29/10/2026: Alejandro indica que los permisos están disponibles para las piezas de esta colección. Se registra permiso comercial declarado; no se adjuntó ni verificó aquí un documento de autorización específico. Historial de fuente/licencia previo a esa confirmación: Fuente candidata del inventario R6: Poodle Planter, autor mostrado laurageniadieff. Correspondencia exacta de esta impresión pendiente. Licencia leída el 2026-10-29: Standard Digital File License – Community Use (SDFL-C). No permite uso remunerado sin permiso. El texto permite determinadas demostraciones personales y derivados dentro de MakerWorld; no habilita venta. Sin permiso comercial acreditado; conservar borrador.",
+  "palette": [
+    {
+      "hex": "#d94443",
+      "es": "Rojo",
+      "en": "Red"
+    },
+    {
+      "hex": "#d6bb92",
+      "es": "Beige",
+      "en": "Beige"
+    },
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    }
+  ]
+}

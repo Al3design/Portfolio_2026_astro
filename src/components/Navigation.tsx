@@ -45,8 +45,8 @@ const linkItemVariants: Variants = {
   exit: { opacity: 0, x: 16, transition: { duration: 0.15 } },
 };
 
-export default function Navigation({ pathname = '/', section = 'portfolio', language = 'en', languageLinks }: { pathname?: string; section?: SiteSection; language?: SiteLanguage; languageLinks?: SiteLanguageLinks }) {
-  const navLinks = siteNavigation(section, language);
+export default function Navigation({ pathname = '/', section = 'portfolio', language = 'en', languageLinks, shopCollectionHref, shopNotice }: { pathname?: string; section?: SiteSection; language?: SiteLanguage; languageLinks?: SiteLanguageLinks; shopCollectionHref?: string; shopNotice?: string }) {
+  const navLinks = siteNavigation(section, language).map(link => section === 'shop' && shopCollectionHref && link.href.endsWith('#collection') ? { ...link, href: shopCollectionHref } : link);
   const shop = section === 'shop';
   const spanish = language === 'es';
   const translations: SiteLanguageLinks = languageLinks ?? (shop ? shopRoutes : { [language]: pathname });
@@ -224,7 +224,7 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
   return (
     <>
       {!shop && <span ref={sentinelRef} className={styles.scrollSentinel} aria-hidden="true" />}
-      {shop && <p className={styles.shopNotice}>{spanish ? 'Exploración de diseño · piezas y renders de ejemplo' : 'Design exploration · sample pieces and renders'}</p>}
+      {shop && <p className={styles.shopNotice}>{shopNotice ?? (spanish ? 'Exploración de diseño · piezas y renders de ejemplo' : 'Design exploration · sample pieces and renders')}</p>}
       <nav ref={navRef} data-contained={!shop && contained} className={clsx(styles.nav, shop ? styles['nav--shop'] : styles['nav--localized'])}>
         <a href={shop ? shopRoutes[language] : '/'} className={styles.nav__logo} onClick={() => setMenuOpen(false)}>
           <BrandMark /><span><span className={styles.nav__prefix}>Al3</span>Design</span>

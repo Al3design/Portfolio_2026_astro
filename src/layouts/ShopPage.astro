@@ -1,21 +1,10 @@
 ---
-import { getImage } from 'astro:assets';
-import MainLayout from '@/layouts/MainLayout.astro';
-import ShopContent from '@/components/ShopContent';
-import renders from '@/assets/shop/concept-renders.png';
+import ShopCatalogue from '@/layouts/ShopCatalogue.astro';
 import type { ShopLanguage } from '@/data/shop-demo';
 
 interface Props { language: ShopLanguage }
 const { language } = Astro.props;
-const image = await getImage({ src: renders, format: 'webp', width: 1536, quality: 85 });
-const spanish = language === 'es';
+const realPreview = import.meta.env.MODE === 'development' && Astro.url.searchParams.get('catalog') === 'real';
+const Review = realPreview ? (await import('../editorial/ShopReview.astro')).default : undefined;
 ---
-<MainLayout
-  section="shop"
-  language={language}
-  noIndex
-  title={spanish ? 'Shop 3D | Al3Design Objects — propuesta de diseño' : 'Shop 3D | Al3Design Objects — design concept'}
-  description={spanish ? 'Exploración de una tienda de objetos impresos en 3D en Argentina. Piezas y renders conceptuales, sin ventas.' : 'Design exploration of a 3D printed objects shop in Argentina. Sample pieces and concept renders, no sales.'}
->
-  <ShopContent client:load language={language} imageUrl={image.src} />
-</MainLayout>
+{Review ? <Review language={language} slug={Astro.url.searchParams.get('piece') ?? undefined} storefrontPreview /> : <ShopCatalogue language={language} />}

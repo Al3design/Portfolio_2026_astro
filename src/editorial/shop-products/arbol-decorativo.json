@@ -1,0 +1,138 @@
+{
+  "title": "Árbol decorativo",
+  "status": "draft",
+  "category": "home",
+  "locales": {
+    "es": {
+      "title": "Árbol decorativo",
+      "description": "Árbol decorativo de PLA con follaje en capas y estrella en la punta. Las fotos muestran combinaciones de tonos claros y oscuros."
+    },
+    "en": {
+      "title": "Decorative tree",
+      "description": "Decorative PLA tree with layered foliage and a star on top. Photos show lighter and darker colour combinations."
+    }
+  },
+  "palette": [
+    {
+      "hex": "#39834b",
+      "es": "Verde",
+      "en": "Green"
+    },
+    {
+      "hex": "#175447",
+      "es": "Verde oscuro",
+      "en": "Dark green"
+    },
+    {
+      "hex": "#d6bb92",
+      "es": "Beige",
+      "en": "Beige"
+    },
+    {
+      "hex": "#72513b",
+      "es": "Marrón",
+      "en": "Brown"
+    },
+    {
+      "hex": "#edb52e",
+      "es": "Amarillo",
+      "en": "Yellow"
+    },
+    {
+      "hex": "#ef9a18",
+      "es": "Naranja",
+      "en": "Orange"
+    }
+  ],
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiar con un paño suave apenas humedecido y secar. Mantener lejos del calor y del sol directo. No usar lavavajillas. Manipular la estrella y las puntas con cuidado.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Handle the star and tips gently."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Stock y pedidos combinados; disponibilidad de esta pieza a confirmar.",
+      "en": "Stock and made-to-order options; availability of this piece to be confirmed."
+    }
+  },
+  "productionMode": "mixed",
+  "productionNotes": "Alejandro confirma impresión propia en PLA. Stock y pedidos combinados; colores a consultar. Capacidad, disponibilidad concreta y plazo de entrega pendientes de confirmar. Existencia de ejemplares fotografiados no equivale a stock de venta. Segunda tanda: Alejandro identifica las nuevas fotos como el mismo árbol en tonos más oscuros. Colores fotografiados, sin confirmar variantes comerciales.",
+  "rightsStatus": "licensed",
+  "rightsSource": "https://makerworld.com/es/models/3176140-christmas-tree-minimalistic-japandi-decor",
+  "rightsNotes": "Confirmación vigente del titular, 29/10/2026: Alejandro indica que los permisos están disponibles para las piezas de esta colección. Se registra permiso comercial declarado; no se adjuntó ni verificó aquí un documento de autorización específico. Historial de fuente/licencia previo a esa confirmación: Fuente candidata aportada por Alejandro: Christmas Tree Minimalistic Japandi Decor, autor mostrado NowCraft3D. Correspondencia exacta foto/modelo pendiente de confirmar. Revisado 2026-10-29: Standard Digital File License. La descarga gratuita no habilita venta. Revisar elegibilidad y condiciones de membresía si se reconsidera ese camino. Opción comercial separada visible: Membresía comercial NowCraft3D; la descripción exige mantenerla activa para modelos elegibles. Sin permiso comercial acreditado; conservar borrador. Impresión propia de Alejandro en PLA, diseño de tercero.",
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-cb5c8e07-675b-494c-99fb-c1ce72156a8e.jpg",
+      "kind": "photo",
+      "altEs": "Vista frontal del árbol verde oscuro con relieve en capas, estrella y tronco marrón.",
+      "altEn": "Front view of the dark green tree with layered foliage, a star and brown trunk.",
+      "captionEs": "Ejemplar de tonos más oscuros, identificado por Alejandro.",
+      "captionEn": "Darker-coloured example identified by Alejandro."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261013_190917.jpg",
+      "kind": "photo",
+      "altEs": "Árbol decorativo verde con estrella y tronco beige visto de frente.",
+      "altEn": "Front view of a green decorative tree with a star and beige trunk."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261013_190853.jpg",
+      "kind": "photo",
+      "altEs": "Árbol decorativo verde con follaje en capas sobre una mesa blanca.",
+      "altEn": "Green decorative tree with layered foliage on a white table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261013_190904.jpg",
+      "kind": "photo",
+      "altEs": "Árbol decorativo verde visto en diagonal, con estrella en la punta.",
+      "altEn": "Diagonal view of a green decorative tree with a star on top."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261013_190926.jpg",
+      "kind": "photo",
+      "altEs": "Otra vista frontal del árbol verde con tronco beige y estrella.",
+      "altEn": "Another front view of the green tree with a beige trunk and star."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261013_191125.jpg",
+      "kind": "photo",
+      "altEs": "Árbol decorativo verde en un encuadre amplio de la mesa.",
+      "altEn": "Green decorative tree in a wide view of the table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-fea55375-15fb-49cc-a4cb-878904c84228.jpg",
+      "kind": "photo",
+      "altEs": "Árbol decorativo verde oscuro con tronco marrón y estrella amarilla anaranjada.",
+      "altEn": "Dark green decorative tree with a brown trunk and yellow-orange star.",
+      "captionEs": "Ejemplar de tonos más oscuros, identificado por Alejandro.",
+      "captionEn": "Darker-coloured example identified by Alejandro."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-6b3aec1b-e895-4b81-94cb-60f8e9c1cf4b.jpg",
+      "kind": "photo",
+      "altEs": "Otra vista del árbol verde oscuro con estrella y tronco marrón.",
+      "altEn": "Another view of the dark green tree with a star and brown trunk.",
+      "captionEs": "Ejemplar de tonos más oscuros, identificado por Alejandro.",
+      "captionEn": "Darker-coloured example identified by Alejandro."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import MainLayout from './MainLayout.astro';
+import ShopPalette from '../editorial/ShopPalette.astro';
+import { shopCatalogue, shopPieceUrl, type ShopCatalogueProduct } from '@/lib/shop-catalogue';
+import { bambuFilamentColours } from '@/lib/shop-colours';
+import { shopEditorialDetailKeys, shopEditorialDetailLabels } from '@/lib/shop-editorial';
+import { shopInquiryUrl } from '@/lib/shop-inquiry';
+import { shopRoutes, type ShopLanguage } from '@/data/shop-demo';
+import styles from '@/styles/pages/_shop-review.module.scss';
+import shopStyles from '@/styles/pages/_shop.module.scss';
+
+interface Props { language: ShopLanguage; product?: ShopCatalogueProduct }
+const { language, product } = Astro.props;
+const en = language === 'en';
+const products = product ? [] : await shopCatalogue();
+const home = shopRoutes[language];
+const title = en ? 'Printed pieces' : 'Piezas impresas';
+const price = en ? 'Price on enquiry' : 'Precio a consultar';
+const delivery = en ? 'Subject to stock; to be confirmed.' : 'Según stock y a confirmar.';
+const included = en ? 'Only the 3D print is included. Other items in the photos are decorative and are not included.' : 'Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.';
+const intro = en ? 'Objects printed in PLA by Alejandro. Explore the pieces and enquire about colours and availability.' : 'Objetos impresos en PLA por Alejandro. Explorá las piezas y consultá colores y disponibilidad.';
+const categories = { home: en ? 'Home & decor' : 'Hogar y deco', desk: en ? 'Desk' : 'Escritorio', organization: en ? 'Organization' : 'Organización', design: en ? 'Design objects' : 'Objetos de diseño' };
+---
+<MainLayout section="shop" language={language} noIndex
+  title={`${product ? product.title[language] : title} · Store 3D · Al3Design`}
+  description={product ? product.description[language] : intro}
+  languageLinks={{ es: product ? shopPieceUrl(product.slug, 'es') : shopRoutes.es, en: product ? shopPieceUrl(product.slug, 'en') : shopRoutes.en }}
+  shopCollectionHref={`${home}#collection`}
+  shopNotice={en ? 'Real prints · price on enquiry · delivery subject to stock and confirmation' : 'Impresiones reales · precio a consultar · entrega según stock y a confirmar'}
+>
+  <div class={styles.main}>
+    {product ? <>
+      <a class={styles.action} href={`${home}#${product.slug}`}>← {en ? 'Back to all pieces' : 'Volver a todas las piezas'}</a>
+      <header class={styles.intro}>
+        {product.category && <p class={styles.meta}>{categories[product.category]}</p>}
+        <h1>{product.title[language]}</h1>
+        <p>{product.description[language]}</p>
+        <ShopPalette colours={product.palette} legacyColours={product.photographedColours} references={bambuFilamentColours} language={language} />
+        <p><strong>{price}</strong> · {delivery}</p>
+        <p>{included}</p>
+        <div class={styles.inquiry}>
+          <a class={styles.action} href={shopInquiryUrl(product.title[language], language)} target="_blank" rel="noopener noreferrer" aria-describedby="inquiry-note">
+            {en ? 'Enquire about this piece on WhatsApp' : 'Consultar esta pieza por WhatsApp'} ↗
+          </a>
+          <p id="inquiry-note">{en ? 'Review the prepared message before sending. Your enquiry does not reserve stock or confirm a purchase.' : 'Revisá el mensaje preparado antes de enviarlo. La consulta no reserva stock ni confirma una compra.'}</p>
+        </div>
+      </header>
+      <section aria-labelledby="piece-photos">
+        <h2 id="piece-photos">{en ? 'Photos of the print' : 'Fotos de la impresión'}</h2>
+        <div class={styles.gallery}>
+          {product.photos.map((photo, index) => <figure>
+            <Image src={photo.image} alt={photo.alt[language]} format="webp" widths={[480, 800, 1200]} sizes="(min-width: 900px) 50vw, 100vw" width={1200} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+            <figcaption>{photo.alt[language]}</figcaption>
+          </figure>)}
+        </div>
+      </section>
+      <section class={styles.fields} aria-labelledby="piece-details">
+        <h2 id="piece-details">{en ? 'About this piece' : 'Sobre esta pieza'}</h2>
+        <dl>{shopEditorialDetailKeys.filter(key => !['price', 'deliveryTime', 'included'].includes(key) && (key !== 'dimensions' || product.details.dimensions?.[language])).map(key => <div>
+          <dt>{shopEditorialDetailLabels[language][key]}</dt>
+          <dd>{product.details[key]?.[language] || (en ? 'To confirm' : 'Por confirmar')}</dd>
+        </div>)}</dl>
+      </section>
+    </> : <>
+      <header class={styles.intro}><p class={styles.meta}>AL3DESIGN OBJECTS</p><h1>{title}</h1><p>{intro}</p></header>
+      <section id="collection" aria-label={en ? 'Collection' : 'Colección'}>
+        <div class={shopStyles.shop__products}>
+          {products.map((piece, index) => <article id={piece.slug} class={`${shopStyles.shop__product} ${styles.product}`}>
+            <a class={styles.productLink} href={shopPieceUrl(piece.slug, language)} aria-label={`${en ? 'View piece' : 'Ver pieza'}: ${piece.title[language]}`}>
+              <div class={styles.productImage}>
+                <Image src={piece.photos[0].image} alt="" format="webp" widths={[320, 640, 960]} sizes="(min-width: 900px) 33vw, 50vw" width={960} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />
+                <span class={shopStyles.shop__imageTag}>{en ? 'Real print' : 'Impresión real'}</span>
+              </div>
+              <h2>{piece.title[language]}</h2>
+              {piece.category && <p class={styles.productCategory}>{categories[piece.category]}</p>}
+              <ShopPalette colours={piece.palette} legacyColours={piece.photographedColours} references={bambuFilamentColours} language={language} compact />
+              <div class={shopStyles.shop__productTail}><span>{price}</span><span class={styles.productAction}>{en ? 'View piece' : 'Ver pieza'} ↗</span></div>
+            </a>
+          </article>)}
+        </div>
+      </section>
+      <section id="custom" class={styles.footer} aria-labelledby="custom-title">
+        <h2 id="custom-title">{en ? 'Have another idea?' : '¿Tenés otra idea?'}</h2>
+        <p>{en ? 'Ask about printing a different piece. Colours, availability and delivery are confirmed individually.' : 'Consultá por la impresión de otra pieza. Colores, disponibilidad y entrega se confirman en cada caso.'}</p>
+        <a class={styles.action} href={shopInquiryUrl(en ? 'a custom print' : 'una impresión a medida', language)} target="_blank" rel="noopener noreferrer">{en ? 'Enquire on WhatsApp' : 'Consultar por WhatsApp'} ↗</a>
+        <p>{delivery} {included}</p>
+      </section>
+    </>}
+  </div>
+</MainLayout>

@@ -119,6 +119,31 @@
     &:focus-visible { outline-offset: 4px; }
   }
 
+  &__filterSummary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: size(2) size(4);
+    margin-block: calc(-1 * #{size(4)}) size(6);
+    color: semantic-color(brand-on-surface-variant);
+    font-size: fs('100');
+
+    strong { color: semantic-color(brand-secondary); font-weight: 600; }
+    button {
+      min-height: 44px;
+      padding: size(2) 0;
+      border: none;
+      background: none;
+      color: semantic-color(brand-primary);
+      font-family: semantic-font(mono);
+      font-size: fs('100');
+      text-transform: uppercase;
+      cursor: pointer;
+      &:hover { text-decoration: underline; text-underline-offset: 5px; }
+    }
+  }
+
   &__products {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -198,10 +223,29 @@
     border-radius: radius(soft);
     background: semantic-color(brand-surface);
     color: semantic-color(brand-on-surface);
-    &::backdrop { background: rgba(var(--clr-brand-surface-rgb), .8); backdrop-filter: blur(4px); }
+    overscroll-behavior: contain;
+    &::backdrop {
+      background: rgba(var(--clr-brand-surface-rgb), .8);
+      backdrop-filter: blur(4px);
+      overflow: hidden;
+      overscroll-behavior: contain;
+    }
   }
   &__close { display: grid; place-items: center; position: absolute; top: size(3); right: size(3); min-width: 44px; min-height: 44px; z-index: 1; border: none; border-radius: radius(soft); background: semantic-color(brand-surface); color: semantic-color(brand-on-surface); cursor: pointer; }
   &__dialogGrid { display: grid; @include mq(md) { grid-template-columns: 1fr 1fr; } }
+  &__detailFigure {
+    min-width: 0;
+    margin: 0;
+    align-self: start;
+    figcaption {
+      padding: size(3) size(5);
+      background: semantic-color(brand-surface-low);
+      color: semantic-color(brand-on-surface-variant);
+      font-family: semantic-font(mono);
+      font-size: fs('100');
+      text-transform: uppercase;
+    }
+  }
   &__dialogCopy, &__customDialog {
     padding: size(12) size(8) size(8);
     align-self: center;
@@ -211,11 +255,25 @@
   &__details {
     display: grid;
     gap: size(3);
-    margin-top: size(6);
+    margin-top: size(4);
     font-size: fs('100');
-    div { display: flex; justify-content: space-between; gap: size(5); }
+    div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: size(4); }
     dt { color: semantic-color(brand-on-surface-variant); }
     dd { margin: 0; text-align: right; }
+    dt, dd { overflow-wrap: anywhere; }
   }
+  &__dialogCopy > p.shop__category { color: semantic-color(brand-secondary); font-family: semantic-font(mono); font-size: fs('100'); }
+  &__detailHeading { margin-top: size(6); font-size: fs('200'); }
+  &__customIdeas {
+    display: grid;
+    gap: size(3);
+    margin-block: size(4) size(6);
+    padding-inline-start: size(5);
+    color: semantic-color(brand-on-surface-variant);
+    font-size: fs('200');
+    line-height: lh(relaxed);
+    li::marker { color: semantic-color(brand-tertiary); }
+  }
+  &__back { margin-top: size(6); max-width: 100%; text-align: start; }
   &__notice { margin-top: size(6); padding: size(4); background: semantic-color(brand-surface-low); }
 }

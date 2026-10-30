@@ -1,0 +1,2202 @@
+{
+  "brand": "Bambu Lab",
+  "scope": "PLA families, PETG Basic and PETG HF",
+  "source": "https://github.com/bambulab/BambuStudio/blob/804d93bb5de142c48c0dabedba87736ea9553206/resources/profiles/BBL/filament/filaments_color_codes.json",
+  "revision": "804d93bb5de142c48c0dabedba87736ea9553206",
+  "retrievedAt": "2026-10-30T11:11:10.349Z",
+  "families": [
+    {
+      "material": "PETG Basic",
+      "count": 17
+    },
+    {
+      "material": "PETG HF",
+      "count": 14
+    },
+    {
+      "material": "PLA Aero",
+      "count": 3
+    },
+    {
+      "material": "PLA Basic",
+      "count": 38
+    },
+    {
+      "material": "PLA Dynamic",
+      "count": 1
+    },
+    {
+      "material": "PLA Galaxy",
+      "count": 4
+    },
+    {
+      "material": "PLA Glow",
+      "count": 5
+    },
+    {
+      "material": "PLA Lite",
+      "count": 13
+    },
+    {
+      "material": "PLA Marble",
+      "count": 2
+    },
+    {
+      "material": "PLA Matte",
+      "count": 25
+    },
+    {
+      "material": "PLA Metal",
+      "count": 5
+    },
+    {
+      "material": "PLA Pure",
+      "count": 5
+    },
+    {
+      "material": "PLA Silk",
+      "count": 18
+    },
+    {
+      "material": "PLA Silk+",
+      "count": 13
+    },
+    {
+      "material": "PLA Sparkle",
+      "count": 6
+    },
+    {
+      "material": "PLA Tough",
+      "count": 10
+    },
+    {
+      "material": "PLA Tough+",
+      "count": 7
+    },
+    {
+      "material": "PLA Translucent",
+      "count": 10
+    },
+    {
+      "material": "PLA Wood",
+      "count": 6
+    },
+    {
+      "material": "PLA-CF",
+      "count": 7
+    }
+  ],
+  "note": "Manufacturer RGB/RGBA references. Spanish names use official values where available, otherwise local translations or English. Not stock or measured print colours.",
+  "colours": [
+    {
+      "code": "30105",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Black",
+      "es": "Negro",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "30106",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "White",
+      "es": "Blanco",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "30107",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Gray",
+      "es": "Gris",
+      "tones": [
+        "#7F7E83"
+      ]
+    },
+    {
+      "code": "30108",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Misty Blue",
+      "es": "Misty Blue",
+      "tones": [
+        "#688197"
+      ]
+    },
+    {
+      "code": "30201",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Red",
+      "es": "Rojo",
+      "tones": [
+        "#D6001C"
+      ]
+    },
+    {
+      "code": "30301",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Orange",
+      "es": "Naranja",
+      "tones": [
+        "#FF671F"
+      ]
+    },
+    {
+      "code": "30402",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Yellow",
+      "es": "Amarillo",
+      "tones": [
+        "#FCE300"
+      ]
+    },
+    {
+      "code": "30403",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Dark Beige",
+      "es": "Dark Beige",
+      "tones": [
+        "#DBC8B6"
+      ]
+    },
+    {
+      "code": "30404",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Sunflower Yellow",
+      "es": "Amarillo girasol",
+      "tones": [
+        "#FFB81C"
+      ]
+    },
+    {
+      "code": "30502",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Green",
+      "es": "Verde",
+      "tones": [
+        "#009639"
+      ]
+    },
+    {
+      "code": "30503",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Pine Green",
+      "es": "Pine Green",
+      "tones": [
+        "#034638"
+      ]
+    },
+    {
+      "code": "30504",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Bright Green",
+      "es": "Bright Green",
+      "tones": [
+        "#97D700"
+      ]
+    },
+    {
+      "code": "30603",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Reflex Blue",
+      "es": "Reflex Blue",
+      "tones": [
+        "#001489"
+      ]
+    },
+    {
+      "code": "30604",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Navy Blue",
+      "es": "Navy Blue",
+      "tones": [
+        "#0086D6"
+      ]
+    },
+    {
+      "code": "30701",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Purple",
+      "es": "Purple",
+      "tones": [
+        "#8A75D1"
+      ]
+    },
+    {
+      "code": "30702",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Hot Pink",
+      "es": "Hot Pink",
+      "tones": [
+        "#F277C6"
+      ]
+    },
+    {
+      "code": "30800",
+      "filamentId": "GFG00",
+      "material": "PETG Basic",
+      "en": "Dark Brown",
+      "es": "Dark Brown",
+      "tones": [
+        "#4F2C1D"
+      ]
+    },
+    {
+      "code": "33100",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "White",
+      "es": "Blanco",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "33101",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Gray",
+      "es": "Gris",
+      "tones": [
+        "#ADB1B2"
+      ]
+    },
+    {
+      "code": "33102",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Black",
+      "es": "Negro",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "33103",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Dark Gray",
+      "es": "Gris oscuro",
+      "tones": [
+        "#515151"
+      ]
+    },
+    {
+      "code": "33200",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Red",
+      "es": "Rojo",
+      "tones": [
+        "#BC0900"
+      ]
+    },
+    {
+      "code": "33300",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Orange",
+      "es": "Naranja",
+      "tones": [
+        "#F75403"
+      ]
+    },
+    {
+      "code": "33400",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Yellow",
+      "es": "Amarillo",
+      "tones": [
+        "#FFD00B"
+      ]
+    },
+    {
+      "code": "33401",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Cream",
+      "es": "Crema",
+      "tones": [
+        "#F9DFB9"
+      ]
+    },
+    {
+      "code": "33500",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Green",
+      "es": "Verde",
+      "tones": [
+        "#00AE42"
+      ]
+    },
+    {
+      "code": "33501",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Lime Green",
+      "es": "Verde lima",
+      "tones": [
+        "#6EE53C"
+      ]
+    },
+    {
+      "code": "33502",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Forest Green",
+      "es": "Verde bosque",
+      "tones": [
+        "#39541A"
+      ]
+    },
+    {
+      "code": "33600",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Blue",
+      "es": "Azul",
+      "tones": [
+        "#002E96"
+      ]
+    },
+    {
+      "code": "33601",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Lake Blue",
+      "es": "Azul Lago",
+      "tones": [
+        "#1F79E5"
+      ]
+    },
+    {
+      "code": "33801",
+      "filamentId": "GFG02",
+      "material": "PETG HF",
+      "en": "Peanut Brown",
+      "es": "Marrón cacahuete",
+      "tones": [
+        "#875718"
+      ]
+    },
+    {
+      "code": "14102",
+      "filamentId": "GFA11",
+      "material": "PLA Aero",
+      "en": "White",
+      "es": "Blanco",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "14103",
+      "filamentId": "GFA11",
+      "material": "PLA Aero",
+      "en": "Black",
+      "es": "Negro",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "14104",
+      "filamentId": "GFA11",
+      "material": "PLA Aero",
+      "en": "Gray",
+      "es": "Gris",
+      "tones": [
+        "#CDCECA"
+      ]
+    },
+    {
+      "code": "10100",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Jade White",
+      "es": "Blanco jade",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "10101",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Black",
+      "es": "Negro",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "10102",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Silver",
+      "es": "Plateado",
+      "tones": [
+        "#A6A9AA"
+      ]
+    },
+    {
+      "code": "10103",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Gray",
+      "es": "Gris",
+      "tones": [
+        "#8E9089"
+      ]
+    },
+    {
+      "code": "10104",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Light Gray",
+      "es": "Gris claro",
+      "tones": [
+        "#D1D3D5"
+      ]
+    },
+    {
+      "code": "10105",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Dark Gray",
+      "es": "Gris oscuro",
+      "tones": [
+        "#545454"
+      ]
+    },
+    {
+      "code": "10200",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Red",
+      "es": "Rojo",
+      "tones": [
+        "#C12E1F"
+      ]
+    },
+    {
+      "code": "10201",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Beige",
+      "es": "Beis",
+      "tones": [
+        "#F7E6DE"
+      ]
+    },
+    {
+      "code": "10202",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Magenta",
+      "es": "Magenta",
+      "tones": [
+        "#EC008C"
+      ]
+    },
+    {
+      "code": "10203",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Pink",
+      "es": "Rosa",
+      "tones": [
+        "#F55A74"
+      ]
+    },
+    {
+      "code": "10204",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Hot Pink",
+      "es": "Rosa fucsia",
+      "tones": [
+        "#F5547C"
+      ]
+    },
+    {
+      "code": "10205",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Maroon Red",
+      "es": "Rojo granate",
+      "tones": [
+        "#9D2235"
+      ]
+    },
+    {
+      "code": "10300",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Orange",
+      "es": "Naranja",
+      "tones": [
+        "#FF6A13"
+      ]
+    },
+    {
+      "code": "10301",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Pumpkin Orange",
+      "es": "Naranja calabaza",
+      "tones": [
+        "#FF9016"
+      ]
+    },
+    {
+      "code": "10400",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Yellow",
+      "es": "Amarillo",
+      "tones": [
+        "#F4EE2A"
+      ]
+    },
+    {
+      "code": "10401",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Gold",
+      "es": "Dorado",
+      "tones": [
+        "#E4BD68"
+      ]
+    },
+    {
+      "code": "10402",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Sunflower Yellow",
+      "es": "Amarillo girasol",
+      "tones": [
+        "#FEC600"
+      ]
+    },
+    {
+      "code": "10501",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Bambu Green",
+      "es": "Verde bambú",
+      "tones": [
+        "#00AE42"
+      ]
+    },
+    {
+      "code": "10502",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Mistletoe Green",
+      "es": "Verde muérdago",
+      "tones": [
+        "#3F8E43"
+      ]
+    },
+    {
+      "code": "10503",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Bright Green",
+      "es": "Verde brillante",
+      "tones": [
+        "#BECF00"
+      ]
+    },
+    {
+      "code": "10601",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Blue",
+      "es": "Azul",
+      "tones": [
+        "#0A2989"
+      ]
+    },
+    {
+      "code": "10602",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Blue Gray",
+      "es": "Gris azulado",
+      "tones": [
+        "#5B6579"
+      ]
+    },
+    {
+      "code": "10603",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Cyan",
+      "es": "Cian",
+      "tones": [
+        "#0086D6"
+      ]
+    },
+    {
+      "code": "10604",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Cobalt Blue",
+      "es": "Azul cobalto",
+      "tones": [
+        "#0056B8"
+      ]
+    },
+    {
+      "code": "10605",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Turquoise",
+      "es": "Turquesa",
+      "tones": [
+        "#00B1B7"
+      ]
+    },
+    {
+      "code": "10700",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Purple",
+      "es": "Púrpura",
+      "tones": [
+        "#5E43B7"
+      ]
+    },
+    {
+      "code": "10701",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Indigo Purple",
+      "es": "Púrpura índigo",
+      "tones": [
+        "#482960"
+      ]
+    },
+    {
+      "code": "10800",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Brown",
+      "es": "Marrón",
+      "tones": [
+        "#9D432C"
+      ]
+    },
+    {
+      "code": "10801",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Bronze",
+      "es": "Bronce",
+      "tones": [
+        "#847D48"
+      ]
+    },
+    {
+      "code": "10802",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Cocoa Brown",
+      "es": "Marrón cacao",
+      "tones": [
+        "#6F5034"
+      ]
+    },
+    {
+      "code": "10900",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Arctic Whisper",
+      "es": "Susurro ártico",
+      "tones": [
+        "#9CDBD9",
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "10901",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Solar Breeze",
+      "es": "Brisa solar",
+      "tones": [
+        "#E94B3C",
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "10902",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Ocean to Meadow",
+      "es": "Del océano a la pradera",
+      "tones": [
+        "#307FE2",
+        "#54FF9B"
+      ]
+    },
+    {
+      "code": "10903",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Pink Citrus",
+      "es": "Rosa cítrico",
+      "tones": [
+        "#F78F77",
+        "#E4505A"
+      ]
+    },
+    {
+      "code": "10904",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Mint Lime",
+      "es": "Lima menta",
+      "tones": [
+        "#B6FF43",
+        "#4EC939"
+      ]
+    },
+    {
+      "code": "10905",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Blueberry Bubblegum",
+      "es": "Chicle de arándano",
+      "tones": [
+        "#6FCAEF",
+        "#8573DD"
+      ]
+    },
+    {
+      "code": "10906",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Dusk Glare",
+      "es": "Resplandor del crepúsculo",
+      "tones": [
+        "#CE4406",
+        "#ED9558"
+      ]
+    },
+    {
+      "code": "10907",
+      "filamentId": "GFA00",
+      "material": "PLA Basic",
+      "en": "Cotton Candy Cloud",
+      "es": "Nube de algodón de azúcar",
+      "tones": [
+        "#E7C1D5",
+        "#8EC9E9"
+      ]
+    },
+    {
+      "code": "15100",
+      "filamentId": "GFA13",
+      "material": "PLA Dynamic",
+      "en": "UV Color Changing - White to Coral",
+      "es": "De blanco a coral (Cambia con los rayos UV)",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "13203",
+      "filamentId": "GFA15",
+      "material": "PLA Galaxy",
+      "en": "Brown",
+      "es": "Marrón",
+      "tones": [
+        "#684A43"
+      ]
+    },
+    {
+      "code": "13503",
+      "filamentId": "GFA15",
+      "material": "PLA Galaxy",
+      "en": "Green",
+      "es": "Verde",
+      "tones": [
+        "#3B665E"
+      ]
+    },
+    {
+      "code": "13504",
+      "filamentId": "GFA15",
+      "material": "PLA Galaxy",
+      "en": "Nebulae",
+      "es": "Nebulosa",
+      "tones": [
+        "#424379"
+      ]
+    },
+    {
+      "code": "13602",
+      "filamentId": "GFA15",
+      "material": "PLA Galaxy",
+      "en": "Purple",
+      "es": "Púrpura",
+      "tones": [
+        "#594177"
+      ]
+    },
+    {
+      "code": "15200",
+      "filamentId": "GFA12",
+      "material": "PLA Glow",
+      "en": "Glow Pink",
+      "es": "Rosa brillante",
+      "tones": [
+        "#F17B8F"
+      ]
+    },
+    {
+      "code": "15300",
+      "filamentId": "GFA12",
+      "material": "PLA Glow",
+      "en": "Glow Orange",
+      "es": "Naranja brillante",
+      "tones": [
+        "#FF9D5B"
+      ]
+    },
+    {
+      "code": "15400",
+      "filamentId": "GFA12",
+      "material": "PLA Glow",
+      "en": "Glow Yellow",
+      "es": "Amarillo brillante",
+      "tones": [
+        "#F8FF80"
+      ]
+    },
+    {
+      "code": "15500",
+      "filamentId": "GFA12",
+      "material": "PLA Glow",
+      "en": "Glow Green",
+      "es": "Verde brillante",
+      "tones": [
+        "#A1FFAC"
+      ]
+    },
+    {
+      "code": "15600",
+      "filamentId": "GFA12",
+      "material": "PLA Glow",
+      "en": "Glow Blue",
+      "es": "Azul brillante",
+      "tones": [
+        "#7AC0E9"
+      ]
+    },
+    {
+      "code": "16100",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Black",
+      "es": "Negro",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "16101",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Gray",
+      "es": "Gris",
+      "tones": [
+        "#999D9D"
+      ]
+    },
+    {
+      "code": "16102",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Dark Gray",
+      "es": "Gris oscuro",
+      "tones": [
+        "#8C8B8C"
+      ]
+    },
+    {
+      "code": "16103",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "White",
+      "es": "Blanco",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "16200",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Red",
+      "es": "Rojo",
+      "tones": [
+        "#C6001A"
+      ]
+    },
+    {
+      "code": "16301",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Orange",
+      "es": "Naranja",
+      "tones": [
+        "#FF671F"
+      ]
+    },
+    {
+      "code": "16400",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Yellow",
+      "es": "Amarillo",
+      "tones": [
+        "#EFE255"
+      ]
+    },
+    {
+      "code": "16401",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Sunflower Yellow",
+      "es": "Amarillo girasol",
+      "tones": [
+        "#FFB549"
+      ]
+    },
+    {
+      "code": "16501",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Green",
+      "es": "Verde",
+      "tones": [
+        "#00BB31"
+      ]
+    },
+    {
+      "code": "16600",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Cyan",
+      "es": "Cian",
+      "tones": [
+        "#4DAFDA"
+      ]
+    },
+    {
+      "code": "16601",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Blue",
+      "es": "Azul",
+      "tones": [
+        "#004EA8"
+      ]
+    },
+    {
+      "code": "16700",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Matte Beige",
+      "es": "Beige mate",
+      "tones": [
+        "#ECC3B2"
+      ]
+    },
+    {
+      "code": "16800",
+      "filamentId": "GFA18",
+      "material": "PLA Lite",
+      "en": "Cocoa Brown",
+      "es": "Marrón cacao",
+      "tones": [
+        "#745335"
+      ]
+    },
+    {
+      "code": "13103",
+      "filamentId": "GFA07",
+      "material": "PLA Marble",
+      "en": "White Marble",
+      "es": "Mármol blanco",
+      "tones": [
+        "#F7F3F0"
+      ]
+    },
+    {
+      "code": "13201",
+      "filamentId": "GFA07",
+      "material": "PLA Marble",
+      "en": "Red Granite",
+      "es": "Granate rojo",
+      "tones": [
+        "#AD4E38"
+      ]
+    },
+    {
+      "code": "11100",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Ivory White",
+      "es": "Blanco marfil",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "11101",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Charcoal",
+      "es": "Carbón",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "11102",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Ash Gray",
+      "es": "Gris ceniza",
+      "tones": [
+        "#9B9EA0"
+      ]
+    },
+    {
+      "code": "11103",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Bone White",
+      "es": "Blanco hueso",
+      "tones": [
+        "#CBC6B8"
+      ]
+    },
+    {
+      "code": "11104",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Nardo Gray",
+      "es": "Gris nardo",
+      "tones": [
+        "#757575"
+      ]
+    },
+    {
+      "code": "11200",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Scarlet Red",
+      "es": "Rojo escarlata",
+      "tones": [
+        "#DE4343"
+      ]
+    },
+    {
+      "code": "11201",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Sakura Pink",
+      "es": "Rosa sakura",
+      "tones": [
+        "#E8AFCF"
+      ]
+    },
+    {
+      "code": "11202",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Dark Red",
+      "es": "Rojo oscuro",
+      "tones": [
+        "#BB3D43"
+      ]
+    },
+    {
+      "code": "11203",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Terracotta",
+      "es": "Terracota",
+      "tones": [
+        "#B15533"
+      ]
+    },
+    {
+      "code": "11204",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Plum",
+      "es": "Ciruela",
+      "tones": [
+        "#950051"
+      ]
+    },
+    {
+      "code": "11300",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Mandarin Orange",
+      "es": "Naranja Mandarina",
+      "tones": [
+        "#F99963"
+      ]
+    },
+    {
+      "code": "11400",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Lemon Yellow",
+      "es": "Amarillo limón",
+      "tones": [
+        "#F7D959"
+      ]
+    },
+    {
+      "code": "11401",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Desert Tan",
+      "es": "Arena del desierto",
+      "tones": [
+        "#E8DBB7"
+      ]
+    },
+    {
+      "code": "11500",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Grass Green",
+      "es": "Verde hierba",
+      "tones": [
+        "#61C680"
+      ]
+    },
+    {
+      "code": "11501",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Dark Green",
+      "es": "Verde oscuro",
+      "tones": [
+        "#68724D"
+      ]
+    },
+    {
+      "code": "11502",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Apple Green",
+      "es": "Verde manzana",
+      "tones": [
+        "#C2E189"
+      ]
+    },
+    {
+      "code": "11600",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Marine Blue",
+      "es": "Azul marino",
+      "tones": [
+        "#0078BF"
+      ]
+    },
+    {
+      "code": "11601",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Ice Blue",
+      "es": "Azul hielo",
+      "tones": [
+        "#A3D8E1"
+      ]
+    },
+    {
+      "code": "11602",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Dark Blue",
+      "es": "Azul oscuro",
+      "tones": [
+        "#042F56"
+      ]
+    },
+    {
+      "code": "11603",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Sky Blue",
+      "es": "Azul cielo",
+      "tones": [
+        "#56B7E6"
+      ]
+    },
+    {
+      "code": "11700",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Lilac Purple",
+      "es": "Púrpura lila",
+      "tones": [
+        "#AE96D4"
+      ]
+    },
+    {
+      "code": "11800",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Latte Brown",
+      "es": "Marrón Latte",
+      "tones": [
+        "#D3B7A7"
+      ]
+    },
+    {
+      "code": "11801",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Dark Brown",
+      "es": "Marrón oscuro",
+      "tones": [
+        "#7D6556"
+      ]
+    },
+    {
+      "code": "11802",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Dark Chocolate",
+      "es": "Chocolate oscuro",
+      "tones": [
+        "#4D3324"
+      ]
+    },
+    {
+      "code": "11803",
+      "filamentId": "GFA01",
+      "material": "PLA Matte",
+      "en": "Caramel",
+      "es": "Caramelo",
+      "tones": [
+        "#AE835B"
+      ]
+    },
+    {
+      "code": "13100",
+      "filamentId": "GFA02",
+      "material": "PLA Metal",
+      "en": "Iron Gray Metallic",
+      "es": "Iron Gray Metallic",
+      "tones": [
+        "#43403D"
+      ]
+    },
+    {
+      "code": "13400",
+      "filamentId": "GFA02",
+      "material": "PLA Metal",
+      "en": "Iridium Gold Metallic",
+      "es": "Iridium Gold Metallic",
+      "tones": [
+        "#B39B84"
+      ]
+    },
+    {
+      "code": "13500",
+      "filamentId": "GFA02",
+      "material": "PLA Metal",
+      "en": "Oxide Green Metallic",
+      "es": "Oxide Green Metallic",
+      "tones": [
+        "#1D7C6A"
+      ]
+    },
+    {
+      "code": "13600",
+      "filamentId": "GFA02",
+      "material": "PLA Metal",
+      "en": "Cobalt Blue Metallic",
+      "es": "Cobalt Blue Metallic",
+      "tones": [
+        "#39699E"
+      ]
+    },
+    {
+      "code": "13800",
+      "filamentId": "GFA02",
+      "material": "PLA Metal",
+      "en": "Copper Brown Metallic",
+      "es": "Copper Brown Metallic",
+      "tones": [
+        "#AA6443"
+      ]
+    },
+    {
+      "code": "17100",
+      "filamentId": "GFA19",
+      "material": "PLA Pure",
+      "en": "Pure White",
+      "es": "Pure White",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "17101",
+      "filamentId": "GFA19",
+      "material": "PLA Pure",
+      "en": "Absolute Black",
+      "es": "Absolute Black",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "17200",
+      "filamentId": "GFA19",
+      "material": "PLA Pure",
+      "en": "Milky Pink",
+      "es": "Milky Pink",
+      "tones": [
+        "#F7CED7"
+      ]
+    },
+    {
+      "code": "17300",
+      "filamentId": "GFA19",
+      "material": "PLA Pure",
+      "en": "Apricot",
+      "es": "Apricot",
+      "tones": [
+        "#FFB673"
+      ]
+    },
+    {
+      "code": "17600",
+      "filamentId": "GFA19",
+      "material": "PLA Pure",
+      "en": "Baby Blue",
+      "es": "Baby Blue",
+      "tones": [
+        "#A4DBE8"
+      ]
+    },
+    {
+      "code": "13104",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Silver",
+      "es": "Plateado",
+      "tones": [
+        "#EAECEB"
+      ]
+    },
+    {
+      "code": "13105",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "White",
+      "es": "Blanco",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "13202",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Pink",
+      "es": "Rosa",
+      "tones": [
+        "#EEB1C1"
+      ]
+    },
+    {
+      "code": "13300",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Copper",
+      "es": "Cobre",
+      "tones": [
+        "#5E4B3C"
+      ]
+    },
+    {
+      "code": "13401",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Gold",
+      "es": "Dorado",
+      "tones": [
+        "#E5B03D"
+      ]
+    },
+    {
+      "code": "13502",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Green",
+      "es": "Verde",
+      "tones": [
+        "#4CE4A0"
+      ]
+    },
+    {
+      "code": "13601",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Blue",
+      "es": "Azul",
+      "tones": [
+        "#147BD1"
+      ]
+    },
+    {
+      "code": "13701",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Purple",
+      "es": "Púrpura",
+      "tones": [
+        "#854CE4"
+      ]
+    },
+    {
+      "code": "13901",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Gilded Rose",
+      "es": "Rosa dorado",
+      "tones": [
+        "#FF9425",
+        "#C16784"
+      ]
+    },
+    {
+      "code": "13902",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Midnight Blaze",
+      "es": "Resplandor de medianoche",
+      "tones": [
+        "#0047BB",
+        "#7D1B49"
+      ]
+    },
+    {
+      "code": "13903",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Neon City",
+      "es": "Ciudad de neón",
+      "tones": [
+        "#0047BB",
+        "#BB22A3"
+      ]
+    },
+    {
+      "code": "13904",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Blue Hawaii",
+      "es": "Azul Hawái",
+      "tones": [
+        "#418FDE",
+        "#70C884"
+      ]
+    },
+    {
+      "code": "13905",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Velvet Eclipse (Black-Red)",
+      "es": "Eclipse de terciopelo (negro-rojo)",
+      "tones": [
+        "#000000",
+        "#A34342"
+      ]
+    },
+    {
+      "code": "13906",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "South Beach",
+      "es": "South Beach",
+      "tones": [
+        "#F772A4",
+        "#00918B"
+      ]
+    },
+    {
+      "code": "13909",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Aurora Purple",
+      "es": "Aurora Purple",
+      "tones": [
+        "#7F3696",
+        "#006EC9"
+      ]
+    },
+    {
+      "code": "13912",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Dawn Radiance",
+      "es": "Dawn Radiance",
+      "tones": [
+        "#EC984C",
+        "#6CD4BC",
+        "#A66EB9",
+        "#D87694"
+      ]
+    },
+    {
+      "code": "13913",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Mystic Magenta",
+      "es": "Mystic Magenta",
+      "tones": [
+        "#720062",
+        "#3A913F"
+      ]
+    },
+    {
+      "code": "13916",
+      "filamentId": "GFA05",
+      "material": "PLA Silk",
+      "en": "Phantom Blue",
+      "es": "Phantom Blue",
+      "tones": [
+        "#00629B",
+        "#000000"
+      ]
+    },
+    {
+      "code": "13108",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Titan Gray",
+      "es": "Gris titán",
+      "tones": [
+        "#5F6367"
+      ]
+    },
+    {
+      "code": "13109",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Silver",
+      "es": "Plateado",
+      "tones": [
+        "#C8C8C8"
+      ]
+    },
+    {
+      "code": "13110",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "White",
+      "es": "Blanco",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "13205",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Candy Red",
+      "es": "Rojo caramelo",
+      "tones": [
+        "#D02727"
+      ]
+    },
+    {
+      "code": "13206",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Rose Gold",
+      "es": "Oro rosa",
+      "tones": [
+        "#BA9594"
+      ]
+    },
+    {
+      "code": "13207",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Pink",
+      "es": "Rosa",
+      "tones": [
+        "#F7ADA6"
+      ]
+    },
+    {
+      "code": "13404",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Champagne",
+      "es": "Champán",
+      "tones": [
+        "#F3CFB2"
+      ]
+    },
+    {
+      "code": "13405",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Gold",
+      "es": "Dorado",
+      "tones": [
+        "#F4A925"
+      ]
+    },
+    {
+      "code": "13506",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Candy Green",
+      "es": "Verde caramelo",
+      "tones": [
+        "#018814"
+      ]
+    },
+    {
+      "code": "13507",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Mint",
+      "es": "Menta",
+      "tones": [
+        "#96DCB9"
+      ]
+    },
+    {
+      "code": "13603",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Baby Blue",
+      "es": "Azul bebé",
+      "tones": [
+        "#A8C6EE"
+      ]
+    },
+    {
+      "code": "13604",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Blue",
+      "es": "Azul",
+      "tones": [
+        "#008BDA"
+      ]
+    },
+    {
+      "code": "13702",
+      "filamentId": "GFA06",
+      "material": "PLA Silk+",
+      "en": "Purple",
+      "es": "Púrpura",
+      "tones": [
+        "#8671CB"
+      ]
+    },
+    {
+      "code": "13101",
+      "filamentId": "GFA08",
+      "material": "PLA Sparkle",
+      "en": "Onyx Black Sparkle",
+      "es": "Negro ónix brillante",
+      "tones": [
+        "#2D2B28"
+      ]
+    },
+    {
+      "code": "13102",
+      "filamentId": "GFA08",
+      "material": "PLA Sparkle",
+      "en": "Slate Gray Sparkle",
+      "es": "Gris pizarra brillante",
+      "tones": [
+        "#8E9089"
+      ]
+    },
+    {
+      "code": "13200",
+      "filamentId": "GFA08",
+      "material": "PLA Sparkle",
+      "en": "Crimson Red Sparkle",
+      "es": "Rojo carmesí brillante",
+      "tones": [
+        "#792B36"
+      ]
+    },
+    {
+      "code": "13402",
+      "filamentId": "GFA08",
+      "material": "PLA Sparkle",
+      "en": "Classic Gold Sparkle",
+      "es": "Dorado clásico brillante",
+      "tones": [
+        "#CEA629"
+      ]
+    },
+    {
+      "code": "13501",
+      "filamentId": "GFA08",
+      "material": "PLA Sparkle",
+      "en": "Alpine Green Sparkle",
+      "es": "Verde alpino brillante",
+      "tones": [
+        "#3F5443"
+      ]
+    },
+    {
+      "code": "13700",
+      "filamentId": "GFA08",
+      "material": "PLA Sparkle",
+      "en": "Royal Purple Sparkle",
+      "es": "Púrpura real brillante",
+      "tones": [
+        "#483D8B"
+      ]
+    },
+    {
+      "code": "12100",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "White",
+      "es": "Blanco",
+      "tones": [
+        "#F9F7F4"
+      ]
+    },
+    {
+      "code": "12101",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Black",
+      "es": "Negro",
+      "tones": [
+        "#25282A"
+      ]
+    },
+    {
+      "code": "12102",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Gray",
+      "es": "Gris",
+      "tones": [
+        "#515A6C"
+      ]
+    },
+    {
+      "code": "12103",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Silver",
+      "es": "Plateado",
+      "tones": [
+        "#898D8D"
+      ]
+    },
+    {
+      "code": "12200",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Vermilion Red",
+      "es": "Rojo bermellón",
+      "tones": [
+        "#DD3C22"
+      ]
+    },
+    {
+      "code": "12300",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Orange",
+      "es": "Naranja",
+      "tones": [
+        "#FF7F41"
+      ]
+    },
+    {
+      "code": "12400",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Yellow",
+      "es": "Amarillo",
+      "tones": [
+        "#FEDB00"
+      ]
+    },
+    {
+      "code": "12500",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Pine Green",
+      "es": "Verde pino",
+      "tones": [
+        "#00482B"
+      ]
+    },
+    {
+      "code": "12600",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Light Blue",
+      "es": "Azul claro",
+      "tones": [
+        "#0085AD"
+      ]
+    },
+    {
+      "code": "12700",
+      "filamentId": "GFA09",
+      "material": "PLA Tough",
+      "en": "Lavender Blue",
+      "es": "Azul lavanda",
+      "tones": [
+        "#6667AB"
+      ]
+    },
+    {
+      "code": "12104",
+      "filamentId": "GFA10",
+      "material": "PLA Tough+",
+      "en": "Black",
+      "es": "Negro",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "12105",
+      "filamentId": "GFA10",
+      "material": "PLA Tough+",
+      "en": "Gray",
+      "es": "Gris",
+      "tones": [
+        "#AFB1AE"
+      ]
+    },
+    {
+      "code": "12106",
+      "filamentId": "GFA10",
+      "material": "PLA Tough+",
+      "en": "Silver",
+      "es": "Silver",
+      "tones": [
+        "#959698"
+      ]
+    },
+    {
+      "code": "12107",
+      "filamentId": "GFA10",
+      "material": "PLA Tough+",
+      "en": "White",
+      "es": "Blanco",
+      "tones": [
+        "#FFFFFF"
+      ]
+    },
+    {
+      "code": "12301",
+      "filamentId": "GFA10",
+      "material": "PLA Tough+",
+      "en": "Orange",
+      "es": "Naranja",
+      "tones": [
+        "#DC3A27"
+      ]
+    },
+    {
+      "code": "12401",
+      "filamentId": "GFA10",
+      "material": "PLA Tough+",
+      "en": "Yellow",
+      "es": "Amarillo",
+      "tones": [
+        "#F4D53F"
+      ]
+    },
+    {
+      "code": "12601",
+      "filamentId": "GFA10",
+      "material": "PLA Tough+",
+      "en": "Cyan",
+      "es": "Cian",
+      "tones": [
+        "#009BD8"
+      ]
+    },
+    {
+      "code": "13210",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Red",
+      "es": "Rojo",
+      "tones": [
+        "#B5001180"
+      ]
+    },
+    {
+      "code": "13211",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Cherry Pink",
+      "es": "Cherry Pink",
+      "tones": [
+        "#F5B6CD80"
+      ]
+    },
+    {
+      "code": "13301",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Orange",
+      "es": "Naranja",
+      "tones": [
+        "#F74E0280"
+      ]
+    },
+    {
+      "code": "13410",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Mellow Yellow",
+      "es": "Mellow Yellow",
+      "tones": [
+        "#F5DBAB80"
+      ]
+    },
+    {
+      "code": "13510",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Light Jade",
+      "es": "Light Jade",
+      "tones": [
+        "#96D8AF80"
+      ]
+    },
+    {
+      "code": "13610",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Ice Blue",
+      "es": "Ice Blue",
+      "tones": [
+        "#B8CDE980"
+      ]
+    },
+    {
+      "code": "13611",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Blue",
+      "es": "Azul",
+      "tones": [
+        "#0047BB80"
+      ]
+    },
+    {
+      "code": "13612",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Teal",
+      "es": "Teal",
+      "tones": [
+        "#009FA180"
+      ]
+    },
+    {
+      "code": "13710",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Purple",
+      "es": "Purple",
+      "tones": [
+        "#8344B080"
+      ]
+    },
+    {
+      "code": "13711",
+      "filamentId": "GFA17",
+      "material": "PLA Translucent",
+      "en": "Lavender",
+      "es": "Lavender",
+      "tones": [
+        "#B8ACD680"
+      ]
+    },
+    {
+      "code": "13106",
+      "filamentId": "GFA16",
+      "material": "PLA Wood",
+      "en": "White Oak",
+      "es": "Roble blanco",
+      "tones": [
+        "#D6CCA3"
+      ]
+    },
+    {
+      "code": "13107",
+      "filamentId": "GFA16",
+      "material": "PLA Wood",
+      "en": "Black Walnut",
+      "es": "Nogal negro",
+      "tones": [
+        "#4F3F24"
+      ]
+    },
+    {
+      "code": "13204",
+      "filamentId": "GFA16",
+      "material": "PLA Wood",
+      "en": "Rosewood",
+      "es": "Palo de rosa",
+      "tones": [
+        "#4C241C"
+      ]
+    },
+    {
+      "code": "13403",
+      "filamentId": "GFA16",
+      "material": "PLA Wood",
+      "en": "Ochre Yellow",
+      "es": "Amarillo ocre",
+      "tones": [
+        "#C98935"
+      ]
+    },
+    {
+      "code": "13505",
+      "filamentId": "GFA16",
+      "material": "PLA Wood",
+      "en": "Classic Birch",
+      "es": "Abedul clásico",
+      "tones": [
+        "#918669"
+      ]
+    },
+    {
+      "code": "13801",
+      "filamentId": "GFA16",
+      "material": "PLA Wood",
+      "en": "Clay Brown",
+      "es": "Marrón arcilla",
+      "tones": [
+        "#995F11"
+      ]
+    },
+    {
+      "code": "14100",
+      "filamentId": "GFA50",
+      "material": "PLA-CF",
+      "en": "Black",
+      "es": "Negro",
+      "tones": [
+        "#000000"
+      ]
+    },
+    {
+      "code": "14101",
+      "filamentId": "GFA50",
+      "material": "PLA-CF",
+      "en": "Lava Gray",
+      "es": "Gris lava",
+      "tones": [
+        "#4D5054"
+      ]
+    },
+    {
+      "code": "14200",
+      "filamentId": "GFA50",
+      "material": "PLA-CF",
+      "en": "Burgundy Red",
+      "es": "Rojo burdeos",
+      "tones": [
+        "#951E23"
+      ]
+    },
+    {
+      "code": "14500",
+      "filamentId": "GFA50",
+      "material": "PLA-CF",
+      "en": "Matcha Green",
+      "es": "Verde matcha",
+      "tones": [
+        "#5C9748"
+      ]
+    },
+    {
+      "code": "14600",
+      "filamentId": "GFA50",
+      "material": "PLA-CF",
+      "en": "Jeans Blue",
+      "es": "Azul vaquero",
+      "tones": [
+        "#6E88BC"
+      ]
+    },
+    {
+      "code": "14601",
+      "filamentId": "GFA50",
+      "material": "PLA-CF",
+      "en": "Royal Blue",
+      "es": "Azul real",
+      "tones": [
+        "#2842AD"
+      ]
+    },
+    {
+      "code": "14700",
+      "filamentId": "GFA50",
+      "material": "PLA-CF",
+      "en": "Iris Purple",
+      "es": "Púrpura iris",
+      "tones": [
+        "#69398E"
+      ]
+    }
+  ]
+}

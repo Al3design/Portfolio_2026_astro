@@ -1,0 +1,105 @@
+{
+  "title": "Jarrón acanalado",
+  "status": "draft",
+  "category": "home",
+  "rightsStatus": "licensed",
+  "rightsSource": "https://makerworld.com/es/models/2664760-japandi-vase-trio",
+  "rightsNotes": "Confirmación vigente del titular, 29/10/2026: Alejandro indica que los permisos están disponibles para las piezas de esta colección. Se registra permiso comercial declarado; no se adjuntó ni verificó aquí un documento de autorización específico. Historial de fuente/licencia previo a esa confirmación: Fuente candidata aportada por Alejandro: Japandi Vase Trio, autor mostrado MASK3D. Correspondencia exacta foto/modelo pendiente de confirmar. Revisado 2026-10-29: Standard Digital File License. No permite venta ni uso remunerado sin permiso. No se observó oferta de licencia comercial en la descripción. Sin permiso comercial acreditado; conservar borrador. Impresión propia de Alejandro en PLA, diseño de tercero.",
+  "productionMode": "mixed",
+  "productionNotes": "Alejandro confirma impresión propia en PLA. Stock y pedidos combinados; colores a consultar. Capacidad, disponibilidad concreta y plazo de entrega pendientes de confirmar. Existencia de ejemplares fotografiados no equivale a stock de venta.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiar con un paño suave apenas humedecido y secar. Mantener lejos del calor y del sol directo. No usar lavavajillas. Consultar su aptitud para contener agua antes de usar flores naturales.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Enquire about suitability for holding water before using fresh flowers."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Stock y pedidos combinados; disponibilidad de esta pieza a confirmar.",
+      "en": "Stock and made-to-order options; availability of this piece to be confirmed."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Jarrón acanalado",
+      "description": "Jarrón decorativo de PLA con cuerpo redondeado, cuello estrecho y relieve acanalado. Fotografiado en beige, verde y rojo."
+    },
+    "en": {
+      "title": "Ribbed vase",
+      "description": "Decorative PLA vase with a rounded body, narrow neck and ribbed surface. Shown in beige, green and red."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261016_165831.jpg",
+      "kind": "photo",
+      "altEs": "Tres jarrones acanalados beige, verde y rojo sobre una mesa blanca.",
+      "altEn": "Three ribbed vases in beige, green and red on a white table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261016_165908.jpg",
+      "kind": "photo",
+      "altEs": "Jarrón beige de cuerpo redondeado y relieve acanalado.",
+      "altEn": "Beige vase with a rounded body and ribbed surface."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261016_165842.jpg",
+      "kind": "photo",
+      "altEs": "Jarrón rojo acanalado visto de frente.",
+      "altEn": "Front view of a red ribbed vase."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261016_165852.jpg",
+      "kind": "photo",
+      "altEs": "Jarrón verde acanalado sobre una mesa blanca.",
+      "altEn": "Green ribbed vase on a white table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261016_165902.jpg",
+      "kind": "photo",
+      "altEs": "Otra vista del jarrón rojo de cuello estrecho y cuerpo acanalado.",
+      "altEn": "Another view of the red vase with a narrow neck and ribbed body."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20261016_165903.jpg",
+      "kind": "photo",
+      "altEs": "Vista cercana del jarrón rojo acanalado.",
+      "altEn": "Close view of the red ribbed vase."
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#175447",
+      "es": "Verde oscuro",
+      "en": "Dark green"
+    },
+    {
+      "hex": "#d94443",
+      "es": "Rojo",
+      "en": "Red"
+    },
+    {
+      "hex": "#d6bb92",
+      "es": "Beige",
+      "en": "Beige"
+    }
+  ]
+}

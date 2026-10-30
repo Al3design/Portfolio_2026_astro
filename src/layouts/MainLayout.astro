@@ -28,6 +28,9 @@ interface Props {
   socialImage?: string;
   socialImageAlt?: string;
   pageType?: 'website' | 'article';
+  analytics?: boolean;
+  shopCollectionHref?: string;
+  shopNotice?: string;
 }
 
 const {
@@ -40,6 +43,9 @@ const {
   socialImage = '/banner-background.png',
   socialImageAlt = 'Al3Design · Alejandro Delgado',
   pageType = 'website',
+  analytics = true,
+  shopCollectionHref,
+  shopNotice,
 } = Astro.props;
 const pageUrl = canonicalPageUrl(Astro.url.pathname, Astro.site ?? 'https://al3design.dev');
 const metaTitle = cleanTitle(title).replace(/\s+/g, ' ');
@@ -50,13 +56,13 @@ const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter
 <html lang={language}>
   <head>
     <!-- Google Tag Manager: GA4 is configured once in this container. -->
-    <script is:inline>
+    {analytics && <script is:inline>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-KNVXGZVD');
-    </script>
+    </script>}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{metaTitle}</title>
@@ -111,8 +117,8 @@ const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNVXGZVD"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {analytics && <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNVXGZVD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>}
     <!-- End Google Tag Manager (noscript) -->
     <a class="skip-link" href="#main-content">{language === 'es' ? 'Saltar al contenido' : 'Skip to content'}</a>
 
@@ -122,7 +128,7 @@ const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter
       <div class="eg-spot eg-spot--primary"></div>
     </div>}
 
-    <Navigation client:load pathname={Astro.url.pathname} section={section} language={language} languageLinks={languageLinks} />
+    <Navigation client:load pathname={Astro.url.pathname} section={section} language={language} languageLinks={languageLinks} shopCollectionHref={shopCollectionHref} shopNotice={shopNotice} />
     <main id="main-content" tabindex="-1">
       <slot />
     </main>

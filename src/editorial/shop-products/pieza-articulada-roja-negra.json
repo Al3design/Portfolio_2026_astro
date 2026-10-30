@@ -1,0 +1,70 @@
+{
+  "title": "Pieza articulada roja y negra",
+  "status": "draft",
+  "category": "design",
+  "rightsStatus": "licensed",
+  "rightsSource": "MakerWorld — enlace del modelo pendiente",
+  "rightsNotes": "Confirmación vigente del titular, 29/10/2026: Alejandro indica que los permisos están disponibles para las piezas de esta colección. Se registra permiso comercial declarado; no se adjuntó ni verificó aquí un documento de autorización específico. Historial de fuente/licencia previo a esa confirmación: Alejandro confirma que son modelos de terceros descargados gratuitamente de MakerWorld. Autor, URL y licencia específica de este modelo pendientes. La descarga gratuita no se registra como permiso de venta.",
+  "productionMode": "mixed",
+  "productionNotes": "Alejandro confirma impresión propia en PLA. Stock y pedidos combinados; colores a consultar. Capacidad, disponibilidad concreta y plazo de entrega pendientes de confirmar. Existencia de ejemplares fotografiados no equivale a stock de venta.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiar con un paño suave apenas humedecido y secar. Mantener lejos del calor y del sol directo. No usar lavavajillas. Mover las articulaciones con suavidad, sin forzarlas.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Move the joints gently without forcing them."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Stock y pedidos combinados; disponibilidad de esta pieza a confirmar.",
+      "en": "Stock and made-to-order options; availability of this piece to be confirmed."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Pieza articulada roja y negra",
+      "description": "Pieza de PLA con segmentos rojos y negros conectados por articulaciones."
+    },
+    "en": {
+      "title": "Red and black articulated piece",
+      "description": "PLA piece with red and black segments connected by joints."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/20260826_110646.jpg",
+      "kind": "photo",
+      "altEs": "Pieza articulada roja y negra sobre una superficie oscura.",
+      "altEn": "Red and black articulated piece on a dark surface."
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#d94443",
+      "es": "Rojo",
+      "en": "Red"
+    },
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    }
+  ]
+}

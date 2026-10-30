@@ -1,0 +1,87 @@
+{
+  "title": "Soporte para control · Creeper",
+  "status": "draft",
+  "category": "desk",
+  "rightsStatus": "licensed",
+  "rightsSource": "https://makerworld.com/es/models/1725698-minecraft-creeper-xbox-one-controller-stand",
+  "rightsNotes": "Confirmación vigente del titular, 29/10/2026: Alejandro indica que los permisos están disponibles para las piezas de esta colección. Se registra permiso comercial declarado; no se adjuntó ni verificó aquí un documento de autorización específico. Historial de fuente/licencia previo a esa confirmación: Fuente candidata R6: Minecraft Creeper XBOX One Controller Stand, autor mostrado Panddda. Correspondencia exacta pendiente. Licencia leída el 2026-10-29: MakerWorld Exclusive License. El texto prohíbe expresamente uso comercial y limita publicación de derivados a MakerWorld. No se observó permiso comercial adicional. Mantener como borrador de revisión, sin venta habilitada.",
+  "productionMode": "mixed",
+  "productionNotes": "Tercera tanda fotográfica aportada por Alejandro. Material PLA confirmado por Alejandro para todas las piezas. Stock y pedidos combinados; colores a consultar. Capacidad, disponibilidad concreta y plazo de entrega pendientes; medidas opcionales. El control de Xbox ilustra el uso observado; no se incluye como parte de una oferta ni acredita compatibilidad universal.",
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "care": {
+      "es": "Para interiores. Limpiar con un paño suave apenas humedecido y secar. Mantener lejos del calor y del sol directo. No usar lavavajillas. Apoyar sobre una superficie estable y comprobar el ajuste del control.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Place on a stable surface and check the controller fits."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "availability": {
+      "es": "Stock y pedidos combinados; disponibilidad de esta pieza a confirmar.",
+      "en": "Stock and made-to-order options; availability of this piece to be confirmed."
+    }
+  },
+  "locales": {
+    "es": {
+      "title": "Soporte para control · Creeper",
+      "description": "Soporte de PLA verde con cara pixelada y apoyo superior curvo. Control de Xbox ilustrativo, no incluido. Consultá la compatibilidad con tu modelo."
+    },
+    "en": {
+      "title": "Controller stand · Creeper",
+      "description": "Green PLA stand with a pixelated face and a curved upper support. Xbox controller shown for reference, not included. Enquire about compatibility with your model."
+    }
+  },
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-b24d78b3-1df5-4e3c-bde7-8cfee9b20362.jpg",
+      "kind": "photo",
+      "altEs": "Control blanco de Xbox apoyado en un soporte verde con cara pixelada negra y blanca.",
+      "altEn": "White Xbox controller resting on a green stand with a black and white pixelated face."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-4fe453a6-e887-496c-83f3-de06c2145154.jpg",
+      "kind": "photo",
+      "altEs": "Soporte verde con cara pixelada, fotografiado sin el control.",
+      "altEn": "Green stand with a pixelated face, photographed without the controller."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-0dd34c4b-7218-41fa-848d-2b8967f36d54.jpg",
+      "kind": "photo",
+      "altEs": "Vista lateral del soporte verde y su superficie superior curva.",
+      "altEn": "Side view of the green stand and its curved upper surface."
+    }
+  ],
+  "palette": [
+    {
+      "hex": "#75b82a",
+      "es": "Verde lima",
+      "en": "Lime green"
+    },
+    {
+      "hex": "#f3f0e9",
+      "es": "Blanco",
+      "en": "White"
+    },
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    }
+  ]
+}

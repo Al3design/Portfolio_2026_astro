@@ -49,6 +49,8 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
   const navLinks = siteNavigation(section, language).map(link => section === 'shop' && shopCollectionHref && link.href.endsWith('#collection') ? { ...link, href: shopCollectionHref } : link);
   const shop = section === 'shop';
   const spanish = language === 'es';
+  const rssHref = shop ? (spanish ? '/tienda/rss.xml' : '/en/shop-3d/rss.xml') : '/rss.xml';
+  const rssLabel = shop ? (spanish ? 'RSS de la tienda' : 'Shop RSS feed') : 'RSS Feed';
   const translations: SiteLanguageLinks = languageLinks ?? (shop ? shopRoutes : { [language]: pathname });
   const themeStorageKey = shop ? 'shop-theme' : 'theme';
   const defaultTheme = shop ? 'light' : 'dark';
@@ -266,9 +268,9 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
           </button>
 
           {/* Desktop-only action buttons */}
-          {!shop && <a href="/rss.xml" target='_blank' className={clsx(styles.nav__btn, styles['nav__btn--desktop'])} aria-label="RSS Feed">
-            <Rss size={18} />
-          </a>}
+          <a href={rssHref} target="_blank" rel="noopener noreferrer" className={clsx(styles.nav__btn, styles['nav__btn--desktop'])} aria-label={rssLabel} title={rssLabel}>
+            <Rss size={18} aria-hidden="true" />
+          </a>
           {!shop && <button className={clsx(styles.nav__btn, styles['nav__btn--desktop'])} aria-label="Source">
             <Code size={18} />
           </button>}
@@ -383,10 +385,10 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
                   {themeIcon}
                   <span>{theme === 'light' ? 'LIGHT_MODE' : 'DARK_MODE'}</span>
                 </button>
-                {!shop && <a href="/rss.xml" className={clsx(styles.nav__btn, styles['nav__btn--overlay'])} aria-label="RSS Feed">
-                  <Rss size={18} />
+                <a href={rssHref} className={clsx(styles.nav__btn, styles['nav__btn--overlay'])} aria-label={rssLabel}>
+                  <Rss size={18} aria-hidden="true" />
                   <span>RSS FEED</span>
-                </a>}
+                </a>
                 {!shop && <button className={clsx(styles.nav__btn, styles['nav__btn--overlay'])} aria-label="Source">
                   <Code size={18} />
                   <span>SOURCE</span>

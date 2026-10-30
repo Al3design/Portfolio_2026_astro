@@ -81,7 +81,6 @@ const categories = { home: en ? 'Home & decor' : 'Hogar y deco', desk: en ? 'Des
       <header class={shopStyles.shop__sectionHeading}>
         <div><a class={shopStyles.shop__pieceAction} href={`${home}#collection`}>← {en ? 'Back to the shop' : 'Volver a la tienda'}</a><h1 class={shopStyles.shop__catalogueTitle}>{title}</h1><p class={shopStyles.shop__intro}>{intro}</p></div>
       </header>
-      <a class={shopStyles.shop__pieceAction} href={en ? '/en/shop-3d/rss.xml' : '/tienda/rss.xml'}>{en ? 'Subscribe via RSS' : 'Seguir novedades por RSS'} ↗</a>
       <section id="collection" aria-label={en ? 'Collection' : 'Colección'}>
         <ShopCollection products={products} language={language} />
       </section>

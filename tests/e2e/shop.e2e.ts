@@ -84,9 +84,9 @@ for (const language of ['es', 'en'] as const) {
       await app.open(link);
       const slug = link.split('/').filter(Boolean).pop()!;
       await expect(browser.locator('main figure img')).toHaveCount(expectedPhotos[slug]);
-      await expect(browser.locator('main header')).toContainText(language === 'es' ? 'Precio a consultar' : 'Price on enquiry');
-      await expect(browser.locator('main header')).toContainText(language === 'es' ? 'Según stock y a confirmar.' : 'Subject to stock; to be confirmed.');
-      await expect(browser.locator('main header')).toContainText(language === 'es' ? 'Solo incluye la impresión 3D.' : 'Only the 3D print is included.');
+      await expect(browser.locator('main')).toContainText(language === 'es' ? 'Precio a consultar' : 'Price on enquiry');
+      await expect(browser.locator('main')).toContainText(language === 'es' ? 'Según stock y a confirmar.' : 'Subject to stock; to be confirmed.');
+      await expect(browser.locator('main')).toContainText(language === 'es' ? 'Solo incluye la impresión 3D.' : 'Only the 3D print is included.');
       await expect(browser.locator('main details')).toHaveCount(0);
       await expect(browser.locator('a[href*="/revision/"], a[href*="/admin/"], img[src*="/revision/"]')).toHaveCount(0);
       const result = await browser.evaluate(async () => {
@@ -99,6 +99,12 @@ for (const language of ['es', 'en'] as const) {
       });
       expect(result.imagesValid.every(Boolean)).toBe(true);
       expect(result.leaked).toBe(false);
+      expect(await browser.evaluate(() => {
+        const photos = [...document.querySelectorAll<HTMLImageElement>('main figure img')];
+        const inquiry = document.querySelector<HTMLAnchorElement>('a[href^="https://wa.me/541160513261"]')!;
+        return inquiry.getBoundingClientRect().top > photos[photos.length - 1].getBoundingClientRect().bottom
+          && photos.every(image => Math.abs(image.getBoundingClientRect().width / image.getBoundingClientRect().height - Number(image.getAttribute('width')) / Number(image.getAttribute('height'))) < 0.02);
+      })).toBe(true);
       const inquiry = screen.getByRole('link', language === 'es' ? 'Consultar esta pieza por WhatsApp ↗' : 'Enquire about this piece on WhatsApp ↗', { exact: true });
       await expect(inquiry).toHaveAttribute('href', /https:\/\/wa\.me\/541160513261\?text=/);
       // Inspect destination only: never open WhatsApp or send a message.
@@ -107,5 +113,36 @@ for (const language of ['es', 'en'] as const) {
         expect(await browser.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
       }
     }
+  });
+}
+for (const language of ['es', 'en'] as const) {
+  test(`piece sharing and shop RSS are available without sending messages: ${language}`, async ({ app, screen, browser }) => {
+    const en = language === 'en';
+    const base = en ? '/en/shop-3d' : '/tienda';
+    await browser.setViewport({ width: 1440, height: 900 });
+    await app.open(`${base}/maceta-perro/`);
+    await expect(screen.getByRole('link', en ? 'Shop RSS feed' : 'RSS de la tienda', { exact: true })).toHaveAttribute('href', `${base}/rss.xml`);
+    const result = await browser.evaluate(async () => {
+      const share = document.querySelector('shop-share')!;
+      const link = share.querySelector<HTMLAnchorElement>('a[href^="https://wa.me/?"]')!;
+      const text = new URL(link.href).searchParams.get('text')!;
+      const feed = document.querySelector<HTMLLinkElement>('link[type="application/rss+xml"]')!;
+      const response = await fetch(feed.href);
+      const xml = await response.text();
+      const doc = new DOMParser().parseFromString(xml, 'application/xml');
+      return {
+        correctShareUrl: text.includes(`${location.origin}${location.pathname}`),
+        imageType: document.querySelector('meta[property="og:image:type"]')?.getAttribute('content'),
+        feedOk: response.ok && !doc.querySelector('parsererror'),
+        items: doc.querySelectorAll('item').length,
+        images: doc.getElementsByTagName('media:content').length,
+        uniqueLinks: new Set([...doc.querySelectorAll('item > guid')].map(item => item.textContent)).size,
+        privateNotes: /productionNotes|rightsNotes|rightsSource/.test(xml),
+      };
+    });
+    expect(result).toEqual({ correctShareUrl: true, imageType: 'image/jpeg', feedOk: true, items: 8, images: 8, uniqueLinks: 8, privateNotes: false });
+    await screen.getByRole('button', en ? 'Copy link' : 'Copiar enlace', { exact: true }).click();
+    await expect(browser.locator('shop-share [data-status]')).toContainText(en ? /Link copied|Select and copy this link/ : /Enlace copiado|Seleccioná y copiá este enlace/);
+    // Native sharing and the WhatsApp destination are not activated.
   });
 }

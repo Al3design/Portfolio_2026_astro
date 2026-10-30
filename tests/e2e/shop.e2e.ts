@@ -5,7 +5,9 @@ test('Shop 3D shares navigation and changes language without losing theme', asyn
   await app.open('/');
   await screen.getByRole('link', 'SHOP 3D', { exact: true }).click();
   await expect(browser).toHaveURL('/tienda');
-  await expect(screen.getByRole('heading', 'Piezas impresas', { level: 1, exact: true })).toBeVisible();
+  await expect(screen.getByRole('heading', 'Ideas que toman forma.', { level: 1, exact: true })).toBeVisible();
+  await screen.getByRole('link', 'Ver toda la colección ↗', { exact: true }).click();
+  await expect(browser).toHaveURL('/tienda/coleccion/');
   await expect(browser).toHaveClass(browser.locator('html'), 'light');
   await expect(browser.locator('.bg-energy-grid')).toHaveCount(0);
 
@@ -28,8 +30,51 @@ test('Shop 3D shares navigation and changes language without losing theme', asyn
 });
 
 for (const language of ['es', 'en'] as const) {
+  test(`shop landing shows three latest pieces, filters and opens full collection: ${language}`, async ({ app, screen, browser }) => {
+    const en = language === 'en';
+    const home = en ? '/en/shop-3d' : '/tienda';
+    await app.open(home);
+    await expect(screen.getByRole('link', en ? 'Explore objects ↗' : 'Explorar piezas ↗', { exact: true })).toHaveAttribute('href', '#collection');
+    await screen.getByRole('link', en ? 'Explore objects ↗' : 'Explorar piezas ↗', { exact: true }).click();
+    await expect(browser).toHaveURL(`${home}#collection`);
+    await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(3);
+    expect(await browser.evaluate(() => [...document.querySelectorAll('shop-collection article:not([hidden])')].map(piece => piece.id))).toEqual(['soporte-control-creeper', 'maceta-perro', 'maceta-acanalada-con-plato']);
+    await screen.getByRole('button', en ? 'Desk' : 'Escritorio', { exact: true }).click();
+    await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(1);
+    await expect(screen.getByRole('button', en ? 'Desk' : 'Escritorio', { exact: true })).toHaveAttribute('aria-pressed', 'true');
+    await screen.getByRole('button', en ? 'Organization' : 'Organización', { exact: true }).click();
+    await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(0);
+    await expect(browser.locator('[data-empty]')).toBeVisible();
+    await screen.getByRole('button', en ? 'All objects' : 'Todas las piezas', { exact: true }).click();
+    await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(3);
+    await screen.getByRole('link', en ? 'View the full collection ↗' : 'Ver toda la colección ↗', { exact: true }).click();
+    await expect(browser).toHaveURL(en ? '/en/shop-3d/collection/' : '/tienda/coleccion/');
+    await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(8);
+    await screen.getByRole('button', en ? 'Home & decor' : 'Hogar y deco', { exact: true }).click();
+    await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(5);
+    await screen.getByRole('link', en ? 'View piece: Decorative tree' : 'Ver pieza: Árbol decorativo', { exact: true }).click();
+    await screen.getByRole('link', en ? '← Back to all pieces' : '← Volver a todas las piezas', { exact: true }).click();
+    await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(8);
+    for (const width of [320, 1440]) {
+      await browser.setViewport({ width, height: 900 });
+      const toggle = browser.locator('[data-filter-toggle]');
+      if (width === 320) {
+        await expect(toggle).toBeVisible();
+        await toggle.click();
+        await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+        await screen.getByRole('button', en ? 'Desk' : 'Escritorio', { exact: true }).click();
+        await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(1);
+        await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+        await expect(toggle).toContainText(en ? /\bdesk\b/i : /\bescritorio\b/i);
+      } else {
+        await screen.getByRole('button', en ? 'All objects' : 'Todas las piezas', { exact: true }).click();
+        await expect(browser.locator('shop-collection article:not([hidden])')).toHaveCount(8);
+      }
+      expect(await browser.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    }
+  });
   test(`public catalogue has photographs, enquiry terms and no editorial notes: ${language}`, async ({ app, screen, browser }) => {
-    const home = language === 'es' ? '/tienda' : '/en/shop-3d';
+    const home = language === 'es' ? '/tienda/coleccion/' : '/en/shop-3d/collection/';
     await app.open(home);
     await expect(browser.locator('main article')).toHaveCount(8);
     const links = await browser.evaluate(() => [...document.querySelectorAll<HTMLAnchorElement>('main article > a')].map(link => link.getAttribute('href')!));

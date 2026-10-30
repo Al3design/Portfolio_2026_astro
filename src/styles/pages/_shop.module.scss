@@ -112,6 +112,24 @@
   &__count { color: semantic-color(brand-on-surface-variant); }
   &__index { color: semantic-color(brand-secondary); }
   &__filters { display: flex; flex-wrap: wrap; gap: size(2); margin-bottom: size(8); }
+  &__filterControls {
+    margin-bottom: size(8);
+    .shop__filters { display: none; margin-bottom: 0; margin-top: size(3); padding: size(3); background: semantic-color(brand-surface-low); }
+    &[data-open] .shop__filters { display: flex; flex-direction: column; align-items: stretch; }
+    @include mq(md) {
+      .shop__filters, &[data-open] .shop__filters { display: flex; flex-direction: row; margin-top: 0; padding: 0; background: none; }
+    }
+  }
+  &__filterToggle {
+    max-width: 100%;
+    gap: size(3);
+    text-align: start;
+    > span { min-width: 0; overflow-wrap: anywhere; }
+    > svg { flex-shrink: 0; }
+    &[aria-expanded='true'] .shop__filterChevron { rotate: 180deg; }
+    &:focus-visible { outline: 2px solid semantic-color(brand-tertiary); outline-offset: 4px; }
+    @include mq(md) { display: none; }
+  }
   &__filter {
     min-height: 44px;
     padding: size(2) size(4);
@@ -152,6 +170,22 @@
   }
 
   &__product { min-width: 0; }
+  &__collectionWidget { display: block; }
+  &__collectionWidget [hidden] { display: none; }
+  &__collectionLink { margin-top: size(10); }
+  &__catalogueTitle { font-size: fs('800'); line-height: lh(tight); margin-block: size(6); }
+  &__productLink { display: block; color: inherit; text-decoration: none; }
+  &__productLink:hover :is(h2, h3) { text-decoration: underline; text-underline-offset: 5px; }
+  &__productLink:focus-visible { outline: 2px solid semantic-color(brand-tertiary); outline-offset: 5px; }
+  &__photo {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: radius(soft);
+    background: semantic-color(brand-surface-low);
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  }
+  &__pieceAction { display: inline-flex; align-items: center; min-height: 44px; color: semantic-color(brand-primary); font-family: semantic-font(mono); font-size: 10px; text-transform: uppercase; }
   &__imageButton {
     display: block;
     position: relative;
@@ -175,7 +209,7 @@
   }
   &__productHeading {
     margin-top: size(4);
-    h3 { font-size: fs('400'); }
+    :is(h2, h3) { font-size: fs('400'); }
     > span { display: block; margin-top: size(1); color: semantic-color(brand-secondary); font-family: semantic-font(mono); font-size: 9px; text-transform: uppercase; }
   }
   &__description { color: semantic-color(brand-on-surface-variant); font-size: fs('200'); line-height: lh(relaxed); margin-top: size(2); }

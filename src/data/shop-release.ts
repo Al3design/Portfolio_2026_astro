@@ -10,3 +10,12 @@ export const shopCatalogueSlugs = [
   'pieza-articulada-roja-negra',
   'soporte-control-creeper',
 ] as const;
+
+// Latest new pieces supplied by Alejandro: controller stand (batch 3),
+// dog planter and ribbed planter (batch 2). Tree colour updates do not
+// create another piece. This is editorial incorporation, not print date.
+export const shopLatestSlugs = [
+  'soporte-control-creeper',
+  'maceta-perro',
+  'maceta-acanalada-con-plato',
+] as const;

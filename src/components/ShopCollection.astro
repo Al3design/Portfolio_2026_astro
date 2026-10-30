@@ -1,0 +1,96 @@
+---
+import { Image } from 'astro:assets';
+import ShopPalette from '../editorial/ShopPalette.astro';
+import { bambuFilamentColours } from '@/lib/shop-colours';
+import { shopPieceUrl, type ShopCatalogueProduct } from '@/lib/shop-catalogue';
+import { shopCopy, type ShopLanguage } from '@/data/shop-demo';
+import styles from '@/styles/pages/_shop.module.scss';
+import ui from '@/styles/components/_ui.module.scss';
+
+interface Props { products: ShopCatalogueProduct[]; language: ShopLanguage; limit?: number }
+const { products, language, limit = products.length } = Astro.props;
+const t = shopCopy[language];
+const categories = ['all', 'home', 'desk', 'organization', 'design'];
+const en = language === 'en';
+const PieceHeading = Astro.slots.has('heading') ? 'h3' : 'h2';
+---
+<shop-collection data-limit={limit} class={styles.shop__collectionWidget}>
+  <header class={styles.shop__sectionHeading}>
+    <slot name="heading" />
+    <p class={styles.shop__count} role="status" aria-live="polite" aria-atomic="true" data-count data-piece-label={en ? 'pieces' : 'piezas'}>{String(Math.min(limit, products.length)).padStart(2, '0')} {en ? 'PIECES' : 'PIEZAS'}</p>
+  </header>
+  <div class={styles.shop__filterControls} data-filters hidden>
+    <button type="button" class={`${styles.shop__button} ${styles['shop__button--secondary']} ${styles.shop__filterToggle}`} data-filter-toggle aria-expanded="false" aria-controls="shop-category-options">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M7 12h10M10 17h4" /></svg>
+      <span>{en ? 'Filter' : 'Filtrar'}<span data-selected-category></span></span>
+      <svg class={styles.shop__filterChevron} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+    </button>
+    <div id="shop-category-options" class={styles.shop__filters} role="group" aria-label={t.filterLabel}>
+      {categories.map((category, index) => <button type="button" data-category={category} aria-pressed={index === 0} class={`${ui.tag} ${ui['tag--interactive']} ${styles.shop__filter}`}>{t.categories[index]}</button>)}
+    </div>
+  </div>
+  <div class={styles.shop__products}>
+    {products.map((piece, index) => <article id={piece.slug} data-piece data-category={piece.category} class={styles.shop__product} hidden={index >= limit}>
+      <a class={styles.shop__productLink} href={shopPieceUrl(piece.slug, language)} aria-label={`${en ? 'View piece' : 'Ver pieza'}: ${piece.title[language]}`}>
+        <div class={styles.shop__photo}>
+          <Image src={piece.photos[0].image} alt="" format="webp" widths={[320, 640, 960]} sizes="(min-width: 900px) 33vw, 50vw" width={960} loading={index < Math.min(3, limit) ? 'eager' : 'lazy'} decoding="async" />
+          <span class={styles.shop__imageTag}>{en ? 'Real print' : 'Impresión real'}</span>
+        </div>
+        <div class={styles.shop__productHeading}><PieceHeading>{piece.title[language]}</PieceHeading>{piece.category && <span>{t.categories[categories.indexOf(piece.category)]}</span>}</div>
+        <ShopPalette colours={piece.palette} legacyColours={piece.photographedColours} references={bambuFilamentColours} language={language} compact />
+        <div class={styles.shop__productTail}><span>{en ? 'Price on enquiry' : 'Precio a consultar'}</span><span class={styles.shop__pieceAction}>{en ? 'View piece' : 'Ver pieza'} ↗</span></div>
+      </a>
+    </article>)}
+  </div>
+  <p data-empty hidden>{en ? 'No pieces in this category yet. Explore another category or view all pieces.' : 'Todavía no hay piezas en esta categoría. Explorá otra categoría o volvé a todas las piezas.'}</p>
+</shop-collection>
+<script>
+  class ShopCollection extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready = 'true';
+      const filters = this.querySelector<HTMLElement>('[data-filters]');
+      const buttons = this.querySelectorAll<HTMLButtonElement>('button[data-category]');
+      const pieces = this.querySelectorAll<HTMLElement>('[data-piece]');
+      const count = this.querySelector<HTMLElement>('[data-count]');
+      const toggle = this.querySelector<HTMLButtonElement>('[data-filter-toggle]');
+      const selected = this.querySelector<HTMLElement>('[data-selected-category]');
+      const limit = Number(this.dataset.limit);
+      if (filters) filters.hidden = false;
+      const closeFilters = () => {
+        filters?.removeAttribute('data-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+      };
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        filters?.toggleAttribute('data-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      filters?.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && filters.hasAttribute('data-open')) {
+          closeFilters();
+          toggle?.focus();
+        }
+      });
+      buttons.forEach(button => button.addEventListener('click', () => {
+        const category = button.dataset.category;
+        let visible = 0;
+        pieces.forEach(piece => {
+          const matches = category === 'all' || piece.dataset.category === category;
+          piece.hidden = !matches || visible >= limit;
+          if (!piece.hidden) visible++;
+        });
+        buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        if (count) count.textContent = `${String(visible).padStart(2, '0')} ${count.dataset.pieceLabel} · ${button.textContent}`;
+        const empty = this.querySelector<HTMLElement>('[data-empty]');
+        if (empty) empty.hidden = visible !== 0;
+        if (selected) selected.textContent = category === 'all' ? '' : ` · ${button.textContent}`;
+        if (!window.matchMedia('(min-width: 48em)').matches) {
+          closeFilters();
+          toggle?.focus();
+        }
+      }));
+    }
+  }
+  if (!customElements.get('shop-collection')) customElements.define('shop-collection', ShopCollection);
+</script>

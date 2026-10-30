@@ -11,14 +11,14 @@ for (const [base, price, delivery, included] of [
   ['tienda', 'Precio a consultar', 'Según stock y a confirmar.', 'Solo incluye la impresión 3D.'],
   ['en/shop-3d', 'Price on enquiry', 'Subject to stock; to be confirmed.', 'Only the 3D print is included.'],
 ]) {
-  for (const slug of ['', ...slugs]) {
+  for (const slug of ['', base === 'tienda' ? 'coleccion' : 'collection', ...slugs]) {
     const page = [base, slug, 'index.html'].filter(Boolean).join('/');
     try {
       const html = await readFile(resolve(root, page), 'utf8');
       pages.push(page);
       if (!html.includes(price) || !html.includes(delivery) || !html.includes(included)) errors.push(`${page}: missing enquiry terms`);
       if (/\b(?:href|src)=["'][^"']*(?:\/revision\/|\/admin\/)/.test(html)) errors.push(`${page}: editorial URL exposed`);
-      if (slug && !html.includes(`/${base}/${slug}/`)) errors.push(`${page}: missing canonical piece URL`);
+      if (slugs.includes(slug) && !html.includes(`/${base}/${slug}/`)) errors.push(`${page}: missing canonical piece URL`);
       const webp = [...html.matchAll(/\bsrc=["'](\/_astro\/[^"']+\.webp(?:\?[^"']*)?)["']/g)];
       if (!webp.length) errors.push(`${page}: missing optimized photos`);
       for (const [, src] of webp) {

@@ -44,6 +44,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>([
 export const shopPieceUrl = (slug: string, language: ShopLanguage) =>
   `${language === 'es' ? '/tienda' : '/en/shop-3d'}/${encodeURIComponent(slug)}/`;
 
+export const shopCollectionUrl = (language: ShopLanguage) =>
+  language === 'es' ? '/tienda/coleccion/' : '/en/shop-3d/collection/';
+
 // Build/server projection only. Never pass editorial documents to a client
 // island: internal notes, source paths and licence history are not public data.
 export async function shopCatalogue() {

@@ -1,5 +1,5 @@
 ---
-import ShopCatalogue from '@/layouts/ShopCatalogue.astro';
+import ShopLanding from '@/layouts/ShopLanding.astro';
 import type { ShopLanguage } from '@/data/shop-demo';
 
 interface Props { language: ShopLanguage }
@@ -7,4 +7,4 @@ const { language } = Astro.props;
 const realPreview = import.meta.env.MODE === 'development' && Astro.url.searchParams.get('catalog') === 'real';
 const Review = realPreview ? (await import('../editorial/ShopReview.astro')).default : undefined;
 ---
-{Review ? <Review language={language} slug={Astro.url.searchParams.get('piece') ?? undefined} storefrontPreview /> : <ShopCatalogue language={language} />}
+{Review ? <Review language={language} slug={Astro.url.searchParams.get('piece') ?? undefined} storefrontPreview /> : <ShopLanding language={language} />}

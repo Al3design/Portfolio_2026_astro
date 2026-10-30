@@ -24,29 +24,23 @@ const categoryLabels = {
   design: en ? 'Design objects' : 'Objetos de diseño',
 };
 const t = en ? {
-  title: 'Printed pieces', review: 'Store 3D / Local review', draft: 'Draft',
+  title: 'Printed pieces', review: 'Store 3D / Local review', draft: 'Draft', pending: 'To confirm',
   intro: 'Photos of real prints and working descriptions. Review each piece before including it in the collection.',
-  license: 'Commercial permission pending', pending: 'To confirm',
-  permissionDeclared: 'Permission confirmed by the owner',
   back: 'Back to all pieces', photos: 'Photos of the print',
-  fields: 'Object and delivery details', notes: 'Editorial notes and model source',
+  fields: 'Object and delivery details', notes: 'Internal notes',
   editor: 'Open Tina editor', photoPending: 'Photo pending', original: 'Open original photo',
   noSale: 'Editorial review. Sales are not enabled for these pieces.',
   empty: 'No saved drafts yet.', noDescription: 'Description pending.',
-  source: 'Model source for review', unknown: 'Source not identified',
   updated: 'After saving in Tina, reload this page to see the saved content.',
   status: 'Editorial status', reviewStatus: 'For review',
 } : {
-  title: 'Piezas impresas', review: 'Store 3D / Revisión local', draft: 'Borrador',
+  title: 'Piezas impresas', review: 'Store 3D / Revisión local', draft: 'Borrador', pending: 'Por confirmar',
   intro: 'Fotos de impresiones reales y descripciones en preparación. Revisá cada pieza antes de incorporarla a la colección.',
-  license: 'Permiso comercial pendiente', pending: 'Por confirmar',
-  permissionDeclared: 'Permisos confirmados por el titular',
   back: 'Volver a todas las piezas', photos: 'Fotos de la impresión',
-  fields: 'Datos de la pieza y entrega', notes: 'Notas editoriales y fuente del modelo',
+  fields: 'Datos de la pieza y entrega', notes: 'Notas internas',
   editor: 'Abrir editor Tina', photoPending: 'Foto pendiente', original: 'Abrir foto original',
   noSale: 'Revisión editorial. Estas piezas no tienen venta habilitada.',
   empty: 'Todavía no hay borradores guardados.', noDescription: 'Descripción pendiente.',
-  source: 'Fuente del modelo para revisar', unknown: 'Fuente sin identificar',
   updated: 'Después de guardar en Tina, recargá esta página para ver el contenido guardado.',
   status: 'Estado editorial', reviewStatus: 'Para revisar',
 };
@@ -56,12 +50,9 @@ const detailUrl = (id: string, locale: ShopLanguage = language) => storefrontPre
   : `/revision/tienda/${locale}/${id}`;
 const collectionLink = (locale: ShopLanguage) => storefrontPreview ? `${shopRoutes[locale]}?catalog=real` : `/revision/tienda/${locale}/`;
 const collectionUrl = collectionLink(language);
-const permissionFor = (product: typeof drafts[number]['product']) => product.rightsStatus === 'pending' ? t.license : t.permissionDeclared;
 const editorUrl = selected
   ? `/admin/index.html#/collections/edit/shopProduct/${encodeURIComponent(selected.slug)}`
   : '/admin/index.html#/collections/shopProduct/~';
-const source = selected?.product.rightsSource;
-const sourceUrl = source && /^https:\/\/makerworld\.com\/(es|en)\/models\/\d+[a-zA-Z0-9/#?=_-]*$/.test(source) ? source : undefined;
 ---
 <MainLayout
   section="shop" language={language} noIndex analytics={false}
@@ -75,7 +66,7 @@ const sourceUrl = source && /^https:\/\/makerworld\.com\/(es|en)\/models\/\d+[a-
       {selected ? <>
         <a class={styles.action} href={`${collectionUrl}#${selected.slug}`}>← {t.back}</a>
         <header class={styles.intro}>
-          <p class={styles.meta}>{t.draft} · {permissionFor(selected.product)}</p>
+          <p class={styles.meta}>{t.draft}</p>
           <h1>{titleFor(selected.product)}</h1>
           <p>{selected.product.locales?.[language]?.description?.trim() || t.noDescription}</p>
           <ShopPalette colours={selected.product.palette} legacyColours={selected.product.photographedColours} references={filamentColours} language={language} />
@@ -115,8 +106,6 @@ const sourceUrl = source && /^https:\/\/makerworld\.com\/(es|en)\/models\/\d+[a-
         <details class={styles.notes}>
           <summary>{t.notes}</summary>
           <p>{t.status}: {selected.product.status === 'review' ? t.reviewStatus : t.draft}</p>
-          <p>{sourceUrl ? <a href={sourceUrl} rel="noreferrer">{t.source}</a> : t.unknown}</p>
-          <p lang="es">{selected.product.rightsNotes}</p>
           <p lang="es">{selected.product.productionNotes}</p>
         </details>
       </> : <>

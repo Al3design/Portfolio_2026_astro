@@ -25,7 +25,6 @@ export const shopProductCollection: Collection = {
     defaultItem: (): ShopProductDraft => ({
       title: 'Nueva pieza · por completar',
       status: 'draft',
-      rightsStatus: 'pending',
       productionMode: 'pending',
       details: {},
       locales: { es: {}, en: {} },
@@ -36,12 +35,12 @@ export const shopProductCollection: Collection = {
   fields: [
     {
       type: 'string', name: 'title', label: 'Nombre interno', isTitle: true, required: true,
-      description: 'Identifica el borrador. Revisión local en /revision/tienda/es/; guardar no publica ni habilita ventas. Recargar la revisión después de guardar.',
+      description: 'Nombre de la pieza en el editor. Después de guardar, recargá la revisión para ver los cambios.',
     },
     {
       type: 'string', name: 'status', label: 'Estado editorial', required: true,
-      options: [{ value: 'draft', label: 'Borrador' }, { value: 'review', label: 'Para revisar con Alejandro' }],
-      description: 'Para revisar no significa aprobado. La publicación se implementará en una etapa posterior.',
+      options: [{ value: 'draft', label: 'Borrador' }, { value: 'review', label: 'Para revisar' }],
+      description: 'Usá borrador mientras preparás la ficha y para revisar cuando esté lista para repasar.',
     },
     { type: 'string', name: 'category', label: 'Categoría', options: shopEditorialCategories.map(option => ({ ...option })) },
     {
@@ -72,9 +71,9 @@ export const shopProductCollection: Collection = {
         type: 'object', name: key, label: shopEditorialDetailLabels.es[key], fields: localizedTextFields(),
         description: key === 'deliveryTime'
           ? 'Condición actual: según stock y a confirmar. Es entrega o retiro, no duración de impresión. No prometer una fecha sin confirmarla.'
-          : key === 'price' ? 'Decisión de Alejandro: precio a consultar siempre. No cargar un importe; la ficha pública conserva esta condición global.'
+          : key === 'price' ? 'El precio se informa por consulta. No cargues un importe.'
           : key === 'included' ? 'Solo incluye la impresión 3D. El resto de los elementos fotografiados es decorativo y no se incluye.'
-          : key === 'dimensions' ? 'Opcional por decisión de Alejandro; dejar vacío no bloquea la ficha.' : undefined,
+          : key === 'dimensions' ? 'Opcional. Podés dejarlo vacío.' : undefined,
       })),
     },
     {
@@ -91,17 +90,6 @@ export const shopProductCollection: Collection = {
       type: 'string', name: 'productionNotes', label: 'Notas internas de capacidad y producción',
       description: 'Organización interna. La duración de impresión no se muestra al cliente; el plazo de entrega se define aparte.', ui: { component: 'textarea' },
     },
-    {
-      type: 'string', name: 'rightsStatus', label: 'Autoría / licencia comercial', required: true,
-      options: [
-        { value: 'pending', label: 'Pendiente de confirmar' },
-        { value: 'own', label: 'Diseño propio declarado' },
-        { value: 'licensed', label: 'Modelo de tercero con licencia comercial declarada' },
-      ],
-      description: 'Tener el STL no acredita derecho de venta. Esta declaración no sustituye la revisión de Alejandro.',
-    },
-    { type: 'string', name: 'rightsSource', label: 'Fuente del modelo / referencia de licencia' },
-    { type: 'string', name: 'rightsNotes', label: 'Autor, alcance y condiciones de uso', ui: { component: 'textarea' } },
     {
       type: 'object', name: 'photos', label: 'Fotos y renders para revisar', list: true,
       description: 'Identificar foto de impresión real o render. El gestor de medios usa public/assets: subir allí no garantiza privacidad del archivo.',
@@ -121,7 +109,6 @@ export const shopProductCollection: Collection = {
         { type: 'string', name: 'altEn', label: 'Descripción accesible EN' },
         { type: 'string', name: 'captionEs', label: 'Epígrafe ES' },
         { type: 'string', name: 'captionEn', label: 'Epígrafe EN' },
-        { type: 'string', name: 'credit', label: 'Autor / crédito de la imagen' },
       ],
     },
   ],

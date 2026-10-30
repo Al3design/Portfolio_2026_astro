@@ -7,6 +7,10 @@ const slugs = ['arbol-decorativo', 'figura-articulada-verde-roja', 'flor-decorat
 const errors = [];
 const pages = [];
 const photos = new Set();
+const privateNotes = (await Promise.all(slugs.map(async slug => {
+  const draft = JSON.parse(await readFile(resolve('src/editorial/shop-products', `${slug}.json`), 'utf8'));
+  return draft.productionNotes?.trim();
+}))).filter(Boolean);
 for (const [base, price, delivery, included] of [
   ['tienda', 'Precio a consultar', 'Según stock y a confirmar.', 'Solo incluye la impresión 3D.'],
   ['en/shop-3d', 'Price on enquiry', 'Subject to stock; to be confirmed.', 'Only the 3D print is included.'],
@@ -41,8 +45,8 @@ for (const file of files) {
   if (slugs.some(slug => name.endsWith(`/${slug}.json`) || name === `${slug}.json`)) errors.push(`${name}: editorial JSON in output`);
   if (['.html', '.js', '.json', '.map'].includes(extname(file))) {
     const text = await readFile(file, 'utf8');
-    if (text.includes('Confirmación vigente del titular, 29/10/2026') || text.includes('Historial de fuente/licencia previo a esa confirmación')) {
-      errors.push(`${name}: private licence history in output`);
+    if (privateNotes.some(note => text.includes(note))) {
+      errors.push(`${name}: internal production note in output`);
     }
   }
 }

@@ -48,7 +48,7 @@ export const shopCollectionUrl = (language: ShopLanguage) =>
   language === 'es' ? '/tienda/coleccion/' : '/en/shop-3d/collection/';
 
 // Build/server projection only. Never pass editorial documents to a client
-// island: internal notes, source paths and licence history are not public data.
+// island: internal notes and local file paths are not public data.
 export async function shopCatalogue() {
   return Promise.all(shopCatalogueSlugs.map(async slug => {
     const raw = documents[`../editorial/shop-products/${slug}.json`];

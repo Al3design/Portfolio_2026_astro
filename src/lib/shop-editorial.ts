@@ -20,9 +20,6 @@ export interface ShopProductDraft {
   title: string;
   status: 'draft' | 'review';
   category?: typeof shopEditorialCategories[number]['value'];
-  rightsStatus: 'pending' | 'own' | 'licensed';
-  rightsSource?: string;
-  rightsNotes?: string;
   productionMode: 'pending' | 'stock' | 'made-to-order' | 'mixed';
   productionNotes?: string;
   photographedColours?: ShopColourId[];
@@ -41,6 +38,5 @@ export interface ShopProductDraft {
     altEn?: string;
     captionEs?: string;
     captionEn?: string;
-    credit?: string;
   }[];
 }

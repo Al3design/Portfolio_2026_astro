@@ -22,7 +22,7 @@ for (const language of ['es', 'en'] as const) {
     await expect(browser.locator('astro-island[component-url*="Navigation"]:not([ssr])')).toHaveCount(1);
     await screen.getByRole('link', language === 'es' ? 'Ver pieza: Árbol decorativo' : 'View piece: Decorative tree', { exact: true }).click();
     await expect(browser).toHaveURL(`${store}?catalog=real&piece=arbol-decorativo`);
-    await expect(browser.locator('main header')).toContainText(language === 'es' ? 'Permisos confirmados por el titular' : 'Permission confirmed by the owner');
+    await expect(browser.locator('main header')).toContainText(language === 'es' ? 'Borrador' : 'Draft');
     await expect(screen.getByRole('link', language === 'es' ? 'Abrir editor Tina' : 'Open Tina editor', { exact: true })).toHaveAttribute('href', '/admin/index.html#/collections/edit/shopProduct/arbol-decorativo');
     await expect(browser.locator('astro-island[component-url*="Navigation"]:not([ssr])')).toHaveCount(1);
     await screen.getByRole('link', language === 'es' ? 'Switch to English' : 'Cambiar a español', { exact: true }).click();
@@ -53,7 +53,7 @@ for (const language of ['es', 'en'] as const) {
       await screen.getByRole('link', `${language === 'es' ? 'Ver pieza' : 'View piece'}: ${piece[language]}`, { exact: true }).click();
       await expect(browser).toHaveURL(`${collection}${piece.slug}`);
       await expect(screen.getByRole('heading', piece[language], { level: 1, exact: true })).toBeVisible();
-      await expect(browser.locator('main header')).toContainText(language === 'es' ? 'Permisos confirmados por el titular' : 'Permission confirmed by the owner');
+      await expect(browser.locator('main header')).toContainText(language === 'es' ? 'Borrador' : 'Draft');
       await expect(browser.locator('main figure img')).toHaveCount(piece.photos);
       await expect(browser.locator('main dl dd')).toHaveCount(7);
       await expect(screen.getByText(language === 'es' ? 'Entrega' : 'Delivery', { exact: true })).toBeVisible();
@@ -63,9 +63,9 @@ for (const language of ['es', 'en'] as const) {
           'PLA',
           language === 'es' ? 'Colores a consultar.' : 'Colours available on enquiry.',
       ]);
-      expect(values[3]).toContain(language === 'es' ? 'No usar lavavajillas.' : 'Do not put in a dishwasher.');
+      expect(values[3]).toContain(language === 'es' ? 'No uses lavavajillas.' : 'Do not put in a dishwasher.');
       expect(values.slice(4)).toEqual([
-          language === 'es' ? 'Stock y pedidos combinados; disponibilidad de esta pieza a confirmar.' : 'Stock and made-to-order options; availability of this piece to be confirmed.',
+          language === 'es' ? 'Trabajamos con stock y por pedido. Consultá la disponibilidad.' : 'We work with stock and made-to-order pieces. Ask about availability.',
           language === 'es' ? 'Según stock y a confirmar.' : 'Subject to stock; to be confirmed.',
           language === 'es' ? 'Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.' : 'Only the 3D print is included. Other items in the photos are decorative and are not included.',
       ]);

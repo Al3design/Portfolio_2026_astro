@@ -2,9 +2,8 @@
   "title": "Flor decorativa blanca",
   "status": "draft",
   "category": "home",
-  "rightsStatus": "licensed",
   "productionMode": "mixed",
-  "productionNotes": "Nueva tanda aportada por Alejandro el 29/10. Material PLA confirmado por Alejandro para todas las piezas. Stock y pedidos combinados; colores a consultar. Cuidados generales de PLA preparados en R35. Disponibilidad concreta, capacidad y plazo de entrega pendientes; medidas opcionales. No inferir stock de las fotos.",
+  "productionNotes": "Impresión en PLA. Stock y pedidos; colores a consultar. Confirmar disponibilidad y entrega antes de responder. Se entrega solo la flor impresa; el recipiente y los adornos no están incluidos.",
   "details": {
     "price": {
       "es": "Precio a consultar.",
@@ -19,7 +18,7 @@
       "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
     },
     "care": {
-      "es": "Para interiores. Limpiar con un paño suave apenas humedecido y secar. Mantener lejos del calor y del sol directo. No usar lavavajillas. Manipular los pétalos con cuidado.",
+      "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Manipulá los pétalos con cuidado.",
       "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Handle the petals gently."
     },
     "material": {
@@ -31,18 +30,18 @@
       "en": "Colours available on enquiry."
     },
     "availability": {
-      "es": "Stock y pedidos combinados; disponibilidad de esta pieza a confirmar.",
-      "en": "Stock and made-to-order options; availability of this piece to be confirmed."
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
     }
   },
   "locales": {
     "es": {
       "title": "Flor decorativa blanca",
-      "description": "Flor decorativa de PLA blanco con pétalos superpuestos. Incluye solo la impresión; el recipiente de vidrio y los accesorios son decorativos."
+      "description": "Una flor blanca de PLA con pétalos superpuestos, para sumar un detalle a tu espacio. El recipiente y los adornos de las fotos no están incluidos."
     },
     "en": {
       "title": "White decorative flower",
-      "description": "Decorative white PLA flower with overlapping petals. Only the print is included; the glass container and accessories are decorative."
+      "description": "A white PLA flower with overlapping petals, to add a detail to your space. The container and decorations in the photos are not included."
     }
   },
   "photos": [
@@ -71,7 +70,6 @@
       "altEn": "Top view of the white flower inside a glass container."
     }
   ],
-  "rightsNotes": "Confirmación vigente del titular, 29/10/2026: Alejandro indica que los permisos están disponibles para las piezas de esta colección. Se registra permiso comercial declarado; no se adjuntó ni verificó aquí un documento de autorización específico. Historial de fuente/licencia previo a esa confirmación: Modelo, autor y licencia de esta flor pendientes de identificar. No atribuir diseño propio ni permiso comercial. La presentación en vidrio no confirma venta de ese conjunto.",
   "palette": [
     {
       "hex": "#f3f0e9",

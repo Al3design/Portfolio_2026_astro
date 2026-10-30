@@ -95,7 +95,7 @@ for (const language of ['es', 'en'] as const) {
           const response = await fetch(image.currentSrc || image.src);
           return response.ok && !!image.alt.trim() && image.hasAttribute('width') && image.hasAttribute('height');
         }));
-        return { imagesValid, leaked: /rightsNotes|productionNotes|Historial de fuente|Confirmación vigente del titular|sourcePath/.test(document.documentElement.outerHTML) };
+        return { imagesValid, leaked: /productionNotes|sourcePath/.test(document.documentElement.outerHTML) };
       });
       expect(result.imagesValid.every(Boolean)).toBe(true);
       expect(result.leaked).toBe(false);

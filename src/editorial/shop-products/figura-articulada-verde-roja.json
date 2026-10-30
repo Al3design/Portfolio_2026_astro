@@ -2,11 +2,8 @@
   "title": "Figura articulada verde y roja",
   "status": "draft",
   "category": "design",
-  "rightsStatus": "licensed",
-  "rightsSource": "https://makerworld.com/es/models/3041702-cute-flexi-gecko-articulated-gecko-toy",
-  "rightsNotes": "Confirmación vigente del titular, 29/10/2026: Alejandro indica que los permisos están disponibles para las piezas de esta colección. Se registra permiso comercial declarado; no se adjuntó ni verificó aquí un documento de autorización específico. Historial de fuente/licencia previo a esa confirmación: Fuente candidata aportada por Alejandro: Cute Flexi Gecko | Articulated Gecko Toy, autor mostrado Dr.Stl. Correspondencia exacta foto/modelo pendiente de confirmar. Revisado 2026-10-29: Standard Digital File License. No permite venta bajo la licencia gratuita. No se consultaron precio, vigencia ni términos externos de Patreon. Opción comercial separada visible: Patreon del autor, nivel Commercial License. Sin permiso comercial acreditado; conservar borrador. Impresión propia de Alejandro en PLA, diseño de tercero.",
   "productionMode": "mixed",
-  "productionNotes": "Alejandro confirma impresión propia en PLA. Stock y pedidos combinados; colores a consultar. Capacidad, disponibilidad concreta y plazo de entrega pendientes de confirmar. Existencia de ejemplares fotografiados no equivale a stock de venta.",
+  "productionNotes": "Impresión en PLA. Stock y pedidos; colores a consultar. Confirmar disponibilidad y entrega antes de responder.",
   "details": {
     "price": {
       "es": "Precio a consultar.",
@@ -21,7 +18,7 @@
       "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
     },
     "care": {
-      "es": "Para interiores. Limpiar con un paño suave apenas humedecido y secar. Mantener lejos del calor y del sol directo. No usar lavavajillas. Mover las articulaciones con suavidad, sin forzarlas.",
+      "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Mové las articulaciones con suavidad, sin forzarlas.",
       "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Move the joints gently without forcing them."
     },
     "material": {
@@ -33,18 +30,18 @@
       "en": "Colours available on enquiry."
     },
     "availability": {
-      "es": "Stock y pedidos combinados; disponibilidad de esta pieza a confirmar.",
-      "en": "Stock and made-to-order options; availability of this piece to be confirmed."
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
     }
   },
   "locales": {
     "es": {
       "title": "Figura articulada verde y roja",
-      "description": "Figura de PLA con cuerpo articulado verde, detalles rojos y grandes ojos blancos y negros."
+      "description": "Una figura de PLA con cuerpo articulado, detalles rojos y ojos grandes."
     },
     "en": {
       "title": "Green and red articulated figure",
-      "description": "PLA figure with a green articulated body, red details and large black and white eyes."
+      "description": "A PLA figure with an articulated body, red details and large eyes."
     }
   },
   "photos": [

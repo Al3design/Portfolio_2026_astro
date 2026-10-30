@@ -1,0 +1,77 @@
+---
+import { siWhatsapp } from 'simple-icons';
+import type { ShopLanguage } from '@/data/shop-demo';
+interface Props { title: string; url: string; language: ShopLanguage }
+const { title, url, language } = Astro.props;
+const en = language === 'en';
+const whatsapp = `https://wa.me/?${new URLSearchParams({ text: `${title}\n${url}` })}`;
+---
+<shop-share data-title={title} data-url={url} data-language={language}>
+  <p class="label">{en ? 'Share this piece' : 'Compartir esta pieza'}</p>
+  <div class="actions">
+    <a href={whatsapp} target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d={siWhatsapp.path} /></svg>WhatsApp ↗
+    </a>
+    <button type="button" data-native hidden>{en ? 'Share…' : 'Compartir…'}</button>
+    <button type="button" data-copy hidden>{en ? 'Copy link' : 'Copiar enlace'}</button>
+  </div>
+  <p class="hint">{en ? 'Copy the link to paste it into Instagram or another app.' : 'Copiá el enlace para pegarlo en Instagram u otra aplicación.'}</p>
+  <label data-manual>{en ? 'Link to this piece' : 'Enlace a esta pieza'}<input type="url" value={url} readonly /></label>
+  <p role="status" aria-live="polite" data-status></p>
+</shop-share>
+
+<script>
+  class ShopShare extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready = 'true';
+      const url = this.dataset.url!;
+      const en = this.dataset.language === 'en';
+      const status = this.querySelector<HTMLElement>('[data-status]')!;
+      const manual = this.querySelector<HTMLElement>('[data-manual]')!;
+      const copy = this.querySelector<HTMLButtonElement>('[data-copy]')!;
+      const native = this.querySelector<HTMLButtonElement>('[data-native]')!;
+      manual.hidden = true;
+      copy.hidden = false;
+      const fallback = () => {
+        manual.hidden = false;
+        const input = manual.querySelector('input')!;
+        input.focus(); input.select();
+        status.textContent = en ? 'Select and copy this link.' : 'Seleccioná y copiá este enlace.';
+      };
+      copy.addEventListener('click', async () => {
+        try {
+          if (!navigator.clipboard?.writeText) { fallback(); return; }
+          await navigator.clipboard.writeText(url);
+          status.textContent = en ? 'Link copied.' : 'Enlace copiado.';
+        } catch { fallback(); }
+      });
+      if (navigator.share) native.hidden = false;
+      native.addEventListener('click', async () => {
+        try { await navigator.share({ title: this.dataset.title, url }); }
+        catch (error) {
+          if (!(error instanceof DOMException && error.name === 'AbortError')) fallback();
+        }
+      });
+    }
+  }
+  if (!customElements.get('shop-share')) customElements.define('shop-share', ShopShare);
+</script>
+
+<style lang="scss">
+  @use '../styles/abstracts' as *;
+  shop-share { display: block; margin-block: size(10); }
+  .label { font-weight: 600; margin-bottom: size(3); }
+  .actions { display: flex; flex-wrap: wrap; gap: size(3); }
+  .actions :is(a, button) {
+    display: inline-flex; align-items: center; gap: size(2); min-height: 44px;
+    padding: size(2) size(4); border: 0; border-radius: radius(soft);
+    background: transparent; color: semantic-color(brand-primary); box-shadow: inset 0 0 0 1px currentColor;
+    font: 11px / 1.5 semantic-font(mono); text-transform: uppercase; text-decoration: none; cursor: pointer;
+  }
+  .actions [hidden], [data-manual][hidden] { display: none; }
+  .actions :is(a, button):focus-visible, input:focus-visible { outline: 2px solid semantic-color(brand-tertiary); outline-offset: 4px; }
+  svg { width: 1rem; height: 1rem; fill: currentColor; }
+  .hint, [data-status], [data-manual] { margin-top: size(3); font-size: fs('100'); color: semantic-color(brand-on-surface-variant); }
+  input { display: block; width: 100%; margin-top: size(2); padding: size(3); background: semantic-color(brand-surface-low); color: inherit; border: 0; }
+</style>

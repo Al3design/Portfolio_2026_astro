@@ -40,6 +40,7 @@ const hero = products.find(piece => piece.slug === 'jarron-acanalado')!;
         <div slot="heading"><p class={styles.shop__eyebrow}>{en ? 'Latest pieces' : 'Últimas piezas'}</p><h2 id="collection-title">{t.collectionTitle}</h2></div>
       </ShopCollection>
       <a class={`${styles.shop__button} ${styles['shop__button--primary']} ${styles.shop__collectionLink}`} href={shopCollectionUrl(language)}>{en ? 'View the full collection' : 'Ver toda la colección'} ↗</a>
+      <p><a class={styles.shop__pieceAction} href={en ? '/en/shop-3d/rss.xml' : '/tienda/rss.xml'}>{en ? 'Subscribe via RSS' : 'Seguir novedades por RSS'} ↗</a></p>
     </section>
     <section class={styles.shop__custom} id="custom" aria-labelledby="custom-title">
       <div><p class={styles.shop__eyebrow}>{t.customLabel}</p><h2 id="custom-title">{t.customTitle}</h2><p class={styles.shop__description}>{en ? 'Enquire about another print, colours and availability.' : 'Consultá por otra impresión, colores y disponibilidad.'}</p></div>

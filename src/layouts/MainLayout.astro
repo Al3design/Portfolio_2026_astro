@@ -27,6 +27,8 @@ interface Props {
   noIndex?: boolean;
   socialImage?: string;
   socialImageAlt?: string;
+  socialImageMeta?: { width: number; height: number; type: string };
+  socialPageUrl?: string;
   pageType?: 'website' | 'article';
   analytics?: boolean;
   shopCollectionHref?: string;
@@ -42,6 +44,8 @@ const {
   noIndex = false,
   socialImage = '/banner-background.png',
   socialImageAlt = 'Al3Design · Alejandro Delgado',
+  socialImageMeta,
+  socialPageUrl,
   pageType = 'website',
   analytics = true,
   shopCollectionHref,
@@ -49,7 +53,7 @@ const {
 } = Astro.props;
 const pageUrl = canonicalPageUrl(Astro.url.pathname, Astro.site ?? 'https://al3design.dev');
 const metaTitle = cleanTitle(title).replace(/\s+/g, ' ');
-const shareImage = socialImageDetails(socialImage, socialImageAlt, language);
+const shareImage = { ...socialImageDetails(socialImage, socialImageAlt, language), ...socialImageMeta };
 const socialImageUrl = new URL(shareImage.path, noIndex ? Astro.url.origin : pageUrl.origin);
 const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter(([, href]) => !!href && !href.startsWith('/revision/'));
 ---
@@ -76,12 +80,12 @@ const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter
     <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-    <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" href={section === 'shop' ? (language === 'es' ? '/tienda/rss.xml' : '/en/shop-3d/rss.xml') : '/rss.xml'} title={section === 'shop' ? 'Al3Design · Store 3D' : 'Al3Design · Portfolio'} />
 
     <!-- OpenGraph -->
     <meta property="og:type" content={pageType} />
     <meta property="og:locale" content={language === 'es' ? 'es_AR' : 'en_US'} />
-    <meta property="og:url" content={pageUrl} />
+    <meta property="og:url" content={socialPageUrl ?? pageUrl} />
     <meta property="og:site_name" content="Al3Design" />
     <meta property="og:title" content={metaTitle} />
     <meta property="og:description" content={description} />

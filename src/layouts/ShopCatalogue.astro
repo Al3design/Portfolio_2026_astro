@@ -7,6 +7,9 @@ import { bambuFilamentColours } from '@/lib/shop-colours';
 import { shopEditorialDetailKeys, shopEditorialDetailLabels } from '@/lib/shop-editorial';
 import { shopInquiryUrl } from '@/lib/shop-inquiry';
 import ShopWhatsAppLink from '@/components/ShopWhatsAppLink.astro';
+import ShopShare from '@/components/ShopShare.astro';
+import { shopSocialImage } from '@/lib/shop-social-image';
+import { shopOrigin } from '@/lib/shop-origin';
 import { shopRoutes, type ShopLanguage } from '@/data/shop-demo';
 import styles from '@/styles/pages/_shop-review.module.scss';
 import shopStyles from '@/styles/pages/_shop.module.scss';
@@ -16,6 +19,8 @@ interface Props { language: ShopLanguage; product?: ShopCatalogueProduct }
 const { language, product } = Astro.props;
 const en = language === 'en';
 const products = product ? [] : await shopCatalogue();
+const socialPhoto = product ? await shopSocialImage(product.photos[0].image) : undefined;
+const shareUrl = new URL(Astro.url.pathname, shopOrigin(Astro.site!, Astro.url)).href;
 const home = shopRoutes[language];
 const collection = shopCollectionUrl(language);
 const title = en ? 'Printed pieces' : 'Piezas impresas';
@@ -28,6 +33,10 @@ const categories = { home: en ? 'Home & decor' : 'Hogar y deco', desk: en ? 'Des
 <MainLayout section="shop" language={language} noIndex
   title={`${product ? product.title[language] : title} · Store 3D · Al3Design`}
   description={product ? product.description[language] : intro}
+  socialImage={socialPhoto ? new URL(socialPhoto.src, shareUrl).href : undefined}
+  socialImageAlt={product?.photos[0].alt[language]}
+  socialImageMeta={socialPhoto ? { width: 1200, height: 630, type: 'image/jpeg' } : undefined}
+  socialPageUrl={shareUrl}
   languageLinks={{ es: product ? shopPieceUrl(product.slug, 'es') : shopCollectionUrl('es'), en: product ? shopPieceUrl(product.slug, 'en') : shopCollectionUrl('en') }}
   shopCollectionHref={collection}
   shopNotice={en ? 'Real prints · price on enquiry · delivery subject to stock and confirmation' : 'Impresiones reales · precio a consultar · entrega según stock y a confirmar'}
@@ -67,10 +76,12 @@ const categories = { home: en ? 'Home & decor' : 'Hogar y deco', desk: en ? 'Des
           <dd>{product.details[key]?.[language] || (en ? 'To confirm' : 'Por confirmar')}</dd>
         </div>)}</dl>
       </section>
+      <ShopShare title={product.title[language]} url={shareUrl} language={language} />
     </> : <>
       <header class={shopStyles.shop__sectionHeading}>
         <div><a class={shopStyles.shop__pieceAction} href={`${home}#collection`}>← {en ? 'Back to the shop' : 'Volver a la tienda'}</a><h1 class={shopStyles.shop__catalogueTitle}>{title}</h1><p class={shopStyles.shop__intro}>{intro}</p></div>
       </header>
+      <a class={shopStyles.shop__pieceAction} href={en ? '/en/shop-3d/rss.xml' : '/tienda/rss.xml'}>{en ? 'Subscribe via RSS' : 'Seguir novedades por RSS'} ↗</a>
       <section id="collection" aria-label={en ? 'Collection' : 'Colección'}>
         <ShopCollection products={products} language={language} />
       </section>

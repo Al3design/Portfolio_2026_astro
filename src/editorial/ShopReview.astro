@@ -7,6 +7,7 @@ import { shopReviewDrafts, shopReviewPhoto, shopReviewFilamentColours } from '@/
 import { shopEditorialDetailKeys, shopEditorialDetailLabels } from '@/lib/shop-editorial';
 import { shopRoutes, type ShopLanguage } from '@/data/shop-demo';
 import { shopInquiryUrl } from '@/lib/shop-inquiry';
+import ShopWhatsAppLink from '@/components/ShopWhatsAppLink.astro';
 
 if (import.meta.env.MODE !== 'development') return new Response(null, { status: 404 });
 interface Props { language?: ShopLanguage; slug?: string; storefrontPreview?: boolean }
@@ -69,16 +70,6 @@ const editorUrl = selected
           <p class={styles.meta}>{t.draft}</p>
           <h1>{titleFor(selected.product)}</h1>
           <p>{selected.product.locales?.[language]?.description?.trim() || t.noDescription}</p>
-          <ShopPalette colours={selected.product.palette} legacyColours={selected.product.photographedColours} references={filamentColours} language={language} />
-          <div class={styles.inquiry}>
-            <a class={styles.action} href={shopInquiryUrl(titleFor(selected.product), language)}
-              target="_blank" rel="noopener noreferrer" aria-describedby="inquiry-note">
-              {en ? 'Enquire about this piece on WhatsApp' : 'Consultar esta pieza por WhatsApp'} ↗
-            </a>
-            <p id="inquiry-note">{en
-              ? 'Opens WhatsApp in a new tab with a prepared message. Review it before sending. This enquiry does not reserve stock or confirm a purchase.'
-              : 'Abre WhatsApp en otra pestaña con un mensaje preparado. Revisalo antes de enviarlo. La consulta no reserva stock ni confirma una compra.'}</p>
-          </div>
         </header>
         <section aria-labelledby="review-photos">
           <h2 id="review-photos">{t.photos}</h2>
@@ -96,6 +87,17 @@ const editorUrl = selected
           </div>
           {!(selected.product.photos ?? []).some(photo => shopReviewPhoto(photo.sourcePath)) && <p>{t.photoPending}</p>}
         </section>
+        <div class={styles.intro}>
+          <ShopPalette colours={selected.product.palette} legacyColours={selected.product.photographedColours} references={filamentColours} language={language} />
+          <div class={styles.inquiry}>
+            <ShopWhatsAppLink href={shopInquiryUrl(titleFor(selected.product), language)} describedBy="inquiry-note">
+              {en ? 'Enquire about this piece on WhatsApp' : 'Consultar esta pieza por WhatsApp'} ↗
+            </ShopWhatsAppLink>
+            <p id="inquiry-note">{en
+              ? 'Opens WhatsApp in a new tab with a prepared message. Review it before sending. This enquiry does not reserve stock or confirm a purchase.'
+              : 'Abre WhatsApp en otra pestaña con un mensaje preparado. Revisalo antes de enviarlo. La consulta no reserva stock ni confirma una compra.'}</p>
+          </div>
+        </div>
         <section aria-labelledby="review-fields" class={styles.fields}>
           <h2 id="review-fields">{t.fields}</h2>
           <dl>{shopEditorialDetailKeys.filter(key => key !== 'dimensions' || selected.product.details?.dimensions?.[language]?.trim()).map(key => <div>

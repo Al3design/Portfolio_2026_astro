@@ -4,6 +4,7 @@ import MainLayout from './MainLayout.astro';
 import ShopCollection from '@/components/ShopCollection.astro';
 import { shopCatalogue, shopCollectionUrl } from '@/lib/shop-catalogue';
 import { shopInquiryUrl } from '@/lib/shop-inquiry';
+import ShopWhatsAppLink from '@/components/ShopWhatsAppLink.astro';
 import { shopCopy, shopRoutes, type ShopLanguage } from '@/data/shop-demo';
 import { shopLatestSlugs } from '@/data/shop-release';
 import styles from '@/styles/pages/_shop.module.scss';
@@ -42,7 +43,7 @@ const hero = products.find(piece => piece.slug === 'jarron-acanalado')!;
     </section>
     <section class={styles.shop__custom} id="custom" aria-labelledby="custom-title">
       <div><p class={styles.shop__eyebrow}>{t.customLabel}</p><h2 id="custom-title">{t.customTitle}</h2><p class={styles.shop__description}>{en ? 'Enquire about another print, colours and availability.' : 'Consultá por otra impresión, colores y disponibilidad.'}</p></div>
-      <a class={`${styles.shop__button} ${styles['shop__button--secondary']}`} href={shopInquiryUrl(en ? 'a custom print' : 'una impresión a medida', language)} target="_blank" rel="noopener noreferrer">{en ? 'Enquire on WhatsApp' : 'Consultar por WhatsApp'} ↗</a>
+      <ShopWhatsAppLink href={shopInquiryUrl(en ? 'a custom print' : 'una impresión a medida', language)}>{en ? 'Enquire on WhatsApp' : 'Consultar por WhatsApp'} ↗</ShopWhatsAppLink>
     </section>
     <section class={styles.shop__process} aria-label={en ? 'How to enquire' : 'Cómo consultar'}>
       <article><span class={styles.shop__index}>01 /</span><h3>{t.step1Title}</h3><p>{en ? 'Explore real prints and open a piece to see its details.' : 'Explorá las impresiones reales y abrí una pieza para ver sus detalles.'}</p></article>

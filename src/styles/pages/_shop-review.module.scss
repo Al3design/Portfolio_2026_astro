@@ -52,8 +52,8 @@
 }
 .gallery {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); gap: size(6);
-  figure { min-width: 0; }
-  img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: semantic-color(brand-surface-low); }
+  figure { min-width: 0; align-self: start; }
+  img { display: block; width: 100%; height: auto; }
   figcaption { margin-top: size(2); font-size: fs('100'); color: semantic-color(brand-on-surface-variant); line-height: 1.5; }
 }
 .fields {

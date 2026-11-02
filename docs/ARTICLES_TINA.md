@@ -1,5 +1,7 @@
 # Artículos de portfolio en Tina
 
+Para altas nuevas y continuidad de una IA, leer primero [GUIA_EDITORIAL_IA.md](GUIA_EDITORIAL_IA.md) y su plantilla bilingüe. Las notas de estado de este documento corresponden a sus tandas originales; no acreditan el estado actual de cada artículo ni autorizan ejecuciones/publicaciones.
+
 ## Un documento por trabajo
 
 La fuente editable es `src/content/projects/*.mdx`. Mundo y Toplomero ahora tienen un archivo cada uno: `mundo.mdx` y `toplomero.mdx`. Sus textos ES/EN están dentro del mismo documento. La instantánea de intake `src/editorial/academic-drafts.ts` no es la fuente editable.

@@ -2,6 +2,16 @@
 
 This file provides guidance to AI coding agents when working with code in this repository.
 
+## Protocolo editorial obligatorio — artículos y Shop 3D
+
+Antes de redactar, crear/editar un artículo o una pieza, cargar imágenes o preparar su publicación, leer [docs/GUIA_EDITORIAL_IA.md](docs/GUIA_EDITORIAL_IA.md). Define la correspondencia entre Tina, contratos, renderizado, imágenes, listados, metadatos, RSS y selección pública.
+
+- Artículos nuevos: usar [la plantilla bilingüe](docs/templates/articulo-bilingue.mdx), mantener draft y completar bloques ES/EN. No crear otra plantilla visual ni una página por artículo.
+- Piezas nuevas: usar [la plantilla Shop](docs/templates/pieza-shop.json). Guardar en Tina no agrega automáticamente selección pública ni imports de fotos. `status` de Shop no equivale a `publicationStatus` de artículos.
+- Redactar natural, coloquial y profesional; no inventar hechos ni narrar «Alejandro dijo/confirmó» al visitante. Mantener condiciones comerciales y diseño aprobados.
+- Para un campo nuevo, conectar esquema, contrato, proyección/localización, renderer y consumidores; no limitarse al formulario. No editar generados de Tina a mano.
+- Las plantillas son borradores, no aprobaciones. Preparación, controles, Preview y producción son etapas distintas. La guía no amplía permisos de ejecución/publicación ni reemplaza la política siguiente.
+
 ## Commands
 
 ### Browser verification
@@ -27,10 +37,12 @@ src/pages/about.astro          → fetches page entry → <ClientAbout client:lo
 src/pages/projects/[...slug].astro  → dynamic project detail pages
 ```
 
-**Content layer** (`src/content/`): Two TinaCMS collections:
+**Content layer**: Las colecciones Tina actuales se definen en `tina/config.ts` y `tina/shop-products.ts`; artículos/páginas/global viven en `src/content/`, y las piezas Shop en `src/editorial/shop-products/`:
 
 - `projects/` — MDX files. Astro schema in `src/content.config.ts`. Key frontmatter fields: `title`, `year`, `date`, `type`, `description`, `stack[]`, `role`, `client`, `order`, `image`, `showInResume`, `showInPortfolio`, `points[]`, `categories[]`.
 - `pages/` — MDX files for `home`, `about`, `archive`, `resume` — each with different frontmatter schemas (defined per-template in `tina/config.ts`).
+- `global/` — configuración compartida de footer/enlaces, definida en `tina/config.ts`.
+- `shopProduct` — JSON editoriales; selección pública e imports de fotos explícitos. No confundir estado editorial con publicación; ver la guía obligatoria.
 
 **Astro content schema** (`src/content.config.ts`): Defines the Zod schema for the `projects` collection. **Critical Astro v6 limitation**: custom frontmatter fields are NOT accessible via `p.data`, and `import.meta.glob` on MDX files does NOT expose `mod.frontmatter`. The canonical workaround — already implemented for `categories` — is:
 

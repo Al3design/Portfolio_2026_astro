@@ -8,6 +8,11 @@ context: |
   Produccion en Vercel: https://al3design.dev; www redirige al dominio raiz.
   Respetar AGENTS.md: rama activa, sin branches ni worktrees automaticos.
   No publicar, hacer push ni archivar cambios incompletos sin autorizacion.
+  Para alta/edicion editorial, leer primero docs/GUIA_EDITORIAL_IA.md y usar docs/templates como borradores.
+  Respetar contratos Tina/renderer ES/EN, imagenes, metadatos y RSS; no crear plantillas visuales paralelas.
+  Shop requiere seleccion publica e imports explicitos de fotos; crear un documento Tina no lo agrega a esa seleccion.
+  Guardar contenido ya publico en Tina Cloud/main puede generar commit y deploy; respetar autorizacion antes de guardar.
+  Documentar por separado preparado, verificado, Preview y produccion; no inventar datos ni ampliar autorizaciones.
   Identidad: Inter, Roboto Mono para metadata; verde CTA, naranja claves, cyan iconos.
   No agregar bordes de seccion; usar superficies, espacio y ghost-border permitido.
 

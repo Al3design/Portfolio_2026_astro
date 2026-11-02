@@ -1,0 +1,20 @@
+{
+  "title": "Nueva pieza",
+  "status": "draft",
+  "productionMode": "pending",
+  "locales": {
+    "es": { "title": "Nueva pieza", "description": "" },
+    "en": { "title": "New piece", "description": "" }
+  },
+  "details": {
+    "price": { "es": "Precio a consultar.", "en": "Price on enquiry." },
+    "deliveryTime": { "es": "Según stock y a confirmar.", "en": "Subject to stock; to be confirmed." },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "variants": { "es": "Colores a consultar.", "en": "Colours available on enquiry." }
+  },
+  "palette": [],
+  "photos": []
+}

@@ -1,6 +1,8 @@
 import type { Collection, TinaField } from 'tinacms';
 import { shopEditorialCategories, shopEditorialDetailKeys, shopEditorialDetailLabels, type ShopProductDraft } from '../src/lib/shop-editorial';
 import { bambuFilamentColours, normalizeShopHex } from '../src/lib/shop-colours';
+import { shopPublicPhotoPattern } from '../src/lib/shop-media-paths.mjs';
+import { shopEditorRoute } from '../src/lib/shop-editor-route';
 
 function localizedTextFields(): TinaField[] {
   return [
@@ -22,20 +24,21 @@ export const shopProductCollection: Collection = {
   path: 'src/editorial/shop-products',
   format: 'json',
   ui: {
-    defaultItem: (): ShopProductDraft => ({
-      title: 'Nueva pieza · por completar',
-      status: 'draft',
-      productionMode: 'pending',
-      details: {},
-      locales: { es: {}, en: {} },
-      photos: [],
-      palette: [],
-    }),
+    router: ({ document }) => shopEditorRoute(document, typeof window === 'undefined' ? '' : window.location.hostname),
   },
+  defaultItem: (): ShopProductDraft => ({
+    title: 'Nueva pieza · por completar',
+    status: 'draft',
+    productionMode: 'pending',
+    details: {},
+    locales: { es: {}, en: {} },
+    photos: [],
+    palette: [],
+  }),
   fields: [
     {
       type: 'string', name: 'title', label: 'Nombre interno', isTitle: true, required: true,
-      description: 'Nombre de la pieza en el editor. Después de guardar, recargá la revisión para ver los cambios.',
+      description: 'Nombre interno de la pieza. En local, abrí la ficha desde la colección para ver su Live Preview; los nombres visibles se editan en Español / English.',
     },
     {
       type: 'string', name: 'status', label: 'Estado editorial', required: true,
@@ -91,18 +94,20 @@ export const shopProductCollection: Collection = {
       description: 'Organización interna. La duración de impresión no se muestra al cliente; el plazo de entrega se define aparte.', ui: { component: 'textarea' },
     },
     {
-      type: 'object', name: 'photos', label: 'Fotos y renders para revisar', list: true,
-      description: 'Identificar foto de impresión real o render. El gestor de medios usa public/assets: subir allí no garantiza privacidad del archivo.',
+      type: 'object', name: 'photos', label: 'Fotos de la pieza', list: true,
+      description: 'Para fotos nuevas, usá la carpeta shop dentro del gestor de medios. Los archivos subidos allí son públicos aunque la ficha sea borrador. La primera foto se usa en listado, portada social y RSS. Los originales anteriores se conservan.',
       ui: {
         itemProps: item => ({
           label: item?.altEs || item?.altEn || item?.sourcePath?.split('/').pop() || 'Foto por completar',
         }),
       },
       fields: [
-        { type: 'image', name: 'image', label: 'Imagen' },
+        { type: 'image', name: 'image', label: 'Imagen pública de la pieza',
+          description: 'Elegí o subí una foto en assets/shop. Tiene prioridad sobre el original local. La pieza entra al sitio al seleccionarla en Store 3D · selección pública.',
+          ui: { validate: value => value?.trim() && !shopPublicPhotoPattern.test(value.trim()) ? 'Usá una imagen JPG, PNG o WebP dentro de /assets/shop/.' : undefined } },
         {
           type: 'string', name: 'sourcePath', label: 'Original local / referencia interna',
-          description: 'Ruta relativa al repositorio fuera de public. Es una referencia editorial; no se usa como URL ni genera una vista previa.',
+          description: 'Compatibilidad con originales anteriores fuera de public. Dejalo vacío al usar una imagen pública del gestor.',
         },
         { type: 'string', name: 'kind', label: 'Tipo de imagen', options: [{ value: 'photo', label: 'Foto de impresión real' }, { value: 'render', label: 'Render identificado' }] },
         { type: 'string', name: 'altEs', label: 'Descripción accesible ES' },

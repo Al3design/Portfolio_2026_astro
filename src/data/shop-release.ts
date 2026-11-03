@@ -1,21 +1,7 @@
-// Explicit selection for the prepared catalogue. New Tina drafts are never
-// included automatically. Deployment remains a separate authorized action.
-export const shopCatalogueSlugs = [
-  'arbol-decorativo',
-  'figura-articulada-verde-roja',
-  'flor-decorativa-blanca',
-  'jarron-acanalado',
-  'maceta-acanalada-con-plato',
-  'maceta-perro',
-  'pieza-articulada-roja-negra',
-  'soporte-control-creeper',
-] as const;
+// Explicit selection edited through Tina; saving an unselected product does not publish it.
+// Server/build only: never import the virtual editorial module into a client island.
+import { selection } from 'virtual:shop-catalogue';
 
-// Latest new pieces supplied by Alejandro: controller stand (batch 3),
-// dog planter and ribbed planter (batch 2). Tree colour updates do not
-// create another piece. This is editorial incorporation, not print date.
-export const shopLatestSlugs = [
-  'soporte-control-creeper',
-  'maceta-perro',
-  'maceta-acanalada-con-plato',
-] as const;
+export const shopCatalogueSlugs = selection.slugs;
+export const shopLatestSlugs = selection.latestSlugs;
+export const shopHeroSlug = selection.heroSlug;

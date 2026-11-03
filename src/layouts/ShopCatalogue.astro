@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import MainLayout from './MainLayout.astro';
-import ShopPalette from '../editorial/ShopPalette.astro';
 import { shopCatalogue, shopPieceUrl, shopCollectionUrl, type ShopCatalogueProduct } from '@/lib/shop-catalogue';
-import { bambuFilamentColours } from '@/lib/shop-colours';
-import { shopEditorialDetailKeys, shopEditorialDetailLabels } from '@/lib/shop-editorial';
+import { bambuFilamentColours, resolveShopPalette } from '@/lib/shop-colours';
+import ShopProductView from '@/components/ShopProductView';
+import { siWhatsapp } from 'simple-icons';
 import { shopInquiryUrl } from '@/lib/shop-inquiry';
 import ShopWhatsAppLink from '@/components/ShopWhatsAppLink.astro';
 import ShopShare from '@/components/ShopShare.astro';
@@ -28,7 +28,10 @@ const price = en ? 'Price on enquiry' : 'Precio a consultar';
 const delivery = en ? 'Subject to stock; to be confirmed.' : 'Según stock y a confirmar.';
 const included = en ? 'Only the 3D print is included. Other items in the photos are decorative and are not included.' : 'Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.';
 const intro = en ? 'PLA prints for your home and desk. Find a piece you like and ask about colours and availability.' : 'Piezas de PLA para tu casa y tu escritorio. Elegí la que te guste y consultá colores y disponibilidad.';
-const categories = { home: en ? 'Home & decor' : 'Hogar y deco', desk: en ? 'Desk' : 'Escritorio', organization: en ? 'Organization' : 'Organización', design: en ? 'Design objects' : 'Objetos de diseño' };
+const productView = product ? {
+  title: product.title[language], description: product.description[language], category: product.category,
+  details: product.details, palette: resolveShopPalette(product.palette, product.photographedColours ?? [], bambuFilamentColours), photos: [],
+} : undefined;
 ---
 <MainLayout section="shop" language={language} noIndex
   title={`${product ? product.title[language] : title} · Store 3D · Al3Design`}
@@ -42,42 +45,15 @@ const categories = { home: en ? 'Home & decor' : 'Hogar y deco', desk: en ? 'Des
   shopNotice={en ? 'Real prints · price on enquiry · delivery subject to stock and confirmation' : 'Impresiones reales · precio a consultar · entrega según stock y a confirmar'}
 >
   <div class={product ? styles.main : `page-container ${shopStyles.shop}`}>
-    {product ? <>
-      <a class={styles.action} href={`${collection}#${product.slug}`}>← {en ? 'Back to all pieces' : 'Volver a todas las piezas'}</a>
-      <header class={styles.intro}>
-        {product.category && <p class={styles.meta}>{categories[product.category]}</p>}
-        <h1>{product.title[language]}</h1>
-        <p>{product.description[language]}</p>
-      </header>
-      <section aria-labelledby="piece-photos">
-        <h2 id="piece-photos">{en ? 'Photos of the print' : 'Fotos de la impresión'}</h2>
-        <div class={styles.gallery}>
-          {product.photos.map((photo, index) => <figure>
-            <Image src={photo.image} alt={photo.alt[language]} format="webp" widths={[480, 800, 1200]} sizes="(min-width: 900px) 50vw, 100vw" width={1200} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
-            <figcaption>{photo.alt[language]}</figcaption>
-          </figure>)}
-        </div>
-      </section>
-      <div class={styles.intro}>
-        <ShopPalette colours={product.palette} legacyColours={product.photographedColours} references={bambuFilamentColours} language={language} />
-        <p><strong>{price}</strong> · {delivery}</p>
-        <p>{included}</p>
-        <div class={styles.inquiry}>
-          <ShopWhatsAppLink href={shopInquiryUrl(product.title[language], language)} describedBy="inquiry-note">
-            {en ? 'Enquire about this piece on WhatsApp' : 'Consultar esta pieza por WhatsApp'} ↗
-          </ShopWhatsAppLink>
-          <p id="inquiry-note">{en ? 'Review the prepared message before sending. Your enquiry does not reserve stock or confirm a purchase.' : 'Revisá el mensaje preparado antes de enviarlo. La consulta no reserva stock ni confirma una compra.'}</p>
-        </div>
-      </div>
-      <section class={styles.fields} aria-labelledby="piece-details">
-        <h2 id="piece-details">{en ? 'About this piece' : 'Sobre esta pieza'}</h2>
-        <dl>{shopEditorialDetailKeys.filter(key => !['price', 'deliveryTime', 'included'].includes(key) && (key !== 'dimensions' || product.details.dimensions?.[language])).map(key => <div>
-          <dt>{shopEditorialDetailLabels[language][key]}</dt>
-          <dd>{product.details[key]?.[language] || (en ? 'To confirm' : 'Por confirmar')}</dd>
-        </div>)}</dl>
-      </section>
+    {product && productView ? <ShopProductView product={productView} language={language} backHref={`${collection}#${product.slug}`} iconPath={siWhatsapp.path}>
+      <Fragment slot="gallery">
+        {product.photos.map((photo, index) => <figure>
+          <Image src={photo.image} alt={photo.alt[language]} format="webp" widths={[480, 800, 1200]} sizes="(min-width: 900px) 50vw, 100vw" width={1200} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+          <figcaption>{photo.alt[language]}</figcaption>
+        </figure>)}
+      </Fragment>
       <ShopShare title={product.title[language]} url={shareUrl} language={language} />
-    </> : <>
+    </ShopProductView> : <>
       <header class={shopStyles.shop__sectionHeading}>
         <div><a class={shopStyles.shop__pieceAction} href={`${home}#collection`}>← {en ? 'Back to the shop' : 'Volver a la tienda'}</a><h1 class={shopStyles.shop__catalogueTitle}>{title}</h1><p class={shopStyles.shop__intro}>{intro}</p></div>
       </header>

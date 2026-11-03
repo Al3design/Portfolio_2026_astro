@@ -6,6 +6,7 @@ import mdx from '@astrojs/mdx';
 
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { shopCataloguePlugin } from './scripts/lib/shop-catalogue-plugin.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let shopReviewDevelopment = false;
@@ -45,6 +46,7 @@ export default defineConfig({
     },
   }],
   vite: {
+    plugins: [shopCataloguePlugin()],
     // Keep Tina's React hooks in Vite's SSR module graph instead of mixing an
     // external Node React instance with Astro's optimized renderer instance.
     ssr: { noExternal: ['tinacms'] },

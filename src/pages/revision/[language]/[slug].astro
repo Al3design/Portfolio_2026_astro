@@ -1,0 +1,17 @@
+---
+import { projectSources } from '@/lib/project-editorial';
+import { projectLanguages, projectUrl } from '@/lib/project-locales';
+
+// Preserve existing review links; Tina documents are now the editable source.
+export function getStaticPaths() {
+  if (import.meta.env.MODE !== 'development') return [];
+  return projectSources
+    .filter(item => item.metadata.publicationStatus === 'draft')
+    .flatMap(item => projectLanguages(item.metadata).map(language => ({ params: {language, slug: item.metadata.translationKey ?? item.slug} })));
+}
+const {language, slug} = Astro.params;
+if (language !== 'es' && language !== 'en') throw new Error('Unknown editorial language');
+const source = projectSources.find(item => (item.metadata.translationKey ?? item.slug) === slug && projectLanguages(item.metadata).includes(language) && item.metadata.publicationStatus === 'draft');
+if (!source) throw new Error('Unknown editorial review document');
+return Astro.redirect(projectUrl(source.slug, source.metadata, language, true));
+---

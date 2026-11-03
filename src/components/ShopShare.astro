@@ -46,7 +46,7 @@ const whatsapp = `https://wa.me/?${new URLSearchParams({ text: `${title}\n${url}
           status.textContent = en ? 'Link copied.' : 'Enlace copiado.';
         } catch { fallback(); }
       });
-      if (navigator.share) native.hidden = false;
+      if (typeof navigator.share === 'function') native.hidden = false;
       native.addEventListener('click', async () => {
         try { await navigator.share({ title: this.dataset.title, url }); }
         catch (error) {

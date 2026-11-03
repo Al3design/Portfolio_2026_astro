@@ -1,6 +1,10 @@
 packages:
   - '.'
 
+# Tina's CLI/admin and public live-editing hooks must share one CMS version.
+overrides:
+  tinacms: 3.15.1
+
 allowBuilds:
   '@parcel/watcher': set this to true or false
   better-sqlite3: set this to true or false
@@ -11,3 +15,4 @@ allowBuilds:
   sharp: set this to true or false
 
 strictDepBuilds: false
+

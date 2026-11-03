@@ -2,6 +2,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import type { ShopProductDraft } from './shop-editorial';
 import type { ShopFilamentColour } from './shop-colours';
+import { shopPublicPhotoPattern } from './shop-media-paths.mjs';
 
 const draftDirectory = resolve(process.cwd(), 'src/editorial/shop-products');
 const filamentCataloguePath = resolve(process.cwd(), 'src/data/bambu-filaments.json');
@@ -31,6 +32,13 @@ export function shopReviewPhoto(sourcePath?: string) {
     batch: match[1], file: match[2], sourcePath: match[0],
     url: `/revision/tienda/media/${match[1]}/${match[2]}`,
   } : undefined;
+}
+
+export function shopReviewImage(photo?: NonNullable<ShopProductDraft['photos']>[number]) {
+  const image = photo?.image?.trim();
+  // An invalid explicit upload must not silently display the old original.
+  if (image) return shopPublicPhotoPattern.test(image) ? { url: image } : undefined;
+  return shopReviewPhoto(photo?.sourcePath);
 }
 
 export async function shopReviewPhotos() {

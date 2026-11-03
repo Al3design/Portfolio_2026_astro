@@ -55,19 +55,20 @@ for (const language of ['es', 'en'] as const) {
       await expect(screen.getByRole('heading', piece[language], { level: 1, exact: true })).toBeVisible();
       await expect(browser.locator('main header')).toContainText(language === 'es' ? 'Borrador' : 'Draft');
       await expect(browser.locator('main figure img')).toHaveCount(piece.photos);
-      await expect(browser.locator('main dl dd')).toHaveCount(7);
-      await expect(screen.getByText(language === 'es' ? 'Entrega' : 'Delivery', { exact: true })).toBeVisible();
+      // Review and public pieces now share the same template: fixed enquiry
+      // terms follow the gallery, and physical details remain in the dl.
+      await expect(browser.locator('main dl dd')).toHaveCount(4);
+      await expect(browser.locator('main')).toContainText(language === 'es' ? 'Precio a consultar' : 'Price on enquiry');
+      await expect(browser.locator('main')).toContainText(language === 'es' ? 'Según stock y a confirmar.' : 'Subject to stock; to be confirmed.');
+      await expect(browser.locator('main')).toContainText(language === 'es' ? 'Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.' : 'Only the 3D print is included. Other items in the photos are decorative and are not included.');
       const values = await browser.evaluate(() => [...document.querySelectorAll('main dl dd')].map(field => field.textContent?.trim()));
-      expect(values.slice(0, 3)).toEqual([
-          language === 'es' ? 'Precio a consultar.' : 'Price on enquiry.',
+      expect(values.slice(0, 2)).toEqual([
           'PLA',
           language === 'es' ? 'Colores a consultar.' : 'Colours available on enquiry.',
       ]);
-      expect(values[3]).toContain(language === 'es' ? 'No uses lavavajillas.' : 'Do not put in a dishwasher.');
-      expect(values.slice(4)).toEqual([
+      expect(values[2]).toContain(language === 'es' ? 'No uses lavavajillas.' : 'Do not put in a dishwasher.');
+      expect(values.slice(3)).toEqual([
           language === 'es' ? 'Trabajamos con stock y por pedido. Consultá la disponibilidad.' : 'We work with stock and made-to-order pieces. Ask about availability.',
-          language === 'es' ? 'Según stock y a confirmar.' : 'Subject to stock; to be confirmed.',
-          language === 'es' ? 'Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.' : 'Only the 3D print is included. Other items in the photos are decorative and are not included.',
       ]);
       await expect(browser.locator('main details[open]')).toHaveCount(0);
 

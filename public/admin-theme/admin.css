@@ -1,0 +1,289 @@
+/* Tina admin adapter. Keep vendor compatibility rules inside this file.
+   No styles are installed in the preview document or the public website. */
+@font-face { font-family: "Al3 Admin Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("./fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Al3 Admin Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("./fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Al3 Admin Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("./fonts/inter-latin-600-normal.woff2") format("woff2"); }
+
+body.tina-tailwind[data-al3-admin-theme="dark"] {
+  --al3-admin-bg: #111214;
+  --al3-admin-panel: #191b1e;
+  --al3-admin-raised: #222529;
+  --al3-admin-hover: #2b2e34;
+  --al3-admin-selected: #343842;
+  --al3-admin-edge: #373b43;
+  --al3-admin-text: #eceef2;
+  --al3-admin-muted: #a6adb8;
+  --al3-admin-icon: #b8bec8;
+  --al3-admin-icon-size: 18px;
+  --al3-admin-icon-stroke: 1.75;
+  --al3-admin-accent: #c5cce0;
+  --al3-admin-primary: #eceef2;
+  --al3-admin-primary-foreground: #14161a;
+  --al3-admin-success: #91d8b3;
+  --al3-admin-success-bg: #18352a;
+  --al3-admin-warning: #efcb89;
+  --al3-admin-warning-bg: #382f20;
+  --al3-admin-danger: #f3a0aa;
+  --al3-admin-danger-bg: #382329;
+  --tina-color-primary-light: var(--al3-admin-selected);
+  --tina-color-primary: var(--al3-admin-accent);
+  --tina-color-primary-dark: #e2e6f2;
+  --tina-color-grey-0: var(--al3-admin-panel);
+  --tina-color-grey-1: var(--al3-admin-bg);
+  --tina-color-grey-2: var(--al3-admin-raised);
+  --tina-color-grey-3: var(--al3-admin-edge);
+  --tina-color-grey-4: #7e8795;
+  --tina-color-grey-5: var(--al3-admin-muted);
+  --tina-color-grey-6: #c5cbd5;
+  --tina-color-grey-7: #d8dde5;
+  --tina-color-grey-8: var(--al3-admin-text);
+  --tina-color-grey-9: #f5f6f8;
+  --tina-color-grey-10: #ffffff;
+  --tina-color-error: var(--al3-admin-danger);
+  --tina-color-error-light: var(--al3-admin-danger-bg);
+  --tina-color-warning: var(--al3-admin-warning);
+  --tina-color-warning-light: var(--al3-admin-warning-bg);
+  --tina-color-success: var(--al3-admin-success);
+  --tina-color-success-light: var(--al3-admin-success-bg);
+  --tina-color-indicator: var(--al3-admin-accent);
+  --tina-font-family: "Al3 Admin Inter", Inter, system-ui, sans-serif;
+  --tina-radius-small: 4px;
+  --tina-radius-big: 6px;
+  color-scheme: only dark;
+  background: var(--al3-admin-bg);
+  color: var(--al3-admin-text);
+  font-family: var(--tina-font-family);
+  -webkit-font-smoothing: antialiased;
+  accent-color: var(--al3-admin-accent);
+  scrollbar-color: #555d69 var(--al3-admin-bg);
+}
+
+/* The iframe keeps its own site theme and browser colour preference. */
+body.tina-tailwind[data-al3-admin-theme="dark"] iframe { color-scheme: normal; }
+/* Native form breadcrumbs use a separate, upward white gradient. */
+body.tina-tailwind[data-al3-admin-theme="dark"] .bg-gradient-to-t.from-white.to-gray-50 { background-image: none; background-color: var(--al3-admin-panel); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .py-2.w-full:has(> .flex.items-center.gap-4 > div > a[href="https://tina.io/docs/r/what-is-tinacloud/"]) { background-color: var(--al3-admin-bg); }
+/* Local-mode is an informational badge, never hidden or renamed. */
+body.tina-tailwind[data-al3-admin-theme="dark"] div:has(> a[href="https://tina.io/docs/r/what-is-tinacloud/"]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  align-self: center;
+  flex: 0 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--al3-admin-warning-bg);
+  color: var(--al3-admin-warning);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] div:has(> a[href="https://tina.io/docs/r/what-is-tinacloud/"]) > svg { flex: none; width: 13px; height: 13px; margin: 0; color: inherit; }
+body.tina-tailwind[data-al3-admin-theme="dark"] a[href="https://tina.io/docs/r/what-is-tinacloud/"] { color: inherit; }
+body.tina-tailwind[data-al3-admin-theme="dark"] div:has(> a[href="https://tina.io/docs/r/content-search"]) {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-width: 100%;
+  margin: 0;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--al3-admin-selected);
+  color: var(--al3-admin-accent);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] div:has(> a[href="https://tina.io/docs/r/content-search"]) > svg { flex: none; width: 13px; height: 13px; margin: 0; color: inherit; }
+body.tina-tailwind[data-al3-admin-theme="dark"] a[href="https://tina.io/docs/r/content-search"] { color: inherit; }
+/* The native admin layout has an inline light background. It is a shell role,
+   not a document surface; override that one inline colour explicitly. */
+body.tina-tailwind[data-al3-admin-theme="dark"] div[style*="position: fixed"][style*="z-index: 9999"] { background-color: var(--al3-admin-bg) !important; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.text-tina-orange, .text-tina-orange-dark) { color: var(--al3-admin-accent); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(h1, h2, h3).text-tina-orange { color: var(--al3-admin-text); }
+/* Tina's fullscreen modal otherwise reserves 170px and caps at 1500px.
+   Apply only to our dashboard; leave other modal sizing and close actions. */
+body.tina-tailwind[data-al3-admin-theme="dark"] .z-modal .bg-white.rounded-none.absolute:has(.al3-admin-dashboard) {
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  overflow: hidden;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] .z-modal .bg-white.rounded-none.absolute:has(.al3-admin-dashboard) > .p-0.m-0.overflow-hidden {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow-y: auto;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] .z-modal .bg-white.rounded-none.absolute:has(.al3-admin-dashboard) > .flex.items-center.px-5.py-2 { flex-shrink: 0; }
+/* On collection/screen pages, park the existing live warning under the open
+   navigation header. Its link and React ownership stay intact. With navigation
+   closed it returns to the compact toolbar, so local mode is always visible. */
+body.tina-tailwind[data-al3-admin-theme="dark"]:has(.relative.z-30.flex.flex-col.bg-white.border-r:not(.hidden)) .py-2.w-full > .flex.items-center.gap-4 > div:has(> a[href="https://tina.io/docs/r/what-is-tinacloud/"]) {
+  position: fixed;
+  z-index: 31;
+  inset-block-start: 84px;
+  inset-inline-start: 24px;
+  max-width: min(220px, calc(100vw - 48px));
+}
+body.tina-tailwind[data-al3-admin-theme="dark"]:has(.py-2.w-full > .flex.items-center.gap-4 > div > a[href="https://tina.io/docs/r/what-is-tinacloud/"]) .relative.z-30.flex.flex-col.bg-white.border-r:not(.hidden) > .flex.flex-col.px-6.flex-1.overflow-auto { padding-block-start: 32px; }
+body.tina-tailwind[data-al3-admin-theme="dark"]:has(.relative.z-30.flex.flex-col.bg-white.border-r:not(.hidden)) .py-2.w-full:has(> .flex.items-center.gap-4 > div > a[href="https://tina.io/docs/r/what-is-tinacloud/"]) { padding-block: 0; }
+/* Omit the decorative llama in the compact editor toolbar; attribution remains
+   in navigation and version information. Navigation branding is discreet. */
+body.tina-tailwind[data-al3-admin-theme="dark"] svg.self-center.h-10.min-w-10 { display: none; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .relative.z-30.flex.flex-col.bg-white.border-r > .flex.w-full.px-4.py-3.justify-between.items-center.gap-2 > span > svg { height: 22px; fill: var(--al3-admin-muted); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .relative.z-30.flex.flex-col.bg-white.border-r > .flex.w-full.px-4.py-3.justify-between.items-center.gap-2 > span > svg path { fill: var(--al3-admin-muted); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.font-sans, button, input, select, textarea) { font-family: var(--tina-font-family); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(h1, h2, h3, h4, h5, h6) { font-family: var(--tina-font-family); letter-spacing: -.025em; }
+/* Native Nav groups (Collections, Site, Cloud and custom screen categories).
+   Keep this scoped to Nav's scroll area: form headings retain their hierarchy. */
+body.tina-tailwind[data-al3-admin-theme="dark"] .flex.flex-col.px-6.flex-1.overflow-auto h4 {
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: var(--al3-admin-muted);
+  margin-block: 24px 8px;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] .flex.flex-col.px-6.flex-1.overflow-auto ul { gap: 4px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .flex.flex-col.px-6.flex-1.overflow-auto ul :is(a, button) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 7px;
+  border-radius: 4px;
+  text-transform: none;
+  color: #b8bec8;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+  opacity: 1;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] .flex.flex-col.px-6.flex-1.overflow-auto ul :is(a, button) > svg { width: 18px; height: 18px; margin: 0; flex: none; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .flex.flex-col.px-6.flex-1.overflow-auto ul :is(a, button):is(:hover, :focus-visible, [aria-current="page"]) { color: var(--al3-admin-text); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .flex.flex-col.px-6.flex-1.overflow-auto > button { font-size: 13px; color: #b8bec8; letter-spacing: normal; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) { background-color: var(--al3-admin-raised); color: var(--al3-admin-text); border-color: var(--al3-admin-edge); border-radius: 4px; box-shadow: none; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(input, textarea)::placeholder { color: #939caa; opacity: 1; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button, a, input, select, textarea, [tabindex]):focus-visible { outline: 2px solid var(--al3-admin-accent); outline-offset: 3px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(input, select, textarea)[aria-invalid="true"] { border-color: var(--al3-admin-danger); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(input, select, textarea):disabled { color: var(--al3-admin-muted); opacity: .65; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.rounded, .rounded-md) { border-radius: 4px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .rounded-lg { border-radius: 6px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.shadow, .shadow-sm, .shadow-inner) { --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; }
+
+/* Tina's compiled utility colours are literal: map only named colour roles. */
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-white, .bg-background, .bg-card, .bg-popover) { background-color: var(--al3-admin-panel); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-gray-50, .bg-gray-50\/30, .bg-gray-50\/50) { background-color: var(--al3-admin-bg); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-gray-100, .bg-gray-150, .bg-gray-200, .bg-muted) { background-color: var(--al3-admin-raised); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.text-black, .text-foreground, .text-card-foreground, .text-popover-foreground, .text-gray-900, .text-gray-800, .text-gray-800\/80) { color: var(--al3-admin-text); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.text-gray-700, .text-gray-600) { color: #d8dde5; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.text-gray-500, .text-gray-400, .text-muted-foreground) { color: var(--al3-admin-muted); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .text-gray-300 { color: #939caa; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.border-gray-50, .border-gray-100, .border-gray-150, .border-gray-200, .border-gray-300, .border-border, .divide-gray-150 > :not([hidden]) ~ :not([hidden])) { border-color: var(--al3-admin-edge); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.hover\:bg-gray-50, .hover\:bg-gray-100, .hover\:bg-gray-150, .hover\:bg-gray-200):hover { background-color: var(--al3-admin-hover); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.hover\:text-gray-700, .hover\:text-gray-900):hover { color: #ffffff; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-orange-500, .bg-orange-600, .bg-tina-orange, .bg-tina-orange-dark, .bg-primary) { background-color: var(--al3-admin-primary); color: var(--al3-admin-primary-foreground); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-orange-500, .bg-orange-600, .bg-tina-orange, .bg-tina-orange-dark, .bg-primary) :is(.text-white, .text-primary-foreground) { color: var(--al3-admin-primary-foreground); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.hover\:bg-orange-600, .hover\:bg-orange-500, .hover\:bg-tina-orange):hover { background-color: #cfd4de; color: var(--al3-admin-primary-foreground); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.text-orange-500, .text-orange-600, .text-blue-400, .text-blue-500, .text-blue-600) { color: var(--al3-admin-accent); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.fill-orange-500, .fill-tina-orange) { fill: var(--al3-admin-accent); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.hover\:text-blue-400, .hover\:text-blue-500):hover { color: #f0f2f8; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-blue-50, .bg-blue-100, .bg-orange-50) { background-color: var(--al3-admin-selected); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-yellow-50, .bg-yellow-100, .bg-orange-100) { background-color: var(--al3-admin-warning-bg); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.text-yellow-600, .text-yellow-700, .text-yellow-800, .text-orange-700) { color: var(--al3-admin-warning); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-red-50, .bg-red-100) { background-color: var(--al3-admin-danger-bg); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.text-red-500, .text-red-600, .text-red-700) { color: var(--al3-admin-danger); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.bg-green-50, .bg-green-100) { background-color: var(--al3-admin-success-bg); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.text-green-600, .text-green-700) { color: var(--al3-admin-success); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .bg-gradient-to-b { background-image: none; background-color: var(--al3-admin-bg); }
+
+/* Decorative sidebar icons, attached to stable collection/screen URLs. */
+body.tina-tailwind[data-al3-admin-theme="dark"] ul:has(> li > :is(a[href$="/collections/shopProduct/~"], a[href$="/screens/media_manager"])) { gap: 4px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(a[href$="/collections/shopCatalogue/~"], a[href$="/collections/shopProduct/~"], a[href$="/collections/projects/~"], a[href$="/collections/pages/~"], a[href$="/collections/global/~"], a[href$="/screens/media_manager"], a[href$="/screens/media_usage"]) { display: flex; align-items: center; gap: 10px; color: #d3d8e1; font-size: 13px; line-height: 1.5; padding-block: 7px; border-radius: 4px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(a[href$="/collections/shopCatalogue/~"], a[href$="/collections/shopProduct/~"], a[href$="/collections/projects/~"], a[href$="/collections/pages/~"], a[href$="/collections/global/~"], a[href$="/screens/media_manager"], a[href$="/screens/media_usage"]) > svg { display: none; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(a[href$="/collections/shopCatalogue/~"], a[href$="/collections/shopProduct/~"], a[href$="/collections/projects/~"], a[href$="/collections/pages/~"], a[href$="/collections/global/~"], a[href$="/screens/media_manager"], a[href$="/screens/media_usage"])::before { content: ""; display: block; flex: 0 0 18px; width: 18px; height: 18px; background: currentColor; mask: var(--al3-admin-nav-icon) center / contain no-repeat; }
+body.tina-tailwind[data-al3-admin-theme="dark"] a[href$="/collections/shopCatalogue/~"] { --al3-admin-nav-icon: url("./icons/sliders-horizontal.svg"); }
+body.tina-tailwind[data-al3-admin-theme="dark"] a[href$="/collections/shopProduct/~"] { --al3-admin-nav-icon: url("./icons/package.svg"); }
+body.tina-tailwind[data-al3-admin-theme="dark"] a[href$="/collections/projects/~"] { --al3-admin-nav-icon: url("./icons/folder-kanban.svg"); }
+body.tina-tailwind[data-al3-admin-theme="dark"] a[href$="/collections/pages/~"] { --al3-admin-nav-icon: url("./icons/file-text.svg"); }
+body.tina-tailwind[data-al3-admin-theme="dark"] a[href$="/collections/global/~"] { --al3-admin-nav-icon: url("./icons/settings-2.svg"); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(a[href$="/screens/media_manager"], a[href$="/screens/media_usage"]) { --al3-admin-nav-icon: url("./icons/images.svg"); }
+/* Tina uses buttons rather than links for screens inside its editing sidebar. */
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button[value="Media Manager"], button[value="Media Usage"]) > svg { display: none; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button[value="Media Manager"], button[value="Media Usage"])::before { content: ""; flex: 0 0 18px; width: 18px; height: 18px; background: currentColor; mask: url("./icons/images.svg") center / contain no-repeat; }
+body.tina-tailwind[data-al3-admin-theme="dark"] a[aria-current="page"] { background-color: var(--al3-admin-selected); color: #ffffff; }
+
+/* Nav's header close button has no aria-label in Tina 3.8.1; target its
+   installed header structure, not every unlabelled button in the CMS. */
+body.tina-tailwind[data-al3-admin-theme="dark"] .relative.z-30.flex.flex-col.bg-white.border-r > .flex.w-full.px-4.py-3.justify-between.items-center.gap-2 > button {
+  position: relative;
+  color: var(--al3-admin-muted);
+  border-radius: 4px;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] .relative.z-30.flex.flex-col.bg-white.border-r > .flex.w-full.px-4.py-3.justify-between.items-center.gap-2 > button > svg { visibility: hidden; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .relative.z-30.flex.flex-col.bg-white.border-r > .flex.w-full.px-4.py-3.justify-between.items-center.gap-2 > button::before {
+  content: "Cerrar navegación";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: var(--al3-admin-icon-size);
+  height: var(--al3-admin-icon-size);
+  pointer-events: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+  background: currentColor;
+  mask: url("./icons/menu.svg") center / contain no-repeat;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button[aria-label="Open navigation menu"], button[aria-label="Toggle navigation menu"], button[aria-label="Hide editing panel"], button[aria-label="Show editing panel"]) { position: relative; color: var(--al3-admin-muted); border-radius: 4px; }
+/* Keep the reopen handle outside flex layout. Relative positioning here creates
+   an empty column before the editor and displaces the entire form. */
+body.tina-tailwind[data-al3-admin-theme="dark"] button[aria-label="Show editing panel"] { position: absolute; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button[aria-label="Open navigation menu"], button[aria-label="Toggle navigation menu"]) { --al3-admin-control-icon: url("./icons/menu.svg"); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button[aria-label="Hide editing panel"], button[aria-label="Show editing panel"]) { --al3-admin-control-icon: url("./icons/panel-left.svg"); }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button[aria-label="Open navigation menu"], button[aria-label="Toggle navigation menu"], button[aria-label="Hide editing panel"], button[aria-label="Show editing panel"]) > svg { visibility: hidden; }
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button[aria-label="Open navigation menu"], button[aria-label="Toggle navigation menu"], button[aria-label="Hide editing panel"], button[aria-label="Show editing panel"])::before { content: ""; position: absolute; inset: 0; margin: auto; width: var(--al3-admin-icon-size); height: var(--al3-admin-icon-size); pointer-events: none; background: currentColor; mask: var(--al3-admin-control-icon) center / contain no-repeat; }
+
+/* One scale for interface icons, including collection tables, nested object
+   lists and article editing tools. Do not resize SVG artwork, brand marks or
+   status indicators. Buttons keep their existing hit areas and focus rules. */
+body.tina-tailwind[data-al3-admin-theme="dark"] svg.lucide {
+  width: var(--al3-admin-icon-size);
+  height: var(--al3-admin-icon-size);
+  flex-shrink: 0;
+  stroke-width: var(--al3-admin-icon-stroke);
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button, a, [role="button"]) > svg,
+body.tina-tailwind[data-al3-admin-theme="dark"] [class~="cursor-[grab]"] > svg,
+body.tina-tailwind[data-al3-admin-theme="dark"] .ml-auto.flex.justify-self-end.items-center.cursor-pointer > svg {
+  width: var(--al3-admin-icon-size);
+  height: var(--al3-admin-icon-size);
+  flex-shrink: 0;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(svg.lucide-pencil, svg.lucide-square-pen, svg.lucide-rotate-cw),
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button, a, [role="button"]) > svg:is(.text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500, .text-gray-600, .text-gray-700),
+body.tina-tailwind[data-al3-admin-theme="dark"] [class~="cursor-[grab]"] > svg,
+body.tina-tailwind[data-al3-admin-theme="dark"] .ml-auto.flex.justify-self-end.items-center.cursor-pointer > svg {
+  color: var(--al3-admin-icon);
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(button, a, [role="button"]):is(:hover, :focus-visible) > svg:is(.text-gray-200, .text-gray-300, .text-gray-400, .text-gray-500, .text-gray-600, .text-gray-700),
+body.tina-tailwind[data-al3-admin-theme="dark"] .group:is(:hover, :focus-within) > :is(svg.lucide-pencil, svg.lucide-square-pen) { color: var(--al3-admin-text); }
+/* A checkmark must fit its native checkbox; it is not an action-sized icon. */
+body.tina-tailwind[data-al3-admin-theme="dark"] button[role="checkbox"] svg { width: 12px; height: 12px; color: inherit; }
+
+@media (pointer: coarse) {
+  body.tina-tailwind[data-al3-admin-theme="dark"] :is(input:not([type="checkbox"]):not([type="radio"]), select, button) { min-height: 44px; }
+}
+@media (forced-colors: active) {
+  body.tina-tailwind[data-al3-admin-theme="dark"] { color-scheme: light dark; }
+  body.tina-tailwind[data-al3-admin-theme="dark"] :is(button, input, select, textarea) { outline-color: Highlight; }
+  body.tina-tailwind[data-al3-admin-theme="dark"] a::before { forced-color-adjust: none; background-color: LinkText; }
+  body.tina-tailwind[data-al3-admin-theme="dark"] button::before { forced-color-adjust: none; background-color: ButtonText; }
+}

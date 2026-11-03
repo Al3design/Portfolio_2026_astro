@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "product": "src/editorial/shop-products/arbol-decorativo.json"
+    },
+    {
+      "product": "src/editorial/shop-products/figura-articulada-verde-roja.json"
+    },
+    {
+      "product": "src/editorial/shop-products/flor-decorativa-blanca.json"
+    },
+    {
+      "product": "src/editorial/shop-products/jarron-acanalado.json"
+    },
+    {
+      "product": "src/editorial/shop-products/maceta-acanalada-con-plato.json"
+    },
+    {
+      "product": "src/editorial/shop-products/maceta-perro.json"
+    },
+    {
+      "product": "src/editorial/shop-products/pieza-articulada-roja-negra.json"
+    },
+    {
+      "product": "src/editorial/shop-products/soporte-control-creeper.json"
+    }
+  ],
+  "latest": [
+    {
+      "product": "src/editorial/shop-products/soporte-control-creeper.json"
+    },
+    {
+      "product": "src/editorial/shop-products/maceta-perro.json"
+    },
+    {
+      "product": "src/editorial/shop-products/maceta-acanalada-con-plato.json"
+    }
+  ],
+  "hero": "src/editorial/shop-products/jarron-acanalado.json"
+}

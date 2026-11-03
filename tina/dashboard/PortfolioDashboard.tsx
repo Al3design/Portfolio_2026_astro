@@ -13,29 +13,28 @@ import {
   Search, 
   ExternalLink, 
   Image as ImageIcon,
-  MoreVertical,
   Activity
 } from "lucide-react";
-import { DASHBOARD_QUERY, type DashboardData, type ProjectNode } from "./dashboardQuery";
+import { DASHBOARD_QUERY, type DashboardData } from "./dashboardQuery";
 
 // ─── Estilos Premium (Tokens) ──────────────────────────────────────────────────
 const tokens = {
   colors: {
-    bg: "#f8fafc",
-    card: "#ffffff",
-    primary: "#ec4815", // Tina Orange
-    primaryHover: "#d43d0e",
-    text: "#0f172a",
-    textMuted: "#64748b",
-    border: "#e2e8f0",
-    success: "#22c55e",
-    successBg: "#f0fdf4",
-    warning: "#f59e0b",
-    warningBg: "#fffbeb",
-    danger: "#ef4444",
-    dangerBg: "#fef2f2",
-    accent: "#6366f1",
-    accentBg: "#eef2ff",
+    bg: "var(--al3-admin-bg, #f8fafc)",
+    card: "var(--al3-admin-panel, #ffffff)",
+    primary: "var(--al3-admin-primary, #ec4815)",
+    primaryHover: "var(--al3-admin-hover, #d43d0e)",
+    text: "var(--al3-admin-text, #0f172a)",
+    textMuted: "var(--al3-admin-muted, #64748b)",
+    border: "var(--al3-admin-edge, #e2e8f0)",
+    success: "var(--al3-admin-success, #22c55e)",
+    successBg: "var(--al3-admin-success-bg, #f0fdf4)",
+    warning: "var(--al3-admin-warning, #f59e0b)",
+    warningBg: "var(--al3-admin-warning-bg, #fffbeb)",
+    danger: "var(--al3-admin-danger, #ef4444)",
+    dangerBg: "var(--al3-admin-danger-bg, #fef2f2)",
+    accent: "var(--al3-admin-accent, #6366f1)",
+    accentBg: "var(--al3-admin-selected, #eef2ff)",
   },
   shadows: {
     sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
@@ -43,9 +42,9 @@ const tokens = {
     lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
   },
   radius: {
-    sm: "6px",
-    md: "10px",
-    lg: "16px",
+    sm: "4px",
+    md: "6px",
+    lg: "8px",
     full: "9999px",
   }
 };
@@ -58,6 +57,7 @@ const s = {
     padding: "40px",
     color: tokens.colors.text,
     display: "flex",
+    flexShrink: 0,
     flexDirection: "column",
     gap: "32px",
   } as React.CSSProperties,
@@ -79,7 +79,7 @@ const s = {
     fontWeight: 800,
     letterSpacing: "-0.02em",
     margin: 0,
-    background: `linear-gradient(135deg, ${tokens.colors.text} 0%, #475569 100%)`,
+    background: `linear-gradient(135deg, ${tokens.colors.text} 0%, ${tokens.colors.textMuted} 100%)`,
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   } as React.CSSProperties,
@@ -277,7 +277,7 @@ return normalized;
 const MotionCard = motion.create("div");
 
 interface StatCardProps {
-  icon: React.ReactNode;
+  icon: React.ReactElement<{ size?: number }>;
   color: string;
   bgColor: string;
   value: number | string;
@@ -311,7 +311,7 @@ function StatCard({ icon, color, bgColor, value, label, delay = 0 }: StatCardPro
       <div style={{ 
         position: "absolute", right: "-10px", bottom: "-10px", opacity: 0.05, transform: "rotate(-15deg)"
       }}>
-        {React.cloneElement(icon as React.ReactElement, { size: 80 })}
+        {React.cloneElement(icon, { size: 80 })}
       </div>
     </MotionCard>
   );
@@ -333,13 +333,12 @@ export function PortfolioDashboard() {
     setError(null);
     try {
       // Usamos el cliente oficial de Tina para mayor seguridad y compatibilidad con Cloud
-      const response = await cms.api.tina.request(DASHBOARD_QUERY, { variables: {} });
+      const api = cms.api.tina;
+      if (!api) throw new Error("El cliente de Tina todavía no está disponible");
+      // request returns data directly and throws for HTTP/GraphQL errors.
+      const response = await api.request<DashboardData>(DASHBOARD_QUERY, { variables: {} });
       
-      if (response.errors) {
-        throw new Error(response.errors[0]?.message ?? "Error en la consulta GraphQL");
-      }
-      
-      setData(response as DashboardData);
+      setData(response);
       setLastRefresh(new Date());
     } catch (e: unknown) {
       console.error("Dashboard Fetch Error:", e);
@@ -402,7 +401,7 @@ export function PortfolioDashboard() {
             <div>
               <div style={{ fontWeight: 700, marginBottom: "4px" }}>Error de Conexión</div>
               <div style={{ fontSize: "14px" }}>{error}</div>
-              <button onClick={fetchData} style={{ ...s.btn, marginTop: "16px", backgroundColor: tokens.colors.danger, color: "#fff", border: "none" }}>
+              <button onClick={fetchData} style={{ ...s.btn, marginTop: "16px", backgroundColor: tokens.colors.danger, color: "var(--al3-admin-primary-foreground, #fff)", border: "none" }}>
                 Reintentar
               </button>
             </div>
@@ -413,7 +412,7 @@ export function PortfolioDashboard() {
   }
 
   return (
-    <div style={s.root}>
+    <div className="al3-admin-dashboard" style={s.root}>
       {/* ── Header ── */}
       <header style={s.header}>
         <div style={s.headerTitle}>
@@ -432,7 +431,7 @@ export function PortfolioDashboard() {
             </div>
           </div>
           <button 
-            style={{ ...s.btn, backgroundColor: tokens.colors.primary, color: "#fff", border: "none" }}
+            style={{ ...s.btn, backgroundColor: tokens.colors.primary, color: "var(--al3-admin-primary-foreground, #fff)", border: "none" }}
             onClick={fetchData}
             disabled={loading}
           >
@@ -444,9 +443,9 @@ export function PortfolioDashboard() {
 
       <style>{`
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .spin { animation: spin 1s linear infinite; }
-        input::placeholder { color: #cbd5e1; }
-        .row-hover:hover { background-color: #f8fafc !important; }
+        .al3-admin-dashboard .spin { animation: spin 1s linear infinite; }
+        .al3-admin-dashboard input::placeholder { color: var(--al3-admin-muted, #cbd5e1); }
+        .al3-admin-dashboard .row-hover:hover { background-color: var(--al3-admin-hover, #f8fafc); }
       `}</style>
 
       {/* ── Stats row ── */}
@@ -469,16 +468,16 @@ export function PortfolioDashboard() {
         />
         <StatCard 
           icon={<FileText size={24} />} 
-          color="#8b5cf6" 
-          bgColor="#f5f3ff" 
+          color={tokens.colors.accent} 
+          bgColor={tokens.colors.accentBg} 
           value={stats?.inResume ?? 0} 
           label="En CV / Resume" 
           delay={0.3}
         />
         <StatCard 
           icon={<FileCode size={24} />} 
-          color="#ec4899" 
-          bgColor="#fdf2f8" 
+          color={tokens.colors.accent} 
+          bgColor={tokens.colors.accentBg} 
           value={stats?.pages ?? 0} 
           label="Páginas CMS" 
           delay={0.4}
@@ -662,16 +661,16 @@ function HealthItem({ label, count, icon }: { label: string, count: number, icon
       display: "flex", alignItems: "center", justifyItems: "center", justifyContent: "space-between",
       padding: "12px 14px", borderRadius: tokens.radius.md,
       backgroundColor: isOk ? tokens.colors.successBg : tokens.colors.dangerBg,
-      border: `1px solid ${isOk ? "#dcfce7" : "#fee2e2"}`
+      border: `1px solid ${tokens.colors.border}`
     }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 600, color: isOk ? "#166534" : "#991b1b" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 600, color: isOk ? tokens.colors.success : tokens.colors.danger }}>
         {icon}
         {label}
       </div>
       <div style={{ 
         padding: "2px 8px", borderRadius: "10px", fontSize: "11px", fontWeight: 800,
         backgroundColor: isOk ? tokens.colors.success : tokens.colors.danger,
-        color: "#fff"
+        color: "var(--al3-admin-primary-foreground, #fff)"
       }}>
         {isOk ? "OK" : count}
       </div>

@@ -1,9 +1,10 @@
+import { readShopSelection } from './lib/shop-catalogue-selection.mjs';
 import { readFile, readdir, access, mkdir, writeFile } from 'node:fs/promises';
 import { resolve, relative, extname } from 'node:path';
 
 // Inspect the built output, not source templates or the development server.
 const root = resolve('dist');
-const slugs = ['arbol-decorativo', 'figura-articulada-verde-roja', 'flor-decorativa-blanca', 'jarron-acanalado', 'maceta-acanalada-con-plato', 'maceta-perro', 'pieza-articulada-roja-negra', 'soporte-control-creeper'];
+const { selection: { slugs } } = await readShopSelection(process.cwd());
 const errors = [];
 const pages = [];
 const photos = new Set();

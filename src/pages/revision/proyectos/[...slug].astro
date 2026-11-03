@@ -1,0 +1,25 @@
+---
+import ProjectDocument from '@/components/ProjectDocument.astro';
+import { projectSources } from '@/lib/project-editorial';
+import { projectLanguages, projectUrl } from '@/lib/project-locales';
+import type { SiteLanguage } from '@/lib/site-navigation';
+
+export function getStaticPaths() {
+  if (import.meta.env.MODE !== 'development') return [];
+  // The local Tina router receives only _sys from its collection list, so
+  // every project needs a review entry point, independently of publication.
+  return projectSources.flatMap(item => projectLanguages(item.metadata).flatMap(language => {
+    const path = projectUrl(item.slug, item.metadata, language, true).replace('/revision/proyectos/', '');
+    const next = projectSources.find(other => other.slug !== item.slug && projectLanguages(other.metadata).includes(language));
+    const props = {documentSlug: item.slug, language, nextLink: next ? projectUrl(next.slug, next.metadata, language, true) : '/'};
+    const routes = [{params: {slug: path}, props: {...props, redirect: undefined as string | undefined}}];
+    // Links issued before consolidation keep working without duplicate documents.
+    if (item.metadata.contentFormat === 'bilingual') routes.push({params: {slug: `${item.slug}-${language}`}, props: {...props, redirect: `/revision/proyectos/${path}`}});
+    return routes;
+  }));
+}
+interface Props { documentSlug: string; language: SiteLanguage; nextLink?: string; redirect?: string; }
+const {redirect, ...props} = Astro.props;
+if (redirect) return Astro.redirect(redirect);
+---
+<ProjectDocument {...props} preview />

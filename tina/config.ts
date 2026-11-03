@@ -5,6 +5,9 @@ import { articleBlockTemplates } from './article-blocks';
 import { articleLocaleFields } from './article-locales';
 import { projectEditorRoute, localEditorHostname } from '../src/lib/project-editor-route';
 import { shopProductCollection } from './shop-products';
+import { shopCatalogueCollection } from './shop-catalogue';
+import { installAdminTheme } from '../src/lib/admin-theme';
+import { LayoutDashboard } from 'lucide-react';
 
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -30,6 +33,7 @@ export default defineConfig({
   },
   schema: {
     collections: [
+      shopCatalogueCollection,
       shopProductCollection,
       // ─── PROJECTS ──────────────────────────────────────────────────────────
       {
@@ -37,8 +41,8 @@ export default defineConfig({
         label: "Projects",
         path: "src/content/projects",
         format: "mdx",
+        defaultItem: { publicationStatus: 'draft', contentFormat: 'bilingual', language: 'es', showInPortfolio: true, showInResume: false },
         ui: {
-          defaultItem: { publicationStatus: 'draft', contentFormat: 'bilingual', language: 'es', showInPortfolio: true, showInResume: false },
           router: ({ document }: { document: any }) => {
             const local = typeof window !== 'undefined' && localEditorHostname(window.location.hostname);
             return projectEditorRoute(document, local);
@@ -193,7 +197,6 @@ export default defineConfig({
           {
             name: "home",
             label: "Home Page",
-            match: { filename: "home" },
             fields: [
               {
                 type: "string",
@@ -229,7 +232,6 @@ export default defineConfig({
           {
             name: "about",
             label: "About Page",
-            match: { filename: "about" },
             fields: [
               {
                 type: "string",
@@ -291,7 +293,6 @@ export default defineConfig({
           {
             name: "archive",
             label: "Archive Page",
-            match: { filename: "archive" },
             fields: [
               {
                 type: "string",
@@ -318,7 +319,6 @@ export default defineConfig({
           {
             name: "resume",
             label: "Resume Page",
-            match: { filename: "resume" },
             fields: [
               {
                 type: "string",
@@ -475,10 +475,11 @@ export default defineConfig({
 
   // ── Screen Plugin: Portfolio Dashboard ─────────────────────────────────────
   cmsCallback: (cms) => {
+    installAdminTheme();
     cms.plugins.add({
       __type: "screen",
       name: "Portfolio Overview",
-      Icon: () => "📊",
+      Icon: LayoutDashboard,
       layout: "fullscreen",
       Component: PortfolioDashboard,
     });

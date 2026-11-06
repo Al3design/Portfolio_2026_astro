@@ -71,6 +71,8 @@ Referencia consultada el 02/11/2026: [Nav de Payload](https://github.com/payload
 
 ## Conservación y mantenimiento
 
+Para publicar la actualización de CLI/esquema en otra rama, comprobar el índice de esa rama específica antes de reconstruir. Que la Preview haya indexado `codex/tienda-catalogo-real` no actualiza `main`. Si el build informa GraphQL local/remoto diferente, reindexar solo la rama de la publicación autorizada, esperar succeeded y reconstruir una vez; no omitir cloud checks. `package.json` fija Node 24.x para coincidir con el runtime comprobado y la configuración de Vercel.
+
 Auditoría de artículo: `openspec/changes/tema-admin-tina/article-audit-2026-11-03.md`. Menú checked/toolbar corregidos y observados localmente; formulario nativo mostró Unsaved changes solo al montar y una transición de revisión dejó iframe about:blank. No guardar/Reset para ocultar esos estados. El artículo no fue modificado en disco; diagnóstico pendiente. Un menú observado no acredita todos los diálogos ni la edición/guardado de contenido.
 
 Revisión estática de dependencias: `openspec/changes/tema-admin-tina/compatibility-2026-11-03.md`. CMS/CLI admiten React 19, pero react-final-form 6.5.9 transitivo declara hasta React 18. Formularios observados funcionan; no cerrar compatibilidad amplia por ese hecho ni introducir un override mayor para silenciar el aviso. Almacén pnpm antiguo no equivale a copia activa.

@@ -153,8 +153,8 @@ Editar directamente los archivos `.mdx` en `src/content/`. Al guardar, Astro HMR
 ### Flujo con TinaCMS (recomendado)
 
 ```bash
-# Node >=22 LTS recomendado (22.x o 24.x)
-# nvm use 22  # o: nvm use 24
+# Node 24.x (misma versión mayor en local y Vercel)
+# nvm use 24
 
 pnpm run dev
 # Astro corre en:    http://localhost:4322
@@ -325,7 +325,7 @@ for (const [path, content] of Object.entries(rawFiles)) {
 ## 🛠️ Scripts
 
 ```bash
-pnpm run dev       # TinaCMS + Astro dev server (Node >=22 LTS)
+pnpm run dev       # TinaCMS + Astro dev server (Node 24.x)
 npm run build     # Build de producción en dist/
 npm run preview   # Preview del build
 npx astro check   # TypeScript diagnostics
@@ -358,7 +358,7 @@ El feed está en `src/pages/rss.xml.ts` y se genera en cada build de Astro. Cons
 
 ### Antes de empezar
 1. **Leer [`docs/CHANGELOG.md`](./docs/CHANGELOG.md)** para entender el estado actual y los cambios recientes.
-2. **Verificar Node:** `node -v` debe retornar `v22.12.0`. Si no, correr `nvm use 22.12.0`.
+2. **Verificar Node:** `node -v` debe retornar `v24.x`. Si no, usar una versión 24.x instalada. `engines.node` limita Vercel a la misma versión mayor.
 
 ### Reglas técnicas obligatorias
 

@@ -8,6 +8,7 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ## [2026-11-06] — Orden editorial desde Portfolio Overview
 
+- Build de producción inicial bloqueado correctamente por índice main antiguo de Tina Cloud (GraphQL 2.4.1 frente a 4.1.0). Se prepara reindexación de main sin omitir controles y se fija `engines.node: 24.x` para evitar que Vercel seleccione automáticamente Node 26.
 - Filtros laterales de home contenidos en anchos intermedios mediante tracks `minmax(0,1fr)` y etiquetas ajustables. Observados 1100 y 390 px sin desborde; versión móvil sin misión/metadatos y 32 px de aire bajo el topbar. Guardados de prueba de Ingest Monitor/BDM reemplazados por sus versiones previas, por pedido expreso.
 - Dashboard: alineados buscador, selector, ayuda y tabla; controles numéricos/select/buscador centralizados en `public/admin-theme/admin.css`, con clases `al3-admin-control`/`al3-admin-order-*`, superficies y foco del sistema Tina, alto mínimo 44 px. Caché `20261106-1`. Revisión visual local y coordenadas coincidentes del margen izquierdo.
 - Corrección comprobada: contratos 6/6, Astro sin errores ni warnings (86 hints), orden general y de categoría guardados/reabiertos/restaurados en Tina local. Copia exacta del artículo restaurada; sin build ni publicación. Detalle en el reporte de `orden-editorial-dashboard`.

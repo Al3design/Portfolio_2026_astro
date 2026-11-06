@@ -1,6 +1,35 @@
 # The Compiled Soul — Portfolio 2026
 
-Welcome to the documentation for **The Compiled Soul**, a personal portfolio built with **Astro v6**. This `README.md` is the single source of truth for developers and AI coding assistants. It covers the architecture, tech stack, design principles, and CMS integration.
+Welcome to the documentation for **The Compiled Soul**, a personal portfolio built with **Astro v6**. Este README es el punto de entrada; los contratos ejecutables y las guías enlazadas determinan cómo editar cada sistema.
+
+## Continuidad para IA — editorial y Tina (03/11/2026)
+
+Leer primero `AGENTS.md`, [OpenSpec](openspec/config.yaml), [la guía editorial](docs/GUIA_EDITORIAL_IA.md) y [el sistema visual de Tina](docs/TINA_ADMIN_THEME.md). Conservar rama activa y cambios ajenos. Las instrucciones históricas de Netlify no describen el despliegue actual: producción está en Vercel, `al3design.dev`.
+
+Las **directivas permanentes** viven en [openspec/config.yaml](openspec/config.yaml), con entrada en AGENTS y procedimientos en las guías temáticas. Aplican cualquiera sea el nombre de la rama; para estar disponibles en otra rama, deben estar incorporadas allí mediante Git. No cambiar de rama o fusionar automáticamente para propagarlas.
+
+El [handoff operativo de Tina Cloud](docs/HANDOFF-2026-11-03-tina-cloud-admin.md) conserva el estado fechado y la evidencia de actualización, reindexación, orígenes y prueba de guardado ya completada. No sustituye las directivas ni autoriza repetir acciones.
+
+La [prueba local de medios y selección](openspec/changes/alta-piezas-shop-desde-tina/report-2026-11-03-local-upload.md) completó carga asistida por el usuario, alta/reapertura, portada/novedades y restauración del catálogo. No acredita el selector automatizado ni el equivalente Cloud.
+
+La [revisión de compatibilidad](openspec/changes/tema-admin-tina/compatibility-2026-11-03.md) registra el peer transitivo react-final-form/React19 pendiente y la integración por fast-forward de los guardados Cloud a fb5b4a9. No confundir el resultado de formularios comprobados con compatibilidad global aprobada.
+
+La [auditoría del editor de artículos](openspec/changes/tema-admin-tina/article-audit-2026-11-03.md) registra la corrección local de contraste del menú y los pendientes de formulario marcado como modificado al abrir y vista previa vacía. No guardar contenido para normalizar esos estados. Builds y publicación quedan para el final; el CSS posterior al candidato publicado en Preview aún no está integrado.
+
+| Necesidad | Dónde actualizar |
+| --- | --- |
+| Nuevo artículo/caso | `docs/templates/articulo-bilingue.mdx` → `src/content/projects/<slug>.mdx`; colección `projects` de `tina/config.ts`, bloques/locales compartidos y renderer existente. Mantener draft hasta completar ES/EN. |
+| Nueva pieza | `docs/templates/pieza-shop.json` → `src/editorial/shop-products/<slug>.json`; formulario en `tina/shop-products.ts`, contrato/proyección en `src/lib/shop-editorial.ts`. |
+| Publicar/ordenar piezas, portada y tres novedades | `src/editorial/shop-catalogue/catalogue.json`, editable con `tina/shop-catalogue.ts`. Guardar un borrador no lo selecciona. `scripts/lib/shop-catalogue-plugin.mjs` genera imports desde esa selección. |
+| Imágenes, colores HEX/presets, rutas, metadatos y RSS | Seguir las tablas de `docs/GUIA_EDITORIAL_IA.md`; no duplicar plantillas ni listas de productos en código. |
+| Estética del CMS | `public/admin-theme/admin.css`: tokens `--al3-admin-*` y adaptador vendor. `src/lib/admin-theme.ts` lo instala desde `cmsCallback` de `tina/config.ts`, solo en `/admin`. Dashboard propio en `tina/dashboard/PortfolioDashboard.tsx`. |
+| Orden general y por categoría | `order` y `categoryOrders` en el MDX, ficha y candidato de Portfolio Overview. Comparador en `src/lib/project-order.ts`; formulario `tina/dashboard/ProjectOrderEditor.tsx` y preservación del documento completo en `projectOrderValues.ts`. Contratos 6/6, tipos sin errores y persistencia local con restauración comprobados; integración/publicación pendientes. Ver la guía editorial y `openspec/changes/orden-editorial-dashboard/`. |
+
+Un campo nuevo requiere **Tina → contrato/validación → proyección ES/EN → renderer → consumidores (listados, social, RSS y Live Preview cuando corresponda)**. Actualizar guía y plantilla del contenido en la misma tanda. Nunca editar `tina/__generated__` manualmente ni importar `tina/config.ts` desde componentes públicos.
+
+Tina usa CSS propio como excepción acotada al shell vendor; el sitio conserva SCSS. No cargar ese CSS en `MainLayout` ni dentro del iframe. Al cambiar el adaptador, actualizar su versión de caché en `src/lib/admin-theme.ts`; la tabla de tokens y los límites están en la guía visual.
+
+Estado: TinaCMS **3.15.1**, CLI **4.0.4**, candidato `df001b1` en Preview Ready y rama Cloud reindexada. Nota interna Cloud guardada/reabierta y restaurada/reabierta el 03/11 (commits `c0d8fec`/`fb5b4a9`); no equivale a upload/alta/selección completa ni producción. HEAD local sigue df001b1, sin pull sobre cambios ajenos. Live Preview Shop nuevo está habilitado en local; Cloud conserva formulario nativo. Evidencia y pendientes: `openspec/changes/tema-admin-tina/report-2026-11-03.md` y tareas de `alta-piezas-shop-desde-tina`. No repetir builds o controles completados por leer este documento.
 
 > 📋 **Historial de cambios:** Para entender qué se modificó, por qué, y en qué orden, leer [`docs/CHANGELOG.md`](./docs/CHANGELOG.md).
 > 🛠️ **Configuración CMS:** Guía paso a paso para configurar TinaCMS y Netlify en [`docs/TINA_NETLIFY_GUIDE.md`](./docs/TINA_NETLIFY_GUIDE.md).
@@ -15,7 +44,7 @@ Welcome to the documentation for **The Compiled Soul**, a personal portfolio bui
 | UI Library | [React 19.2](https://react.dev/) — solo para componentes con interactividad (Astro Islands) |
 | Styling | SASS / SCSS Modules — **sin Tailwind CSS** |
 | Content | MDX via Astro Content Layer (`src/content/`) |
-| CMS | [TinaCMS v3.7](https://tina.io/) — panel clásico, local mode en dev |
+| CMS | [TinaCMS v3.15.1](https://tina.io/) + CLI 4.0.4 — tema propio del administrador, local mode en dev |
 | Animations | [Framer Motion](https://motion.dev/) — `import` desde `motion/react` |
 | Icons | [Lucide React](https://lucide.dev/) |
 | Dashboard | Custom Screen Plugin — Portfolio Control Center |
@@ -71,7 +100,7 @@ Portfolio_2026_astro/
 
 ## 🎨 Styling Architecture (SASS)
 
-**Política estricta: solo SASS Modules. No introducir Tailwind CSS.**
+**Sitio público: SASS Modules. No introducir Tailwind CSS.** El adaptador CSS del administrador Tina es una excepción aislada documentada; las clases Tailwind vendor pertenecen a Tina, no al sistema público.
 
 1. **SASS Modules:** Cada componente React o Astro tiene su propio `_nombre.module.scss`.
 2. **Global Abstracts:** Variables, tokens y mixins en `src/styles/abstracts/`. Se inyectan automáticamente via Vite — **no usar `@use` ni `@import` manual de abstracts** en los módulos.

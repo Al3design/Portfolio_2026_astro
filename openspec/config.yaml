@@ -10,21 +10,48 @@ context: |
   No publicar, hacer push ni archivar cambios incompletos sin autorizacion.
   Para alta/edicion editorial, leer primero docs/GUIA_EDITORIAL_IA.md y usar docs/templates como borradores.
   Respetar contratos Tina/renderer ES/EN, imagenes, metadatos y RSS; no crear plantillas visuales paralelas.
-  Shop requiere seleccion publica e imports explicitos de fotos; crear un documento Tina no lo agrega a esa seleccion.
+  Shop requiere seleccion publica explicita en src/editorial/shop-catalogue/catalogue.json; formulario tina/shop-catalogue.ts e imports derivados scripts/lib/shop-catalogue-plugin.mjs. Guardar un borrador no publica.
+  Para nuevas piezas usar docs/templates/pieza-shop.json; articulos docs/templates/articulo-bilingue.mdx. Actualizar plantilla y docs/GUIA_EDITORIAL_IA.md cuando cambie un campo, sin copiar contenido real a las plantillas.
+  Campo nuevo = esquema Tina + contrato/validacion + proyeccion ES/EN + renderer + consumidores/listados/social/RSS/preview aplicables. No editar tina/__generated__ manualmente.
+  Guardado desde dashboards Tina: releer _values completo, modificar solo el campo solicitado, transformar mediante schema.transformPayload y usar TinaAdminApi.updateDocument autenticado, como el formulario nativo. Las mutaciones no son patches parciales; no enviar solo order/categoryOrders porque puede reemplazar el documento y perder contenido. Rechazar lecturas incompletas y verificar preservacion/restauracion antes de aprobar el flujo.
+  Home publica: reservar separacion respecto del topbar fijo mediante layout(nav-height) y tokens de espacio en el modulo home, sin modificar el layout global por una sola pagina. En mobile, ocultar mission y status/location/timezone por CSS bajo md (48em), conservando datos/esquema Tina y controles de filtros/layout/exportacion.
+  Sistema visual Tina documentado en docs/TINA_ADMIN_THEME.md. CSS vendor aislado public/admin-theme/admin.css, tokens --al3-admin-*, instalador src/lib/admin-theme.ts desde cmsCallback de tina/config.ts. Nunca cargarlo en sitio publico ni iframe.
+  Mantener tamanos/estados de iconos, foco, avisos y handlers nativos. Actualizar cache-version del instalador al cambiar CSS. No parchear node_modules ni usar filtros globales para oscurecer.
+  Revisar estados checked/focus de menus del editor ademas del toolbar: pueden heredar colores vendor distintos. Usar tokens acotados a roles/estados, sin cambiar seleccion o contenido para corregir contraste. Si aparece Unsaved changes al abrir sin editar, no guardar/resetear para resolver una auditoria; registrar y diagnosticar antes de persistir.
+  Directivas permanentes y registro continuo:
+  Este config contiene reglas reutilizables del proyecto, independientes del nombre de la rama o de una sesion. AGENTS.md es el punto de entrada para agentes; las guias tematicas detallan procedimientos. No depender de un handoff fechado para conocer una rutina obligatoria.
+  Cada cambio o rutina nueva debe actualizar aqui su directiva duradera cuando corresponda, en la guia tematica sus pasos y fuentes, y en docs/CHANGELOG.md el cambio significativo. README enlaza las fuentes; plantillas se actualizan si cambia el contrato editorial.
+  Fechas de ejecucion, commits, Preview URLs, autorizaciones consumidas, resultados y bloqueos van en reportes/tasks del cambio OpenSpec o handoff, no como reglas permanentes de este config. Consultarlos antes de repetir acciones, sin confundir evidencia con autorizacion.
+  Al retomar comprobar rama, HEAD, indice y diff; las instrucciones versionadas deben estar incorporadas a la rama activa para estar disponibles alli. No cambiar ramas, copiar sobre trabajo ajeno ni fusionar automaticamente para propagar instrucciones.
+  Si cambia una rutina, actualizar su fuente canonica y las referencias afectadas; evitar duplicar instrucciones completas con estados contradictorios. Conservar evidencia historica identificada como tal.
+  Rutinas de Tina y Cloud:
+  Versiones vigentes se leen de package.json y lock; actualizar CMS/CLI de forma compatible y revisar overrides. No reinstalar por un indice remoto viejo ni editar generados a mano. No aflojar cloud checks.
+  Revisar peers y engines desde manifests/enlaces activos y lock, no por carpetas antiguas del almacen pnpm. Distinguir contrato declarado de funcionamiento observado. Un peer transitivo incompatible se registra con impacto y alcance pendiente; no forzar majors, bajar React ni silenciar avisos automaticamente para cerrar una actualizacion.
+  Ante diferencia GraphQL local/remota, confirmar proyecto, rama del cliente desplegado y eventos del indice. Reindexar solo la rama autorizada cuando corresponda; registrar resultado antes de reconstruir con el permiso aplicable. No tocar main, webhooks u otras ramas por rutina.
+  Site URLs, indice de rama, credenciales y plantilla visual son configuraciones distintas. Para habilitar editor verificar el origen exacto, conservar entradas/protecciones y usar la autorizacion aplicable; no agregar comodines ni nuevos origenes por cada deployment automaticamente. No leer/exportar secretos.
+  Antes de guardar en Cloud confirmar proyecto/rama y cambios ajenos. Un control reversible autorizado lee el valor original actual, cambia solo el campo acordado, guarda/reabre, restaura/guarda/reabre y registra commits y limites. No reutilizar una autorizacion consumida ni pedir de nuevo una vigente para la misma accion.
+  Guardar puede generar commits y builds automaticos; no sumar builds manuales ni extender esa evidencia a produccion. Si Cloud avanzo, inspeccionar commits/diff antes de sincronizar el checkout sucio; nunca pull/reset ciego.
+  Live Preview requiere router, consulta, suscripcion y renderer conectado en el entorno correspondiente. Comprobar su alcance en codigo; un origen habilitado o build verde no acredita preview remoto, upload nuevo ni persistencia.
+  Upload desde Tina debe comprobarse mediante su gestor de medios, con foto autorizada, carpeta/ruta aceptada, alt ES/EN y reapertura. Una copia por filesystem o API interna no acredita el selector UI. Si filechooser falla, registrar y revisar soporte de archivos de la extension sin modificar permisos automaticamente ni repetir controles fallidos.
+  No atribuir un timeout de filechooser a permisos sin evidencia; si el usuario informa que habilito archivos y persiste, registrar limite de automatizacion. Una carga manual asistida no equivale a selector automatizado aprobado. Antes de iniciar dev contrastar puertos con la sesion previa y el servidor visible para evitar duplicarlo.
+  Para controles locales reversibles usar ficha y carpeta temporales identificables; conservar seleccion original, restaurarla antes de retirar referencias/medios y verificar ausencia de restos propios. Nunca borrar originales o cambios ajenos. Reutilizar servidor existente; el arranque y limpieza requieren el alcance autorizado correspondiente.
   Guardar contenido ya publico en Tina Cloud/main puede generar commit y deploy; respetar autorizacion antes de guardar.
   Documentar por separado preparado, verificado, Preview y produccion; no inventar datos ni ampliar autorizaciones.
+  Orden editorial: order es prioridad ascendente general del portfolio, ausente equivale a cero. categoryOrders define excepciones por categoria compartidas ES/EN. Usar src/lib/project-order.ts en dashboard y listado antes de destacado/paginacion. Conectar esquema, contrato, plantilla y consulta al cambiarlo. Guardar desde dashboard usa sesion Tina, conserva otros campos y posiciones y registra limites de concurrencia y efectos de Cloud.
+  Para validadores de listas de objetos en Tina, comprobar la forma del valor recibido si la inferencia vendor es ambigua. Usar unknown y guards de estructura; conservar mensajes de validacion y evitar casts para ocultar errores de contrato.
   Identidad: Inter, Roboto Mono para metadata; verde CTA, naranja claves, cyan iconos.
   No agregar bordes de seccion; usar superficies, espacio y ghost-border permitido.
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always state what is out of scope
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+rules:
+  proposal:
+    - Identificar fuentes de verdad y guias afectadas; separar comportamiento solicitado de acciones remotas que requieren autorizacion.
+  design:
+    - Para campos editoriales mapear esquema Tina, contrato, proyeccion ES/EN, renderer, medios, listados, metadatos, RSS y preview aplicables.
+    - Para apariencia Tina usar el adaptador y tokens existentes; documentar limites vendor y conservar acciones, foco, avisos y temas del iframe.
+  tasks:
+    - Incluir actualizacion de directivas permanentes en config y guias cuando cambie una rutina, y de plantillas cuando cambie un contrato.
+    - Registrar resultado real, evidencia, permisos consumidos y pendientes por separado; no cerrar tareas por reportes heredados o controles de otro alcance.
+    - Respetar la politica de ejecucion de AGENTS; una tarea de verificacion no autoriza correrla por cada tanda.
 
 # Per-operation guidance (optional)
 # Add advisory guidance for how apply and archive work should be conducted.

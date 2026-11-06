@@ -24,6 +24,7 @@ const projectsCollection = defineCollection({
     role: z.string().optional(),
     client: z.string().optional(),
     order: z.number().optional(),
+    categoryOrders: z.array(z.object({ category: z.string(), order: z.number().int() })).optional(),
     image: z.string().optional(),
     imagePortrait: z.string().optional(),
     imageAlt: z.string().optional(),

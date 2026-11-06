@@ -71,7 +71,7 @@ export function projectLanguageLinks(slug: string, preview = false): SiteLanguag
   if (source.metadata.contentFormat === 'bilingual') {
     const published = projectIsPublished(slug) && source.metadata.showInPortfolio !== false;
     if (!published && !preview) return links;
-    for (const language of projectLanguages(source.metadata)) links[language] = projectUrl(slug, source.metadata, language, !published);
+    for (const language of projectLanguages(source.metadata)) links[language] = projectUrl(slug, source.metadata, language, preview);
     return links;
   }
   const group = source.metadata.translationKey;
@@ -81,7 +81,7 @@ export function projectLanguageLinks(slug: string, preview = false): SiteLanguag
     const published = projectIsPublished(item.slug) && item.metadata.showInPortfolio !== false;
     if (!published && !preview) continue;
     if (links[language]) throw new Error(`Duplicate ${language} translation for ${group ?? slug}`);
-    links[language] = `${published ? '/projects' : '/revision/proyectos'}/${item.slug}`;
+    links[language] = projectUrl(item.slug, item.metadata, language, preview);
   }
   return links;
 }

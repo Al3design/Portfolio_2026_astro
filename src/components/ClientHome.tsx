@@ -10,6 +10,7 @@ import { SyntaxCard, Tag, KeyValue } from '@/components/UI';
 
 import styles from '@/styles/pages/_home.module.scss';
 import { PROJECT_CATEGORIES } from '@/lib/categories';
+import { compareProjectOrder } from '@/lib/project-order';
 import { clsx } from 'clsx';
 import { cleanTitle, formatTitle } from '@/helpers/text-helpers';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -74,7 +75,8 @@ export default function ClientHome({ projects, query, variables, data, exportDat
       if (typeof pageNumber !== 'number' || !Number.isSafeInteger(pageNumber) || pageNumber < 1) {
         return { error: 'page must be a positive integer' };
       }
-      const matching = projects.filter(p => category === 'all' || p.categories?.includes(category));
+      const matching = projects.filter(p => category === 'all' || p.categories?.includes(category))
+        .sort((a, b) => compareProjectOrder(a, b, category));
       const totalPages = Math.max(1, Math.ceil(matching.length / PROJECTS_PER_PAGE));
       const selectedPage = Math.min(pageNumber, totalPages);
       flushSync(() => {
@@ -94,11 +96,9 @@ export default function ClientHome({ projects, query, variables, data, exportDat
   }]), [projects]);
 
   // Filtered projects — 'all' shows everything, otherwise match categories[]
-  const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(p =>
-        Array.isArray(p.categories) && p.categories.includes(activeFilter)
-      );
+  const filteredProjects = projects.filter(p => activeFilter === 'all'
+    || (Array.isArray(p.categories) && p.categories.includes(activeFilter)))
+    .sort((a, b) => compareProjectOrder(a, b, activeFilter));
 
   const totalPages = Math.max(1, Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE));
   const currentPage = Math.min(requestedPage, totalPages);
@@ -162,7 +162,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
   );
 
   return (
-    <div className="page-container">
+    <div className={clsx('page-container', styles.home)}>
       {/* Hero Section */}
       <section className={styles.home__hero}>
         <div className={styles.home__breadcrumbRow}>
@@ -180,7 +180,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
         <KeyValue
           k="const mission"
           v={page.mission || "UX/UI designer with over 14 years of experience."}
-          className="italic"
+          className={clsx('italic', styles.home__mission)}
           data-tina-field={tinaField(page, 'mission')}
         />
       </section>

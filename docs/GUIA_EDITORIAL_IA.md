@@ -2,7 +2,29 @@
 
 Protocolo de alta, edición y publicación de contenido, aplicable también a una IA local. Leer antes de redactar, cargar imágenes o crear documentos. El contrato se contrastó con el código del checkout el **02/11/2026**. Si cambia el código, revisar las fuentes indicadas y actualizar esta guía conjuntamente; los reportes históricos no sustituyen el contrato actual.
 
+> Estado al 03/11: `alta-piezas-shop-desde-tina` incluye selección y fotos nuevas; Tina regenerado, contratos 6/6 y build Cloud/artefacto sin errores en Preview del candidato `df001b1`. La rama Cloud fue reindexada. La nota interna Cloud se guardó/reabrió y restauró; la carga asistida, alta y selección locales también se comprobaron y restauraron. Esto no acredita carga/alta/selección en Cloud. Producción conserva el flujo publicado anterior. El CSS posterior a ese candidato sigue sin publicar; builds y publicación quedan para el final. Ver los reportes enlazados abajo. No repetir controles completados ni usar un admin generado anterior como prueba del formulario.
+
 ## 1. Alcance, permisos y continuidad
+
+Continuidad Cloud del 03/11: nota interna del árbol guardada/reabierta y restaurada/reabierta, formulario limpio (c0d8fec/fb5b4a9). Esto actualiza el pendiente de persistencia inicial: no acredita upload nuevo/alta/selección. Ver `HANDOFF-2026-11-03-tina-cloud-admin.md`; no repetir el recorrido ni sincronizar ciegamente el checkout con esos commits remotos.
+
+Continuidad local del 03/11: carga de foto asistida por el usuario, ficha temporal guardada/reabierta, selección en catálogo/portada/novedades observada y restauración completa de fuentes. Ver `../openspec/changes/alta-piezas-shop-desde-tina/report-2026-11-03-local-upload.md`. El 04/11 se corrigió el párrafo vacío que marcaba `Body` como editado. Alejandro confirmó la apertura de Ingest Monitor dentro de Tina en Chrome normal. La transición ES/EN sigue pendiente de esa observación. Ver `../openspec/changes/tema-admin-tina/article-audit-2026-11-03.md`.
+
+## Orden de los artículos
+
+`order` define el orden general ascendente del portfolio. Un valor ausente equivale a cero. `categoryOrders` es una lista opcional de objetos con `category` y `order`, con una entrada por categoría. La categoría debe figurar también en `categories`. Una categoría sin posición propia hereda el orden general. El comparador compartido de `src/lib/project-order.ts` se aplica antes de elegir la tarjeta destacada y paginar en `ClientHome.tsx`. El campo es compartido entre ES/EN.
+
+En Portfolio Overview, elegir «Portfolio completo» o una categoría, cambiar el número de la fila y pulsar «Guardar orden». Vaciar el orden general guarda cero. Vaciar una posición de categoría retira esa excepción y vuelve a la herencia. Un empate conserva el orden de entrada del listado. La posición expresa prioridad visual y la fecha sigue en `date`.
+
+El formulario de cada artículo expone también «Orden general» y «Orden por categoría» en `tina/config.ts`. Actualizar conjuntamente `src/content.config.ts`, `src/lib/project-locales.ts`, `tina/dashboard/dashboardQuery.ts` y la plantilla bilingüe si cambia este contrato. El dashboard usa el cliente de la sesión activa de Tina. Guardar en Cloud puede generar commits y despliegues según la rama. La relectura previa detecta cambios anteriores al guardado, aunque otro editor puede escribir entre lectura y mutación. Coordinar las sesiones que editan el mismo artículo.
+
+Para guardar desde un dashboard, releer `_values` completo y conservar título, cuerpo, bloques ES/EN y demás campos. `tina/dashboard/projectOrderValues.ts` modifica la posición solicitada; `ProjectOrderEditor.tsx` transforma ese documento con `TinaAdminApi.schema.transformPayload` y usa `TinaAdminApi.updateDocument`, igual que el formulario nativo. No enviar solo `order` o `categoryOrders`: la mutación no es un patch y puede reemplazar la ficha. Rechazar una lectura sin título/cuerpo y posiciones mal formadas antes de escribir.
+
+Estado al 06/11. La prueba del envío parcial falló y se restauró el archivo original exacto. La corrección con documento completo pasó contratos 6/6, Astro sin errores ni warnings y el recorrido local de orden general/categoría, con reapertura y restauración exacta. Tina puede normalizar formato Markdown y fechas al guardar, igual que el formulario nativo. No se comprobó persistencia Cloud de este nuevo control ni se publicó. Detalle en `../openspec/changes/orden-editorial-dashboard/review-2026-11-06.md`. La consulta de Vercel y el bundle público confirman que producción todavía sirve Tina 3.8.1 del 30/10.
+
+## Presentación de la home en móvil
+
+`src/components/ClientHome.tsx` conserva los campos Tina `mission`, `status`, `location` y `timezone`. `src/styles/pages/_home.module.scss` los oculta bajo `md` (48em) para priorizar los proyectos, manteniendo filtros, exportación y selector de vista. El contenedor específico de home reserva espacio para el topbar fijo mediante `layout(nav-height)` y tokens `size()`. No corregir este espacio con cambios globales que afecten otras páginas. La edición cambia los valores; la visibilidad por dispositivo pertenece al módulo de estilos.
 
 1. Leer `AGENTS.md`, `openspec/config.yaml` y el handoff vigente. Distinguir preparar, editar, revisar, subir a Preview y publicar en producción.
 2. Leer rama activa, HEAD, índice y cambios locales. No crear branches/worktrees ni cambiar de rama automáticamente. Nunca usar `git add .` o desplegar un checkout con trabajo ajeno.
@@ -29,7 +51,7 @@ La guía no autoriza publicaciones, mensajes, cambios de permisos, indexación d
 | --- | --- | --- |
 | Artículo/caso del portfolio, el «blog» actual | `src/content/projects/<slug>.mdx` | `projects` en `tina/config.ts`; `tina/article-locales.ts`, `tina/article-blocks.ts`; contratos `src/lib/project-locales.ts`, `article-blocks.ts`; fuente/guard `project-editorial.ts`; `ProjectDocument.astro` → `ProjectDetailLayout.tsx` → `ProjectDetailView.tsx` / `ArticleBlocks.tsx` |
 | Pieza Shop 3D | `src/editorial/shop-products/<slug>.json` | `tina/shop-products.ts` (`shopProduct`); `src/lib/shop-editorial.ts`, `shop-catalogue.ts`; `ShopLanding.astro`, `ShopCollection.astro`, `ShopCatalogue.astro` |
-| Selección pública/novedades Shop | `src/data/shop-release.ts` | `shopCatalogueSlugs`, `shopLatestSlugs`; hoy no se editan desde Tina |
+| Selección pública/novedades/portada Shop | `src/editorial/shop-catalogue/catalogue.json` | Colección `shopCatalogue` en `tina/shop-catalogue.ts`; referencias ordenadas, hasta tres novedades y portada. Módulo virtual genera imports solo de las fotos seleccionadas; `shop-release.ts` adapta los consumidores. |
 | Filamentos/paletas | `src/data/bambu-filaments.json` | `src/lib/shop-colours.ts`, `ShopPalette.astro` y campos `palette` de Tina |
 | Metadatos sociales | Título, descripción y medio del documento | `MainLayout.astro`, `src/lib/social-images.ts`; Shop añade `shop-social-image.ts`, `shop-origin.ts`, `ShopShare.astro` |
 | RSS | Derivado del contenido, no ítems cargados a mano | Portfolio `src/pages/rss.xml.ts`; Shop `src/lib/shop-feed.ts` y endpoints ES/EN |
@@ -101,7 +123,7 @@ Copiar [la plantilla Shop](templates/pieza-shop.json) a `src/editorial/shop-prod
 | --- | --- |
 | `title` | Identificador interno de Tina. |
 | `locales.es/en.title`, `description` | Nombre y descripción de fichas, listas, metadatos y RSS. Completar ambos antes de seleccionar públicamente. |
-| `status` | Solo `draft` / `review` editorial. **No filtra publicación**: manda `shopCatalogueSlugs`. No inventar `published` ni asumir que volver a draft retira una pieza seleccionada. |
+| `status` | Solo `draft` / `review` editorial. **No filtra publicación**: manda `products` de la selección de catálogo. No inventar `published` ni asumir que volver a draft retira una pieza seleccionada. |
 | `category` | `home`, `desk`, `organization` o `design`, desde `shopEditorialCategories`; etiqueta y filtros. |
 | `productionMode` | `pending`, `stock`, `made-to-order`, `mixed`: organización interna, no contador de stock ni promesa de disponibilidad. |
 | `productionNotes` | Interno. Fuera del DTO público, HTML, scripts, metadatos y RSS. |
@@ -109,7 +131,7 @@ Copiar [la plantilla Shop](templates/pieza-shop.json) a `src/editorial/shop-prod
 | `palette[]` | `{ preset?, hex?, es?, en? }`. Preset = código exacto del catálogo Bambu, no familia. HEX manual `#RRGGBB` tiene prioridad; vacío usa preset. Un HEX inválido explícito se omite, no se reemplaza por otro tono. |
 | `photographedColours[]` | Compatibilidad antigua. `palette` definida prevalece, incluso `[]`; no hace falta usarlo en altas nuevas. |
 | `photos[]` | `sourcePath`, `kind: photo`, `altEs`, `altEn`; opcionales `image`, `captionEs`, `captionEn`. La primera foto determina miniatura, foto social y RSS: ordenar conscientemente. |
-| `photos[].image` | Selector de medios Tina; **hoy no alimenta solo el catálogo público**, que usa `sourcePath` e imports autorizados. No afirmar que una subida al media manager ya está conectada. |
+| `photos[].image` | Selector de medios Tina conectado al nuevo lector: usar `/assets/shop/<slug>/<archivo>.jpg` (también JPEG/PNG/WebP). Tiene prioridad sobre `sourcePath`. El archivo subido es público aunque la pieza no esté seleccionada. Una ruta explícita inválida falla sin sustituirla por el original. |
 | `photos[].captionEs/En` | Revisión local, con fallback a alt. La galería pública actualmente muestra el alt localizado como figcaption, no estos campos. No prometer otra correspondencia sin implementarla. |
 
 Condiciones actuales: precio a consultar siempre; entrega según stock y a confirmar; solo impresión 3D incluida, resto decorativo; stock y pedidos combinados y colores a consultar. Medidas opcionales. No mostrar duración de impresión como entrega. PLA está confirmado para las piezas existentes: confirmar el material de una nueva, sin deducirlo de su foto o preset.
@@ -120,15 +142,23 @@ No reintroducir en Shop campos/textos de autoría, licencias, permisos, condicio
 
 ### Fotos, revisión y selección pública
 
-1. Incorporar originales aprobados fuera de `public`: `src/editorial/shop-assets/intake-AAAA-MM-DD/<archivo>.jpg`. Nombres permitidos: letras ASCII, números, guiones y guion bajo, sufijo `.jpg`. No renombrar medios existentes sin actualizar referencias.
-2. Registrar ruta relativa completa en `sourcePath`, `kind: photo` y alt ES/EN. El catálogo actual no acepta renders ni otros formatos/rutas como fotografías de impresión real.
-3. Revisar en desarrollo `/revision/tienda/es/<slug>` o `/revision/tienda/en/<slug>`. Alternativa `/tienda?catalog=real&piece=<slug>` / equivalente EN. Se leen borradores guardados del disco; no habilitar manifiestos/JSON mediante rutas de medios.
-4. Para publicar una pieza aprobada, agregar cada foto al glob **literal** de `src/lib/shop-catalogue.ts`. No ampliarlo a toda la carpeta: incorporaría medios ajenos a la selección.
-5. Agregar slug a `shopCatalogueSlugs` en `src/data/shop-release.ts`. Cambiar `shopLatestSlugs` solo para las tres novedades, en el orden elegido. Otro color del mismo modelo no crea automáticamente otro producto.
-6. Adaptar expectativas de selección, fotos y categorías en `scripts/verify-shop-catalogue-artifact.mjs`, `tests/e2e/shop.e2e.ts` y `shop-review.e2e.ts`. Existen slugs/conteos explícitos de ocho piezas/29 fotos: son base histórica, no un límite ni motivo para excluir la nueva. Conservar validación de privacidad y medios; ajustar esperados al catálogo aprobado, no para ocultar un fallo.
-7. `[slug].astro` ES/EN genera rutas desde `shopCatalogue()`; no crear páginas individuales. Mantener proyección de campos públicos, nunca serializar el JSON editorial completo al cliente.
+1. Crear la ficha en Store 3D · borradores de piezas, con nombre de archivo estable en minúsculas y guiones. Completar ES/EN, categoría, material confirmado, condiciones y alt. Guardar/reabrir no agrega la pieza al catálogo.
+2. Para fotos nuevas desde Tina, crear la carpeta `shop/<slug>` dentro del gestor y subir JPG/JPEG/PNG/WebP con nombres ASCII, números, guiones o guion bajo. Guardar la ruta `/assets/shop/...` en `photos[].image` y `kind: photo`; ordenar conscientemente la primera foto. Los uploads son públicos por sí mismos. Si el original debe permanecer privado, incorporarlo fuera de public como en el paso siguiente.
+3. Compatibilidad: los originales existentes siguen en `src/editorial/shop-assets/intake-AAAA-MM-DD/<archivo>.jpg` y `sourcePath`. No se mueven ni necesitan rellenar `image`. Para otro original privado, copiarlo a esa estructura y referenciarlo; no hace falta editar un import.
+4. Revisar en desarrollo `/revision/tienda/es/<slug>` o EN, también con `?catalog=real&piece=<slug>`. Ver las fotos y comprobar datos. No habilitar JSON/manifiestos ni rutas editoriales en producción.
+5. Cuando el contenido esté aprobado y la publicación autorizada, abrir **Store 3D · selección pública**. Agregar un elemento en `products` y elegir la pieza en su campo `product`, en el orden deseado. `latest` contiene hasta tres elementos del mismo formato con piezas ya seleccionadas; `hero` es una referencia única y debe pertenecer al catálogo. En JSON cada elemento es `{ "product": "src/editorial/shop-products/<slug>.json" }`; no usar listas de strings ni `list: true` directamente sobre un campo Tina `reference`. No publicar todos los borradores por presencia en disco. Otro color del mismo modelo no requiere otro producto.
+6. El módulo virtual `virtual:shop-catalogue` deriva los imports de las fotos seleccionadas. Valida referencias únicas, subconjuntos, existencia de archivos y confinamiento de rutas/symlinks. Los uploads se copian a caché ignorada `.astro/shop-media/` para que Astro produzca derivados, sin mover los originales privados a public. Una referencia inválida detiene la generación.
+7. Las rutas ES/EN, listas, portada, social y RSS consumen la misma selección y el DTO público. No crear páginas individuales ni editar slugs/imports en código. El checker y las expectativas públicas leen la selección; conservar pruebas de privacidad y medios, sin ajustar resultados para ocultar errores.
 
-**Límite actual:** el alta enteramente autónoma desde Tina, con nuevas fotos y publicación sin tocar selección/imports, no está implementada. Completar los pasos anteriores; no prometer esa automatización ni refactorizarla sin pedido aparte.
+**Evidencia local del 02/11:** Tina regenerado y recorrido de una ficha temporal creado/guardado/reabierto con original existente, título cambiado sin guardar en Live Preview, exclusión del catálogo de ocho piezas y retiro del temporal. No acredita upload nuevo, todos los campos/idiomas, recarga de selección o build/artefacto: siguen pendientes. Antes de usar Cloud, coordinar esquema e índice correctos. Guardar selección o contenido ya seleccionado en `main` puede generar un deploy automático; respetar autorización de publicación.
+
+### Live Preview de piezas en Tina
+
+En local, abrir **Store 3D · borradores de piezas** y hacer clic en una ficha guardada. `ui.router` usa `shopEditorRoute` para abrir `/revision/tienda/es/<slug>`. `ShopReview.astro` consulta `client.queries.shopProduct` y pasa query/variables/data a `ShopProductLivePreview`, que usa `useTina` y anotaciones `tinaField`.
+
+La ficha reutiliza `ShopProductView`, `ShopPaletteView` y `ShopWhatsAppButton`, también usados en las fichas públicas sin hidratación. La galería pública mantiene derivados Astro; la local usa URLs de revisión o uploads para reflejar cambios de formulario sin recompilar cada pulsación. No duplicar estados React ni recrear una plantilla distinta. El nombre visible está en `locales.es/en.title`; `title` raíz sigue siendo interno.
+
+**Selección pública** es configuración y conserva su formulario nativo; no ofrece Live Preview de portada/filtros. El router visual nuevo es local: fuera de localhost mantiene formulario nativo hasta implementar y autorizar el entorno desplegado correspondiente. Las notas internas se editan en el formulario; no deben agregarse a la plantilla pública ni serializarse en sus props. Solo la ruta dev consulta el documento editorial completo.
 
 ### Plantilla pública y difusión
 
@@ -143,18 +173,24 @@ No reintroducir en Shop campos/textos de autoría, licencias, permisos, condicio
 
 ## 6. Cargar y referenciar medios
 
+El control asistido del 03/11 acreditó alta/reapertura con foto subida por el usuario y selección/hero/novedad locales con derivados cargados, seguido de restauración. La limitación de filechooser automatizado permanece; detalle en report-2026-11-03-local-upload.md. No extrapolar a upload/selección Cloud ni a build/RSS nuevo.
+
+Un timeout del selector no demuestra que el permiso de archivos esté desactivado. Si persiste tras habilitarlo, registrar el bloqueo y distinguir carga manual asistida de automatización comprobada; no pedir reiteradamente el mismo ajuste ni copiar medios por otro canal para declarar aprobado el gestor.
+
+Para acreditar una carga desde Tina, usar el selector de su gestor: crear/abrir `shop`, subir foto autorizada, seleccionarla y completar tipo/alt ES/EN. Copiar un archivo por consola no demuestra que el upload del CMS funcione. En automatización Chrome, esperar `filechooser` antes del click; si no aparece, detener el control y revisar el soporte de archivos de la extensión. No cambiar permisos por rutina ni simular una carga con APIs internas. En pruebas reversibles, aislar ficha/carpeta temporales, preservar selección original y restaurarla antes de retirar temporales. Los archivos en `public/assets` son públicos aunque la ficha sea draft. Registro de un bloqueo de selector, sin datos persistidos: `openspec/changes/alta-piezas-shop-desde-tina/report-2026-11-03-local-upload.md`.
+
 | Uso | Disco → referencia |
 | --- | --- |
 | Artículo público | `public/assets/projects/<slug>/...` → `/assets/projects/<slug>/...` en Tina/MDX, sin prefijo `public`. Media manager: `mediaRoot: assets`, `publicFolder: public`. |
 | Artículo aún no aprobado | Fuera de `public`; usar revisión local `/revision/media/...` cuando corresponda a sus handlers existentes. Reemplazar referencias locales por medios públicos aprobados antes de publicar. |
-| Shop original | Carpeta intake fuera de public + `sourcePath` + import literal/selección. El path editorial no es la URL pública. |
+| Shop original | Intake fuera de public + `sourcePath`, o upload público `/assets/shop/...` en `image`. Selección explícita y generación de imports; el path editorial no es la URL pública. |
 | Tarjeta social | Reutilizar `social-images.ts` o derivación Shop. No sobrescribir portada/original ni el campo Tina para cambiar solo la gráfica social. |
 
 Ver cada imagen antes de describirla/asignarla. Conservar originales y proporciones; distinguir portada, card vertical y miniatura. Reutilizar archivos entre idiomas. No presentar renders o imágenes generadas como impresiones fotografiadas existentes.
 
 Para cargar desde Tina: abrir `/admin/index.html` en el entorno correcto, elegir Projects o Store 3D y el documento por su archivo/slug. En artículos, seleccionar o subir el medio desde el campo `image`, `imagePortrait` o `src` de su bloque, y completar alt/epígrafe dentro del idioma correspondiente. Si se incorpora desde disco, comprobar que la ruta guardada coincide con el archivo público, respetando mayúsculas/minúsculas también en Linux. Optimizar los derivados para web sin destruir el original ni suponer que subir un archivo ya lo optimiza.
 
-En Shop, el selector `photos[].image` es solo una parte del formulario: seguir el circuito `sourcePath`/imports/selección anterior. Ejemplos de estructura una vez que existan los archivos:
+En Shop, `photos[].image` se conecta al catálogo mediante la selección anterior; `sourcePath` mantiene compatibilidad para originales privados. No hace falta completar ambos campos. Ejemplos de estructura una vez que existan los archivos:
 
 ```yaml
 # Bloque de artículo dentro de locales.es.contentBlocks:
@@ -205,6 +241,6 @@ Destino conocido: Vercel, equipo `aledesign-projects`, proyecto `portfolio-2026-
 
 ## 9. Handoff obligatorio
 
-Dejar pedido/alcance, slug/colección/idiomas, fuente y rutas; datos faltantes; tabla de medios (origen, destino, campo, alt, público/privado); campos modificados y consumidores; selección/imports/novedades Shop; rama/HEAD/archivos propios/cambios ajenos; commits/PR/despliegue si existen; controles realmente ejecutados con resultado y SHA.
+Dejar pedido/alcance, slug/colección/idiomas, fuente y rutas; datos faltantes; tabla de medios (origen, destino, campo, alt, público/privado); campos modificados y consumidores; selección/fotos/novedades/portada Shop; rama/HEAD/archivos propios/cambios ajenos; commits/PR/despliegue si existen; controles realmente ejecutados con resultado y SHA.
 
 Separar lectura de diff, auditoría visual, persistencia, build y producción. Incluir todos los frentes activos, no solo el último contenido. Un alta o release editorial no cierra por arrastre accesibilidad integral, comercio futuro u otros trabajos del OpenSpec.

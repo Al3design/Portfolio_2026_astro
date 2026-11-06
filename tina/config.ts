@@ -113,7 +113,33 @@ export default defineConfig({
           {
             type: "number",
             name: "order",
-            label: "Order",
+            label: "Orden general",
+            description: "Menor número aparece primero en el portfolio. Vacío equivale a 0. También se edita en Portfolio Overview.",
+          },
+          {
+            type: 'object', name: 'categoryOrders', label: 'Orden por categoría', list: true,
+            description: 'Opcional. Al filtrar una categoría se usa este número. Sin un valor propio se usa el orden general. La categoría también debe estar seleccionada en Categorías de filtro.',
+            fields: [
+              { type: 'string', name: 'category', label: 'Categoría', required: true, options: PROJECT_CATEGORIES.map(category => ({ value: category.value, label: category.label })) },
+              { type: 'number', name: 'order', label: 'Orden', required: true },
+            ],
+            ui: {
+              validate: (items: unknown) => {
+                if (items == null) return;
+                if (!Array.isArray(items)) return 'Ingresá una lista de posiciones.';
+                const entries: unknown[] = items;
+                const categories = new Set<string>();
+                for (const item of entries) {
+                  if (typeof item !== 'object' || item === null || !('category' in item)
+                    || typeof item.category !== 'string' || !('order' in item)
+                    || typeof item.order !== 'number' || !Number.isSafeInteger(item.order)) {
+                    return 'Elegí una categoría e ingresá un orden entero.';
+                  }
+                  if (categories.has(item.category)) return 'Usá una sola posición por categoría.';
+                  categories.add(item.category);
+                }
+              },
+            },
           },
           {
             type: "image",
@@ -171,6 +197,19 @@ export default defineConfig({
             name: "body",
             label: "Body",
             isBody: true,
+            ui: {
+              parse: (value) => {
+                // Plate inserts a plain empty paragraph when it opens an empty MDX body.
+                if (value?.type !== 'root' || value.children?.length !== 1) return value;
+                const [paragraph] = value.children;
+                if (paragraph?.type !== 'p' || !Array.isArray(paragraph.children) || paragraph.children.length !== 1) return value;
+                const [leaf] = paragraph.children;
+                if (leaf?.type !== 'text' || leaf.text !== '') return value;
+                if (Object.keys(paragraph).some(key => !['type', 'children', 'id'].includes(key))
+                  || Object.keys(leaf).some(key => !['type', 'text', 'id'].includes(key))) return value;
+                return { ...value, children: [] };
+              },
+            },
           },
           { type: 'object', name: 'contentBlocks', label: 'Contenido del artículo (bloques)', list: true, templates: articleBlockTemplates },
         ],

@@ -1,5 +1,6 @@
 import type { ArticleBlock } from './article-blocks';
 import type { SiteLanguage } from './site-navigation';
+import type { CategoryOrder } from './project-order';
 
 export type ProjectLocale = {
   title?: string; description?: string; type?: string; role?: string;
@@ -14,6 +15,7 @@ export type ProjectDocument = ProjectLocale & {
   experienceSlug?: string;
   image?: string; imagePortrait?: string; stack?: string[]; categories?: string[];
   date?: string | Date; year?: string; order?: number;
+  categoryOrders?: CategoryOrder[];
   showInPortfolio?: boolean; showInResume?: boolean;
   points?: string[]; codeSnippet?: string;
 };

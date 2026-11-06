@@ -1,5 +1,32 @@
 /* Tina admin adapter. Keep vendor compatibility rules inside this file.
    No styles are installed in the preview document or the public website. */
+/* Dashboard controls share native Tina surfaces and one content alignment. */
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard .al3-admin-control {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--al3-admin-edge);
+  border-radius: 4px;
+  background: var(--al3-admin-raised);
+  color: var(--al3-admin-text);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard .al3-admin-search { padding-inline-start: 42px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-scope { display: grid; gap: 8px; margin-block-end: 16px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-help { margin: 0 0 12px; color: var(--al3-admin-muted); font-size: 13px; line-height: 1.6; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-notice { margin: 0 0 12px; font-size: 13px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-notice:empty { margin: 0; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-inventory :is(th, td):first-child { padding-inline-start: 0 !important; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-form { min-width: 210px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-form > label { display: block; margin-block-end: 6px; font-size: 13px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-actions { display: flex; align-items: center; gap: 8px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard .al3-admin-order-input { width: 80px; flex-shrink: 0; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-save { min-height: 44px; padding: 10px 12px; border: 1px solid var(--al3-admin-edge); border-radius: 4px; background: var(--al3-admin-panel); color: var(--al3-admin-text); font-size: 13px; line-height: 1.5; white-space: nowrap; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-save:hover:not(:disabled) { background: var(--al3-admin-hover); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-form :is(small, [role="status"]) { display: block; max-width: 280px; margin-block-start: 6px; color: var(--al3-admin-muted); font-size: 12px; line-height: 1.5; }
 @font-face { font-family: "Al3 Admin Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("./fonts/inter-latin-400-normal.woff2") format("woff2"); }
 @font-face { font-family: "Al3 Admin Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("./fonts/inter-latin-500-normal.woff2") format("woff2"); }
 @font-face { font-family: "Al3 Admin Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("./fonts/inter-latin-600-normal.woff2") format("woff2"); }
@@ -277,6 +304,21 @@ body.tina-tailwind[data-al3-admin-theme="dark"] :is(button, a, [role="button"]):
 body.tina-tailwind[data-al3-admin-theme="dark"] .group:is(:hover, :focus-within) > :is(svg.lucide-pencil, svg.lucide-square-pen) { color: var(--al3-admin-text); }
 /* A checkmark must fit its native checkbox; it is not an action-sized icon. */
 body.tina-tailwind[data-al3-admin-theme="dark"] button[role="checkbox"] svg { width: 12px; height: 12px; color: inherit; }
+
+/* Plate's format menu uses a separate accent-foreground for its checked row.
+   The vendor light token made the pilcrow/checkmark nearly black on graphite.
+   Preserve its native selection/keyboard state; only adapt neutral colours. */
+body.tina-tailwind[data-al3-admin-theme="dark"] [role="menu"] [role="menuitemradio"][data-state="checked"] {
+  background-color: var(--al3-admin-selected);
+  color: var(--al3-admin-text);
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] [role="toolbar"] svg.lucide,
+body.tina-tailwind[data-al3-admin-theme="dark"] [role="menu"] [role="menuitemradio"] svg.lucide {
+  color: var(--al3-admin-icon);
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] [role="menu"] [role="menuitemradio"][data-state="checked"] svg.lucide-check {
+  color: var(--al3-admin-text);
+}
 
 @media (pointer: coarse) {
   body.tina-tailwind[data-al3-admin-theme="dark"] :is(input:not([type="checkbox"]):not([type="radio"]), select, button) { min-height: 44px; }

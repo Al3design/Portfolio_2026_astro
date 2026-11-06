@@ -6,6 +6,51 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-06] — Orden editorial desde Portfolio Overview
+
+- Filtros laterales de home contenidos en anchos intermedios mediante tracks `minmax(0,1fr)` y etiquetas ajustables. Observados 1100 y 390 px sin desborde; versión móvil sin misión/metadatos y 32 px de aire bajo el topbar. Guardados de prueba de Ingest Monitor/BDM reemplazados por sus versiones previas, por pedido expreso.
+- Dashboard: alineados buscador, selector, ayuda y tabla; controles numéricos/select/buscador centralizados en `public/admin-theme/admin.css`, con clases `al3-admin-control`/`al3-admin-order-*`, superficies y foco del sistema Tina, alto mínimo 44 px. Caché `20261106-1`. Revisión visual local y coordenadas coincidentes del margen izquierdo.
+- Corrección comprobada: contratos 6/6, Astro sin errores ni warnings (86 hints), orden general y de categoría guardados/reabiertos/restaurados en Tina local. Copia exacta del artículo restaurada; sin build ni publicación. Detalle en el reporte de `orden-editorial-dashboard`.
+- Home: separación del encabezado respecto del topbar fijo usando tokens; misión y estado/ubicación/zona horaria ocultos bajo `md` (48em), con menor espacio vertical antes de los proyectos en móvil. Campos Tina conservados. Este ajuste posterior tiene revisión de fuentes, pendiente de comprobación visual al cierre.
+- Prueba local detectó pérdida de campos al guardar un payload parcial desde el nuevo dashboard. La ficha de prueba se restauró exactamente y se bloqueó temporalmente el guardado. La continuación reemplaza ese envío por `_values` completo, transformación de esquema y `TinaAdminApi.updateDocument`, siguiendo el formulario nativo. Incluye rechazo de lecturas incompletas y posiciones mal formadas. El candidato vuelve a habilitar el control; la corrección y sus nuevos casos de preservación siguen pendientes de comprobación. Los contratos anteriores de orden pasaron 3/3. Los dos errores del validador se corrigieron después del control de tipos y requieren nueva comprobación.
+
+- Preparados controles numéricos por fila para el orden general y posiciones específicas de categoría. La consulta usa cursores para recorrer el inventario. Guardados mediante la sesión de Tina, con relectura previa y bloqueo de escrituras simultáneas desde el dashboard.
+- El sitio y el dashboard comparten comparador ascendente. Las categorías heredan el orden general y el orden ausente conserva el cero usado por el sitio. El filtro ordena antes de paginar y elegir el destacado.
+- Contratos conectados en Tina, schema Astro, tipos, plantilla y documentación. Producción consultada el 06/11 sigue en el despliegue Ready del 30/10, con Tina 3.8.1 y apariencia anterior. La actualización preparada sigue pendiente de publicación.
+
+## [2026-11-04] — Navegación de la revisión local de artículos
+
+- Tina detectaba el párrafo vacío que Plate inserta al montar `Body` como una edición. `tina/config.ts` normaliza ese caso en `projects.body`. En Chrome local se observó Save deshabilitado al abrir, habilitado al escribir y deshabilitado al borrar la letra de prueba.
+
+- El selector ES/EN conserva la ruta de revisión al cambiar de idioma, también en artículos publicados. La navegación desde el sitio público sigue usando las rutas públicas. Cambio en `src/lib/project-editorial.ts`, revisado por lectura. La carga inicial del iframe y el aviso de cambios al montar siguen en diagnóstico.
+
+## [2026-11-03] — Sistema visual Tina y continuidad editorial
+
+- Corrección local del menú de formato de artículos: iconos/check de opción seleccionada oscuros se conectan a tokens del tema; toolbar neutro consistente, cache-version 20261103-1. Observado sin guardar el artículo. Indicador dirty al montar e iframe vacío registrados como pendientes; sin build/publicación, diferidos al final por el usuario.
+
+- Guardados Cloud integrados por fast-forward a fb5b4a9, sin tocar trabajo local ajeno ni publicar. Revisión por lectura de manifests/lock: dependencias directas admiten React19, pero react-final-form 6.5.9 transitivo solo declara React16/17/18. No se cambian versiones o controles para ocultarlo; riesgo y límites en compatibility-2026-11-03.md.
+
+- Carga manual del usuario en Tina seguida de alta/reapertura y selección local comprobadas: novena pieza, hero y primera novedad reflejados con imagen derivada cargada. Selección restaurada al hash original, temporales retirados y catálogo nuevamente de ocho piezas. Sin otro dev, build, Cloud o producción; filechooser automatizado continúa sin acreditarse. Evidencia en report-2026-11-03-local-upload.md.
+
+- Tras habilitación de archivos informada por el usuario, el selector automatizado siguió sin responder (click y Enter). Sin carga ni cambios de catálogo. Se reutilizó el dev existente, corrigiendo lectura inicial de puertos; la rutina ahora exige contrastar sesión/servidor y no atribuir timeouts a permisos sin evidencia.
+
+- Control local autorizado de imagen/selección detenido en selector de archivos de Chrome (sin upload/guardado). Ficha descartada, sin archivos temporales, selección intacta; dev iniciado una vez y disponible en 4322. Rutina de upload real y restauración documentada en config/guía; reporte de alcance separado en alta-piezas-shop-desde-tina.
+
+- Directivas reutilizables centralizadas en `openspec/config.yaml`, con reglas por artefacto para propuesta/diseño/tareas. Se retiraron del YAML los commits, URLs temporales y resultados de sesión; permanecen en reportes/handoff. AGENTS/README distinguen reglas, procedimientos y evidencia, y aclaran que su disponibilidad entre ramas depende de incorporar los archivos por Git.
+
+- Control Cloud completado: nota del árbol guardada/reabierta y restaurada/reabierta, formulario limpio. Commits c0d8fec/fb5b4a9; únicamente salto de línea final distinto tras restaurar datos. Sin build manual ni producción; upload/selección siguen pendientes. AGENTS incorpora registro continuo de cambios/rutinas.
+
+- Handoff operativo `docs/HANDOFF-2026-11-03-tina-cloud-admin.md`: actualización, reindexación de rama y origen Preview exacto habilitado con permiso; registra bloqueo de login y que ninguna nota fue editada. Próximos pasos y autorizaciones diferenciados de evidencia.
+
+- TinaCMS 3.15.1 / CLI 4.0.4, copia alineada mediante override; tema grafito propio en `public/admin-theme/admin.css`, instalado solo en `/admin` por `src/lib/admin-theme.ts` desde `cmsCallback` de `tina/config.ts`.
+- Tokens `--al3-admin-*`, puente `--tina-*`, Inter local e iconos Lucide: navegación y edición diferenciadas, escala neutra de 18 px, pills informativas, fondos/scroll y Overview fullscreen. El iframe y el sitio público conservan sus temas.
+- Selección pública Shop editable en `tina/shop-catalogue.ts` / `src/editorial/shop-catalogue/catalogue.json`; fotos derivadas mediante `scripts/lib/shop-catalogue-plugin.mjs`. Borradores no se publican por guardarlos.
+- README, `openspec/config.yaml`, `docs/GUIA_EDITORIAL_IA.md` y `docs/TINA_ADMIN_THEME.md` explican dónde cambiar formularios, contratos, plantillas, imágenes, colores, renderer, social, RSS y Live Preview. Las plantillas bilingüe/Shop existentes siguen siendo borradores reutilizables; no se duplicaron diseños.
+- Evidencia previa: tipos 0 errores/0 warnings, contratos 6/6, candidato `df001b1` enviado a rama activa; primera Preview falló por índice Cloud antiguo. Reindexación de esa rama y una reconstrucción terminaron Ready, 62 páginas, artefacto Shop sin errores. No producción. Reporte: `openspec/changes/tema-admin-tina/report-2026-11-03.md`.
+- Esta actualización documental no ejecuta nuevos controles ni publica. Persistencia Cloud, upload nuevo, selección desde el editor y revisión de peers mantienen su estado separado.
+
+---
+
 ## [2026-05-31] — Depuración fina SASS sin aliases legacy
 
 ### Objetivo

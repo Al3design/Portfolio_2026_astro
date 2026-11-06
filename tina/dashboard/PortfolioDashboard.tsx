@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { useCMS } from "tinacms";
 import { motion, AnimatePresence } from "motion/react";
 import { 
@@ -16,6 +16,9 @@ import {
   Activity
 } from "lucide-react";
 import { DASHBOARD_QUERY, type DashboardData } from "./dashboardQuery";
+import { PROJECT_CATEGORIES } from '../../src/lib/categories';
+import { compareProjectOrder } from '../../src/lib/project-order';
+import { ProjectOrderEditor } from './ProjectOrderEditor';
 
 // ─── Estilos Premium (Tokens) ──────────────────────────────────────────────────
 const tokens = {
@@ -325,10 +328,16 @@ export function PortfolioDashboard() {
   const [error, setError] = useState<string | null>(null);
   const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
   const [searchQuery, setSearchQuery] = useState("");
+  const [orderCategory, setOrderCategory] = useState('all');
+  const [dataVersion, setDataVersion] = useState(0);
+  const [orderSaving, setOrderSaving] = useState(false);
+  const [orderNotice, setOrderNotice] = useState('');
+  const orderSaveLock = useRef(false);
 
   const cms = useCMS();
 
   const fetchData = useCallback(async () => {
+    if (orderSaveLock.current) return;
     setLoading(true);
     setError(null);
     try {
@@ -336,9 +345,21 @@ export function PortfolioDashboard() {
       const api = cms.api.tina;
       if (!api) throw new Error("El cliente de Tina todavía no está disponible");
       // request returns data directly and throws for HTTP/GraphQL errors.
-      const response = await api.request<DashboardData>(DASHBOARD_QUERY, { variables: {} });
+      const response = await api.request<DashboardData>(DASHBOARD_QUERY, { variables: { after: null } });
+      let page = response.projectsConnection;
+      const cursors = new Set<string>();
+      while (page.pageInfo.hasNextPage) {
+        if (!page.pageInfo.endCursor || cursors.has(page.pageInfo.endCursor)) {
+          throw new Error('Tina devolvió una página sin un cursor nuevo.');
+        }
+        cursors.add(page.pageInfo.endCursor);
+        const next = await api.request<DashboardData>(DASHBOARD_QUERY, { variables: { after: page.pageInfo.endCursor } });
+        page = next.projectsConnection;
+        response.projectsConnection.edges.push(...page.edges);
+      }
       
       setData(response);
+      setDataVersion(version => version + 1);
       setLastRefresh(new Date());
     } catch (e: unknown) {
       console.error("Dashboard Fetch Error:", e);
@@ -367,14 +388,13 @@ export function PortfolioDashboard() {
   }, [data, projects]);
 
   const filteredProjects = useMemo(() => {
-    if (!searchQuery) return [...projects].sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
     const q = searchQuery.toLowerCase();
-    return projects.filter(p => 
-      p.title.toLowerCase().includes(q) || 
+    return projects.filter(p => (orderCategory === 'all' || p.categories?.includes(orderCategory)) && (
+      p.title.toLowerCase().includes(q) ||
       p.client?.toLowerCase().includes(q) ||
       p.stack?.some(s => s.toLowerCase().includes(q))
-    ).sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
-  }, [projects, searchQuery]);
+    )).sort((a, b) => compareProjectOrder(a, b, orderCategory));
+  }, [projects, searchQuery, orderCategory]);
 
   const stackStats = useMemo(() => {
     const map: Record<string, number> = {};
@@ -503,14 +523,27 @@ export function PortfolioDashboard() {
               <input 
                 type="text" 
                 placeholder="Buscar por nombre, cliente o tecnología..." 
-                style={s.searchInput}
+                className="al3-admin-control al3-admin-search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
 
             <div style={s.tableWrapper}>
-              <table style={s.table}>
+              <label className="al3-admin-order-scope">
+                Ordenar en
+                <select value={orderCategory} disabled={orderSaving} onChange={event => setOrderCategory(event.target.value)}
+                  className="al3-admin-control">
+                  <option value="all">Portfolio completo</option>
+                  {PROJECT_CATEGORIES.map(category => <option key={category.value} value={category.value}>{category.label}</option>)}
+                </select>
+              </label>
+              <p className="al3-admin-order-help">
+                Menor número aparece primero. Los empates conservan el orden del listado.
+                Guardar en Tina Cloud puede generar un commit y un despliegue según la rama activa.
+              </p>
+              <p role="status" className="al3-admin-order-notice">{orderNotice}</p>
+              <table className="al3-admin-inventory" style={s.table}>
                 <thead>
                   <tr>
                     <th style={s.th}>Cover</th>
@@ -518,6 +551,7 @@ export function PortfolioDashboard() {
                     <th style={s.th}>Cliente</th>
                     <th style={s.th}>Año</th>
                     <th style={s.th}>Visibilidad</th>
+                    <th style={s.th}>Orden</th>
                     <th style={s.th}></th>
                   </tr>
                 </thead>
@@ -567,6 +601,21 @@ export function PortfolioDashboard() {
                               </span>
                             )}
                           </div>
+                        </td>
+                        <td style={s.td}>
+                          <ProjectOrderEditor key={`${p._sys.relativePath}-${orderCategory}-${dataVersion}-${p.order}-${JSON.stringify(p.categoryOrders)}`}
+                            project={p} category={orderCategory} disabled={orderSaving} saveLock={orderSaveLock}
+                            onBusy={setOrderSaving} onSaved={saved => {
+                              setOrderNotice(`Orden de ${saved.title} guardado.`);
+                              setData(current => current && ({
+                                ...current,
+                                projectsConnection: {
+                                  ...current.projectsConnection,
+                                  edges: current.projectsConnection.edges.map(edge =>
+                                    edge.node._sys.relativePath === saved._sys.relativePath ? { ...edge, node: saved } : edge),
+                                },
+                              }));
+                            }} />
                         </td>
                         <td style={{ ...s.td, textAlign: "right" }}>
                           <a 

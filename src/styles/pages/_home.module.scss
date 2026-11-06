@@ -1,9 +1,28 @@
 @use "../abstracts" as *;
 
 .home {
+  &:global(.page-container) {
+    // The fixed topbar occupies nav-height plus its top inset.
+    padding-block-start: calc(#{layout(nav-height)} + #{size(12)});
+
+    @include mq(md) {
+      padding-block-start: calc(#{layout(nav-height)} + #{size(20)});
+    }
+  }
+
   &__hero {
-    padding: 0 0 size(12);
-    margin-bottom: size(12);
+    padding: 0 0 size(6);
+    margin-bottom: size(6);
+
+    @include mq(md) {
+      padding-bottom: size(12);
+      margin-bottom: size(12);
+    }
+  }
+
+  &__mission {
+    display: none;
+    @include mq(md) { display: flex; }
   }
 
   &__breadcrumbRow {
@@ -13,7 +32,6 @@
     gap: size(4);
     @include mq(md) { display: flex; align-items: center; }
     justify-content: space-between;
-    padding-top: size(20);
     padding-bottom: size(8);
   }
 
@@ -21,7 +39,8 @@
 
   &__title {
     @include page-title;
-    margin-bottom: size(8);
+    margin-bottom: 0;
+    @include mq(md) { margin-bottom: size(8); }
   }
 
   &__grid {
@@ -29,11 +48,12 @@
     gap: size(12);
 
     @include mq(lg) {
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
     }
   }
 
   &__sidebar {
+    min-width: 0;
     @include mq(lg) {
       grid-column: span 3;
     }
@@ -182,6 +202,7 @@
   &__filterGroup {
     @include control-surface($focus-within: true);
     display: flex;
+    min-width: 0;
     flex-direction: column;
     gap: size(3);
     // margin-bottom: size(10);
@@ -203,11 +224,22 @@
 
   &__filterTags {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: size(2);
+
+    > button {
+      min-width: 0;
+      max-width: 100%;
+      justify-content: center;
+      text-align: center;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
   }
 
   &__statusInfo {
+    display: none;
+    @include mq(md) { display: block; }
     margin-top: size(6);
     padding: 0;
     border: none;

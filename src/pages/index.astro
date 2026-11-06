@@ -8,6 +8,7 @@ import ClientHome from '@/components/ClientHome';
 import matter from 'gray-matter';
 import { projectSource, projectIsPublished } from '@/lib/project-editorial';
 import { localizedProject } from '@/lib/project-locales';
+import { compareProjectOrder } from '@/lib/project-order';
 
 const tinaProps = await client.queries.pages({ relativePath: 'home.mdx' });
 const homeData = tinaProps.data.pages as any;
@@ -33,7 +34,7 @@ const projects = allProjects
     slug: p.id,
     categories: categoryMap[p.id] ?? [],
   }))
-  .sort((a, b) => (a.order || 0) - (b.order || 0));
+  .sort(compareProjectOrder);
 
 const exportContent = projects.map(p => {
   const parts = [`## ${p.title}`];

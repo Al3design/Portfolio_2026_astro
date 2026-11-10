@@ -5,7 +5,8 @@ export function setupHexagonalGridPointer(): () => void {
   if (!grid || !light) return () => {};
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  let contact: number | undefined;
+  let lastTouchAt = -Infinity;
   const lifetime = 2200;
   const points: { node: HTMLDivElement; born: number; strength: number }[] = [];
   const waves: { node: HTMLDivElement; born: number }[] = [];
@@ -27,6 +28,7 @@ export function setupHexagonalGridPointer(): () => void {
   const reset = () => {
     stop();
     driven = inside = false;
+    contact = undefined;
     slot = 0;
     lastSampleAt = 0;
     lastMovedAt = -Infinity;
@@ -57,7 +59,7 @@ export function setupHexagonalGridPointer(): () => void {
   const requestTick = () => { if (!frame) frame = requestAnimationFrame(tick); };
   const tick = (now: number) => {
     frame = 0;
-    if (document.hidden || reducedMotion.matches || !finePointer.matches) return;
+    if (document.hidden || reducedMotion.matches) return;
     // Bound writes to roughly 60 Hz even on high-refresh displays.
     if (previousTime && now - previousTime < 1000 / 60 - 0.75) { requestTick(); return; }
     if (!driven) {
@@ -123,40 +125,56 @@ export function setupHexagonalGridPointer(): () => void {
     else previousTime = 0;
   };
   const onMove = (event: PointerEvent) => {
-    if (event.pointerType !== 'mouse' || document.hidden) return;
+    if ((event.pointerType !== 'mouse' && event.pointerId !== contact) || document.hidden) return;
     inside = true;
     if (!driven || event.clientX !== targetX || event.clientY !== targetY) lastMovedAt = performance.now();
     targetX = event.clientX; targetY = event.clientY;
     requestTick();
   };
   const onLeave = () => {
-    if (!driven) return;
+    if (!driven && !frame) return;
     inside = false;
     departedAt = performance.now();
     requestTick();
   };
-  const onClick = (event: MouseEvent) => {
-    if (event.button !== 0 || event.detail === 0 || document.hidden) return;
+  const emitWave = (clientX: number, clientY: number) => {
     const now = performance.now();
     // Never recycle an active wave: rapid clicks must not truncate its expansion.
     const wave = waves.find(candidate => now - candidate.born >= waveLifetime);
     if (!wave) return;
     wave.born = now;
-    wave.node.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
-    wave.node.style.setProperty('--hex-wave-mask-x', `${300 - event.clientX % 84}px`);
-    wave.node.style.setProperty('--hex-wave-mask-y', `${300 - event.clientY % 48.4974226}px`);
+    wave.node.style.transform = `translate(${clientX}px, ${clientY}px)`;
+    wave.node.style.setProperty('--hex-wave-mask-x', `${300 - clientX % 84}px`);
+    wave.node.style.setProperty('--hex-wave-mask-y', `${300 - clientY % 48.4974226}px`);
     wave.node.style.opacity = '0';
     if (!driven) {
       inside = true;
-      targetX = event.clientX; targetY = event.clientY;
+      targetX = clientX; targetY = clientY;
       lastMovedAt = wave.born;
     }
     requestTick();
   };
+  const onClick = (event: MouseEvent) => {
+    if (event.button !== 0 || event.detail === 0 || document.hidden || performance.now() - lastTouchAt < 800) return;
+    emitWave(event.clientX, event.clientY);
+  };
+  const onContact = (event: PointerEvent) => {
+    if (event.pointerType === 'mouse' || !event.isPrimary || contact !== undefined || document.hidden) return;
+    contact = event.pointerId;
+    lastTouchAt = performance.now();
+    onMove(event);
+    emitWave(event.clientX, event.clientY);
+  };
+  const onContactEnd = (event: PointerEvent) => {
+    if (event.pointerId !== contact) return;
+    contact = undefined;
+    lastTouchAt = performance.now();
+    onLeave();
+  };
   const configure = () => {
     tracking?.abort();
     reset();
-    if (reducedMotion.matches || !finePointer.matches) return;
+    if (reducedMotion.matches) return;
     if (!points.length) {
       for (let i = 0; i < 4; i++) {
         const node = document.createElement('div');
@@ -180,6 +198,9 @@ export function setupHexagonalGridPointer(): () => void {
     tracking = new AbortController();
     const { signal } = tracking;
     window.addEventListener('pointermove', onMove, { passive: true, signal });
+    window.addEventListener('pointerdown', onContact, { passive: true, signal });
+    window.addEventListener('pointerup', onContactEnd, { passive: true, signal });
+    window.addEventListener('pointercancel', onContactEnd, { passive: true, signal });
     window.addEventListener('click', onClick, { passive: true, signal });
     window.addEventListener('blur', reset, { signal });
     document.documentElement.addEventListener('pointerleave', onLeave, { signal });
@@ -189,14 +210,12 @@ export function setupHexagonalGridPointer(): () => void {
     grid.toggleAttribute('data-suspended', document.hidden);
   };
   reducedMotion.addEventListener('change', configure);
-  finePointer.addEventListener('change', configure);
   document.addEventListener('visibilitychange', onVisibility);
   configure();
   onVisibility();
   return () => {
     tracking?.abort();
     reducedMotion.removeEventListener('change', configure);
-    finePointer.removeEventListener('change', configure);
     document.removeEventListener('visibilitychange', onVisibility);
     reset();
     for (const point of points) point.node.remove();

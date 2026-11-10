@@ -5,7 +5,8 @@ export function setupEnergyGridPointer(): () => void {
   if (!grid || !light) return () => {};
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  let contact: number | undefined;
+  let touchReset: ReturnType<typeof setTimeout> | undefined;
   let tracking: AbortController | undefined;
   let frame = 0;
   let previousTime = 0;
@@ -18,6 +19,8 @@ export function setupEnergyGridPointer(): () => void {
     previousTime = 0;
   };
   const reset = () => {
+    clearTimeout(touchReset);
+    contact = undefined;
     stop();
     driven = false;
     light.removeAttribute('data-pointer-driven');
@@ -30,7 +33,7 @@ export function setupEnergyGridPointer(): () => void {
   };
   const follow = (now: number) => {
     frame = 0;
-    if (document.hidden || reducedMotion.matches || !finePointer.matches) return;
+    if (document.hidden || reducedMotion.matches) return;
     if (!driven) {
       // Read once at handoff, before writes. Keep the ambient light's current
       // position so the first pointer event does not make it jump.
@@ -55,37 +58,49 @@ export function setupEnergyGridPointer(): () => void {
     else previousTime = 0;
   };
   const onMove = (event: PointerEvent) => {
-    if (event.pointerType !== 'mouse' || document.hidden) return;
+    if ((event.pointerType !== 'mouse' && event.pointerId !== contact) || document.hidden) return;
     targetX = event.clientX;
     targetY = event.clientY;
     // Pointer events only replace the target; multiple events share one frame.
     if (!frame) frame = requestAnimationFrame(follow);
   };
+  const onContact = (event: PointerEvent) => {
+    if (event.pointerType === 'mouse' || !event.isPrimary || contact !== undefined || document.hidden) return;
+    clearTimeout(touchReset);
+    contact = event.pointerId;
+    onMove(event);
+  };
+  const onContactEnd = (event: PointerEvent) => {
+    if (event.pointerId !== contact) return;
+    contact = undefined;
+    touchReset = setTimeout(reset, 400);
+  };
   const configure = () => {
     tracking?.abort();
     reset();
-    if (reducedMotion.matches || !finePointer.matches) return;
+    if (reducedMotion.matches) return;
     tracking = new AbortController();
     const {signal} = tracking;
     window.addEventListener('pointermove', onMove, {passive: true, signal});
-    window.addEventListener('blur', stop, {signal});
+    window.addEventListener('pointerdown', onContact, {passive: true, signal});
+    window.addEventListener('pointerup', onContactEnd, {passive: true, signal});
+    window.addEventListener('pointercancel', onContactEnd, {passive: true, signal});
+    window.addEventListener('blur', reset, {signal});
     document.documentElement.addEventListener('pointerleave', stop, {signal});
   };
   const onVisibility = () => {
     // Pause the two autonomous CSS lights too while the tab is hidden.
     grid.toggleAttribute('data-suspended', document.hidden);
-    if (document.hidden) stop();
+    if (document.hidden) reset();
   };
 
   reducedMotion.addEventListener('change', configure);
-  finePointer.addEventListener('change', configure);
   document.addEventListener('visibilitychange', onVisibility);
   configure();
   onVisibility();
   return () => {
     tracking?.abort();
     reducedMotion.removeEventListener('change', configure);
-    finePointer.removeEventListener('change', configure);
     document.removeEventListener('visibilitychange', onVisibility);
     reset();
     grid.removeAttribute('data-suspended');

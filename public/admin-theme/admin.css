@@ -1,19 +1,51 @@
 /* Tina admin adapter. Keep vendor compatibility rules inside this file.
    No styles are installed in the preview document or the public website. */
 /* Dashboard controls share native Tina surfaces and one content alignment. */
-body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard .al3-admin-control {
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 44px;
-  padding: 10px 12px;
-  border: 1px solid var(--al3-admin-edge);
-  border-radius: 4px;
-  background: var(--al3-admin-raised);
-  color: var(--al3-admin-text);
-  font: inherit;
-  font-size: 14px;
-  line-height: 1.5;
+/* The navigation owns its width; the screen content must shrink instead. */
+body.tina-tailwind[data-al3-admin-theme="dark"] .relative.z-30.flex.flex-col.bg-white.border-r { flex-shrink: 0; max-inline-size: 100vw; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .relative.z-30.flex.flex-col.bg-white.border-r + * { min-width: 0; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard { min-width: 0; width: 100%; box-sizing: border-box; container-type: inline-size; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard-grid { grid-template-columns: minmax(0, 1fr) 320px !important; min-width: 0; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard-grid > * { min-width: 0; }
+@container (max-width: 960px) {
+  body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard-grid { grid-template-columns: minmax(0, 1fr) !important; }
 }
+/* Shared editorial rows: Portfolio and Shop use EditorialOrderList, not vendor DOM patches. */
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-visual-order.al3-admin-native-order {
+  flex: 1 1 100%; inline-size: 100%; min-inline-size: 0; max-inline-size: 100%;
+  box-sizing: border-box; white-space: normal; margin: 0 0 24px; padding: 0 8px;
+  background: transparent; container: al3-order / inline-size;
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order h2 { font-size: var(--al3-admin-list-font-size); font-weight: 600; margin: 0 0 12px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order p { margin-block: 12px; color: var(--al3-admin-muted); font-size: 13px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-editorial-list { min-inline-size: 0; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-list { list-style: none; margin: 16px 0; padding: 0; inline-size: 100%; min-inline-size: 0; box-sizing: border-box; max-height: none; overflow: visible; position: relative; background: var(--al3-admin-panel); border-radius: var(--al3-admin-list-radius); box-shadow: inset 0 0 0 1px var(--al3-admin-edge); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-row { display: grid; grid-template-columns: var(--al3-admin-list-target) minmax(0, 1fr); align-items: center; gap: var(--al3-admin-list-gap); min-block-size: var(--al3-admin-list-row-height); margin: 0; padding: var(--al3-admin-list-padding); box-sizing: border-box; background: var(--al3-admin-panel); box-shadow: inset 0 -1px 0 var(--al3-admin-edge); scroll-margin: 16px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-row:last-child { box-shadow: none; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-row:focus-within { z-index: 1; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-row:has(:focus-visible) { outline: 2px solid var(--al3-admin-accent); outline-offset: 2px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-title { min-inline-size: 0; overflow-wrap: anywhere; font-size: var(--al3-admin-list-font-size); font-weight: var(--al3-admin-list-font-weight); line-height: 1.5; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-thumb { display: none; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-thumb img { inline-size: var(--al3-admin-list-thumb-width); block-size: var(--al3-admin-list-thumb-height); object-fit: cover; border-radius: var(--al3-admin-list-radius); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-handle { touch-action: none; -webkit-user-select: none; user-select: none; cursor: grab; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-handle:active { cursor: grabbing; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-sort-actions { display: flex; align-items: center; justify-content: end; flex-wrap: wrap; gap: var(--al3-admin-list-action-gap); grid-column: 1 / -1; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order :is(button, .al3-admin-row-position input, .al3-admin-list-pager select) { min-block-size: var(--al3-admin-list-target); min-inline-size: var(--al3-admin-list-target); padding: 8px; border: 0; border-radius: var(--al3-admin-list-radius); background: transparent; color: var(--al3-admin-icon); font: inherit; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order button:is(:hover, :focus-visible):not(:disabled) { background: var(--al3-admin-hover); color: var(--al3-admin-text); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order button:disabled { opacity: .4; cursor: default; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-row-position { display: flex; gap: 4px; align-items: center; color: var(--al3-admin-muted); font-size: 12px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order .al3-admin-row-position input { inline-size: 64px; background: var(--al3-admin-raised); color: var(--al3-admin-text); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-list-pager { display: flex; align-items: center; justify-content: end; flex-wrap: wrap; gap: 8px; font-size: 13px; color: var(--al3-admin-muted); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-list-pager label { display: flex; align-items: center; gap: 8px; margin-inline-end: auto; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order .al3-admin-list-pager select { background: var(--al3-admin-raised); color: var(--al3-admin-text); }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-list-picker { display: flex; align-items: end; flex-wrap: wrap; gap: 8px; margin-block: 16px; }
+body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-list-picker label { display: grid; gap: 8px; flex: 1 1 220px; min-inline-size: 0; font-size: 13px; }
+@container al3-order (min-width: 40rem) {
+  body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order .al3-admin-sort-row { grid-template-columns: var(--al3-admin-list-target) var(--al3-admin-list-thumb-width) minmax(0, 1fr) auto; }
+  body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order .al3-admin-sort-thumb { display: grid; place-items: center; inline-size: var(--al3-admin-list-thumb-width); block-size: var(--al3-admin-list-thumb-height); color: var(--al3-admin-icon); }
+  body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-native-order .al3-admin-sort-actions { grid-column: auto; }
+}
+body.tina-tailwind[data-al3-admin-theme="dark"] :is(.al3-admin-dashboard, .al3-admin-native-order) .al3-admin-control { box-sizing: border-box; width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--al3-admin-edge); border-radius: 4px; background: var(--al3-admin-raised); color: var(--al3-admin-text); font: inherit; font-size: 14px; line-height: 1.5; }
 body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-dashboard .al3-admin-search { padding-inline-start: 42px; }
 body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-scope { display: grid; gap: 8px; margin-block-end: 16px; }
 body.tina-tailwind[data-al3-admin-theme="dark"] .al3-admin-order-help { margin: 0 0 12px; color: var(--al3-admin-muted); font-size: 13px; line-height: 1.6; }
@@ -43,6 +75,16 @@ body.tina-tailwind[data-al3-admin-theme="dark"] {
   --al3-admin-icon: #b8bec8;
   --al3-admin-icon-size: 18px;
   --al3-admin-icon-stroke: 1.75;
+  --al3-admin-list-font-size: 14px;
+  --al3-admin-list-font-weight: 500;
+  --al3-admin-list-row-height: 64px;
+  --al3-admin-list-target: 44px;
+  --al3-admin-list-padding: 8px;
+  --al3-admin-list-gap: 8px;
+  --al3-admin-list-action-gap: 4px;
+  --al3-admin-list-radius: 4px;
+  --al3-admin-list-thumb-width: 40px;
+  --al3-admin-list-thumb-height: 30px;
   --al3-admin-accent: #c5cce0;
   --al3-admin-primary: #eceef2;
   --al3-admin-primary-foreground: #14161a;

@@ -6,6 +6,8 @@ import { articleLocaleFields } from './article-locales';
 import { projectEditorRoute, localEditorHostname } from '../src/lib/project-editor-route';
 import { shopProductCollection } from './shop-products';
 import { shopCatalogueCollection } from './shop-catalogue';
+import { projectOrderCollection } from './project-order';
+import { globalSettingsCollection } from './global-settings';
 import { installAdminTheme } from '../src/lib/admin-theme';
 import { LayoutDashboard } from 'lucide-react';
 
@@ -35,6 +37,7 @@ export default defineConfig({
     collections: [
       shopCatalogueCollection,
       shopProductCollection,
+      projectOrderCollection,
       // ─── PROJECTS ──────────────────────────────────────────────────────────
       {
         name: "projects",
@@ -114,11 +117,11 @@ export default defineConfig({
             type: "number",
             name: "order",
             label: "Orden general",
-            description: "Menor número aparece primero en el portfolio. Vacío equivale a 0. También se edita en Portfolio Overview.",
+            description: "Compatibilidad con el orden anterior. Si ya guardaste una lista visual, usá Portfolio · orden visual del menú; este número no reemplaza esa lista.",
           },
           {
             type: 'object', name: 'categoryOrders', label: 'Orden por categoría', list: true,
-            description: 'Opcional. Al filtrar una categoría se usa este número. Sin un valor propio se usa el orden general. La categoría también debe estar seleccionada en Categorías de filtro.',
+            description: 'Compatibilidad anterior: estas prioridades se conservan al crear la primera lista visual. Después, usá Orden visual para reordenar sin renumerar. La categoría también debe estar seleccionada en Categorías de filtro.',
             fields: [
               { type: 'string', name: 'category', label: 'Categoría', required: true, options: PROJECT_CATEGORIES.map(category => ({ value: category.value, label: category.label })) },
               { type: 'number', name: 'order', label: 'Orden', required: true },
@@ -461,54 +464,7 @@ export default defineConfig({
         ],
       },
 
-      // ─── GLOBAL ────────────────────────────────────────────────────────────
-      {
-        name: "global",
-        label: "Global Settings",
-        path: "src/content/global",
-        format: "mdx",
-        fields: [
-          {
-            type: "string",
-            name: "copyright",
-            label: "Copyright Text",
-          },
-          {
-            type: "object",
-            name: "links",
-            label: "Footer Links",
-            list: true,
-            ui: {
-              itemProps: (item: any) => ({ label: item?.name || "Link" }),
-            },
-            fields: [
-              {
-                type: "string",
-                name: "name",
-                label: "Text",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "url",
-                label: "URL",
-                required: true,
-              },
-              {
-                type: "string",
-                name: "icon",
-                label: "Lucide Icon",
-                options: [
-                  "github", "linkedin", "instagram", "twitter",
-                  "facebook", "youtube", "tiktok", "behance",
-                  "dribbble", "whatsapp", "telegram", "discord",
-                  "bluesky", "pinterest",
-                ],
-              },
-            ],
-          },
-        ],
-      },
+      globalSettingsCollection,
     ],
   },
 

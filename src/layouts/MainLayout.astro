@@ -13,8 +13,13 @@ import { cleanTitle } from '@/helpers/text-helpers';
 import { canonicalPageUrl } from '@/lib/site-seo';
 import { socialImageDetails } from '@/lib/social-images';
 import type { SiteSection, SiteLanguage, SiteLanguageLinks } from '@/lib/site-navigation';
+import { parseNavigationSettings } from '@/lib/site-navigation';
+import navigationRaw from '../content/global/navigation.mdx?raw';
+import matter from 'gray-matter';
 
 const footerEntry = await getEntry('global', 'footer');
+// Raw frontmatter preserves custom fields consistently with the project content layer.
+const navigationSettings = parseNavigationSettings(matter(navigationRaw).data);
 // Set to 'square' to restore the preserved original grid and its animation.
 const backgroundPattern: 'hexagonal' | 'square' = 'hexagonal';
 
@@ -132,7 +137,7 @@ const alternatePages = noIndex ? [] : Object.entries(languageLinks ?? {}).filter
       <div class="eg-spot eg-spot--primary"></div>
     </div>}
 
-    <Navigation client:load pathname={Astro.url.pathname} section={section} language={language} languageLinks={languageLinks} shopCollectionHref={shopCollectionHref} shopNotice={shopNotice} />
+    <Navigation client:load pathname={Astro.url.pathname} section={section} language={language} languageLinks={languageLinks} shopCollectionHref={shopCollectionHref} shopNotice={shopNotice} settings={navigationSettings} />
     <main id="main-content" tabindex="-1">
       <slot />
     </main>

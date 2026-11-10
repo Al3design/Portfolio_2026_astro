@@ -6,6 +6,6 @@ export function installAdminTheme() {
   const stylesheet = document.createElement('link');
   stylesheet.id = 'al3-admin-theme';
   stylesheet.rel = 'stylesheet';
-  stylesheet.href = '/admin-theme/admin.css?v=20261106-1';
+  stylesheet.href = '/admin-theme/admin.css?v=20261110-6';
   document.head.append(stylesheet);
 }

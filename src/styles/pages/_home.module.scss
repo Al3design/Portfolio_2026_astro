@@ -99,8 +99,24 @@
 
   &__mobileLayouts {
     display: flex;
+    flex-wrap: wrap;
     gap: size(2);
+    margin-bottom: size(4);
+  }
+
+  &__mobileOptions {
     margin-inline-start: auto;
+    summary { list-style: none; &::-webkit-details-marker { display: none; } }
+  }
+
+  &__desktopPagination { display: none; @include mq(md) { display: block; } }
+  &__mobilePagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: size(2);
+    font-family: semantic-font(mono);
+    @include mq(md) { display: none; }
   }
 
   &__mobileFilters {
@@ -129,6 +145,8 @@
   }
 
   &__projects {
+    position: relative;
+    scroll-margin-block-start: calc(#{layout(nav-height)} + #{size(8)});
     @include mq(lg) {
       grid-column: span 9;
     }
@@ -139,7 +157,8 @@
   }
 
   &__resultsHeader {
-    display: flex;
+    display: contents;
+    @include mq(md) { display: flex; }
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
@@ -148,12 +167,32 @@
   }
 
   &__resultsSummary {
+    // Keep one live result announcement without another visible mobile toolbar.
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    @include mq(md) {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip-path: none;
+      white-space: normal;
+    }
     margin: 0;
     color: semantic-color(brand-on-surface-variant);
     font-family: semantic-font(mono);
     font-size: fs("100");
     line-height: 1.6;
     scroll-margin-block-start: 12rem;
+  }
+
+  &__resultsTotal {
+    display: none;
+    @include mq(md) { display: inline; }
   }
 
   &__mobileControl {

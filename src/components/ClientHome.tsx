@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { useTina, tinaField } from 'tinacms/dist/react';
 import { motion } from 'motion/react';
-import { ArrowRight, ChevronDown, ExternalLink, LayoutGrid, List, RotateCcw, SlidersHorizontal } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, ExternalLink, LayoutGrid, List, RotateCcw, SlidersHorizontal, Ellipsis } from 'lucide-react';
 import { SyntaxCard, Tag, KeyValue } from '@/components/UI';
 
 
@@ -39,6 +39,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
   const [requestedPage, setRequestedPage] = useState(1);
   const resultsSummary = useRef<HTMLParagraphElement>(null);
   const mobileFilters = useRef<HTMLDetailsElement>(null);
+  const mobileOptions = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
     const storedLayout = localStorage.getItem('portfolio-layout');
@@ -149,7 +150,7 @@ export default function ClientHome({ projects, query, variables, data, exportDat
     if (destination === currentPage) return;
     flushSync(() => setRequestedPage(destination));
     resultsSummary.current?.focus({ preventScroll: true });
-    resultsSummary.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    document.getElementById('portfolio-results')?.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
 
   // Group only this page's projects; filtering and ordering happen before slicing.
@@ -199,13 +200,15 @@ export default function ClientHome({ projects, query, variables, data, exportDat
                   mobileFilters.current.querySelector('summary')?.focus();
                 }
               }}
+              onToggle={event => { if (event.currentTarget.open && mobileOptions.current) mobileOptions.current.open = false; }}
             >
               <summary
                 className={styles.home__mobileControl}
-                aria-label={`Filters: ${PROJECT_CATEGORIES.find(cat => cat.value === activeFilter)?.label ?? 'All Output'}, ${filteredProjects.length} projects`}
+                aria-label={`Filtrar: ${PROJECT_CATEGORIES.find(cat => cat.value === activeFilter)?.label ?? 'All Output'}, ${filteredProjects.length} projects`}
                 title="Filters"
               >
                 <SlidersHorizontal size={18} aria-hidden="true" />
+                <span>Filtrar</span>
                 <span className={styles.home__filterCount} aria-hidden="true">{filteredProjects.length}</span>
                 <ChevronDown size={14} aria-hidden="true" />
               </summary>
@@ -213,15 +216,24 @@ export default function ClientHome({ projects, query, variables, data, exportDat
                 {filterTags()}
               </div>
             </details>
-            {exportData && <MarkdownExportMenu {...exportData} compact />}
-            <div className={styles.home__mobileLayouts} role="group" aria-label="Project layout">
+            <details ref={mobileOptions} className={styles.home__mobileOptions}
+              onToggle={event => { if (event.currentTarget.open && mobileFilters.current) mobileFilters.current.open = false; }}
+              onKeyDown={event => { if (event.key === 'Escape' && mobileOptions.current?.open) { event.preventDefault(); mobileOptions.current.open = false; mobileOptions.current.querySelector('summary')?.focus(); } }}>
+              <summary className={styles.home__mobileControl}><Ellipsis size={18} aria-hidden="true" /><span>Opciones</span></summary>
+              <div className={styles.home__mobileFilterPanel}>
+              <div className={styles.home__mobileLayouts} role="group" aria-label="Project layout">
               <button type="button" className={styles.home__mobileControl} aria-label="Cards" title="Cards" aria-pressed={layout === 'cards'} onClick={() => selectLayout('cards')}>
                 <LayoutGrid size={18} aria-hidden="true" />
+                <span>Tarjetas</span>
               </button>
               <button type="button" className={styles.home__mobileControl} aria-label="List" title="List" aria-pressed={layout === 'list'} onClick={() => selectLayout('list')}>
                 <List size={18} aria-hidden="true" />
+                <span>Lista</span>
               </button>
             </div>
+            {exportData && <MarkdownExportMenu {...exportData} />}
+              </div>
+            </details>
           </div>
           <div className={styles.home__desktopControls}>
             <SyntaxCard label="Filters">
@@ -258,10 +270,10 @@ export default function ClientHome({ projects, query, variables, data, exportDat
               aria-atomic="true"
             >
               {filteredProjects.length > 0
-                ? `Showing ${pageOffset + 1}–${pageOffset + visibleProjects.length} of ${filteredProjects.length} projects · Page ${currentPage} of ${totalPages}`
+                ? <>Showing {pageOffset + 1}–{pageOffset + visibleProjects.length}<span className={styles.home__resultsTotal}> of {filteredProjects.length} projects</span> · Page {currentPage} of {totalPages}</>
                 : 'No projects match this filter'}
             </p>
-            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={selectPage} controlsId="portfolio-results" />
+            <div className={styles.home__desktopPagination}><Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={selectPage} controlsId="portfolio-results" /></div>
           </div>
           {/* Empty state when filter has no matches */}
           {filteredProjects.length === 0 && (
@@ -464,6 +476,11 @@ export default function ClientHome({ projects, query, variables, data, exportDat
           ))}
 
 
+          {totalPages > 1 && <nav className={styles.home__mobilePagination} aria-label="Project pagination">
+            <button type="button" className={styles.home__mobileControl} disabled={currentPage === 1} onClick={() => selectPage(currentPage - 1)} aria-label="Previous page" aria-controls="portfolio-results"><ChevronLeft size={18} aria-hidden="true" /><span>Anterior</span></button>
+            <span aria-label={`Page ${currentPage} of ${totalPages}`}>{currentPage} / {totalPages}</span>
+            <button type="button" className={styles.home__mobileControl} disabled={currentPage === totalPages} onClick={() => selectPage(currentPage + 1)} aria-label="Next page" aria-controls="portfolio-results"><span>Siguiente</span><ChevronRight size={18} aria-hidden="true" /></button>
+          </nav>}
         </div>
       </div>
     </div>

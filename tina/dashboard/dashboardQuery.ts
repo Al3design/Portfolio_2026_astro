@@ -4,12 +4,14 @@
  */
 export const DASHBOARD_QUERY = `
   query DashboardData($after: String) {
+    projectOrder(relativePath: "order.json") { _values }
     projectsConnection(first: 100, after: $after) {
       totalCount
       pageInfo { hasNextPage endCursor }
       edges {
         node {
           title
+          publicationStatus
           year
           client
           type
@@ -45,7 +47,9 @@ export const DASHBOARD_QUERY = `
 `;
 
 export interface ProjectNode {
+  visualOrders?: Record<string, number>;
   title: string;
+  publicationStatus?: string;
   year?: string;
   client?: string;
   type?: string;
@@ -71,6 +75,7 @@ export interface PageNode {
 }
 
 export interface DashboardData {
+  projectOrder: { _values: unknown };
   projectsConnection: {
     totalCount: number;
     pageInfo: { hasNextPage: boolean; endCursor?: string };

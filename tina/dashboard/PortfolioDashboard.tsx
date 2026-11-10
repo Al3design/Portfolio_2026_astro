@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { useCMS } from "tinacms";
 import { motion, AnimatePresence } from "motion/react";
 import { 
@@ -18,7 +18,7 @@ import {
 import { DASHBOARD_QUERY, type DashboardData } from "./dashboardQuery";
 import { PROJECT_CATEGORIES } from '../../src/lib/categories';
 import { compareProjectOrder } from '../../src/lib/project-order';
-import { ProjectOrderEditor } from './ProjectOrderEditor';
+import { parseVisualOrder, visualOrderRanks } from '../../src/lib/project-visual-order';
 
 // ─── Estilos Premium (Tokens) ──────────────────────────────────────────────────
 const tokens = {
@@ -329,15 +329,10 @@ export function PortfolioDashboard() {
   const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
   const [searchQuery, setSearchQuery] = useState("");
   const [orderCategory, setOrderCategory] = useState('all');
-  const [dataVersion, setDataVersion] = useState(0);
-  const [orderSaving, setOrderSaving] = useState(false);
-  const [orderNotice, setOrderNotice] = useState('');
-  const orderSaveLock = useRef(false);
 
   const cms = useCMS();
 
   const fetchData = useCallback(async () => {
-    if (orderSaveLock.current) return;
     setLoading(true);
     setError(null);
     try {
@@ -358,8 +353,10 @@ export function PortfolioDashboard() {
         response.projectsConnection.edges.push(...page.edges);
       }
       
+      const rawOrder = response.projectOrder._values;
+      if (!rawOrder || typeof rawOrder !== 'object' || !('scopes' in rawOrder)) throw new Error('Tina no devolvió el documento de orden completo.');
+      parseVisualOrder({ scopes: rawOrder.scopes ?? [] });
       setData(response);
-      setDataVersion(version => version + 1);
       setLastRefresh(new Date());
     } catch (e: unknown) {
       console.error("Dashboard Fetch Error:", e);
@@ -372,7 +369,12 @@ export function PortfolioDashboard() {
   useEffect(() => { fetchData(); }, [fetchData]);
 
   // ── Derived stats ──
-  const projects = useMemo(() => data?.projectsConnection.edges.map((e) => e.node) ?? [], [data]);
+  const projects = useMemo(() => {
+    if (!data) return [];
+    const raw = data.projectOrder._values;
+    const selection = parseVisualOrder(raw && typeof raw === 'object' && 'scopes' in raw ? { scopes: raw.scopes ?? [] } : { scopes: [] });
+    return data.projectsConnection.edges.map(({ node }) => ({ ...node, visualOrders: visualOrderRanks(node._sys.relativePath, selection) }));
+  }, [data]);
   const stats = useMemo(() => {
     if (!data) return null;
     const filtered = projects;
@@ -504,7 +506,7 @@ export function PortfolioDashboard() {
         />
       </div>
 
-      <div style={s.mainGrid}>
+      <div className="al3-admin-dashboard-grid" style={s.mainGrid}>
         {/* ── Column 1: Projects Table ── */}
         <section style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div style={s.card}>
@@ -531,18 +533,13 @@ export function PortfolioDashboard() {
 
             <div style={s.tableWrapper}>
               <label className="al3-admin-order-scope">
-                Ordenar en
-                <select value={orderCategory} disabled={orderSaving} onChange={event => setOrderCategory(event.target.value)}
+                Categoría
+                <select value={orderCategory} onChange={event => setOrderCategory(event.target.value)}
                   className="al3-admin-control">
                   <option value="all">Portfolio completo</option>
                   {PROJECT_CATEGORIES.map(category => <option key={category.value} value={category.value}>{category.label}</option>)}
                 </select>
               </label>
-              <p className="al3-admin-order-help">
-                Menor número aparece primero. Los empates conservan el orden del listado.
-                Guardar en Tina Cloud puede generar un commit y un despliegue según la rama activa.
-              </p>
-              <p role="status" className="al3-admin-order-notice">{orderNotice}</p>
               <table className="al3-admin-inventory" style={s.table}>
                 <thead>
                   <tr>
@@ -551,7 +548,7 @@ export function PortfolioDashboard() {
                     <th style={s.th}>Cliente</th>
                     <th style={s.th}>Año</th>
                     <th style={s.th}>Visibilidad</th>
-                    <th style={s.th}>Orden</th>
+                    <th style={s.th}>Posición</th>
                     <th style={s.th}></th>
                   </tr>
                 </thead>
@@ -603,19 +600,7 @@ export function PortfolioDashboard() {
                           </div>
                         </td>
                         <td style={s.td}>
-                          <ProjectOrderEditor key={`${p._sys.relativePath}-${orderCategory}-${dataVersion}-${p.order}-${JSON.stringify(p.categoryOrders)}`}
-                            project={p} category={orderCategory} disabled={orderSaving} saveLock={orderSaveLock}
-                            onBusy={setOrderSaving} onSaved={saved => {
-                              setOrderNotice(`Orden de ${saved.title} guardado.`);
-                              setData(current => current && ({
-                                ...current,
-                                projectsConnection: {
-                                  ...current.projectsConnection,
-                                  edges: current.projectsConnection.edges.map(edge =>
-                                    edge.node._sys.relativePath === saved._sys.relativePath ? { ...edge, node: saved } : edge),
-                                },
-                              }));
-                            }} />
+                          <span aria-label={`Posición ${idx + 1} en los resultados`}>{idx + 1}</span>
                         </td>
                         <td style={{ ...s.td, textAlign: "right" }}>
                           <a 

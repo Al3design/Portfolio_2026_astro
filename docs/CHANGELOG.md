@@ -6,6 +6,36 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-10] — Listas editoriales y paginación compartidas
+
+- Portfolio y selección Shop pasan al mismo componente `EditorialOrderList`, con tokens semánticos de fila, miniatura, acciones y paginador en admin.css. Caché candidata 20261110-6; scroll general nativo y disposición por ancho de contenedor.
+- Diez filas por página, selector 10/20/50, flechas y destino global Pos. La página visible nunca sustituye a la lista completa al guardar. Arrastre acotado a la página con Escape/restauración y alternativa por controles.
+- Shop conserva alta/reemplazo/retiro de referencias, novedades hasta tres y hero nativo. Antes de retirar/reemplazar una referencia utilizada, pide cambiar hero/novedades. No borra fichas ni guarda automáticamente.
+- Contratos editoriales sin cambios. Pruebas de preservación entre páginas preparadas; sin ejecución, build ni publicación. Recorrido de UI/Save/Reset/reapertura/restauración pendiente. Estado en `openspec/changes/listas-editoriales-paginadas/`.
+
+## [2026-11-10] — Orden visual dentro de su colección
+
+- Ajuste posterior desde captura: el campo personalizado era hijo flex sin ancho explícito. Ahora ocupa todo el ancho, normaliza whitespace y alinea el padding al FieldWrapper de Tina. Filas compactas con acciones iconográficas, miniatura o placeholder neutro y título adaptable. Contenedor al3-order cambia de distribución según el ancho real (28rem); targets 44px, sin recorte de texto/controles. Caché 20261110-4. Pendiente observación visual; no se modifica orden ni persistencia.
+- Nueva captura del usuario mostró doble scroll: retirados altura máxima y overflow propios de la lista. Autoscroll de arrastre usa FormWrapper, conservando un único desplazamiento general y Save/Reset nativos. Caché 20261110-5; pendiente revisión visual/drag posterior.
+- Cierre de tipos del rediseño de ancho: 178 archivos, 0 errores, 0 warnings y 100 hints. Revalida el adaptador unknown/guards del campo nativo. El ajuste posterior de scroll tiene revisión de fuentes, sin repetir ese control; guardado/reapertura y publicación siguen pendientes.
+
+- Por pedido de unificar criterio con Shop, el editor pasa directamente a Portfolio · orden visual. Overview conserva estadísticas, inventario y filtro, sin botón/editor ni parámetro de apertura. Se retira el enlace intermedio ProjectOrderAccess.
+- ProjectVisualOrderField conecta scopes a input.value/onChange del formulario Tina. Save/Reset nativos confirman/descartan todos los ámbitos juntos; no hay API de escritura propia ni guardado al arrastrar. La carga mantiene el orden existente; el primer movimiento prepara la migración y solo Save la persiste. Se documenta coordinación entre sesiones, sin atribuirle la relectura/CAS que no tiene el formulario nativo.
+- Lista continua y selector con tokens admin; caché 20261110-3. README, guía, plantilla y OpenSpec actualizados. Estado y controles en `orden-visual-y-home-movil/native-field-2026-11-10.md`.
+- Un control de tipos detectó que Component de schema-tools omite form aunque FieldsBuilder la entrega. Entrada adaptada con unknown/guards sin cast; sin repetir el control. Revalidación y guardado/reapertura/restauración pendientes, sin cierre aprobado.
+
+## [2026-11-10] — Candidato de orden visual, controles móviles y touch
+
+- Continuación desde capturas del usuario: el acceso Portfolio · orden visual deja de mostrar una lista vacía y enlaza al editor completo de Overview. Store 3D · selección pública y borradores quedan consecutivos. Sidebar sin compresión flex y dashboard adaptable por ancho de contenedor; caché admin `20261110-2`. Revisión visual pendiente.
+- Global Settings incorpora `navigation.mdx` con listas portfolio/Shop, textos y enlaces ES/EN, validación y consumo compartido desktop/móvil. Plantillas footer/navigation en `tina/global-settings.ts`; footer existente solo añade `_template: footer`, conservando contenido y uso común en ambos sitios. No se afirma Live Preview ni persistencia comprobada para estos campos.
+- Consultadas versiones npm: TinaCMS 3.15.2 y CLI 4.0.5, engines CLI 22.x/24.x. Procedimiento documentado para actualizar paquete, CLI y override pnpm; no se instalaron ni reiniciaron servicios durante esta continuación. Ver `menus-globales-y-accesos-tina/report-2026-11-10.md`.
+- Cierre acotado de esta continuación: navegación 2/2; Astro 0 errores, 0 warnings y 100 hints en 179 archivos. Revalidada corrección layout de Reorder.Item; sin prueba visual/persistencia, build ni publicación. No se repitieron los nueve contratos de orden ya aprobados.
+
+- Implementado en fuentes el editor Orden visual de Portfolio Overview: miniaturas, arrastre desde asa, Subir/Bajar/Primero, ámbito general/categoría y guardado explícito único mediante Tina. Nuevo singleton `src/editorial/project-order/order.json`, inicialmente vacío; primer guardado captura las prioridades numéricas actuales sin reescribir artículos. Nuevos artículos se agregan al final; lectura fresca detecta cambios concurrentes previos. La carrera entre lectura y mutación sigue requiriendo coordinación de editores.
+- Home móvil concentra Filtrar · total y Opciones (vista/copiar/exportar). Paginación compacta al final y un anuncio accesible de resultados; sin total repetido. Desktop conserva controles y resumen existentes.
+- Pointer Events incorpora contacto táctil/pen, fin/cancelación y prevención de doble onda del click sintetizado. Listeners pasivos, limpieza y reduced-motion conservados; no se bloquea el scroll/zoom del sitio. Square usa luz breve; hexagonal incorpora onda y estela acotada.
+- CSS del editor centralizado en `public/admin-theme/admin.css`, caché `20261110-1`. Guías, README, plantilla y OpenSpec actualizados. Pruebas nuevas preparadas; consultar `openspec/changes/orden-visual-y-home-movil/report-2026-11-10.md` para distinguir controles ejecutados y pendientes. Sin migración guardada, build, publicación ni regeneración manual de Tina en esta tanda.
+
 ## [2026-11-06] — Orden editorial desde Portfolio Overview
 
 - Build de producción inicial bloqueado correctamente por índice main antiguo de Tina Cloud (GraphQL 2.4.1 frente a 4.1.0). Se prepara reindexación de main sin omitir controles y se fija `engines.node: 24.x` para evitar que Vercel seleccione automáticamente Node 26.

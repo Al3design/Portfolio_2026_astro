@@ -235,7 +235,7 @@
     }
 
     // Take over one existing light; the grid mask and gradient stay unchanged.
-    @media (hover: hover) and (pointer: fine) {
+    @media (any-pointer: fine), (any-pointer: coarse) {
       .eg-spot--primary[data-pointer-driven]::before {
         animation: none;
         transform: translate3d(var(--eg-pointer-x), var(--eg-pointer-y), 0);
@@ -296,7 +296,7 @@
     .eg-spot--tertiary::before { animation: hex-focus-tertiary 37s ease-in-out infinite; }
     .eg-spot--secondary::before { animation: hex-focus-secondary 43s ease-in-out infinite; }
 
-    @media (hover: hover) and (pointer: fine) {
+    @media (any-pointer: fine), (any-pointer: coarse) {
       .eg-spot--primary[data-pointer-driven]::before {
         animation: none;
         width: min(220px, 90vw);

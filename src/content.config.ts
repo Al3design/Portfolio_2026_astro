@@ -1,4 +1,5 @@
 import { z, defineCollection } from 'astro:content';
+import { validNavigationMenu } from './lib/site-navigation';
 import { glob } from 'astro/loaders';
 
 const projectsCollection = defineCollection({
@@ -77,6 +78,8 @@ const pagesCollection = defineCollection({
 const globalCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/global" }),
   schema: z.object({
+    portfolioMenu: z.array(z.object({ key: z.string(), labelEs: z.string(), labelEn: z.string(), hrefEs: z.string(), hrefEn: z.string() })).refine(validNavigationMenu, 'Menú del portfolio inválido').optional(),
+    shopMenu: z.array(z.object({ key: z.string(), labelEs: z.string(), labelEn: z.string(), hrefEs: z.string(), hrefEn: z.string() })).refine(validNavigationMenu, 'Menú de Shop inválido').optional(),
     copyright: z.string().optional(),
     links: z.array(z.object({
       name: z.string(),

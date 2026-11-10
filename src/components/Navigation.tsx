@@ -10,7 +10,7 @@ import { flushSync } from 'react-dom';
 import styles from '@/styles/components/_navigation.module.scss';
 import { clsx } from 'clsx';
 import { registerWebTools, publicPageState } from '@/lib/webmcp';
-import { siteNavigation, type SiteSection, type SiteLanguage, type SiteLanguageLinks } from '@/lib/site-navigation';
+import { siteNavigation, type SiteSection, type SiteLanguage, type SiteLanguageLinks, type NavigationSettings } from '@/lib/site-navigation';
 import { shopRoutes } from '@/data/shop-demo';
 import BrandMark from '@/components/BrandMark';
 
@@ -45,8 +45,8 @@ const linkItemVariants: Variants = {
   exit: { opacity: 0, x: 16, transition: { duration: 0.15 } },
 };
 
-export default function Navigation({ pathname = '/', section = 'portfolio', language = 'en', languageLinks, shopCollectionHref, shopNotice }: { pathname?: string; section?: SiteSection; language?: SiteLanguage; languageLinks?: SiteLanguageLinks; shopCollectionHref?: string; shopNotice?: string }) {
-  const navLinks = siteNavigation(section, language).map(link => section === 'shop' && shopCollectionHref && link.href.endsWith('#collection') ? { ...link, href: shopCollectionHref } : link);
+export default function Navigation({ pathname = '/', section = 'portfolio', language = 'en', languageLinks, shopCollectionHref, shopNotice, settings }: { pathname?: string; section?: SiteSection; language?: SiteLanguage; languageLinks?: SiteLanguageLinks; shopCollectionHref?: string; shopNotice?: string; settings?: NavigationSettings }) {
+  const navLinks = siteNavigation(section, language, settings).map(link => section === 'shop' && shopCollectionHref && link.key === 'collection' ? { ...link, href: shopCollectionHref } : link);
   const shop = section === 'shop';
   const spanish = language === 'es';
   const rssHref = shop ? (spanish ? '/tienda/rss.xml' : '/en/shop-3d/rss.xml') : '/rss.xml';
@@ -238,10 +238,10 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
             // Normalize paths: strip trailing slash except for root
             const normalizedPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
             const normalizedHref = link.href === '/' ? '/' : link.href.replace(/\/$/, '');
-            const isActive = normalizedPathname === normalizedHref || (shop && link.href.endsWith('#collection'));
+            const isActive = normalizedPathname === normalizedHref || (shop && link.key === 'collection');
             return (
               <a
-                key={link.name}
+                key={link.key}
                 href={link.href}
                 aria-current={isActive ? 'page' : undefined}
                 className={clsx(styles.nav__link, isActive && styles['nav__link--active'])}
@@ -345,10 +345,10 @@ export default function Navigation({ pathname = '/', section = 'portfolio', lang
                 // Normalize paths: strip trailing slash except for root
                 const normalizedPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
                 const normalizedHref = link.href === '/' ? '/' : link.href.replace(/\/$/, '');
-                const isActive = normalizedPathname === normalizedHref || (shop && link.href.endsWith('#collection'));
+                const isActive = normalizedPathname === normalizedHref || (shop && link.key === 'collection');
                 return (
                   <motion.div
-                    key={link.name}
+                  key={link.key}
                     custom={i}
                     variants={linkItemVariants}
                     initial="hidden"

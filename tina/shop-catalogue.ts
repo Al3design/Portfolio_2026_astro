@@ -1,4 +1,5 @@
 import type { Collection, TinaField } from 'tinacms';
+import { ShopSelectionField } from './dashboard/ShopSelectionField';
 
 // Tina supports an object list containing a single reference field, rather
 // than list: true directly on a reference (unsupported by its UI/generator).
@@ -24,7 +25,7 @@ export const shopCatalogueCollection: Collection = {
     {
       type: 'object', name: 'products', label: 'Piezas del catálogo, en orden',
       list: true, required: true, fields: selectionFields(),
-      ui: { itemProps: selectionItem },
+      ui: { component: ShopSelectionField, itemProps: selectionItem },
       description: 'Solo estas piezas forman el catálogo público. Agregá la ficha cuando tenga textos ES/EN y fotos completos. Guardar en main puede publicar el cambio mediante el despliegue automático.',
     },
     {
@@ -32,6 +33,7 @@ export const shopCatalogueCollection: Collection = {
       list: true, fields: selectionFields(),
       description: 'Elegí hasta tres piezas ya incluidas en el catálogo, en el orden que querés mostrarlas.',
       ui: {
+        component: ShopSelectionField,
         itemProps: selectionItem,
         validate: value => value && value.length > 3 ? 'Elegí hasta tres novedades.' : undefined,
       },

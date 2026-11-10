@@ -21,9 +21,10 @@ La [auditoría del editor de artículos](openspec/changes/tema-admin-tina/articl
 | Nuevo artículo/caso | `docs/templates/articulo-bilingue.mdx` → `src/content/projects/<slug>.mdx`; colección `projects` de `tina/config.ts`, bloques/locales compartidos y renderer existente. Mantener draft hasta completar ES/EN. |
 | Nueva pieza | `docs/templates/pieza-shop.json` → `src/editorial/shop-products/<slug>.json`; formulario en `tina/shop-products.ts`, contrato/proyección en `src/lib/shop-editorial.ts`. |
 | Publicar/ordenar piezas, portada y tres novedades | `src/editorial/shop-catalogue/catalogue.json`, editable con `tina/shop-catalogue.ts`. Guardar un borrador no lo selecciona. `scripts/lib/shop-catalogue-plugin.mjs` genera imports desde esa selección. |
+| Menús de ambos sitios y footer | Global Settings: `src/content/global/navigation.mdx` (menús ES/EN, listas ordenables) y `footer.mdx` (pie compartido). Plantillas en `tina/global-settings.ts`, schema Astro en `src/content.config.ts`, validación/proyección en `src/lib/site-navigation.ts`. MainLayout pasa la configuración a Navigation; no duplicar menús en componentes. |
 | Imágenes, colores HEX/presets, rutas, metadatos y RSS | Seguir las tablas de `docs/GUIA_EDITORIAL_IA.md`; no duplicar plantillas ni listas de productos en código. |
 | Estética del CMS | `public/admin-theme/admin.css`: tokens `--al3-admin-*` y adaptador vendor. `src/lib/admin-theme.ts` lo instala desde `cmsCallback` de `tina/config.ts`, solo en `/admin`. Dashboard propio en `tina/dashboard/PortfolioDashboard.tsx`. |
-| Orden general y por categoría | `order` y `categoryOrders` en el MDX, ficha y candidato de Portfolio Overview. Comparador en `src/lib/project-order.ts`; formulario `tina/dashboard/ProjectOrderEditor.tsx` y preservación del documento completo en `projectOrderValues.ts`. Contratos 6/6, tipos sin errores y persistencia local con restauración comprobados; integración/publicación pendientes. Ver la guía editorial y `openspec/changes/orden-editorial-dashboard/`. |
+| Orden general y por categoría | `Portfolio · orden visual` del menú Tina: singleton `src/editorial/project-order/order.json`, colección `tina/project-order.ts` y campo controlado `ProjectVisualOrderField` en `tina/dashboard/ProjectVisualOrderEditor.tsx`. Arrastrar o Subir/Bajar/Pos.; Save/Reset nativos, igual que Shop. Overview no edita orden. Primer movimiento prepara prioridades existentes; solo Save persiste. Contratos en `src/lib/project-visual-order.ts`/`project-order.ts`, consumo en `src/pages/index.astro`. Ver guía y `openspec/changes/orden-visual-y-home-movil/` para estado/controles. |
 
 Un campo nuevo requiere **Tina → contrato/validación → proyección ES/EN → renderer → consumidores (listados, social, RSS y Live Preview cuando corresponda)**. Actualizar guía y plantilla del contenido en la misma tanda. Nunca editar `tina/__generated__` manualmente ni importar `tina/config.ts` desde componentes públicos.
 
@@ -430,3 +431,9 @@ Se ha implementado un panel de monitoreo avanzado dentro de TinaCMS (Screen Plug
 ---
 
 *Última actualización: 2026-05-20 (Cursor de terminal parpadeante interactivo y suave en buscador de Resume con caret-shape: block)*
+
+
+Listas editoriales Tina: Portfolio y selección Shop comparten [`EditorialOrderList`](tina/dashboard/EditorialOrderList.tsx), paginación 10/20/50 y movimiento global mediante Pos.; Save/Reset siguen siendo nativos. Adaptadores en `ProjectVisualOrderEditor.tsx` y `ShopSelectionField.tsx`; helpers en `src/lib/editorial-list.ts`; tokens `--al3-admin-list-*` en `public/admin-theme/admin.css` (caché candidata `20261110-6`). Ver [criterio visual](docs/TINA_ADMIN_THEME.md) y [estado pendiente de controles](openspec/changes/listas-editoriales-paginadas/tasks.md). No hay migración de contenido ni publicación por este cambio.
+
+
+Cierre local 10/11 de listas compartidas: pruebas nuevas3/3; tipos0 errores/0 warnings; navegador real comprobó paginación, movimiento global, Save/reapertura/Reset y restauración exacta. Ver report-2026-11-10 del change listas-editoriales-paginadas para alcance y límites. Publicación se registra separadamente; no atribuirle aún este resultado local.

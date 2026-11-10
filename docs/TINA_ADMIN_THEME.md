@@ -27,7 +27,7 @@ El adaptador conecta estos tokens con `--tina-color-primary[-light/-dark]`, `--t
 
 1. Para color/tamaño común, editar el token del CSS. Para una excepción de Tina, mantener selector acotado a `body.tina-tailwind[data-al3-admin-theme="dark"]`; explicar el motivo junto a la regla.
 2. Para dashboard propio, consumir `var(--al3-admin-..., fallback)` en `tina/dashboard/PortfolioDashboard.tsx`; mantener el fallback coherente con el token. No cambiar queries para una corrección estética.
-3. Si cambia CSS, actualizar el parámetro `v` de `stylesheet.href` en `src/lib/admin-theme.ts` (actual `20261106-1`). No editar el admin compilado ni `node_modules`.
+3. Si cambia CSS, actualizar el parámetro `v` de `stylesheet.href` en `src/lib/admin-theme.ts` (candidato actual `20261110-6`; publicado el 06/11: `20261106-1`). No editar el admin compilado ni `node_modules`.
 4. Si cambian recursos, modificar `scripts/prepare-admin-theme-assets.mjs` y prepararlos de forma explícita; no regenerarlos como efecto secundario de un alta editorial.
 5. Registrar cambio, alcance y evidencia en changelog/OpenSpec. Revisar las superficies afectadas con los controles autorizados por AGENTS; no iniciar suites o builds por esta lista.
 
@@ -42,6 +42,18 @@ La configuración se divide en tres capas: `tina/config.ts` y módulos de colecc
 ## Sidebar y referencia Payload
 
 Los controles propios del inventario usan `.al3-admin-control` para buscador, selector y orden numérico, y `.al3-admin-order-*` para botón, etiquetas y ayudas. Sus tamaños/superficies se centralizan en `admin.css`, sin estilos inline distintos por fila. Mantener la alineación con el padding de la tarjeta: selector y párrafos no agregan otro margen lateral; la primera celda de tabla comienza en esa misma guía. No quitar los steppers nativos ni reducir el área pulsable para ajustar el aspecto.
+
+El candidato de orden visual usa `.al3-admin-visual-order` y `.al3-admin-sort-*`: lista que usa el scroll general del formulario, miniaturas, asa y acciones de 44 px, con los mismos tokens. `touch-action: none` se aplica exclusivamente al asa de arrastre; el resto permite scroll nativo. Motion Reorder, ya instalado, mantiene orden DOM y animación; Subir/Bajar/Pos. ofrecen alternativa al drag y restauran foco. Escape cancela el movimiento. El CSS no escribe posiciones: colección, lectura, migración y guardado están en `tina/project-order.ts`, `src/lib/project-visual-order.ts` y `tina/dashboard/ProjectVisualOrderEditor.tsx`. La nueva colección requiere regeneración normal de Tina e índice Cloud de la rama antes de comprobar el dashboard remoto; no editar generados ni omitir controles Cloud.
+
+En pantallas nativas, el Nav `.relative.z-30.flex.flex-col.bg-white.border-r` conserva su ancho (`flex-shrink: 0`); su hermano y el dashboard permiten `min-width: 0`. `.al3-admin-dashboard` es contenedor inline-size y `.al3-admin-dashboard-grid` usa una columna bajo 960 px disponibles. No compensar comprimiendo la navegación ni con overflow hidden global. Cambio preparado por lectura de fuente vendor/captura aportada; comprobar también el sidebar colapsado y anchos pequeños al cierre.
+
+Por criterio unificado, `Portfolio · orden visual` contiene directamente el campo `ProjectVisualOrderField`, igual que Shop contiene su selección. No hay enlace intermedio ni editor en Overview. Save/Reset son los controles nativos del documento. `.al3-admin-native-order` retira el recuadro exterior y usa filas continuas, con los mismos tokens y controles; el selector propio comparte `.al3-admin-control`. No sembrar scopes al abrir. Las colecciones Shop siguen consecutivas en `tina/config.ts`; no reordenar nodos React imperativamente.
+
+FieldsGroup nativo es `flex flex-wrap w-full ... whitespace-nowrap`. Un campo personalizado sin ancho puede quedar ajustado a su contenido. `.al3-admin-native-order` declara `flex: 1 1 100%`, inline-size/max-inline-size 100%, min-inline-size 0, box-sizing border-box, white-space normal y el padding horizontal de 8 px del FieldWrapper nativo. No ampliar todos los formularios ni parchear un max-width supuesto: contrastar la fuente vendor y limitar la regla al campo.
+
+El campo es contenedor nombrado `al3-order / inline-size`. Por defecto las acciones van debajo del título; desde 40rem disponibles se muestran asa, miniatura, título flexible y acciones en una fila. El punto depende del ancho real del campo, incluyendo sidebar abierto, no del viewport. Botones solo con iconos de 18 px, aria-label/title y área de 44 px; FileText ocupa la miniatura cuando no hay foto válida. Bordes discretos, hover, foco y espaciado consumen los mismos tokens del resto de listas. No ocultar controles ni truncar títulos para tapar desbordes. Save/Reset y contrato de datos permanecen nativos.
+
+La lista no tiene altura máxima ni overflow propio: usa exclusivamente el scroll de FormWrapper (`[data-test^="form:"]`), igual que la selección Shop. El autoscroll durante drag localiza ese ancestro y desplaza su scrollTop; no mantiene un segundo scroll en el listado ni usa layoutScroll en un grupo que ya no desplaza. La barra Save/Reset continúa siendo la nativa. Revisar el contenedor real si cambia una versión de Tina; no trasladar ese desplazamiento al body global.
 
 Tina tiene dos paneles distintos: navegación de colecciones/herramientas y formulario de edición junto al iframe. El menú se superpone al formulario con su overlay nativo. Mantener estética coherente no implica fusionarlos ni cambiar sus estados. El botón «Show editing panel» debe conservar `position: absolute`; ponerlo en relative lo incorpora al layout flex y crea una columna vacía a la izquierda.
 
@@ -96,3 +108,29 @@ Retirar la llamada a `installAdminTheme()` de cmsCallback devuelve el shell de T
 La actualización solicitada usa `tinacms` 3.15.1 y `@tinacms/cli` 4.0.4, con override en pnpm-workspace para que el CLI y los hooks públicos resuelvan la misma copia de Tina. Actualizar ambos juntos y regenerar tina-lock desde el CLI; nunca editar generados a mano. Referencia: [guía oficial de actualización](https://tina.io/docs/guides/upgrade-to-latest-version). La instalación local no equivale a validación de producción ni publicación.
 
 Compatibilidad del esquema: las colecciones de campos declaran `defaultItem` al nivel colección, separado de `ui.router`. Las variantes de Pages se identifican por `_template` en cada documento; `match.filename` no es una propiedad válida de esas plantillas. El cliente `cms.api.tina.request<T>()` devuelve los datos y lanza errores HTTP/GraphQL: el dashboard debe tipar T y conservar su manejo de errores, sin convertir unknown mediante un cast. Los tipos de Node 24 se declaran como dependencia explícita. El control del 02/11 terminó con 0 errores / 0 warnings / 80 hints tras corregir MainLayout/ShopShare; build Cloud Ready el 03/11, con límites y pendientes separados en el reporte. No extrapolarlo a producción.
+
+
+## Listas editoriales compartidas y paginación
+
+Portfolio · orden visual y Store 3D · selección pública usan `tina/dashboard/EditorialOrderList.tsx`. Son listas de orden, no tablas con ordenación de columnas. Portfolio adapta scopes mediante `ProjectVisualOrderEditor.tsx`; Shop adapta referencias products/latest mediante `ShopSelectionField.tsx`. Shop permite agregar, reemplazar o quitar referencias; Portfolio cambia posiciones de artículos publicados/visibles, general o por categoría. No eliminar esas diferencias para conseguir igualdad visual.
+
+Tokens semánticos nuevos en `public/admin-theme/admin.css` (prefijo `--al3-admin-list-`):
+
+| Sufijo | Valor | Uso |
+| --- | --- | --- |
+| `font-size`, `font-weight` | 14px, 500 | Títulos de fila. |
+| `row-height`, `padding`, `gap` | 64px mínimo, 8px, 8px | Densidad compartida; nunca altura fija que corte textos. |
+| `target`, `action-gap` | 44px, 4px | Área pulsable y separación de controles. |
+| `radius` | 4px | Contorno de lista y controles. |
+| `thumb-width`, `thumb-height` | 40px, 30px | Foto o placeholder neutro. |
+
+Superficies, separadores, estados e iconos consumen los tokens existentes (`panel`, `raised`, `edge`, `hover`, `text`, `muted`, `icon`, `icon-size`, `icon-stroke`). El contenedor `al3-order` a 40rem lleva miniatura/acciones a la misma fila; por debajo, acciones en otra fila sin overflow horizontal. La lista no tiene scroll propio: sigue usando FormWrapper.
+
+Paginación compartida: 10 filas iniciales; selector 10/20/50 y anterior/siguiente solo si supera diez elementos. `src/lib/editorial-list.ts` concentra tamaño inicial, sustitución de una página validada como permutación y movimiento a una posición global. La UI pagina, el formulario conserva la lista completa. Arrastre dentro de la página; flechas cruzan sus límites y Pos. lleva a cualquier posición (también 1). Tras mover, mostrar la página de destino y devolver foco al asa. Cambiar categoría remonta la vista paginada, conservando los otros ámbitos pendientes.
+
+Todo se conecta a input.value/onChange. No guardar al montar, paginar o arrastrar; Save/Reset nativos confirman/descartan. Escape durante drag de Portfolio restaura el documento de ámbitos previo, incluso si la migración numérica aún no estaba guardada. Shop conserva las referencias y el máximo de tres novedades; para quitar/reemplazar una pieza utilizada en hero/latest, primero cambiar esos usos. Quitar selección no borra la ficha. El lápiz cambia la referencia seleccionada, no edita el contenido de la pieza.
+
+Estado 10/11: implementación y lectura de fuentes; no recorrido de navegador, persistencia, build ni publicación en esta tanda. Los controles verdes anteriores no validan este nuevo componente compartido. Ver `openspec/changes/listas-editoriales-paginadas/`.
+
+
+Cierre local 10/11 de listas compartidas: pruebas nuevas3/3; tipos0 errores/0 warnings; navegador real comprobó paginación, movimiento global, Save/reapertura/Reset y restauración exacta. Ver report-2026-11-10 del change listas-editoriales-paginadas para alcance y límites. Publicación se registra separadamente; no atribuirle aún este resultado local.

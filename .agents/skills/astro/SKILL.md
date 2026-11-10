@@ -9,9 +9,17 @@ metadata:
 
 # Astro Usage Guide
 
+Project policy (Alejandro, 2026-10-16): follow AGENTS.md and docs/TESTING_MCP.md. Repeated suites and duplicate MCP processes exhausted context and RAM in GitCron. The executor does not run verification, builds, tests, type checks, lint, e2e, or take/inspect screenshots per batch. Only an explicit batch prompt may request a control command: run that command once; on failure report and deliver without retries or substitute checks. The orchestrator audits each batch by diff without verification, owns audit screenshots, and runs final verification after all OpenSpec tasks are complete, before archive/merge. Preserve tests and protections; report explicitly named exceptions without disabling controls. Do not use the e2e MCP tool or reactivate its global server without consulting Alejandro; use console e2e only when authorized by that policy. Command examples below are reference, not batch instructions.
+
 **Always consult [docs.astro.build](https://docs.astro.build) for code examples and latest API.**
 
 Astro is the web framework for content-driven websites.
+
+## Portfolio + Tina integration
+
+For this repository, read [the editorial guide](../../../docs/GUIA_EDITORIAL_IA.md) before changing content, previews or publication. Tina's collection listing can pass only `_sys` to `ui.router`; missing title is not evidence of a draft. Keep routing in `src/lib/project-editor-route.ts`: local review and deployed visual editing have different route availability. Never expose draft review routes in production to make the editor work. A router fix needs a rebuilt admin bundle; reindexing Tina Cloud alone does not publish it. Keep router, `useTina` subscription and renderer connected, and distinguish bundle/build evidence from an observed visual editing session.
+
+Use the existing `npm run dev` for Tina + Astro rather than Astro alone. Cloud origin permissions, branch indexing, content saves and deployments are separate operations; see the editorial guide for their current procedures. These instructions do not authorize additional controls or releases.
 
 ---
 
@@ -28,7 +36,7 @@ CLI looks for `astro.config.js`, `astro.config.mjs`, `astro.config.cjs`, and `as
 - `npx astro add` - Add an integration.
 - `npx astro sync` - Generate TypeScript types for all Astro modules.
 
-**Re-run after adding/changing plugins.**
+**Record plugin changes for final verification; do not re-run checks automatically.**
 
 ### Project Structure
 
@@ -99,9 +107,9 @@ const { title, body } = Astro.props;
 ### Deploying with an Adapter
 
 1. Add the adapter: `npx astro add vercel --yes` (or `node`, `cloudflare`, `netlify`)
-2. Run `npx astro check` to catch type and configuration errors before building.
-3. Run `npx astro build` to produce the deployment artifact.
-4. Verify the build output directory (e.g. `dist/`) exists and is non-empty before proceeding.
+2. The orchestrator includes type/configuration checks in final verification, subject to project policy above.
+3. The orchestrator uses the project's `npm run build` (TinaCMS + Astro) for the final deployment artifact; do not add an Astro-only fallback after failure.
+4. The orchestrator reviews the output directory (e.g. `dist/`) in the final verification before proceeding.
 5. Deploy the output per the adapter's documentation.
 
 ---

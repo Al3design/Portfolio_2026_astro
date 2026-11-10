@@ -6,7 +6,14 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-10] — Acceso visual de artículos desde Tina Cloud
+
+- El router rechazaba los clics del listado Cloud porque reciben solo `_sys`, sin título. Ahora un resolver asíncrono comprueba la página pública del mismo origen y abre el editor visual si existe. Mantiene el formulario ante 404, protección, redirección, error o timeout; los borradores continúan en revisión local.
+- Pages mantiene sus rutas por filename. Sin cambios de esquema, estilos, contenido o secretos. Cierre focalizado del router: 7/7 pruebas, una ejecución; sin comprobación de iframe/guardado Cloud. Esta corrección todavía no está desplegada. Evidencia: `docs/REPORT-2026-11-10-tina-visual-router.md`.
+
 ## [2026-11-10] — Listas editoriales y paginación compartidas
+
+- Publicado64e720b enmain, deployment9EHDs8J3KReady10/11 12:28:43ART. Índicemain actualizado una vez; reintento acotado tras ERR_CLOUD_CHECK_FAILED. Tipos0 errores/0warnings; pruebas3/3 y recorrido local restaurado. HTTP200 admin/home/tienda/CSS; bundleindex-Dmf9-oIG y caché20261110-6. Resultado agregado localmente después del despliegue para no reconstruir solo documentación.
 
 - Portfolio y selección Shop pasan al mismo componente `EditorialOrderList`, con tokens semánticos de fila, miniatura, acciones y paginador en admin.css. Caché candidata 20261110-6; scroll general nativo y disposición por ancho de contenedor.
 - Diez filas por página, selector 10/20/50, flechas y destino global Pos. La página visible nunca sustituye a la lista completa al guardar. Arrastre acotado a la página con Escape/restauración y alternativa por controles.

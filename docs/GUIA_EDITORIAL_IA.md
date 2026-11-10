@@ -125,7 +125,7 @@ Persistir `_template`; `__typename` viene de GraphQL, no es dato que deba escrib
 - Mantener `tinaField` para edición visual y `articleBlocksMarkdown` para exportación. Un campo nuevo en Tina no se refleja solo por existir en el formulario.
 - `projectIsPublished` es el guard del contenido estructurado: estado explícito, fecha, idiomas, bloques y medios válidos. Home/archive/Resume/rutas/RSS lo consultan, con sus condiciones de visibilidad. No omitirlo para publicar.
 - Las rutas, metadatos, listas, relación inversa del CV y RSS necesitan generación/despliegue. Un cambio visible en el iframe no prueba que esos consumidores ya estén actualizados.
-- Si una selección del editor solo devuelve `_sys`, mantener `projectEditorRoute` y su fallback al formulario nativo. No suponer visibilidad por campos ausentes ni crear rutas públicas para editar un draft.
+- Si una selección del editor solo devuelve `_sys`, usar `resolveProjectEditorRoute`: local abre revisión; Cloud consulta con HEAD la ruta canónica `/projects/<slug>` del mismo origen y abre visual solo con 200, sin redirecciones. Error, timeout de cuatro segundos o página ausente conservan el formulario nativo. Campos ausentes no prueban que sea borrador. Los drafts/ocultos explícitos no se consultan; no crear rutas públicas para editarlos. Pages conserva su router por filename (home/about/archive/resume). Cambios de router requieren reconstruir y desplegar admin; reindexar Cloud no los publica.
 
 ## 5. Crear una pieza de Shop 3D
 

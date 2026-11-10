@@ -3,7 +3,7 @@ import { PortfolioDashboard } from "./dashboard/PortfolioDashboard";
 import { PROJECT_CATEGORIES } from "../src/lib/categories";
 import { articleBlockTemplates } from './article-blocks';
 import { articleLocaleFields } from './article-locales';
-import { projectEditorRoute, localEditorHostname } from '../src/lib/project-editor-route';
+import { resolveProjectEditorRoute, localEditorHostname } from '../src/lib/project-editor-route';
 import { shopProductCollection } from './shop-products';
 import { shopCatalogueCollection } from './shop-catalogue';
 import { projectOrderCollection } from './project-order';
@@ -48,7 +48,7 @@ export default defineConfig({
         ui: {
           router: ({ document }: { document: any }) => {
             const local = typeof window !== 'undefined' && localEditorHostname(window.location.hostname);
-            return projectEditorRoute(document, local);
+            return resolveProjectEditorRoute(document, local);
           },
         },
         fields: [

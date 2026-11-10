@@ -28,6 +28,8 @@ La [auditoría del editor de artículos](openspec/changes/tema-admin-tina/articl
 
 Un campo nuevo requiere **Tina → contrato/validación → proyección ES/EN → renderer → consumidores (listados, social, RSS y Live Preview cuando corresponda)**. Actualizar guía y plantilla del contenido en la misma tanda. Nunca editar `tina/__generated__` manualmente ni importar `tina/config.ts` desde componentes públicos.
 
+Acceso visual de artículos: `tina/config.ts` usa `resolveProjectEditorRoute` de `src/lib/project-editor-route.ts`. El listado Cloud puede entregar solo `_sys`; la ruta pública existente se comprueba antes de abrir el iframe. Si no existe o falla la consulta, queda disponible el formulario. Pages resuelve por filename. Ver sección 4 de la guía editorial; corregir código local no actualiza el admin desplegado.
+
 Tina usa CSS propio como excepción acotada al shell vendor; el sitio conserva SCSS. No cargar ese CSS en `MainLayout` ni dentro del iframe. Al cambiar el adaptador, actualizar su versión de caché en `src/lib/admin-theme.ts`; la tabla de tokens y los límites están en la guía visual.
 
 Estado: TinaCMS **3.15.1**, CLI **4.0.4**, candidato `df001b1` en Preview Ready y rama Cloud reindexada. Nota interna Cloud guardada/reabierta y restaurada/reabierta el 03/11 (commits `c0d8fec`/`fb5b4a9`); no equivale a upload/alta/selección completa ni producción. HEAD local sigue df001b1, sin pull sobre cambios ajenos. Live Preview Shop nuevo está habilitado en local; Cloud conserva formulario nativo. Evidencia y pendientes: `openspec/changes/tema-admin-tina/report-2026-11-03.md` y tareas de `alta-piezas-shop-desde-tina`. No repetir builds o controles completados por leer este documento.

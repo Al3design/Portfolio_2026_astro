@@ -16,6 +16,8 @@ Los [prompts](.agents/skills/portfolio-editorial/references/prompts.md) incluyen
 
 La rutina conserva **tokens y maqueta**: SCSS de `src/styles/abstracts/` y `--clr-brand-*` en el sitio; `--al3-admin-*`/`--tina-*` en el administrador, según [su guía](docs/TINA_ADMIN_THEME.md), aislados del sitio y del iframe. Usar componentes/variantes existentes y conservar anchos, espaciados, tipografías, temas y responsive. Una carga de contenido no autoriza modificar CSS/tokens, inventar layouts o incrustar estilos/HTML/clases; si no encaja, informar la limitación antes de ampliar el encargo.
 
+La portada Shop sigue las tres primeras piezas del catálogo cuando Novedades queda vacío en Tina; una selección explícita permite priorizarlas manualmente. Hero conserva su selección independiente. Revisar inicio y colección ES/EN al cambiar el orden.
+
 En Shop, las altas seleccionadas entran primero; el orden manual de **Store 3D · selección pública** prevalece después. Editar fotos/textos no mueve piezas ni cambia hero/novedades. Completar muestras `palette` ES/EN para ver los cuadrados de colores, sin deducir códigos de fabricante. Procedimiento en la [guía editorial](docs/GUIA_EDITORIAL_IA.md) y la skill.
 
 ## Continuidad para IA — editorial y Tina (03/11/2026)

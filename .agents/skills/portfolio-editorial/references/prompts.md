@@ -93,3 +93,5 @@ Si un tono es ambiguo, preguntame. Ejemplo confirmado: litofania-messi = Dorado 
 Los HEX manuales son aproximaciones de pantalla, no tokens del sitio.
 Prepará Preview de esta revisión y detenete para mi OK posterior.
 ```
+
+Para altas/orden Shop, revisar inicio (/tienda/ y /en/shop-3d/) además de colección: latest vacío sigue las tres primeras piezas de products; latest explícito prioriza manualmente. Usar modo automático salvo selección editorial solicitada; conservar hero. No dar por corregido el inicio por comprobar solo la colección.

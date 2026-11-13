@@ -92,6 +92,7 @@ function SelectionField({ input, field, meta, form }: Props) {
     <h2>{field.label}</h2><p>{field.description}</p>
     <p>Arrastrá para ordenar, usá las flechas o elegí una posición. Confirmá con Save o descartá con Reset.</p>
     {!latest && <p>Las piezas que agregás entran al principio. Después podés elegir su posición; editar su ficha o sus fotos no cambia el orden.</p>}
+    {latest && <p>Sin novedades elegidas, la portada muestra las tres primeras piezas del catálogo. Agregá piezas aquí solo para priorizarlas manualmente; quitá todas para volver al orden automático.</p>}
     <EditorialOrderList label={field.label || 'Piezas'} disabled={disabled} dirty={meta.dirty}
       items={ids.map(id => ({ id, title: byId.get(id)?.title || id.split('/').pop() || id, image: byId.get(id)?.photos?.[0]?.image ?? undefined }))}
       onChange={commit} actions={(item, locked) => <>

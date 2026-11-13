@@ -6,6 +6,12 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — Candidato: orden automático también en inicio de Tienda
+
+- La portada conservaba las tres novedades anteriores aunque el catálogo ya tenía altas primero. Novedades vacío pasa a usar las tres primeras piezas del catálogo; una selección manual explícita sigue teniendo prioridad y se puede vaciar para volver al modo automático.
+- Selección candidata en modo automático; hero, catálogo completo, fotos/paletas, maqueta y tokens intactos. El admin explica ambos modos sin cambiar esquema/generados.
+- Checker de artefacto comprueba orden completo y tarjetas visibles de inicio/colección ES/EN, además de controles de medios/privacidad existentes. Skill/AGENTS/guía registran ambas superficies. Rama codex/orden-portada-tienda, pendiente Preview y OK posterior.
+
 ## [2026-11-13] — Flujo Git y recuperación con 2FA para IA local
 
 - AGENTS, skill editorial, recuperación, config y README distinguen despliegue automático por push de Redeploy manual para un fallo diagnosticado. No duplicar un despliegue exitoso con Redeploy.

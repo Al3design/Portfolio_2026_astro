@@ -7,6 +7,7 @@ import { shopInquiryUrl } from '@/lib/shop-inquiry';
 import ShopWhatsAppLink from '@/components/ShopWhatsAppLink.astro';
 import { shopCopy, shopRoutes, type ShopLanguage } from '@/data/shop-demo';
 import { shopLatestSlugs, shopHeroSlug } from '@/data/shop-release';
+import { shopLandingProducts } from '@/lib/shop-landing-order';
 import styles from '@/styles/pages/_shop.module.scss';
 
 interface Props { language: ShopLanguage }
@@ -14,10 +15,7 @@ const { language } = Astro.props;
 const en = language === 'en';
 const t = shopCopy[language];
 const catalogue = await shopCatalogue();
-const products = [
-  ...shopLatestSlugs.map(slug => catalogue.find(piece => piece.slug === slug)!),
-  ...catalogue.filter(piece => !shopLatestSlugs.some(slug => slug === piece.slug)),
-];
+const products = shopLandingProducts(catalogue, shopLatestSlugs);
 const hero = products.find(piece => piece.slug === shopHeroSlug)!;
 ---
 <MainLayout section="shop" language={language} noIndex title="Store 3D · Al3Design Objects" description={t.intro} languageLinks={shopRoutes} shopCollectionHref="#collection" shopNotice={en ? 'Real prints · price on enquiry · delivery subject to stock and confirmation' : 'Impresiones reales · precio a consultar · entrega según stock y a confirmar'}>

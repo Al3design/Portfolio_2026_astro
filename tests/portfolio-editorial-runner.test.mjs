@@ -8,7 +8,9 @@ import { createServer } from 'node:http';
 import { inventory, assertSnapshot, safePath, probe, seal, version } from '../.agents/skills/portfolio-editorial/scripts/recorrido.mjs';
 
 async function fixture() {
-  const site = await mkdtemp(join(tmpdir(), 'portfolio-runner-test-'));
+  const directory = await mkdtemp(join(tmpdir(), 'portfolio-runner-test-'));
+  const site = join(directory, 'site');
+  await mkdir(site);
   await mkdir(join(site, 'content'));
   await writeFile(join(site, 'content', 'piece.json'), '{"title":"Original"}');
   const files = await inventory(site);

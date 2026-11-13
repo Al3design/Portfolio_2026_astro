@@ -6,6 +6,12 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — Rama editorial permanente para cargas Tina/IA
+
+- Por decisión de Alejandro, contenido e imágenes reutilizan editorial (sin prefijo codex), un solo lote pendiente por vez, Preview y OK posterior antes de main. Ramas codex/<tarea> quedan para cambios técnicos; editorial se conserva y sincroniza después de integrar.
+- Rama remota creada desde main 309cef2, indexada en Tina con Event Log succeeded. Se documenta entrada /admin/ del Preview editorial: config deriva la rama del despliegue, mientras producción /admin/ sigue en main. Sin cambiar esquema, build, tokens ni runtime ni habilitar el workflow de pago.
+- AGENTS, CLAUDE, skill, prompts, operación, OpenCode/DSH, README y guía alineados. La corrección técnica de portada 1667740 sigue aparte y pendiente de OK; esta rutina no la publica.
+
 ## [2026-11-13] — Flujo Git y recuperación con 2FA para IA local
 
 - AGENTS, skill editorial, recuperación, config y README distinguen despliegue automático por push de Redeploy manual para un fallo diagnosticado. No duplicar un despliegue exitoso con Redeploy.

@@ -4,7 +4,7 @@ Welcome to the documentation for **The Compiled Soul**, a personal portfolio bui
 
 ## Rutina de IA local
 
-Entrada: [skill portfolio-editorial](.agents/skills/portfolio-editorial/SKILL.md), [operación](.agents/skills/portfolio-editorial/references/operacion.md), [prompts para alta/cambio/OK](.agents/skills/portfolio-editorial/references/prompts.md) y [perfiles Windows](.agents/skills/portfolio-editorial/references/perfiles-windows.md). Encargo nuevo: `main` limpia/actualizada → rama `codex/<tarea>` → candidato → Preview → URL/revisión y parada para OK posterior → integración permitida → `main` local/remota actualizada y limpia. Un encargo retomado conserva su rama. Mantener diseño y cambios ajenos, sin worktrees ni suites por tanda. Estado y límites del ensayo: [reporte 13/11](openspec/changes/rutina-ia-local-portfolio/report-2026-11-13.md).
+Entrada: [skill portfolio-editorial](.agents/skills/portfolio-editorial/SKILL.md), [operación](.agents/skills/portfolio-editorial/references/operacion.md), [prompts para alta/cambio/OK](.agents/skills/portfolio-editorial/references/prompts.md) y [perfiles Windows](.agents/skills/portfolio-editorial/references/perfiles-windows.md). Contenido: rama fija `editorial`, sincronizada con `main` antes de otro lote cuando no hay contenido pendiente → candidato → Preview → URL/revisión y parada para OK posterior → integración permitida → `main` local/remota actualizada y limpia. Un encargo retomado conserva su rama; un trabajo técnico nuevo usa `codex/<tarea>` desde main limpia/actualizada. No mezclar lotes pendientes ni borrar editorial tras integrar. Mantener diseño y cambios ajenos, sin worktrees ni suites por tanda. Estado y límites del ensayo: [reporte 13/11](openspec/changes/rutina-ia-local-portfolio/report-2026-11-13.md).
 
 El destino es **Vercel**, proyecto documentado `portfolio-2026-astro`, dominio `al3design.dev`; `vercel.json` define el build. La integración `e7ce234` se acreditó el 13/11 por GitHub y navegador: Preview/Production Ready; el conector Vercel de esa sesión no tenía acceso. Esto no acredita el acceso propio de OpenCode/DSH. Tina conserva sus contratos separados para artículos ES/EN, páginas, globales, orden visual, fichas y selección Shop; formularios, apariencia admin y Cloud tienen procedimientos distintos.
 
@@ -17,6 +17,10 @@ Los [prompts](.agents/skills/portfolio-editorial/references/prompts.md) incluyen
 La rutina conserva **tokens y maqueta**: SCSS de `src/styles/abstracts/` y `--clr-brand-*` en el sitio; `--al3-admin-*`/`--tina-*` en el administrador, según [su guía](docs/TINA_ADMIN_THEME.md), aislados del sitio y del iframe. Usar componentes/variantes existentes y conservar anchos, espaciados, tipografías, temas y responsive. Una carga de contenido no autoriza modificar CSS/tokens, inventar layouts o incrustar estilos/HTML/clases; si no encaja, informar la limitación antes de ampliar el encargo.
 
 En Shop, las altas seleccionadas entran primero; el orden manual de **Store 3D · selección pública** prevalece después. Editar fotos/textos no mueve piezas ni cambia hero/novedades. Completar muestras `palette` ES/EN para ver los cuadrados de colores, sin deducir códigos de fabricante. Procedimiento en la [guía editorial](docs/GUIA_EDITORIAL_IA.md) y la skill.
+
+## Entrada editorial fija
+
+Tina para las cargas: [administrador de editorial](https://portfolio-2026-astro-git-editorial-aledesign-projects.vercel.app/admin/). Preview: [sitio editorial](https://portfolio-2026-astro-git-editorial-aledesign-projects.vercel.app/). El admin de producción conserva main; entrar por el enlace editorial antes de guardar. Ver [operación](.agents/skills/portfolio-editorial/references/operacion.md).
 
 ## Continuidad para IA — editorial y Tina (03/11/2026)
 

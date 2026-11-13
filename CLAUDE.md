@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Entrada vigente: `AGENTS.md`, `openspec/config.yaml` y `.agents/skills/portfolio-editorial/SKILL.md`. Para contenido seguir su operación/prompts y `docs/GUIA_EDITORIAL_IA.md`: Preview real, URL/revisión, ESPERANDO_OK_PREVIEW y terminar el turno hasta el OK posterior de Alejandro. Trabajo nuevo en rama propia desde main limpia/actualizada según el flujo Git de AGENTS, sin worktrees ni publicar por guardar en Cloud/main. Conservar diseño y trabajo ajeno; los catálogos de comandos no autorizan controles por tanda.
+Entrada vigente: `AGENTS.md`, `openspec/config.yaml` y `.agents/skills/portfolio-editorial/SKILL.md`. Para contenido seguir su operación/prompts y `docs/GUIA_EDITORIAL_IA.md`: Preview real, URL/revisión, ESPERANDO_OK_PREVIEW y terminar el turno hasta el OK posterior de Alejandro. Contenido en la rama permanente editorial y trabajo técnico nuevo en codex/<tarea> desde main limpia/actualizada según AGENTS, sin worktrees ni publicar por guardar en Cloud/main. Conservar diseño y trabajo ajeno; los catálogos de comandos no autorizan controles por tanda.
 
 Ante bloqueos/avisos consultar únicamente el caso de `.agents/skills/portfolio-editorial/references/bloqueos-y-avisos.md`: no confundir credenciales locales, índice Cloud, acceso del conector o 2FA con un fallo del producto. MFA se entrega al usuario; no eludirlo ni repetir instalaciones/suites/builds sin evidencia y permiso aplicable.
 
@@ -109,6 +109,8 @@ The sidebar's `# Filters` and `# Layout` blocks are rendered inside `home__sideb
 
 ## Git
 
-- Seguir el flujo Git de AGENTS (decisión del 13/11): encargo nuevo en `codex/<tarea>` desde `main` limpia y actualizada por fast-forward; retomado en su rama existente. No crear worktrees ni ramas por tanda.
+- Seguir el flujo Git de AGENTS (decisión del 13/11): contenido en `editorial` permanente, un lote pendiente por vez; trabajo técnico nuevo en `codex/<tarea>` desde `main` limpia/actualizada por fast-forward; retomado en su rama existente. No crear worktrees ni ramas por tanda.
 - Cambios ajenos/divergencias requieren coordinar, sin reset/clean/stash automáticos. Commits en la rama del encargo; Preview y OK posterior antes de integrar a producción.
 - Tras el OK completar integración permitida y dejar `main` local/remota al día y checkout limpio, sin pedir nuevamente autorizaciones de esa misma revisión.
+
+Para editar en Tina usar el administrador del Preview permanente de editorial: https://portfolio-2026-astro-git-editorial-aledesign-projects.vercel.app/admin/. tina/config.ts deriva branch de VERCEL_GIT_COMMIT_REF; /admin de producción apunta a main y no es la entrada de cargas. No cambiar branch globalmente a editorial en config ni en variables de Production: los builds deben seguir leyendo su propia rama. Si el Preview está protegido, autenticar la sesión; no desactivar protección. Validar el origen exacto en Site URLs y que el cliente Tina use editorial antes de guardar.

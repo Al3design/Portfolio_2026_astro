@@ -16,8 +16,9 @@ Si ya existe el borrador, trabajá en ese documento; no lo dupliques ni sobreesc
 Hosting Vercel. Conservá tokens,
 maqueta, componentes, anchos, espacios, tipografías, temas y condiciones vigentes.
 Completá ES/EN con hechos aportados, sin inventar fechas, material ni precios.
-Si es un encargo nuevo, creá codex/<tarea> desde main limpia y actualizada
-según AGENTS; si es retomado, continuá su rama. Sin worktrees.
+Para contenido reutilizá editorial permanente, un solo lote pendiente. Antes de otra
+carga, sincronizá con main solo si no queda contenido sin aprobar, según AGENTS.
+Cambios técnicos van en codex/<tarea>; retomados conservan su rama. Sin worktrees.
 Prepará candidato y Preview por el carril Vercel permitido. Parada ESPERANDO_OK_PREVIEW
 con URL directa, revisión y pendientes. Esperá mi OK posterior antes de producción.
 Controles autorizados para esta tanda: ninguno. El orquestador fija los de cierre.
@@ -33,6 +34,7 @@ En [ruta/slug/URL] (ej.: src/editorial/shop-products/jarron-acanalado.json),
 cambiá solamente [campo/texto/foto] (ej.: locales.es.description)
 por [material o texto definitivo] (ej.: "Un jarrón decorativo de PLA con formas redondeadas y textura acanalada. Consultá por los colores disponibles.", texto actual de esa ficha para mostrar el formato).
 Conservá identidad, URL, formato editorial, campos ajenos, orden y diseño.
+Reutilizá editorial para este cambio de contenido, sin mezclar otros pendientes.
 Respetá tokens y maqueta existentes del sitio y del admin; Preview en Vercel.
 No inventaries otras piezas ni modifiques CSS. Si es imagen, revisá el recurso
 y sus usos reales (portada/card/social o primera foto Shop), sin prometer cambios
@@ -93,3 +95,5 @@ Si un tono es ambiguo, preguntame. Ejemplo confirmado: litofania-messi = Dorado 
 Los HEX manuales son aproximaciones de pantalla, no tokens del sitio.
 Prepará Preview de esta revisión y detenete para mi OK posterior.
 ```
+
+Entrada Tina para todas las cargas: Preview permanente de editorial /admin/, enlazado en README/operación. No abrir producción /admin/ para guardar un borrador. La selección de rama se comprueba antes de cualquier guardado; un enlace de producción no selecciona editorial por sí mismo.

@@ -1,0 +1,5 @@
+- [x] Crear editorial local/remota desde main limpia sin incorporar corrección técnica pendiente.
+- [x] Indexar solo editorial y comprobar Event Log succeeded.
+- [x] Alinear AGENTS/CLAUDE/skill/prompts/perfiles/README/guía y definir entrada admin propia de la rama.
+- [ ] Confirmar Preview de editorial y origen CMS exacto; inspección sin guardar contenido real.
+- [ ] Incorporar solo esta rutina autorizada a main, sincronizar editorial y registrar estado final.

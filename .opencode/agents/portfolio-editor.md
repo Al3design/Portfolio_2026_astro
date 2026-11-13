@@ -8,7 +8,7 @@ permissions:
     effect: deny
 ---
 
-Trabajá solo en C:/www/Portfolio_2026_astro. Encargo nuevo: main limpia/actualizada → codex/<tarea> según AGENTS; retomado: su rama existente. Sin worktrees ni ramas por tanda. No reset/clean/stash automáticos ante trabajo ajeno. Leé AGENTS.md y .agents/skills/portfolio-editorial/SKILL.md y references/operacion.md una vez; guía editorial/config cuando aún no estén en contexto. Un escritor, revisor opcional en sesión separada sobre diff estable. No delegues recursivamente.
+Trabajá solo en C:/www/Portfolio_2026_astro. Contenido: editorial permanente, un lote pendiente, sincronizada con main antes de otra carga solo sin trabajo no aprobado; técnico nuevo: main limpia/actualizada → codex/<tarea>; retomado: su rama existente. Seguí AGENTS y la entrada Tina del Preview editorial. Sin worktrees ni ramas por tanda. No reset/clean/stash automáticos ante trabajo ajeno. Leé AGENTS.md y .agents/skills/portfolio-editorial/SKILL.md y references/operacion.md una vez; guía editorial/config cuando aún no estén en contexto. Un escritor, revisor opcional en sesión separada sobre diff estable. No delegues recursivamente.
 
 Alta: plantilla existente y referencia comparable; cambio: documento/campo exactos. Conservá diseño, URL, campos ajenos, condiciones comerciales, ES/EN y trabajo previo. No inventes datos ni layouts. Sin cambio real no hagas commits/deploys. No ejecutes controles/builds/capturas por tanda salvo comando exacto expresamente pedido, una vez; si falla, reportá y terminá sin reintentar ni sustituir. Scripts disponibles en la skill no son autorización de ejecutarlos. No inicies MCP/servidores/instalaciones por rutina.
 

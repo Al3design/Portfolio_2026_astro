@@ -29,7 +29,7 @@ No instalar CLI o arrancar otro Tina para resolver este mensaje. Si tampoco hay 
 ## 2. Esquema remoto viejo o rama sin indexar
 
 1. Leer el log del deployment concreto: rama, diferencia de esquema, versión y último índice. Contrastar con `tina/config.ts`, módulos de colección y `tina/tina-lock.json` del mismo commit. No editar generados ni inventar otro esquema para pasar el control.
-2. En Tina Cloud seleccionar **Portfolio2026astro**, repo `Al3design/Portfolio_2026_astro`, **Configuration**. Buscar la rama exacta del encargo; si no aparece, consultar Refresh Branches/unindexed branches y su estado antes de actuar. Una rama nueva puede necesitar indexación; no reindexar todas por anticipado.
+2. En Tina Cloud seleccionar **Portfolio2026astro**, repo `Al3design/Portfolio_2026_astro`, **Configuration**. Buscar la rama exacta del encargo; si no aparece, consultar Refresh Branches/unindexed branches y su estado antes de actuar. Para contenido reutilizar editorial ya indexada; no crear otra por artículo. Una rama técnica nueva puede necesitar indexación; no reindexar todas por anticipado.
 3. Dentro del alcance autorizado, menú de **esa fila → Reindex**, una vez. Abrir **Event Log** y esperar `indexing branch succeeded` posterior al pedido. La fecha que cambia en la tabla no basta. No tocar main para arreglar un índice de Preview, ni borrar/recrear ramas/proyecto, Site URLs o webhooks.
 4. Solo tras éxito, el orquestador puede reintentar el build fallido una vez con el permiso de cierre aplicable, sobre el mismo commit y target Preview. Si falla con otro error, leerlo y detener la repetición; no convertirlo en un loop de reindex/build.
 
@@ -78,3 +78,5 @@ Evidencia de esta recuperación y límites: [reporte de integración](../../../.
 ## Auditorías Node sobre módulos del frontend
 
 Un `import` directo de shop-colours.ts puede fallar con ERR_IMPORT_ATTRIBUTE_MISSING por el JSON de filamentos: el módulo se consume con el bundler del sitio, no es un script Node autónomo. No modificar imports del producto ni instalar esbuild para forzar una auditoría improvisada (no está disponible como dependencia directa en este checkout). Registrar el límite del harness; usar la evidencia de build/artefacto y revisión del Preview en el cierre ya autorizado. No presentar un harness fallido como fallo visual ni como control aprobado, ni encadenar más intentos. Las pruebas Node existentes de selección/orden sí tienen su contrato propio.
+
+Rama editorial creada/indexada una vez el 13/11 (Event Log succeeded 14:32:09 ART). Un posterior error no autoriza recrearla ni cambiar permisos: comprobar rama/índice/build del caso. Reutilizarla reduce registros iniciales/redeploys de recuperación; no garantiza ausencia de desafíos 2FA.

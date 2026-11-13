@@ -21,3 +21,8 @@ La integración técnica de fuentes/documentación sí quedó en main y Producti
 - [x] 3.1 Documentar causas observadas, pasos acotados y límites de credenciales/índice/conector/2FA, sin eludir autenticación ni checks.
 - [x] 3.2 Separar bloqueantes de avisos pnpm/hints/CRLF/browser y recuperar refs/estado Git sin escrituras repetidas.
 - [x] 3.3 Enlazar fuente canónica desde entradas de agentes/guías/README/config y registrar resultados reales de integración, conservando historia.
+
+## 4. Prompts con ejemplos
+
+- [x] 4.1 Completar ejemplos reales tras todos los campos entre corchetes de los cinco prompts, contrastando documentos, campos, medios y revisión de Preview.
+- [x] 4.2 Aclarar sustitución de ejemplos y diferencia entre dato ilustrativo/histórico y encargo/OK vigente; enlazar README, config y changelog.

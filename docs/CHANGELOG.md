@@ -6,6 +6,11 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — Ejemplos reales en prompts de plantilla
+
+- Los cinco prompts (alta, cambio, control, OK de Preview y revisión) incluyen ejemplos reales después de los corchetes: borrador OdontoPro, caso BDM, ficha/foto/campo del Jarrón acanalado y comando existente de selección Shop. Se aclara cómo completar y retirar los ejemplos, y que un borrador existente se completa sin duplicarlo.
+- URL/SHA/deployment ID del Preview se mantienen emparejados y señalados como históricos: no son un OK nuevo ni datos que copiar a otra publicación. README y config enlazan/recogen la convención. Solo documentación, sin editar contenido, medios o runtime ni ejecutar controles por esta tanda.
+
 ## [2026-11-13] — Bloqueos y avisos para IA local
 
 - Guía condicional `bloqueos-y-avisos.md` enlazada desde AGENTS, CLAUDE, README, skill/operación/perfiles y guía editorial: distinguir Tina sin credenciales locales, índice remoto viejo, conector Vercel 404, 2FA, refs obsoletos del navegador y avisos pnpm/hints/CRLF. Incluye acción acotada, evidencia y límites, sin convertirla en controles extra por carga.

@@ -10,6 +10,8 @@ El destino es **Vercel**, proyecto documentado `portfolio-2026-astro`, dominio `
 
 Para resolver rápido un incidente, ver [bloqueos y avisos](.agents/skills/portfolio-editorial/references/bloqueos-y-avisos.md): mensaje → causa que comprobar → acción acotada y límite. Incluye Tina sin credenciales locales, índice de rama desactualizado, conector Vercel 404, 2FA y avisos pnpm/hints/CRLF. Consultar solo el caso aplicable; no es una nueva checklist de controles por carga.
 
+Los [prompts](.agents/skills/portfolio-editorial/references/prompts.md) incluyen ejemplos reales entre paréntesis después de cada campo: OdontoPro, BDM y Jarrón acanalado. Reemplazar los corchetes y quitar el ejemplo antes de enviar; el Preview/SHA/ID ilustrativos son históricos y no autorizan otra publicación.
+
 La rutina conserva **tokens y maqueta**: SCSS de `src/styles/abstracts/` y `--clr-brand-*` en el sitio; `--al3-admin-*`/`--tina-*` en el administrador, según [su guía](docs/TINA_ADMIN_THEME.md), aislados del sitio y del iframe. Usar componentes/variantes existentes y conservar anchos, espaciados, tipografías, temas y responsive. Una carga de contenido no autoriza modificar CSS/tokens, inventar layouts o incrustar estilos/HTML/clases; si no encaja, informar la limitación antes de ampliar el encargo.
 
 ## Continuidad para IA — editorial y Tina (03/11/2026)

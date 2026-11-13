@@ -59,7 +59,9 @@ Importes, variantes, stock y envio se validan en servidor. Pago pendiente, aprob
 
 ## Validation and rollout
 
-Por cada fase guardar evidencia especifica: contenido aprobado y diff; ficha real/mobile/teclado; y, para checkout, variantes, calculo de total, CP sin cobertura, cotizacion vencida, pago duplicado/pendiente/rechazado, concurrencia de stock y seguimiento. Revisar build, rutas y fuente editorial. Publicacion requiere aprobacion de Alejandro; este OpenSpec permanece abierto mientras sus fases esten pendientes. No se crea branch/worktree automaticamente por regla local.
+Politica de Alejandro del 2026-10-16 (AGENTS.md y docs/TESTING_MCP.md): por tanda la ejecutora entrega diff, reporte y pendientes, sin verificacion, build, pruebas, tipos, lint, e2e ni captura/inspeccion de pantallas. Solo corre una vez un comando de control expresamente pedido por el prompt; ante fallo reporta y entrega sin reintentos ni alternativas. El orquestador audita cada tanda por diff y reporte, sin verificaciones, y toma las capturas de auditoria. Esta decision evita suites repetidas, saturacion de RAM por MCP duplicados y consumo duplicado de contexto.
+
+Al completar todas las tareas del cambio, el orquestador realiza la verificacion final antes de archivar o fusionar y resuelve los fallos. Conservar como criterios de cierre: contenido aprobado, fuente editorial y exportaciones, build y rutas, ficha responsive/teclado y, para checkout, variantes, calculo de total, CP sin cobertura, cotizacion vencida, pago duplicado/pendiente/rechazado, concurrencia de stock y seguimiento. No eliminar ni saltear pruebas; diferirlas no significa aprobarlas. Publicacion requiere aprobacion de Alejandro; este OpenSpec permanece abierto mientras sus fases esten pendientes. No se crea branch/worktree automaticamente por regla local.
 
 ## Open Questions
 
@@ -76,3 +78,6 @@ Por cada fase guardar evidencia especifica: contenido aprobado y diff; ficha rea
 - https://payloadcms.com/docs/ecommerce/payments
 - https://payloadcms.com/docs/production/deployment
 - https://github.com/payloadcms/payload/tree/main/examples/astro
+
+## Decision editorial ES/EN - 2026-10-16
+Para trabajos nuevos se adopta un documento por trabajo con datos compartidos y locales.es/locales.en para textos y bloques. El idioma principal usa /projects/{slug}; la otra version /projects/{idioma}/{slug}. Mundo y Toplomero quedan en borrador con revision DEV equivalente. Las fichas legacy no cambian de ruta/formato. Detalle, limites, migracion y pendientes en bilingual-document-report.md y docs/ARTICLES_TINA.md. Esta decision sustituye la separacion inicial de archivos ES/EN; no implica traduccion automatica ni resolucion confirmada del error previo de apertura en Tina.

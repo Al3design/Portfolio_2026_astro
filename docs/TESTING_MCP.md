@@ -1,38 +1,43 @@
 # e2e y WebMCP
 
-## Uso habitual
+## Politica de roles — 2026-10-16
 
-1. Preferir `pnpm test:e2e` para controles repetibles. Usa e2e 0.17.0 + @e2e-dev/web 0.12.0, un worker, cero reintentos y ningun modelo/API key.
-2. Para inspeccion interactiva, usar el MCP `e2e`: `open_session` con `config: "C:/www/Portfolio_2026_astro/e2e.config.ts"` y `target: "web"`. Usar `locate` y acciones de su catalogo, devolviendo resultados compactos. Cerrar la sesion al terminar.
-3. Para acciones estructuradas del sitio, usar el MCP `webmcp`: abrir localhost:4322, descubrir con `list_webmcp_tools` e invocar con `execute_webmcp_tool`. Reservar capturas para revision visual o un fallo que las necesite.
+Decision de Alejandro tras el incidente de GitCron del 2026-10-16: suites repetidas consumian tiempo y contexto; multiples copias de MCP saturaban RAM y provocaban paginacion en Windows. Capturas duplicadas y prompts contradictorios agravaban los ciclos. No reintroducir verificaciones por tanda.
+
+1. La ejecutora no corre verificacion, build, pruebas, tipos, lint ni e2e; tampoco toma o inspecciona capturas. Si el prompt pide expresamente un comando de control, corre solo ese comando una vez. Ante fallo registra comando, resultado y error y entrega, sin reintentar ni buscar un control alternativo.
+2. El orquestador audita cada tanda leyendo diff y reporte, sin ejecutar verificaciones. Las capturas de auditoria las toma e inspecciona el orquestador cuando aportan evidencia visual.
+3. Cuando estan terminadas todas las tareas del cambio OpenSpec, el orquestador ejecuta la verificacion final antes de archivar o fusionar y resuelve los fallos. Las correcciones se controlan de forma acotada, sin repetir toda la suite por cada arreglo. No aprobar cierre con fallos pendientes.
+4. Mantener pruebas, criterios y protecciones: no esconder errores, desactivar lint, saltear pruebas ni cambiar el producto para pasar un control. Prompts y skills deben respetar reglas y controles; las excepciones se nombran y reportan expresamente, sin autorizar bucles ni desactivar protecciones.
+5. e2e se ejecuta por consola en el cierre o por comando explicito del prompt. No usar la herramienta MCP e2e ni iniciar servidores MCP por rutina. WebMCP queda disponible para auditoria del orquestador cuando sea necesario, sin duplicar sesiones.
 
 Los tests deterministas no hacen llamadas a modelos. e2e usa Playwright internamente: el ahorro de contexto viene de ejecutar escenarios y leer resumenes, no de eliminar ese motor.
 
 ## Servidor de desarrollo
 
-Iniciar el servidor con `npm run dev` si no esta funcionando: Tina 4002/9001 y Astro 4322. `e2e.config.ts` se conecta a ese servidor y no crea ni detiene procesos de la app. Esta separacion evita duplicar Tina o dejar Astro huerfano al cerrar un runner en Windows. Si un servidor existente devuelve 500, reparar o reiniciar ese servidor antes de reintentar: no matar procesos ajenos ni abrir otro Tina sobre puertos ocupados.
+Cuando la tarea requiera servidor, reutilizar el existente; iniciar con `npm run dev` solo si no esta funcionando: Tina 4002/9001 y Astro 4322. `e2e.config.ts` se conecta a ese servidor y no crea ni detiene procesos de la app. No abrir otro Tina sobre puertos ocupados ni matar procesos ajenos. Si un control explicito falla por el servidor, la ejecutora lo reporta y entrega; el orquestador decide la reparacion en el cierre, sin ciclos automaticos de reinicio/reintento.
 
-## Comandos
+## Comandos de referencia (no ejecutar por tanda)
 
 ```powershell
-npm run dev
-# En otra terminal, con el servidor listo:
+# Con el servidor listo, para el cierre a cargo del orquestador
+# o si el prompt pide expresamente este comando una vez:
 pnpm test:e2e
-pnpm test:mcp
-pnpm mcp:e2e
+# Equivale a e2e run --reporter list,markdown y usa e2e.config.ts.
 ```
 
-`test:mcp` comprueba los dos protocolos MCP con un cliente JSON-RPC: abre una sesion e2e contra el dev server activo, encuentra un heading, inicia Chrome aislado con WebMCP, descubre las herramientas nativas del sitio y las ejecuta. Tambien contrasta el filtro con los enlaces realmente renderizados. No usa mocks de WebMCP ni un modelo. Requiere Chrome compatible instalado, Node >=24 y acceso al paquete fijado chrome-devtools-mcp 1.11.0 (cacheado despues de instalarlo).
+`test:e2e` usa e2e 0.17.0 + @e2e-dev/web 0.12.0, un worker, cero reintentos y ningun modelo/API key.
+
+Se conservan `scripts/check-browser-mcp.mjs` y `pnpm test:mcp` para un diagnostico explicito de protocolos en el cierre, cuando corresponda. Ese script inicia procesos MCP locales (e2e y Chrome aislado con WebMCP); no es la suite e2e por consola ni un control obligatorio por tanda. No incluirlo en prompts rutinarios. Requiere Chrome compatible, Node >=24 y chrome-devtools-mcp 1.11.0. El script `mcp:e2e` tambien se conserva, pero no se usa por rutina ni habilita la herramienta global para la ejecutora.
 
 Reportes locales ignorados por Git: `.e2e/summary.md`, `.e2e/report.json` y `.e2e/mcp-smoke.json`. Leer el resumen antes del JSON completo. No publicar reportes con datos privados ni cargar sesiones personales de Chrome.
 
 ## Conexion de Codex en esta maquina
 
-Se agregaron `e2e` y `webmcp` a `C:/Users/apdel/.codex/config.toml`. La copia anterior esta en `config.toml.before-browser-mcp-20261015`, fuera del repo. El servidor e2e reutiliza la instalacion compartida `C:/Users/apdel/.local/share/e2e-mcp/mcp.mjs`; el config absoluto selecciona el proyecto. Las dependencias locales fijadas permiten ejecutar las pruebas sin esa instalacion compartida.
+Estado informado por Alejandro el 2026-10-16: el servidor global `C:/Users/apdel/.local/share/e2e-mcp/mcp.mjs` quedo desactivado en OpenCode (`~/.config/opencode/opencode.json`, `enabled: false`), DeepSeek Harness (`~/.dsh/profiles/desktop/cordis.patch.yml`, comentado) y Codex (`~/.codex/config.toml`, comentado). No reactivarlo sin consultar a Alejandro. Esta guia no modifica esas configuraciones. Las dependencias locales permiten correr `e2e run` por consola sin esa instalacion compartida.
 
 WebMCP usa Chrome DevTools MCP 1.11.0 con `--headless --isolated --categoryExperimentalWebmcp --chromeArg=--enable-features=WebMCP --no-usage-statistics --no-performance-crux`. El config limita el catalogo a navegacion, evaluacion y las dos herramientas WebMCP. No se modificaron las conexiones de otros servidores ni se desinstalo Playwright.
 
-Para cargar nuevas conexiones, volver a abrir Codex o iniciar una sesion que recargue los MCP. Un test directo de protocolo confirma el servidor, pero no inserta herramientas nuevas en una conversacion ya iniciada. El sitio requiere commit/push autorizado para llevar la integracion a produccion.
+No recargar conexiones con el fin de reactivar e2e global. Un diagnostico de protocolo no prueba disponibilidad de herramientas en la conversacion activa. El sitio requiere commit/push autorizado para llevar la integracion a produccion.
 
 ## Herramientas del sitio
 

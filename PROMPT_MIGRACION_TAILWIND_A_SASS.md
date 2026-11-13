@@ -9,12 +9,18 @@ Objetivo:
 Migrar el sistema visual actual a una arquitectura SASS modular, con BEM, tokens de diseno, mixins responsive y sin cambiar el resultado visual existente.
 
 Reglas generales:
+- Politica de este proyecto (decision de Alejandro, 2026-10-16): aplicar AGENTS.md y docs/TESTING_MCP.md. En GitCron, suites repetidas, RAM saturada por MCP duplicados, capturas duplicadas y prompts contradictorios agotaban tiempo y contexto. No reintroducir ese circuito.
+- La ejecutora no verifica ni toma/inspecciona capturas por fase o tanda. Las instrucciones de control de esta plantilla son criterios para el cierre del cambio completo a cargo del orquestador, no comandos pedidos a la ejecutora.
+- Solo un pedido expreso en el prompt de la tanda autoriza ejecutar ese comando de control una vez. Si falla, reportar y entregar, sin repetir, corregir para reintentar ni ejecutar alternativas.
+- El orquestador audita cada tanda por diff y reporte, sin verificaciones; toma las capturas de auditoria y verifica al finalizar todas las tareas OpenSpec, antes de archivar o fusionar.
+- No aflojar protecciones, esconder errores, desactivar lint, saltear pruebas ni cambiar producto para pasar controles. No usar MCP e2e ni reactivar su servidor global sin consultar a Alejandro; e2e por consola solo en el cierre o por pedido expreso.
+- Esta plantilla generica debe adaptarse a las reglas y controles reales del proyecto. Toda excepcion debe nombrarse en el prompt y registrarse en el reporte; no autoriza bucles ni desactivar protecciones.
 - No agregar nuevas clases Tailwind.
 - No eliminar estilos visuales sin justificarlo.
 - No cambiar el diseno durante la migracion.
 - Trabajar por fases.
 - Mostrar auditoria y plan antes de modificar.
-- Ejecutar build o verificacion equivalente despues de cada fase importante.
+- Por fase entregar cambios y pendientes; reservar build y controles para la verificacion final del orquestador.
 - Si no existe un token exacto para un valor, dejar el valor hardcodeado y reportarlo.
 - No usar tokens aproximados salvo que yo lo apruebe explicitamente.
 - Pensar siempre mobile-first: los estilos base son mobile y los media queries/mixins son overrides para pantallas mayores.
@@ -716,7 +722,7 @@ Para cada componente:
 6. Migrar estilos visuales a SCSS.
 7. Usar tokens cuando haya equivalencia exacta.
 8. Mantener hardcodeados los valores sin token exacto.
-9. Verificar build.
+9. Reportar cambios y pendientes para la verificacion final del orquestador, sin ejecutar build por componente.
 
 Ejemplo:
 
@@ -870,7 +876,7 @@ Reglas:
 - No reordenar estilos.
 - No modificar valores visuales.
 - Hacerlo archivo por archivo.
-- Verificar build.
+- Registrar pendientes para el build final del orquestador, sin ejecutarlo por archivo o fase.
 - Reportar cuantas media queries fueron reemplazadas.
 
 FASE 8 - Tina CMS visual editing generico
@@ -1192,25 +1198,7 @@ Reglas de modelado:
 - No mover comportamiento interactivo a Tina. Estados, filtros, formularios, sliders y animaciones siguen en React.
 - Tina define contenido; React define comportamiento; SASS define sistema visual.
 
-Build local con credenciales dummy:
-
-Si el proyecto usa credenciales dummy o todavia no esta conectado a Tina Cloud, `tinacms build` puede fallar por validacion Cloud. Para verificar schema y build local:
-
-```bash
-pnpm exec tinacms build --skip-cloud-checks --content=local --skip-search-index
-pnpm exec astro build
-```
-
-Si se quiere dejar el script local-friendly:
-
-```json
-{
-  "scripts": {
-    "dev": "tinacms dev -c \"astro dev\"",
-    "build": "tinacms build --skip-cloud-checks --content=local --skip-search-index && astro build"
-  }
-}
-```
+Build: seguir `package.json`, `AGENTS.md` y la operación de `.agents/skills/portfolio-editorial/`. Se retiran los ejemplos genéricos que omitían controles Cloud: no son el flujo del portfolio. Un fallo de Tina se registra y resuelve en el cierre autorizado; no sustituir el build ni desactivar comprobaciones.
 
 Dashboard custom:
 
@@ -1222,31 +1210,27 @@ No hacerlo primero. Primero debe funcionar la edicion visual de la pagina. Luego
 - documentos incompletos
 - accesos rapidos a editar documentos
 
-Control de esta fase:
+Criterios de esta fase (controles de ejecucion reservados para el cierre):
 
 - [ ] Existe coleccion `pages` para documentos de pagina.
 - [ ] Las entidades crecientes tienen coleccion propia.
 - [ ] Astro build no depende de `localhost:4001`.
 - [ ] React usa `useTina`.
 - [ ] Los campos visuales usan `data-tina-field`.
-- [ ] Tina build local pasa.
-- [ ] Astro build pasa.
+- [ ] Resultado del build Tina registrado por el orquestador en el cierre; pendiente hasta entonces.
+- [ ] Resultado del build Astro registrado por el orquestador en el cierre; pendiente hasta entonces.
 
-FASE 9 - Control de calidad
+FASE 9 - Control de calidad final a cargo del orquestador
 
-Ejecutar:
+Una vez completadas todas las tareas del cambio OpenSpec, antes de archivar o fusionar, el orquestador ejecuta la verificacion final acordada. Referencia de build del proyecto:
 
 ```bash
 pnpm run build
 ```
 
-Si el build completo depende de servicios externos o CMS y falla por una razon ajena a SASS, ejecutar una verificacion equivalente, por ejemplo:
+Si falla por servicios externos o CMS, registrar la causa y resolverla en el cierre; no sustituirlo por un build parcial ni declararlo aprobado. La ejecutora entrega el fallo sin reintentos. El orquestador controla las correcciones de forma acotada, sin repetir toda la suite por cada arreglo.
 
-```bash
-pnpm exec astro build
-```
-
-Tambien verificar:
+Referencias para la lectura del diff y la revision final del orquestador; no son comandos obligatorios por tanda:
 
 ```bash
 rg -n "@media \(min-width: (640|768|1024)px\)" src/styles
@@ -1260,7 +1244,7 @@ Reporte final:
 - tokens agregados
 - valores que quedaron hardcodeados intencionalmente
 - media queries reemplazadas
-- resultado del build
+- controles ejecutados solo por pedido expreso, con comando y resultado; los demas quedan pendientes para el cierre (no declarar build aprobado sin evidencia)
 - riesgos pendientes
 
 Checklist final:
@@ -1268,7 +1252,7 @@ Checklist final:
 - [ ] No quedan nuevas clases Tailwind.
 - [ ] Los componentes usan BEM.
 - [ ] Los estilos estan en SCSS.
-- [ ] Los componentes importan abstracts con `@use`.
+- [ ] Los componentes usan la inyeccion global de abstracts definida en astro.config.mjs; no agregar `@use` redundante en este proyecto.
 - [ ] `_index.scss` exporta todos los abstracts.
 - [ ] Los tokens semanticos referencian primitivos.
 - [ ] Las escalas tienen mapas centrales.
@@ -1280,7 +1264,7 @@ Checklist final:
 - [ ] Si se usa Tina, el contenido editable vive en colecciones/documentos CMS y no hardcodeado en React.
 - [ ] Si se usa Tina, las entidades crecientes tienen coleccion propia.
 - [ ] Si se usa Tina, los campos visuales usan `data-tina-field`.
-- [ ] El build pasa.
+- [ ] El orquestador registro build aprobado en la verificacion final; pendiente hasta entonces.
 
 Importante:
 No optimizar ni redisenar durante esta migracion. Primero preservar, despues mejorar.

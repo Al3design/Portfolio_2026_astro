@@ -1,0 +1,24 @@
+[
+  {
+    "file": "odontopro-patients-demo.webp",
+    "source": "C:\\www\\odontoPro\\supabase\\audits\\ficha-patients-browser-20260929-final.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 48236,
+    "data": "synthetic fixtures; name patterns confirmed in source scripts",
+    "review": "explicit user authorization for seven existing screenshots",
+    "publication": "draft only",
+    "currentInterface": "not established"
+  },
+  {
+    "file": "odontopro-record-demo.webp",
+    "source": "C:\\www\\odontoPro\\supabase\\audits\\ficha-patient-page-browser-firefox-auth-E4-20261008-final.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 59382,
+    "data": "synthetic fixtures; name patterns confirmed in source scripts",
+    "review": "explicit user authorization for seven existing screenshots",
+    "publication": "draft only",
+    "currentInterface": "not established"
+  }
+]

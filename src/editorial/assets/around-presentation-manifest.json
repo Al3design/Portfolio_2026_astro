@@ -1,0 +1,28 @@
+[
+  {
+    "file": "around-layout-slide.webp",
+    "page": 6,
+    "width": 1920,
+    "height": 1080,
+    "source": "G:\\Mi unidad\\CV\\2026\\PDF\\FIGMA presentation\\Case-study-AD.pdf",
+    "method": "Full PDF page composition with PDFium",
+    "replaces": [
+      "around-layout-a.webp",
+      "around-layout-b.webp"
+    ],
+    "browserReview": "pending"
+  },
+  {
+    "file": "around-alert-slide.webp",
+    "page": 7,
+    "width": 1920,
+    "height": 1080,
+    "source": "G:\\Mi unidad\\CV\\2026\\PDF\\FIGMA presentation\\Case-study-AD.pdf",
+    "method": "Full PDF page composition with PDFium",
+    "replaces": [
+      "around-alert-a.webp",
+      "around-alert-b.webp"
+    ],
+    "browserReview": "pending"
+  }
+]

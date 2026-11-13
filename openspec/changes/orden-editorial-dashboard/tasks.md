@@ -14,6 +14,6 @@
 - [x] Registrar el fallo del guardado parcial del dashboard y restaurar los bytes originales de `around.mdx`. Botón y handler bloqueados para evitar más escrituras con el payload incompleto.
 - [x] Preparar el envío del documento completo `_values`, transformado mediante el esquema y guardado con `TinaAdminApi.updateDocument`. Agregar casos de preservación de cuerpo, bloques, metadatos y posiciones; rechazar datos incompletos o inválidos. Retirar el bloqueo temporal en el candidato corregido.
 - [x] Comprobar la corrección autorizada: `node --test tests/project-order.test.mjs tests/project-order-values.test.mjs`, 6/6 aprobados, y recorrido local completado. Ver reporte.
-- [ ] Integrar selectivamente el candidato, comprobar el build al cierre y publicar con el alcance autorizado.
+- [x] Integrar selectivamente y publicar: main 88ac92e, deployment 4hu6nypxl Ready, Tina/Astro y verificador sin errores. HTTP y navegador de producción confirmaron versión 3.15.1, tema y dashboard; sin guardar contenido Cloud. Ver release-2026-11-06.md (incluye fallo inicial del índice y corrección).
 
 La lectura previa detecta un valor ya cambiado al iniciar el guardado. Tina no ofrece compare-and-swap en esta mutación, por lo que continúa existiendo una ventana de concurrencia entre esa lectura y la escritura desde otro editor. Evitar editar el mismo artículo desde dos sesiones durante un guardado.

@@ -12,4 +12,12 @@ Continuación autorizada por el usuario: «dale, subilo, y fijate si hay que act
 
 Cierre previo al release: `npx.cmd astro check`, una ejecución, exit 0; 182 archivos, 0 errores, 0 warnings y 100 hints. No se repitieron las siete pruebas verdes del router. El conector Vercel devuelve 404 para el proyecto correcto; la sesión Chrome confirma repositorio Al3design/Portfolio_2026_astro, producción main y dominio al3design.dev. Se sigue el deploy automático por Git, sin build local adicional ni cambios de índice/esquema.
 
-Pendiente: publicar esta corrección y observar que abrir un artículo publicado desde Projects entra en visual, Pages conserva su comportamiento y un draft sin ruta mantiene formulario. No repetir la publicación anterior de listas editoriales ni alterar contenido para comprobar navegación. Los demás cambios locales y reportes anteriores se conservaron.
+## Resultado del release
+
+Commit `8ed01ec8e6ac4b7058db35697f054ce2176ea54b`, nueve archivos seleccionados, enviado mediante `git push origin HEAD:main` sin cambiar la rama local. Se conservaron fuera del commit los artículos y cambios ajenos. Vercel creó un único build automático: deployment `5RYBGunh7WpUqtvn1hPpMXmkWfxF`, URL `https://portfolio-2026-astro-e75hnrghe-aledesign-projects.vercel.app`, Ready el 10/11 a las 13:56:52 ART, 49 segundos. Logs: 62 páginas; dominio asignado `al3design.dev`. Sin reindexación ni redeploy manual.
+
+Control Chrome de producción: recargar admin, abrir BDM desde la fila de Projects → `#/~/projects/bdm-consultores`, formulario BDM e iframe del artículo con contenido; indicador No unsaved changes, Reset y Save deshabilitados. Abrir Home desde Pages → formulario home e iframe Compiled Visions, también sin cambios y Save deshabilitado. Sin ediciones ni guardados Cloud. Evidencia visual: `C:/Users/apdel/AppData/Local/Temp/tina-visual-prod-20261110.png`. Quedó abierto el editor visual de BDM como entrega.
+
+La alternativa de formularios para páginas ausentes/protegidas y drafts se cubrió con pruebas simuladas; no se editó ni publicó un borrador para repetirla en Cloud. Las otras skills locales no contienen instrucciones de Tina que requieran cambiarse por esta corrección. No se actualizaron dependencias ni skills de proveedores globales.
+
+Este resultado se agregó localmente después del release, sin generar otro build solo por evidencia. Los demás reportes locales y frentes pendientes se conservaron.

@@ -1,0 +1,34 @@
+[
+  {
+    "file": "botf-textured-collage.webp",
+    "source": "C:\\Users\\apdel\\.codex\\generated_images\\01a13fae-1360-7331-b6a7-52dc2d152c49\\exec-e5f57e1b-0f90-4a68-bc6b-508429ce4427.png",
+    "width": 1916,
+    "height": 821,
+    "bytes": 78648,
+    "composition": "AI-assisted collage of existing renders"
+  },
+  {
+    "file": "botf-miranda-textured.webp",
+    "source": "G:\\Mi unidad\\AI\\Claude\\projects\\Aledesign web portfolio\\job\\3D\\BOTF\\Miranda proto\\18m.jpg",
+    "width": 500,
+    "height": 375,
+    "bytes": 20698,
+    "composition": "original archival view"
+  },
+  {
+    "file": "botf-kelvin-textured.webp",
+    "source": "G:\\Mi unidad\\AI\\Claude\\projects\\Aledesign web portfolio\\job\\3D\\BOTF\\Kelvin\\15k.jpg",
+    "width": 500,
+    "height": 375,
+    "bytes": 49724,
+    "composition": "original archival view"
+  },
+  {
+    "file": "botf-vesta-textured.webp",
+    "source": "G:\\Mi unidad\\AI\\Claude\\projects\\Aledesign web portfolio\\job\\3D\\BOTF\\Vesta\\vs_p.jpg",
+    "width": 500,
+    "height": 500,
+    "bytes": 4804,
+    "composition": "original archival view"
+  }
+]

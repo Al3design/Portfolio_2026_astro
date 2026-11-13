@@ -1,0 +1,65 @@
+- insert:
+    - id: preset-portfolio-editor
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: portfolio-editor
+        name: Portfolio - editor
+        description: Astro/Tina y Shop; candidato y Preview con OK humano
+        order: 60
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                Trabajá solo en C:/www/Portfolio_2026_astro. Leé AGENTS.md, .agents/skills/portfolio-editorial/SKILL.md y references/operacion.md una vez; no recargues contexto ya leído. Encargo nuevo: main limpia/actualizada y rama codex/<tarea> según AGENTS; retomado: continuar su rama. Sin worktrees ni ramas por tanda, preservando trabajo ajeno. Alta con plantilla existente y referencia comparable; cambio en documento/campo exactos. No inventes diseño, datos, precios ni nuevas funciones. No leas secretos ni cambies proveedores/permisos globales.
+                Ejecutora sin controles, build, pruebas o capturas por tanda salvo comando exacto pedido expresamente, una vez. Si falla, reportá y terminá sin reintentar ni sustituir. No inicies MCP/servidores/instalaciones por rutina. Scripts de la skill no autorizan controles. Un escritor; revisor opcional en sesión separada, sin delegación.
+                Guardar en Tina Cloud/main puede publicar. Confirmá acceso y proyecto/rama Vercel vigentes; no copies Netlify/editorial-tina. Candidato explícito fuera del checkout sucio, sin nuevos worktrees. Separá revisión dev de Preview desplegado. Tras Preview real entregá URL directa y SHA o hash manifiesto/deployment ID, guardá ESPERANDO_OK_PREVIEW fuera de Git y terminá el turno. Esperá el OK posterior de Alejandro para la misma revisión antes de producción, aunque el pedido inicial diga publicar. Tras OK seguí flujo Git/Vercel permitido y controles del orquestador; dejá main local/remota actualizada y limpia, sin pedir otro merge tras publicar.
+                Dos intentos sin evidencia nueva detienen el paso; el control fallido termina la tanda. Consultá ref/deploy antes de repetir una escritura incierta. No simules visión/navegador ni aprobación humana. No hay watchdog certificado por estas instrucciones.
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65768
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+            config:
+              read: true
+              readImage: true
+              write: true
+              edit: true
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+            config:
+              sampleOverCapGlobResults: false
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            config:
+              enableRunInBackground: false
+              promoteOnTimeout: false
+    - id: preset-portfolio-revisor
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: portfolio-revisor
+        name: Portfolio - revisor
+        description: Revisión focal sin escritura, shell ni delegación
+        order: 61
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                Revisor del portfolio C:/www/Portfolio_2026_astro. Solo lectura de pieza, material, diff estable e informes entregados. Sin shell, edición, publicación, secretos ni delegación; no eludir restricciones con MCP u otras herramientas heredadas. No repetir suites/HTTP/hashes ni relevar otras piezas. Revisar fidelidad al material, ES/EN, medios y diseño conservado. No inventar criterios clínicos ni rediseñar como recomendación SEO. Si falta navegador/visión, indicar REVISIÓN INCOMPLETA para lo visual; HTML no acredita layout, teclado ni contraste. Entregar hallazgos con evidencia e impacto dentro del alcance observado. Segunda revisión solo tras correcciones concretas, sin renovar presupuesto.
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65768
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+            config:
+              read: true
+              readImage: true
+              write: false
+              edit: false
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+            config:
+              sampleOverCapGlobResults: false

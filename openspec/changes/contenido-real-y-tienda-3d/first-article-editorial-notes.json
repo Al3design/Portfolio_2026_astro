@@ -1,0 +1,84 @@
+[
+  {
+    "slug": "gitcron",
+    "notes": {
+      "es": [
+        {
+          "_template": "section",
+          "title": "Notas para completar el artículo",
+          "text": "Imágenes iniciales incorporadas; falta ampliar el relato y aprobar la selección final.",
+          "collapsed": true,
+          "bullets": [
+            "Confirmar fechas, estado actual y enlaces públicos que convenga mostrar.",
+            "Revisar esta selección histórica y decidir si hace falta reemplazarla por material actualizado antes de publicar.",
+            "Profundizar el mayor desafío técnico o de UX y los aprendizajes de esta evolución; la motivación y el uso de OpenSpec/diagramas/IA ya fueron confirmados.",
+            "Precisar el nombre de Google Studio y la versión de Qwen citados por el autor antes de publicarlos como referencias técnicas."
+          ]
+        }
+      ],
+      "en": [
+        {
+          "_template": "section",
+          "title": "Notes to complete the article",
+          "text": "Initial images added; the account and final selection still need review.",
+          "collapsed": true,
+          "bullets": [
+            "Confirm dates, current status and public links to feature.",
+            "Review this historical selection and decide whether updated material is needed before publication.",
+            "Expand on the biggest technical or UX challenge and lessons from this evolution; motivation and the use of OpenSpec/diagrams/AI have been confirmed.",
+            "Clarify the Google Studio name and Qwen version cited by the author before publishing them as technical references."
+          ]
+        }
+      ]
+    },
+    "pending": [
+      "Revisar texto ES/EN y selección final de capturas.",
+      "Agregar un desafío concreto si el autor desea ampliar ese apartado."
+    ],
+    "confirmed": {
+      "start": "Principios de 2026",
+      "status": "En desarrollo continuo"
+    }
+  },
+  {
+    "slug": "odontopau",
+    "notes": {
+      "es": [
+        {
+          "_template": "section",
+          "title": "Notas para completar el artículo",
+          "text": "Imágenes iniciales incorporadas; falta ampliar el relato y aprobar la selección final.",
+          "collapsed": true,
+          "bullets": [
+            "Confirmar fechas, estado actual y enlaces públicos que convenga mostrar.",
+            "Revisar esta selección histórica y decidir si hace falta reemplazarla por material actualizado antes de publicar.",
+            "Ampliar una decisión concreta de diseño o desarrollo y sus aprendizajes. La necesidad de visibilidad, casos clínicos y redes ya fue confirmada; resultados y métricas siguen pendientes.",
+            "Precisar el nombre de Google Studio y la versión de Qwen citados por el autor antes de publicarlos como referencias técnicas."
+          ]
+        }
+      ],
+      "en": [
+        {
+          "_template": "section",
+          "title": "Notes to complete the article",
+          "text": "Initial images added; the account and final selection still need review.",
+          "collapsed": true,
+          "bullets": [
+            "Confirm dates, current status and public links to feature.",
+            "Review this historical selection and decide whether updated material is needed before publication.",
+            "Expand on a specific design or development decision and its lessons. The need for visibility, clinical cases and social presence is confirmed; outcomes and metrics remain pending.",
+            "Clarify the Google Studio name and Qwen version cited by the author before publishing them as technical references."
+          ]
+        }
+      ]
+    },
+    "pending": [
+      "Revisar texto ES/EN y selección final de capturas.",
+      "Seleccionar imágenes de flyers, isologo y objetos 3D si se quieren mostrar además de la web."
+    ],
+    "confirmed": {
+      "start": "Principios de 2026",
+      "status": "En producción con actualizaciones a pedido de la cliente"
+    }
+  }
+]

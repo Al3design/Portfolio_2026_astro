@@ -388,6 +388,8 @@ X-Frame-Options: DENY
 
 ### Validation
 
+Project policy (Alejandro, 2026-10-16; AGENTS.md and docs/TESTING_MCP.md): validation links and checklists below are acceptance criteria for final verification by the orchestrator, after all OpenSpec tasks are complete and before archive/merge. They do not require checks per batch. Executor: no verification, build, tests, types, lint, e2e, or screenshot capture/inspection unless the batch prompt explicitly requests a control command, once. On failure report and deliver without retries or substitutes. Audit screenshots remain with the orchestrator; batch audits read diffs without verification. Preserve protections and tests; do not routinely start MCP or reactivate global e2e without consulting Alejandro. Cause: GitCron's repeated suites, duplicate MCP processes and screenshots exhausted RAM/time/context on 2026-10-16.
+
 Test structured data at:
 - [Google Rich Results Test](https://search.google.com/test/rich-results)
 - [Schema.org Validator](https://validator.schema.org/)
@@ -464,6 +466,8 @@ body {
 ---
 
 ## SEO audit checklist
+
+Apply the project policy under Validation above: final orchestrator criteria, not executor checks per batch.
 
 ### Critical
 - [ ] HTTPS enabled

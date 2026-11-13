@@ -1,0 +1,56 @@
+[
+  {
+    "file": "bdm-home-desktop.webp",
+    "sourceUrl": "https://bdmconsultores.com.ar/",
+    "capturedOn": "2026-10-20",
+    "width": 1440,
+    "height": 900,
+    "bytes": 56962,
+    "transform": "WebP conversion only; no crop or generated elements"
+  },
+  {
+    "file": "bdm-home-desktop-full.webp",
+    "sourceUrl": "https://bdmconsultores.com.ar/",
+    "capturedOn": "2026-10-20",
+    "width": 1440,
+    "height": 4068,
+    "bytes": 441944,
+    "transform": "WebP conversion only; no crop or generated elements"
+  },
+  {
+    "file": "bdm-capital-humano-desktop.webp",
+    "sourceUrl": "https://bdmconsultores.com.ar/services/capital-humano/",
+    "capturedOn": "2026-10-20",
+    "width": 1440,
+    "height": 900,
+    "bytes": 112856,
+    "transform": "WebP conversion only; no crop or generated elements"
+  },
+  {
+    "file": "bdm-home-mobile.webp",
+    "sourceUrl": "https://bdmconsultores.com.ar/",
+    "capturedOn": "2026-10-20",
+    "width": 390,
+    "height": 844,
+    "bytes": 22878,
+    "transform": "WebP conversion only; no crop or generated elements"
+  },
+  {
+    "file": "bdm-home-mobile-full.webp",
+    "sourceUrl": "https://bdmconsultores.com.ar/",
+    "capturedOn": "2026-10-20",
+    "width": 390,
+    "height": 5195,
+    "bytes": 272140,
+    "transform": "WebP conversion only; no crop or generated elements"
+  },
+  {
+    "file": "bdm-capital-humano-mobile.webp",
+    "sourceUrl": "https://bdmconsultores.com.ar/services/capital-humano/",
+    "capturedOn": "2026-10-20",
+    "width": 390,
+    "height": 844,
+    "bytes": 56742,
+    "transform": "WebP conversion only; no crop or generated elements"
+  }
+]

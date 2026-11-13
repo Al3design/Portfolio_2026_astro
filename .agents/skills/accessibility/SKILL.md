@@ -383,6 +383,8 @@ Use `aria-live` regions to announce dynamic content changes without moving focus
 
 ## Testing checklist
 
+Project policy (Alejandro, 2026-10-16; AGENTS.md and docs/TESTING_MCP.md): this checklist defines acceptance criteria for final verification by the orchestrator after all OpenSpec tasks are complete, before archive/merge. It does not order executor checks per batch. Only an explicit batch prompt may request a control command, once; on failure report and deliver without retries or alternative checks. The orchestrator audits batches by diff without verification and owns audit screenshots. Do not take/inspect screenshots as executor, start diagnostic MCP processes routinely, or reactivate global e2e without consulting Alejandro. Preserve tests and protections. Cause: repeated suites, duplicate MCP memory use and duplicate screenshots exhausted time/context in GitCron on 2026-10-16.
+
 ### Automated testing
 ```bash
 # Lighthouse accessibility audit

@@ -17,6 +17,8 @@ Astro is the web framework for content-driven websites.
 
 ## Portfolio + Tina integration
 
+Local scope takes precedence over the generic adapter examples below: this portfolio already uses static Astro output and Vercel with `vercel.json`. An editorial task does not authorize installing an adapter, changing hosting or adopting the historical Netlify workflow. Follow `.agents/skills/portfolio-editorial/` for Preview and the subsequent human approval gate. Preserve the public SCSS/`--clr-brand-*` tokens and existing layouts; Tina admin `--al3-admin-*`/`--tina-*` stays isolated from the public site and iframe. Keep article ES/EN, pages, globals, project order, Shop documents and catalogue selection contracts distinct.
+
 For this repository, read [the editorial guide](../../../docs/GUIA_EDITORIAL_IA.md) before changing content, previews or publication. Tina's collection listing can pass only `_sys` to `ui.router`; missing title is not evidence of a draft. Keep routing in `src/lib/project-editor-route.ts`: local review and deployed visual editing have different route availability. Never expose draft review routes in production to make the editor work. A router fix needs a rebuilt admin bundle; reindexing Tina Cloud alone does not publish it. Keep router, `useTina` subscription and renderer connected, and distinguish bundle/build evidence from an observed visual editing session.
 
 Use the existing `npm run dev` for Tina + Astro rather than Astro alone. Cloud origin permissions, branch indexing, content saves and deployments are separate operations; see the editorial guide for their current procedures. These instructions do not authorize additional controls or releases.

@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "mundo",
+    "source": "davinci/multimedia/2018/video/mundo/blp-5.avi",
+    "posterAt": 1,
+    "seconds": 24.8,
+    "sourceBytes": 53833664,
+    "sourceSha256": "1539cf8b264d02a3ff2a5a96bb8b28ac7dca9756408c44b5cba04695564ad9b6",
+    "audio": false,
+    "derivatives": [
+      {
+        "file": "mundo-poster.webp",
+        "bytes": 52540,
+        "sha256": "52aaebfb9079c770c579759151d532e99978ad5f52fcd67ebf4f30514e21a840"
+      },
+      {
+        "file": "mundo-preview.mp4",
+        "bytes": 1684459,
+        "sha256": "4314d25ed397fc6f2454026b61301424c9d22edd77ca096baa7c12bd3cecde7e"
+      }
+    ]
+  },
+  {
+    "slug": "toplomero",
+    "source": "davinci/multimedia/2018/video/manifiesto/motion-4-edited.mp4",
+    "posterAt": 12,
+    "seconds": 18,
+    "sourceBytes": 52193465,
+    "sourceSha256": "e6c16f2c090b4c69f37d4e89d638ec37720840f76fcdd35310a193f0e3354066",
+    "audio": false,
+    "derivatives": [
+      {
+        "file": "toplomero-poster.webp",
+        "bytes": 56438,
+        "sha256": "559b1a05f261b47f3a336ed31cfebada938af7c585ccbfba4b0e2f50f59eee2a"
+      },
+      {
+        "file": "toplomero-preview.mp4",
+        "bytes": 4616085,
+        "sha256": "5018912711e8315cc84189c853dbb0412704475abf37279c3aa6a574811a61e5"
+      }
+    ]
+  }
+]

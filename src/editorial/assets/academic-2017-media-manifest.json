@@ -1,0 +1,101 @@
+[
+  {
+    "slug": "discovery",
+    "source": "discovery/Delgado_Alejandro_DM5TN.mp4",
+    "posterSource": "discovery/Delgado_Alejandro_DM5TN.mp4",
+    "sourceDuration": 16.192,
+    "previewStart": 3.2384000000000004,
+    "previewSeconds": 12.9536,
+    "previewAudio": false,
+    "frameFractions": [
+      0.35,
+      0.65
+    ],
+    "finalVersionConfirmed": false,
+    "visualReview": "pending",
+    "derivatives": [
+      {
+        "file": "discovery-poster.webp",
+        "bytes": 50224
+      },
+      {
+        "file": "discovery-frame-1.webp",
+        "bytes": 42990
+      },
+      {
+        "file": "discovery-frame-2.webp",
+        "bytes": 55312
+      },
+      {
+        "file": "discovery-preview.mp4",
+        "bytes": 741745
+      }
+    ]
+  },
+  {
+    "slug": "tren",
+    "source": "tren/produccion-1.mp4",
+    "posterSource": "tren/Comp-1.jpg",
+    "sourceDuration": 15.181834,
+    "previewStart": 3.0363668,
+    "previewSeconds": 12.1454672,
+    "previewAudio": false,
+    "frameFractions": [
+      0.35,
+      0.65
+    ],
+    "finalVersionConfirmed": false,
+    "visualReview": "pending",
+    "derivatives": [
+      {
+        "file": "tren-poster.webp",
+        "bytes": 198760
+      },
+      {
+        "file": "tren-frame-1.webp",
+        "bytes": 220046
+      },
+      {
+        "file": "tren-frame-2.webp",
+        "bytes": 225744
+      },
+      {
+        "file": "tren-preview.mp4",
+        "bytes": 2073517
+      }
+    ]
+  },
+  {
+    "slug": "pitufos",
+    "source": "pitufos/PitufosArgentina.mp4",
+    "posterSource": "pitufos/aldeaPastoPitufo.png",
+    "sourceDuration": 25.9,
+    "previewStart": 5.18,
+    "previewSeconds": 16,
+    "previewAudio": false,
+    "frameFractions": [
+      0.35,
+      0.65
+    ],
+    "finalVersionConfirmed": false,
+    "visualReview": "pending",
+    "derivatives": [
+      {
+        "file": "pitufos-poster.webp",
+        "bytes": 257948
+      },
+      {
+        "file": "pitufos-frame-1.webp",
+        "bytes": 332066
+      },
+      {
+        "file": "pitufos-frame-2.webp",
+        "bytes": 334994
+      },
+      {
+        "file": "pitufos-preview.mp4",
+        "bytes": 3009525
+      }
+    ]
+  }
+]

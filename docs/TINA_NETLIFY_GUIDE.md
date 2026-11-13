@@ -1,5 +1,7 @@
 # Guía de Configuración: TinaCMS + Netlify 🚀
 
+> **Documento histórico, no procedimiento operativo.** El destino actual documentado es Vercel/al3design.dev. No aplicar aquí ramas, variables, builds ni recuperación de índice por borrado. Consultar [guía editorial](GUIA_EDITORIAL_IA.md) y [operación IA local](../.agents/skills/portfolio-editorial/references/operacion.md); confirmar acceso/configuración remotos antes de una publicación. Se conserva el texto inferior como historia.
+
 Esta guía detalla los pasos necesarios para configurar TinaCMS con Netlify, incluyendo la resolución de problemas comunes que encontramos durante el desarrollo.
 
 ---

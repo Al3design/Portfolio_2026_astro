@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "gitcron",
+    "publicationStatus": "draft",
+    "files": [
+      {
+        "preview": "/revision/media/gitcron-context-panel.webp",
+        "source": "src/editorial/assets/gitcron-context-panel.webp",
+        "proposedPublicUrl": "/assets/projects/gitcron/gitcron-context-panel.webp"
+      },
+      {
+        "preview": "/revision/media/gitcron-context-menu.webp",
+        "source": "src/editorial/assets/gitcron-context-menu.webp",
+        "proposedPublicUrl": "/assets/projects/gitcron/gitcron-context-menu.webp"
+      }
+    ]
+  },
+  {
+    "slug": "odontopau",
+    "publicationStatus": "draft",
+    "files": [
+      {
+        "preview": "/revision/media/odontopau-home-desktop.webp",
+        "source": "src/editorial/assets/odontopau-home-desktop.webp",
+        "proposedPublicUrl": "/assets/projects/odontopau/odontopau-home-desktop.webp"
+      },
+      {
+        "preview": "/revision/media/odontopau-article-mobile.webp",
+        "source": "src/editorial/assets/odontopau-article-mobile.webp",
+        "proposedPublicUrl": "/assets/projects/odontopau/odontopau-article-mobile.webp"
+      }
+    ]
+  }
+]

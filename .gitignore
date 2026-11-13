@@ -40,3 +40,8 @@ Portfolio_2026_astro.code-workspace
 .codegraph/config.json
 .continue/agents/new-config.yaml
 .understand-anything/
+
+# Evidencia y estado locales; fuentes/reportes mantenidos en docs/openspec.
+output/
+.playwright-cli/
+.codegraph/daemon.pid

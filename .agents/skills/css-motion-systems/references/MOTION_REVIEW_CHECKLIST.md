@@ -1,5 +1,7 @@
 # Motion Review Checklist
 
+Project policy (Alejandro, 2026-10-16): criteria for final verification by the orchestrator after all OpenSpec tasks, before archive/merge; not checks required from the executor per batch. Follow AGENTS.md and docs/TESTING_MCP.md. Executor control commands require an explicit batch prompt and run once; on failure report and deliver without retries/substitutes. Audit screenshots belong to the orchestrator; batch audits read diffs without verification. Preserve tests/protections; no routine diagnostic MCP startup or global e2e reactivation without consulting Alejandro. This avoids the repeated-suite and duplicate-MCP/screenshot resource exhaustion observed in GitCron on 2026-10-16.
+
 ## Interaction Quality
 
 - The motion explains a state change, not just decoration

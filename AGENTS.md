@@ -2,12 +2,22 @@
 
 This file provides guidance to AI coding agents when working with code in this repository.
 
+## Rutina de IA local — portfolio
+
+Para altas/cambios de contenido usar [.agents/skills/portfolio-editorial/SKILL.md](.agents/skills/portfolio-editorial/SKILL.md) y su operación/prompts. OpenCode Desktop: `portfolio-editor` / `portfolio-revisor`; DSH: presets propios Portfolio, sin copiar el carril de otros proyectos. Preservar diseño, fuentes ES/EN, rama activa y trabajo ajeno. No ampliar el alcance a funcionalidades nuevas.
+
+**Hosting y CMS:** el destino documentado es Vercel (`portfolio-2026-astro`, `al3design.dev`), con build en `vercel.json`; confirmar configuración/acceso vigentes antes de desplegar. Netlify es historia, no un carril alternativo. Tina tiene colecciones, contratos y renderers propios: distinguir artículos bilingües, páginas, globales, orden visual, fichas Shop y selección pública. Formularios/esquema, tema admin y Cloud (orígenes/índice/credenciales) son capas distintas. Ver la guía editorial; no simplificar todo a un artículo ni instalar adapters por una carga.
+
+**Diseño y maqueta:** las altas/cambios editoriales conservan componentes, variantes, jerarquía, anchos, espaciados, tipografías, temas y comportamiento responsive existentes. Sitio público: SCSS de `src/styles/abstracts/`, variables `--clr-brand-*` y componentes compartidos. Administrador: tokens `--al3-admin-*` y puente `--tina-*`, según `docs/TINA_ADMIN_THEME.md`, aislados de sitio/iframe. No agregar colores, estilos/HTML/clases embebidos ni layouts para acomodar contenido. Si el material no encaja, informar la limitación; modificar tokens, maqueta o runtime requiere encargo explícito aparte.
+
+Preparar candidato explícito, obtener Preview real, entregar URL y revisión, guardar **ESPERANDO_OK_PREVIEW** fuera de Git y terminar el turno. Producción requiere el OK posterior de Alejandro para esa revisión. No empujar rama productiva ni guardar Cloud/main antes de ese OK. Para trabajos nuevos aplicar el flujo Git siguiente, con rama propia desde main limpia/actualizada y sin worktrees. Si no hay carril Preview/acceso disponible, reportar bloqueo sin inventar URL. La copia temporal de archivos no es un worktree ni autoriza deploy. Los scripts y prompts respetan la política de controles siguiente: sus ejemplos no autorizan ejecutar comandos por tanda.
+
 ## Protocolo editorial obligatorio — artículos y Shop 3D
 
 Antes de redactar, crear/editar un artículo o una pieza, cargar imágenes o preparar su publicación, leer [docs/GUIA_EDITORIAL_IA.md](docs/GUIA_EDITORIAL_IA.md). Define la correspondencia entre Tina, contratos, renderizado, imágenes, listados, metadatos, RSS y selección pública.
 
 - Artículos nuevos: usar [la plantilla bilingüe](docs/templates/articulo-bilingue.mdx), mantener draft y completar bloques ES/EN. No crear otra plantilla visual ni una página por artículo.
-- Piezas nuevas: usar [la plantilla Shop](docs/templates/pieza-shop.json). Guardar un borrador no lo agrega al catálogo. La selección pública se edita explícitamente en Tina; ver docs/GUIA_EDITORIAL_IA.md. `status` de Shop no equivale a `publicationStatus` de artículos.
+- Piezas nuevas: usar [la plantilla Shop](docs/templates/pieza-shop.json). Guardar un borrador no lo agrega al catálogo: selección explícita en `src/editorial/shop-catalogue/catalogue.json`, formulario `tina/shop-catalogue.ts` e imports derivados por plugin. Consultar reportes para evidencia fechada, sin tratar el nombre de un change como estado vigente. `status` de Shop no equivale a `publicationStatus` de artículos.
 - Redactar natural, coloquial y profesional; no inventar hechos ni narrar «Alejandro dijo/confirmó» al visitante. Mantener condiciones comerciales y diseño aprobados.
 - Para un campo nuevo, conectar esquema, contrato, proyección/localización, renderer y consumidores; no limitarse al formulario. No editar generados de Tina a mano.
 - Las plantillas son borradores, no aprobaciones. Preparación, controles, Preview y producción son etapas distintas. La guía no amplía permisos de ejecución/publicación ni reemplaza la política siguiente.
@@ -22,9 +32,18 @@ Leer [docs/TINA_ADMIN_THEME.md](docs/TINA_ADMIN_THEME.md) antes de modificar apa
 
 ## Commands
 
-### Browser verification
+### Politica de ejecucion y verificacion — 2026-10-16
 
-Preferir e2e y WebMCP para verificaciones funcionales con resultados compactos; usar capturas solo cuando aporten evidencia visual. Leer `docs/TESTING_MCP.md` y `node_modules/e2e/skills/e2e/SKILL.md` antes de escribir/ejecutar pruebas e2e. Config MCP de este proyecto: `C:/www/Portfolio_2026_astro/e2e.config.ts`. No iniciar otro Tina sobre puertos ocupados. Los tests deterministas no necesitan modelos ni API keys.
+Decision de Alejandro tras el incidente de GitCron del 2026-10-16: las suites repetidas por tanda agotaban tiempo y contexto; los MCP duplicados saturaban la RAM y provocaban paginacion en Windows. Las capturas duplicadas y los prompts contrarios a controles generaban trabajo y ciclos sin salida. No reintroducir ese circuito.
+
+- **Ejecutora:** no correr verificacion del proyecto, build, pruebas, tipos, lint, e2e ni tomar o inspeccionar capturas por prompt/tanda. Solo si el prompt pide expresamente un comando de control, ejecutarlo una vez, sin agregar otros comandos. Si falla, registrar comando, resultado y fallo en el reporte y entregar; no corregir para reintentar, repetir ni sustituir el control por otro.
+- **Orquestador:** auditar cada tanda leyendo el diff y el reporte, sin ejecutar verificaciones. Las capturas para auditoria las toma e inspecciona el orquestador.
+- **Cierre:** una vez terminadas todas las tareas del cambio OpenSpec, el orquestador ejecuta la verificacion final antes de archivar o fusionar y resuelve los fallos encontrados. Las correcciones se controlan de forma acotada, sin convertir cada tanda en una nueva corrida completa. No declarar cierre aprobado con fallos pendientes.
+- **Protecciones:** no aflojar controles, esconder errores, desactivar reglas de lint, saltear pruebas ni cambiar el producto para hacer pasar un control. Diferir la ejecucion al cierre no elimina pruebas ni criterios de aceptacion.
+- **Prompts y skills:** deben respetar reglas y controles del proyecto. Una excepcion debe estar nombrada expresamente en el prompt y quedar en el reporte; no autoriza bucles de verificacion ni desactivar protecciones. Los catalogos de comandos y checklists de skills no son una orden de ejecutarlos por tanda.
+- **Recursos:** no iniciar MCP ni navegadores de diagnostico por rutina. El MCP global de e2e esta desactivado por decision de Alejandro; no reactivarlo sin consultarle. Usar e2e por consola cuando corresponda al cierre o al comando explicito del prompt.
+
+Leer `docs/TESTING_MCP.md` y `node_modules/e2e/skills/e2e/SKILL.md` antes de escribir/ejecutar pruebas e2e; su lectura no autoriza ejecutarlas. Config de consola: `C:/www/Portfolio_2026_astro/e2e.config.ts`. No iniciar otro Tina sobre puertos ocupados. Los tests deterministas no necesitan modelos ni API keys. Los comandos siguientes son referencia, sujetos a esta politica.
 
 ```bash
 npm run dev        # Start TinaCMS + Astro dev server (always use this, not astro dev alone)
@@ -33,7 +52,7 @@ npm run preview    # Preview the production build
 npx astro check    # TypeScript/Astro type checking
 ```
 
-Node ≥ 24 is required. TinaCMS requires `TINA_CLIENT_ID` and `TINA_TOKEN` env vars to connect to the cloud CMS; without them the local dev server still runs but CMS features are limited.
+Node 24.x is required by `package.json`; conservar pnpm y `pnpm-lock.yaml`, sin introducir otro lockfile. TinaCMS requires `TINA_CLIENT_ID` and `TINA_TOKEN` env vars to connect to the cloud CMS; without them the local dev server still runs but CMS features are limited.
 
 ## Architecture
 
@@ -45,17 +64,19 @@ src/pages/about.astro          → fetches page entry → <ClientAbout client:lo
 src/pages/projects/[...slug].astro  → dynamic project detail pages
 ```
 
-**Content layer**: Las colecciones Tina actuales se definen en `tina/config.ts` y `tina/shop-products.ts`; artículos/páginas/global viven en `src/content/`, y las piezas Shop en `src/editorial/shop-products/`:
+**Content layer**: `tina/config.ts` registra las colecciones y sus módulos (`shop-products`, `shop-catalogue`, `project-order`, `global-settings`, locales/bloques de artículos); artículos/páginas/global viven en `src/content/`, y las fuentes editoriales de Shop/orden en `src/editorial/`:
 
 - `projects/` — MDX files. Astro schema in `src/content.config.ts`. Key frontmatter fields: `title`, `year`, `date`, `type`, `description`, `stack[]`, `role`, `client`, `order`, `image`, `showInResume`, `showInPortfolio`, `points[]`, `categories[]`.
 - `pages/` — MDX files for `home`, `about`, `archive`, `resume` — each with different frontmatter schemas (defined per-template in `tina/config.ts`).
 - `global/` — configuración compartida de footer/enlaces, definida en `tina/config.ts`.
 - `shopProduct` — JSON editoriales; selección pública e imports de fotos explícitos. No confundir estado editorial con publicación; ver la guía obligatoria.
+- `shopCatalogue` — `src/editorial/shop-catalogue/catalogue.json`; selección pública, hero y hasta tres novedades, mediante referencias a fichas. `status` de ficha no reemplaza esta selección.
+- `projectOrder` — `src/editorial/project-order/order.json`; orden visual general/por categoría, independiente de publicación y cronología Resume/RSS.
 
 **Astro content schema** (`src/content.config.ts`): Defines the Zod schema for the `projects` collection. **Critical Astro v6 limitation**: custom frontmatter fields are NOT accessible via `p.data`, and `import.meta.glob` on MDX files does NOT expose `mod.frontmatter`. The canonical workaround — already implemented for `categories` — is:
 
 ```ts
-import matter from "gray-matter"; // transitive dep, no install needed
+import matter from "gray-matter"; // dependencia declarada; no reinstalar por esta rutina
 const rawFiles = import.meta.glob<string>("../content/projects/*.mdx", {
   eager: true,
   query: "?raw",
@@ -112,8 +133,8 @@ The sidebar's `# Filters` and `# Layout` blocks are rendered inside `home__sideb
 
 ## Git Workflow
 
-- NUNCA crear branches automáticamente
-- NUNCA crear worktrees
-- Trabajar siempre sobre la branch activa actual
-- Commits directos a la branch en uso
-- Si necesitás cambiar de branch, pedíselo al usuario
+- Decisión de Alejandro del 13/11/2026: dejar `main` local/remota al día y limpia como punto de partida. Un encargo nuevo autoriza crear su rama `codex/<tarea>` desde esa base, sin otra confirmación de rutina. Si el usuario nombra otra rama, usarla.
+- Antes de crearla, comprobar checkout e índice limpios, hacer fetch y actualizar `main` por fast-forward. Si hay cambios ajenos, divergencia o una tarea activa, conservarlos y coordinar; no resetear, limpiar ni stash automático para aparentar limpieza.
+- Un encargo retomado continúa su rama existente; no crear otra por turno, hallazgo o archivo. Trabajar y commitear en la rama del encargo. No crear worktrees.
+- Push a la rama de trabajo genera Preview solo si lo confirma la integración Vercel; entregar URL/revisión y detenerse para el OK posterior antes de integrar a `main`.
+- Ese OK de la revisión autoriza completar integración por el flujo permitido, actualizar `main` local/remota y volver a dejar el checkout limpio en `main`, sin preguntas técnicas repetidas. No integrar cambios nuevos ajenos al snapshot aprobado ni saltar protecciones de rama.

@@ -2,7 +2,25 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Entrada vigente: `AGENTS.md`, `openspec/config.yaml` y `.agents/skills/portfolio-editorial/SKILL.md`. Para contenido seguir su operación/prompts y `docs/GUIA_EDITORIAL_IA.md`: Preview real, URL/revisión, ESPERANDO_OK_PREVIEW y terminar el turno hasta el OK posterior de Alejandro. Trabajo nuevo en rama propia desde main limpia/actualizada según el flujo Git de AGENTS, sin worktrees ni publicar por guardar en Cloud/main. Conservar diseño y trabajo ajeno; los catálogos de comandos no autorizan controles por tanda.
+
+Destino documentado: **Vercel**, `portfolio-2026-astro` / `al3design.dev`, con build de `vercel.json`; verificar acceso/configuración antes de desplegar. Netlify es histórico. Tina distingue artículos bilingües, páginas, globales, orden visual, fichas Shop y selección pública; esquema/formularios, tema admin y configuración Cloud son capas independientes. No tratarlas como una colección única ni cambiar adapters para cargar contenido.
+
+Aplicar el contrato de diseño/maqueta de AGENTS: sitio con SCSS en `src/styles/abstracts/`, tokens `--clr-brand-*` y componentes existentes; admin con `--al3-admin-*`/`--tina-*` según `docs/TINA_ADMIN_THEME.md`, sin contaminar sitio/iframe. Conservar jerarquía, variantes, anchos, espacios, tipografías, temas y responsive. No inventar estilos/HTML/clases en contenido. Una limitación de la plantilla se informa; cambiar tokens, maqueta o runtime requiere encargo explícito separado.
+
+## Politica de ejecucion y verificacion — 2026-10-16
+
+Aplicar la politica de roles de `AGENTS.md` y el procedimiento de `docs/TESTING_MCP.md`. Decision de Alejandro tras el incidente de GitCron del 2026-10-16: suites repetidas agotaban tiempo/contexto; MCP duplicados saturaban RAM y causaban paginacion; capturas duplicadas y prompts contradictorios generaban ciclos sin salida.
+
+- Ejecutora: sin verificacion, build, pruebas, tipos, lint, e2e ni captura/inspeccion de pantallas por tanda. Solo ejecutar el comando de control pedido expresamente en el prompt, una vez; ante fallo, reportar y entregar, sin reintento ni control alternativo.
+- Orquestador: auditar cada tanda por diff y reporte, sin verificaciones; tomar e inspeccionar las capturas de auditoria.
+- Al terminar todas las tareas OpenSpec, el orquestador corre la verificacion final antes de archivar o fusionar y resuelve los fallos; no declarar cierre aprobado con fallos pendientes.
+- No aflojar protecciones, ocultar errores, desactivar lint, saltear pruebas ni cambiar el producto para pasar controles. Prompts y skills respetan las reglas; cualquier excepcion debe nombrarse en el prompt y registrarse en el reporte, sin bucles ni desactivacion de protecciones.
+- No iniciar MCP por rutina ni reactivar el MCP global e2e sin consultar a Alejandro. e2e se ejecuta por consola en el cierre o por comando explicito. No duplicar Tina sobre puertos ocupados.
+
 ## Commands
+
+Catalogo de referencia; no implica ejecutarlos por tanda.
 
 ```bash
 npm run dev        # Start TinaCMS + Astro dev server (always use this, not astro dev alone)
@@ -11,7 +29,7 @@ npm run preview    # Preview the production build
 npx astro check    # TypeScript/Astro type checking
 ```
 
-Node ≥ 24 is required. TinaCMS requires `TINA_CLIENT_ID` and `TINA_TOKEN` env vars to connect to the cloud CMS; without them the local dev server still runs but CMS features are limited.
+Node 24.x is required by `package.json`; conservar pnpm y `pnpm-lock.yaml`, sin introducir otro lockfile. TinaCMS requires `TINA_CLIENT_ID` and `TINA_TOKEN` env vars to connect to the cloud CMS; without them the local dev server still runs but CMS features are limited.
 
 ## Architecture
 
@@ -23,15 +41,16 @@ src/pages/about.astro          → fetches page entry → <ClientAbout client:lo
 src/pages/projects/[...slug].astro  → dynamic project detail pages
 ```
 
-**Content layer** (`src/content/`): Two TinaCMS collections:
+**Content layer**: contratos y mapa completos en `docs/GUIA_EDITORIAL_IA.md`; las colecciones actuales incluyen además global, Shop, selección y orden:
 
 - `projects/` — MDX files. Astro schema in `src/content.config.ts`. Key frontmatter fields: `title`, `year`, `date`, `type`, `description`, `stack[]`, `role`, `client`, `order`, `image`, `showInResume`, `showInPortfolio`, `points[]`, `categories[]`.
 - `pages/` — MDX files for `home`, `about`, `archive`, `resume` — each with different frontmatter schemas (defined per-template in `tina/config.ts`).
+- `global/` — menús y footer compartido; `src/editorial/shop-products/` — piezas; `src/editorial/shop-catalogue/catalogue.json` — selección pública; `src/editorial/project-order/order.json` — orden visual. Shop draft/review no filtra publicación; no sustituir selección por status.
 
 **Astro content schema** (`src/content.config.ts`): Defines the Zod schema for the `projects` collection. **Critical Astro v6 limitation**: custom frontmatter fields are NOT accessible via `p.data`, and `import.meta.glob` on MDX files does NOT expose `mod.frontmatter`. The canonical workaround — already implemented for `categories` — is:
 
 ```ts
-import matter from "gray-matter"; // transitive dep, no install needed
+import matter from "gray-matter"; // dependencia declarada; no reinstalar por esta rutina
 const rawFiles = import.meta.glob<string>("../content/projects/*.mdx", {
   eager: true,
   query: "?raw",
@@ -88,6 +107,6 @@ The sidebar's `# Filters` and `# Layout` blocks are rendered inside `home__sideb
 
 ## Git
 
-- No crear branches automáticamente
-- Trabajar siempre sobre la branch activa
-- Commits directos a la branch actual
+- Seguir el flujo Git de AGENTS (decisión del 13/11): encargo nuevo en `codex/<tarea>` desde `main` limpia y actualizada por fast-forward; retomado en su rama existente. No crear worktrees ni ramas por tanda.
+- Cambios ajenos/divergencias requieren coordinar, sin reset/clean/stash automáticos. Commits en la rama del encargo; Preview y OK posterior antes de integrar a producción.
+- Tras el OK completar integración permitida y dejar `main` local/remota al día y checkout limpio, sin pedir nuevamente autorizaciones de esa misma revisión.

@@ -188,7 +188,7 @@ When using this skill, produce these five sections:
 2. **Motion Spec** - duration, easing token, distance, trigger, affected elements
 3. **Implementation** - concrete CSS/JS/View Transition code
 4. **Accessibility Fallback** - reduced-motion and unsupported API behavior
-5. **QA Checklist** - performance, usability, and cross-device verification
+5. **QA Checklist** - acceptance criteria for final verification by the orchestrator, not executor checks per batch
 
 ## Starter Tokens
 
@@ -198,6 +198,6 @@ See: [references/MOTION_TOKENS.css](references/MOTION_TOKENS.css)
 
 ## Review Checklist
 
-Before shipping, run through:
+Project policy (Alejandro, 2026-10-16; AGENTS.md and docs/TESTING_MCP.md): the orchestrator applies this checklist in final verification after all OpenSpec tasks are complete, before archive/merge. The executor does not run verification, builds, tests, types, lint, e2e, or take/inspect screenshots per batch. Only an explicit batch prompt may request a control command, once; on failure report and deliver without retries or alternative checks. The orchestrator audits each batch by diff without verification and owns audit screenshots. Preserve tests and protections. Do not start MCP by routine or reactivate global e2e without consulting Alejandro. Cause: repeated suites and duplicate MCP/screenshots exhausted RAM/time/context in GitCron on 2026-10-16.
 
 See: [references/MOTION_REVIEW_CHECKLIST.md](references/MOTION_REVIEW_CHECKLIST.md)

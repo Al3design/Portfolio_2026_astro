@@ -1,0 +1,88 @@
+{
+  "receivedOn": "2026-10-29",
+  "batch": "02",
+  "userContext": "Más trabajos; el árbol se repite porque tiene colores más oscuros.",
+  "photoCount": 11,
+  "newDraftCount": 3,
+  "existingDraftUpdated": "arbol-decorativo",
+  "materialOfNewPieces": "pending-confirmation",
+  "files": [
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-37350483-cb6d-4f3d-adc9-853061b13518.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-37350483-cb6d-4f3d-adc9-853061b13518.jpg",
+      "sha256": "fb8bc9e633725b98a118e98f2f90d86c3b80008ee31222641ab757ac4e44f9e7",
+      "bytes": 342053,
+      "draft": "flor-decorativa-blanca"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-3385fd7d-6940-4ef2-972d-4a3748335d49.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-3385fd7d-6940-4ef2-972d-4a3748335d49.jpg",
+      "sha256": "3b5a052e278afaaf96e201379ad932d0eb2cda1bd7a860535e05eb6c7180b99f",
+      "bytes": 1115396,
+      "draft": "flor-decorativa-blanca"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-e6e8ae42-e243-48f9-83da-5d13f95497de.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-e6e8ae42-e243-48f9-83da-5d13f95497de.jpg",
+      "sha256": "58581f2cbdf475ac970abf05e6a3e8a6afc81e6b17c0481b51eaa38fb08b22f4",
+      "bytes": 325025,
+      "draft": "flor-decorativa-blanca"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-8e7e6627-a2e1-4ec0-bea0-6dd3d6cf2409.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-8e7e6627-a2e1-4ec0-bea0-6dd3d6cf2409.jpg",
+      "sha256": "14797fae2fa4cec942b2a458bd71a1deb67daab13821146644f9d766b9d4e8ee",
+      "bytes": 386777,
+      "draft": "flor-decorativa-blanca"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-7580cd8b-65bd-44e9-bef2-df8ea478313b.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-7580cd8b-65bd-44e9-bef2-df8ea478313b.jpg",
+      "sha256": "cec04b2465400a4576d53af3a32537a4e4a359e746928ef94c23fc8d1bc65f57",
+      "bytes": 410275,
+      "draft": "maceta-acanalada-con-plato"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-af378ade-0e85-4dca-9467-b168edde7f97.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-af378ade-0e85-4dca-9467-b168edde7f97.jpg",
+      "sha256": "f5bb44e5c5cb234d84d7b6aedd74fd090929cda2e01ef77cafec8f31163885e1",
+      "bytes": 369371,
+      "draft": "maceta-perro"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-a082e1bc-2689-4869-8019-06ade5d11c6f.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-a082e1bc-2689-4869-8019-06ade5d11c6f.jpg",
+      "sha256": "679a861bbb701c8bd84469cebb55d4438f859f9dd85afd7eeeeba054838f5b80",
+      "bytes": 356338,
+      "draft": "maceta-perro"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-84353a6d-01e6-42e2-b19b-e7a5a9349975.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-84353a6d-01e6-42e2-b19b-e7a5a9349975.jpg",
+      "sha256": "8f2b55aef05b012403319f946e5bbf540c7341e4fd7e0c878f09308be9058c36",
+      "bytes": 966457,
+      "draft": "maceta-perro"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-fea55375-15fb-49cc-a4cb-878904c84228.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-fea55375-15fb-49cc-a4cb-878904c84228.jpg",
+      "sha256": "88b50498c45db6cf1ef3f27a5b728496a56fa3757287e57a2c9aca64c66588f9",
+      "bytes": 998778,
+      "draft": "arbol-decorativo"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-6b3aec1b-e895-4b81-94cb-60f8e9c1cf4b.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-6b3aec1b-e895-4b81-94cb-60f8e9c1cf4b.jpg",
+      "sha256": "427ab4553274ac16edf2b8c8df80ca28c5be35410023b9c81047ad499fc192a4",
+      "bytes": 363039,
+      "draft": "arbol-decorativo"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-cb5c8e07-675b-494c-99fb-c1ce72156a8e.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-cb5c8e07-675b-494c-99fb-c1ce72156a8e.jpg",
+      "sha256": "723d464c3dc755d12c87332354f737ed33808cc933c2d00cbf79f1731126af91",
+      "bytes": 355578,
+      "draft": "arbol-decorativo"
+    }
+  ]
+}

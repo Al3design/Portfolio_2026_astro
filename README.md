@@ -2,9 +2,19 @@
 
 Welcome to the documentation for **The Compiled Soul**, a personal portfolio built with **Astro v6**. Este README es el punto de entrada; los contratos ejecutables y las guías enlazadas determinan cómo editar cada sistema.
 
+## Rutina de IA local
+
+Entrada: [skill portfolio-editorial](.agents/skills/portfolio-editorial/SKILL.md), [operación](.agents/skills/portfolio-editorial/references/operacion.md), [prompts para alta/cambio/OK](.agents/skills/portfolio-editorial/references/prompts.md) y [perfiles Windows](.agents/skills/portfolio-editorial/references/perfiles-windows.md). Encargo nuevo: `main` limpia/actualizada → rama `codex/<tarea>` → candidato → Preview → URL/revisión y parada para OK posterior → integración permitida → `main` local/remota actualizada y limpia. Un encargo retomado conserva su rama. Mantener diseño y cambios ajenos, sin worktrees ni suites por tanda. Estado y límites del ensayo: [reporte 13/11](openspec/changes/rutina-ia-local-portfolio/report-2026-11-13.md).
+
+El destino es **Vercel**, proyecto documentado `portfolio-2026-astro`, dominio `al3design.dev`; `vercel.json` define el build. El acceso remoto actual sigue pendiente de acreditar. Tina conserva sus contratos separados para artículos ES/EN, páginas, globales, orden visual, fichas y selección Shop; formularios, apariencia admin y Cloud tienen procedimientos distintos.
+
+La rutina conserva **tokens y maqueta**: SCSS de `src/styles/abstracts/` y `--clr-brand-*` en el sitio; `--al3-admin-*`/`--tina-*` en el administrador, según [su guía](docs/TINA_ADMIN_THEME.md), aislados del sitio y del iframe. Usar componentes/variantes existentes y conservar anchos, espaciados, tipografías, temas y responsive. Una carga de contenido no autoriza modificar CSS/tokens, inventar layouts o incrustar estilos/HTML/clases; si no encaja, informar la limitación antes de ampliar el encargo.
+
 ## Continuidad para IA — editorial y Tina (03/11/2026)
 
-Leer primero `AGENTS.md`, [OpenSpec](openspec/config.yaml), [la guía editorial](docs/GUIA_EDITORIAL_IA.md) y [el sistema visual de Tina](docs/TINA_ADMIN_THEME.md). Conservar rama activa y cambios ajenos. Las instrucciones históricas de Netlify no describen el despliegue actual: producción está en Vercel, `al3design.dev`.
+Este bloque conserva evidencia fechada del 03/11; sus SHAs y pendientes no describen por sí solos el estado actual. Consultar los reportes posteriores y fuentes vigentes antes de actuar. El tema admin se consulta solo si cambia la apariencia del CMS.
+
+Leer primero `AGENTS.md`, [OpenSpec](openspec/config.yaml) y [la guía editorial](docs/GUIA_EDITORIAL_IA.md). Para modificar apariencia del CMS, leer también [el sistema visual de Tina](docs/TINA_ADMIN_THEME.md). Preservar cambios ajenos y aplicar el flujo Git vigente de AGENTS; las reglas de rama activa de reportes anteriores son históricas. Las instrucciones históricas de Netlify no describen el despliegue actual: producción está en Vercel, `al3design.dev`.
 
 Las **directivas permanentes** viven en [openspec/config.yaml](openspec/config.yaml), con entrada en AGENTS y procedimientos en las guías temáticas. Aplican cualquiera sea el nombre de la rama; para estar disponibles en otra rama, deben estar incorporadas allí mediante Git. No cambiar de rama o fusionar automáticamente para propagarlas.
 
@@ -35,7 +45,7 @@ Tina usa CSS propio como excepción acotada al shell vendor; el sitio conserva S
 Estado: TinaCMS **3.15.1**, CLI **4.0.4**, candidato `df001b1` en Preview Ready y rama Cloud reindexada. Nota interna Cloud guardada/reabierta y restaurada/reabierta el 03/11 (commits `c0d8fec`/`fb5b4a9`); no equivale a upload/alta/selección completa ni producción. HEAD local sigue df001b1, sin pull sobre cambios ajenos. Live Preview Shop nuevo está habilitado en local; Cloud conserva formulario nativo. Evidencia y pendientes: `openspec/changes/tema-admin-tina/report-2026-11-03.md` y tareas de `alta-piezas-shop-desde-tina`. No repetir builds o controles completados por leer este documento.
 
 > 📋 **Historial de cambios:** Para entender qué se modificó, por qué, y en qué orden, leer [`docs/CHANGELOG.md`](./docs/CHANGELOG.md).
-> 🛠️ **Configuración CMS:** Guía paso a paso para configurar TinaCMS y Netlify en [`docs/TINA_NETLIFY_GUIDE.md`](./docs/TINA_NETLIFY_GUIDE.md).
+> 🛠️ **Configuración CMS actual:** [guía editorial](docs/GUIA_EDITORIAL_IA.md) y [operación IA local](.agents/skills/portfolio-editorial/references/operacion.md). La [guía Netlify](docs/TINA_NETLIFY_GUIDE.md) se conserva solo como historia.
 
 ---
 
@@ -43,7 +53,7 @@ Estado: TinaCMS **3.15.1**, CLI **4.0.4**, candidato `df001b1` en Preview Ready 
 
 | Layer | Technology |
 |---|---|
-| Framework | [Astro v6.3](https://astro.build/) — SSG, `output: "static"` |
+| Framework | [Astro v6](https://astro.build/) — SSG; rango vigente en package.json y resolución en pnpm-lock.yaml |
 | UI Library | [React 19.2](https://react.dev/) — solo para componentes con interactividad (Astro Islands) |
 | Styling | SASS / SCSS Modules — **sin Tailwind CSS** |
 | Content | MDX via Astro Content Layer (`src/content/`) |

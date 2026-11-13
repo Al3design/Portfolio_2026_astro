@@ -6,10 +6,23 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — Rutina de IA local propia del portfolio
+
+- Nueva decisión Git de Alejandro: main local/remota limpia y actualizada como base; cada encargo nuevo crea `codex/<tarea>` y los retomados continúan su rama. Tras Preview y OK posterior, integrar y volver a main limpia, sin worktrees ni ramas por tanda. Sustituye las restricciones anteriores de no crear ramas por encargo en AGENTS/CLAUDE/config/guías/prompts y perfiles Windows.
+- Preparación de integración de fuentes pendientes y borradores conservados como draft; evidencia bruta de output/Playwright permanece local y respaldada, y daemon.pid deja de versionarse. No se publica esa evidencia como contenido. El cambio de prueba de BDM en Tina se descarta por indicación de Alejandro, preservando su historial.
+
+- Revisión adicional de README, AGENTS, CLAUDE, guía, skill/prompts y skill Astro: Vercel y `vercel.json` como destino/build documentados; contratos Tina separados para artículos ES/EN, páginas, globales, orden visual, fichas y selección Shop. Esquema/formularios, tema e índice/orígenes Cloud no son intercambiables.
+- Protección explícita de tokens y maqueta: `--clr-brand-*`/SCSS públicos y `--al3-admin-*`/`--tina-*` del admin aislados de sitio/iframe. Conservar componentes, variantes, anchos, espacios, tipografía, temas y responsive; informar cuando el material no encaje en lugar de rediseñar. CLAUDE completa reglas Git, AGENTS completa colecciones y ambos corrigen Node a `24.x` y gray-matter a dependencia declarada. Cambios solo documentales, revisados por diff sin repetir controles.
+
+- Skill `portfolio-editorial`, prompts para alta/cambio/OK y mapa operativo Astro/Tina/Shop. Diseño fijo, rama activa y parada humana tras Preview identificado; no se traslada el carril Netlify/editorial-tina de OdontoPau.
+- Runner Node sin dependencias nuevas: copia temporal selectiva de HEAD + archivos propios, sellado de estado publicable solo en copia, integridad y sondas HTTP explícitas sin commits/builds/deploys automáticos. No sustituye contratos, revisión visual ni identidad del hosting.
+- Perfiles OpenCode propios y presets Portfolio anexados a DSH con backup verificado, sin tocar modelos/proveedores/permisos globales. UI y publicación real todavía no acreditadas.
+- Netlify marcado histórico, scripts Shop congelados detenidos antes de crear candidatos y ejemplos de bypass Cloud retirados del prompt antiguo. Reglas/guía/README/CLAUDE actualizados preservando trabajo previo. Estado, comprobaciones y pendientes en `openspec/changes/rutina-ia-local-portfolio/report-2026-11-13.md`.
+
 ## [2026-11-10] — Acceso visual de artículos desde Tina Cloud
 
 - El router rechazaba los clics del listado Cloud porque reciben solo `_sys`, sin título. Ahora un resolver asíncrono comprueba la página pública del mismo origen y abre el editor visual si existe. Mantiene el formulario ante 404, protección, redirección, error o timeout; los borradores continúan en revisión local.
-- Pages mantiene sus rutas por filename. Sin cambios de esquema, estilos, contenido o secretos. Cierre focalizado del router: 7/7 pruebas, una ejecución; sin comprobación de iframe/guardado Cloud. Esta corrección todavía no está desplegada. Evidencia: `docs/REPORT-2026-11-10-tina-visual-router.md`.
+- Pages mantiene sus rutas por filename. Sin cambios de esquema, estilos, contenido o secretos. Router 7/7; tipos 0 errores/0 warnings. Publicado `8ed01ec`, deployment `5RYBGunh7` Ready 10/11 13:56:52 ART: BDM abre visual desde Projects y Home desde Pages, con iframe y Save deshabilitado, sin guardados Cloud. Skill Astro local actualizada. Evidencia: `docs/REPORT-2026-11-10-tina-visual-router.md`; resultado agregado localmente después del release para no reconstruir solo documentación.
 
 ## [2026-11-10] — Listas editoriales y paginación compartidas
 

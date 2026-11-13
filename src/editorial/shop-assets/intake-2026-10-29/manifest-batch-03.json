@@ -1,0 +1,29 @@
+{
+  "receivedOn": "2026-10-29",
+  "batch": "03",
+  "photoCount": 3,
+  "newDraft": "soporte-control-creeper",
+  "files": [
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-b24d78b3-1df5-4e3c-bde7-8cfee9b20362.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-b24d78b3-1df5-4e3c-bde7-8cfee9b20362.jpg",
+      "sha256": "e2938ff56494f1a75f7ab6e7983dcd491b3405649e79a9d640fba809a11a0116",
+      "bytes": 386166,
+      "draft": "soporte-control-creeper"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-4fe453a6-e887-496c-83f3-de06c2145154.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-4fe453a6-e887-496c-83f3-de06c2145154.jpg",
+      "sha256": "8f903c7a2cd87e05df9a24fc0d7c0661526eb409707183b0f869128b619ca482",
+      "bytes": 971434,
+      "draft": "soporte-control-creeper"
+    },
+    {
+      "sourcePath": "C:\\Users\\apdel\\AppData\\Local\\Temp\\codex-clipboard-0dd34c4b-7218-41fa-848d-2b8967f36d54.jpg",
+      "storedPath": "src/editorial/shop-assets/intake-2026-10-29/codex-clipboard-0dd34c4b-7218-41fa-848d-2b8967f36d54.jpg",
+      "sha256": "bfefd054d850dd9ef02388e3f82bd3c10eea119773864f5770608f0af708fd30",
+      "bytes": 944017,
+      "draft": "soporte-control-creeper"
+    }
+  ]
+}

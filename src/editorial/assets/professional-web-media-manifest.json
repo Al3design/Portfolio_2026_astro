@@ -1,0 +1,79 @@
+[
+  {
+    "file": "gitcron-context-panel.webp",
+    "project": "gitcron",
+    "source": "C:/www/gitCronos/e2e/tmp/reportes/retomar-19/despues/02-grupo-legible.png",
+    "width": 1600,
+    "height": 947,
+    "bytes": 59792,
+    "sourceReview": "existing screenshot inspected under explicit user exception",
+    "currentInterface": "not established",
+    "publication": "not approved"
+  },
+  {
+    "file": "gitcron-context-menu.webp",
+    "project": "gitcron",
+    "source": "C:/www/gitCronos/e2e/tmp/reportes/retomar-19/despues/01-menu-grafo.png",
+    "width": 1600,
+    "height": 947,
+    "bytes": 57554,
+    "sourceReview": "existing screenshot inspected under explicit user exception",
+    "currentInterface": "not established",
+    "publication": "not approved"
+  },
+  {
+    "file": "useodontopro-home-desktop.webp",
+    "project": "useodontopro",
+    "source": "C:/www/useOdontoPro/tests/shots/baseline/home__1440px.png",
+    "width": 1600,
+    "height": 3773,
+    "bytes": 294686,
+    "sourceReview": "existing screenshot inspected under explicit user exception",
+    "currentInterface": "not established",
+    "publication": "not approved"
+  },
+  {
+    "file": "useodontopro-home-mobile.webp",
+    "project": "useodontopro",
+    "source": "C:/www/useOdontoPro/tests/shots/baseline/home__390px.png",
+    "width": 780,
+    "height": 12884,
+    "bytes": 495330,
+    "sourceReview": "existing screenshot inspected under explicit user exception",
+    "currentInterface": "not established",
+    "publication": "not approved"
+  },
+  {
+    "file": "useodontopro-plans-desktop.webp",
+    "project": "useodontopro",
+    "source": "C:/www/useOdontoPro/tests/shots/baseline/planes__1440px.png",
+    "width": 1600,
+    "height": 2033,
+    "bytes": 174674,
+    "sourceReview": "existing screenshot inspected under explicit user exception",
+    "currentInterface": "not established",
+    "publication": "not approved"
+  },
+  {
+    "file": "useodontopro-plans-mobile.webp",
+    "project": "useodontopro",
+    "source": "C:/www/useOdontoPro/tests/shots/baseline/planes__390px.png",
+    "width": 780,
+    "height": 7384,
+    "bytes": 301428,
+    "sourceReview": "existing screenshot inspected under explicit user exception",
+    "currentInterface": "not established",
+    "publication": "not approved"
+  },
+  {
+    "file": "odontopau-article-mobile.webp",
+    "project": "odontopau",
+    "source": "C:/www/odontoPau/output/playwright/article-reference-mobile.png",
+    "width": 390,
+    "height": 844,
+    "bytes": 42702,
+    "sourceReview": "existing screenshot inspected under explicit user exception",
+    "currentInterface": "not established",
+    "publication": "not approved"
+  }
+]

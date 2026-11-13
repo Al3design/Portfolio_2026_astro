@@ -1,6 +1,33 @@
 {
   "products": [
     {
+      "product": "src/editorial/shop-products/llavero-harry-potter.json"
+    },
+    {
+      "product": "src/editorial/shop-products/llavero-veganuel.json"
+    },
+    {
+      "product": "src/editorial/shop-products/litofania-messi.json"
+    },
+    {
+      "product": "src/editorial/shop-products/set-florero-con-base.json"
+    },
+    {
+      "product": "src/editorial/shop-products/arbol-navidad-espiral.json"
+    },
+    {
+      "product": "src/editorial/shop-products/cubo-articulado-tnt.json"
+    },
+    {
+      "product": "src/editorial/shop-products/caja-bloque-interrogacion.json"
+    },
+    {
+      "product": "src/editorial/shop-products/llavero-chimuelo.json"
+    },
+    {
+      "product": "src/editorial/shop-products/jarron-base-acanalada.json"
+    },
+    {
       "product": "src/editorial/shop-products/arbol-decorativo.json"
     },
     {
@@ -23,33 +50,6 @@
     },
     {
       "product": "src/editorial/shop-products/soporte-control-creeper.json"
-    },
-    {
-      "product": "src/editorial/shop-products/jarron-base-acanalada.json"
-    },
-    {
-      "product": "src/editorial/shop-products/llavero-chimuelo.json"
-    },
-    {
-      "product": "src/editorial/shop-products/caja-bloque-interrogacion.json"
-    },
-    {
-      "product": "src/editorial/shop-products/cubo-articulado-tnt.json"
-    },
-    {
-      "product": "src/editorial/shop-products/arbol-navidad-espiral.json"
-    },
-    {
-      "product": "src/editorial/shop-products/set-florero-con-base.json"
-    },
-    {
-      "product": "src/editorial/shop-products/litofania-messi.json"
-    },
-    {
-      "product": "src/editorial/shop-products/llavero-veganuel.json"
-    },
-    {
-      "product": "src/editorial/shop-products/llavero-harry-potter.json"
     }
   ],
   "latest": [

@@ -9,3 +9,9 @@ Leer primero [la guía editorial](../GUIA_EDITORIAL_IA.md). Estas plantillas son
 Si cambia un campo, actualizar conjuntamente plantilla, esquema Tina, contrato/validación, proyección localizada, renderer y consumidores aplicables (listas, metadatos, social, RSS y preview). La guía contiene el mapa detallado de variables, medios y rutas. No editar SDK/tipos generados a mano ni agregar atributos ficticios al JSON para documentarlos.
 
 La apariencia del formulario no se configura en estas plantillas: usar [el sistema visual Tina](../TINA_ADMIN_THEME.md). El sitio público mantiene su plantilla compartida; el tema del CMS no debe entrar en el iframe.
+
+## Altas Shop: orden y muestras de color
+
+Shop: cada referencia nueva seleccionada explícitamente en products entra al principio; después manda el orden manual guardado en Tina (arrastrar, flechas o Pos., Save/Reset). Editar ficha/fotos o repetir una carga no mueve referencias existentes. No ordenar al renderizar por nombre, fechas de archivos ni invertir por CSS; no descubrir/publicar borradores automáticamente. Hero y latest se eligen aparte y no cambian por una alta.
+
+Completar palette de cada alta con las muestras del PLA mostrado y etiquetas ES/EN antes de entregar Preview; palette: [] oculta los cuadrados. Usar HEX manual aproximado cuando no hay código de filamento confirmado, sin atribuir marca/preset por foto. Excluir decoración, fondo e iluminación; consultar colores ambiguos y registrar pendientes explícitos. El HEX de producto no modifica tokens del diseño.

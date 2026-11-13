@@ -78,3 +78,18 @@ al material, ES/EN, medios, diseño conservado y problemas concretos con evidenc
 No repitas scripts/suites ni conviertas recomendaciones en un rediseño.
 Si falta navegador/visión, distinguí lectura de fuentes de revisión visual real.
 ```
+
+## Instrucción para altas Shop
+
+Añadir al prompt de alta o cambio que incluya piezas nuevas:
+
+```text
+Las altas seleccionadas entran primero en products, la última incorporación arriba.
+Conservá el orden relativo anterior y cualquier posición manual ya guardada;
+actualizar texto/fotos no mueve una pieza. Hero y latest quedan como están.
+Completá palette con cuadrados y nombres ES/EN de los colores del PLA mostrado,
+sin incluir decoración ni deducir marcas/códigos de filamento de la foto.
+Si un tono es ambiguo, preguntame. Ejemplo confirmado: litofania-messi = Dorado / Gold.
+Los HEX manuales son aproximaciones de pantalla, no tokens del sitio.
+Prepará Preview de esta revisión y detenete para mi OK posterior.
+```

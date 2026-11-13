@@ -52,3 +52,11 @@ Si el artículo debe pasar de draft a published solo en copia, editar ese MDX de
 Un JSON fuera de Git por encargo (p. ej. TEMP/portfolio-editorial/<encargo>/estado.json): alcance, rama/HEAD, archivos propios, estado, manifiesto, comandos/resultados, ID/URL/SHA o revisión de archivos, última escritura confirmada y OK textual si existe. No duplicar logs en un diario. Estados: PREPARADO, BLOQUEADO, ESPERANDO_OK_PREVIEW, OK_PREVIEW, PRODUCCION_VERIFICADA. Sin Preview real mantener PREPARADO/BLOQUEADO.
 
 Tras corte/timeout de escritura consultar ref/deploy antes de repetir. Dos intentos sin evidencia nueva detienen el paso. Un control fallido no se reintenta por regla de AGENTS. No renovar presupuesto con otra sesión; una revisión focal y una segunda solo tras corrección concreta. 401/403: diagnóstico de sesión una vez; 429 respetar Retry-After sin bucle automático. Restaurar backups en carpeta nueva; no reset --hard, clean, force-push ni borrar trabajo ajeno.
+
+## Altas Shop: orden y muestras de color
+
+Shop: cada referencia nueva seleccionada explícitamente en products entra al principio; después manda el orden manual guardado en Tina (arrastrar, flechas o Pos., Save/Reset). Editar ficha/fotos o repetir una carga no mueve referencias existentes. No ordenar al renderizar por nombre, fechas de archivos ni invertir por CSS; no descubrir/publicar borradores automáticamente. Hero y latest se eligen aparte y no cambian por una alta.
+
+Completar palette de cada alta con las muestras del PLA mostrado y etiquetas ES/EN antes de entregar Preview; palette: [] oculta los cuadrados. Usar HEX manual aproximado cuando no hay código de filamento confirmado, sin atribuir marca/preset por foto. Excluir decoración, fondo e iluminación; consultar colores ambiguos y registrar pendientes explícitos. El HEX de producto no modifica tokens del diseño.
+
+Para una carga por IA, usar prependNewShopReferences de src/lib/shop-selection-order.ts sobre las referencias existentes y las altas explícitas en orden de incorporación (antigua a reciente); no pasar todas las fichas del directorio. El helper evita duplicar o mover piezas ya seleccionadas. La UI ShopSelectionField usa el mismo helper para Agregar; Cambiar conserva la posición. Novedades mantiene su selección independiente de hasta tres piezas.

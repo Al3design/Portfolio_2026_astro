@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { useCMS } from 'tinacms';
 import { EditorialOrderList } from './EditorialOrderList';
+import { prependNewShopReferences } from '../../src/lib/shop-selection-order';
 
 type Selection = { product: string }[];
 type Values = { products?: Selection; latest?: Selection; hero?: string };
@@ -90,6 +91,7 @@ function SelectionField({ input, field, meta, form }: Props) {
     onFocus={() => input.onFocus?.()} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) input.onBlur?.(); }}>
     <h2>{field.label}</h2><p>{field.description}</p>
     <p>Arrastrá para ordenar, usá las flechas o elegí una posición. Confirmá con Save o descartá con Reset.</p>
+    {!latest && <p>Las piezas que agregás entran al principio. Después podés elegir su posición; editar su ficha o sus fotos no cambia el orden.</p>}
     <EditorialOrderList label={field.label || 'Piezas'} disabled={disabled} dirty={meta.dirty}
       items={ids.map(id => ({ id, title: byId.get(id)?.title || id.split('/').pop() || id, image: byId.get(id)?.photos?.[0]?.image ?? undefined }))}
       onChange={commit} actions={(item, locked) => <>
@@ -106,7 +108,7 @@ function SelectionField({ input, field, meta, form }: Props) {
         if (editing && editing !== choice && !latest && (state.values.hero === editing || state.values.latest?.some(item => item.product === editing))) {
           setNotice('Antes de reemplazar esta pieza, cambiala en la imagen principal y en novedades.'); return;
         }
-        commit(editing ? ids.map(id => id === editing ? choice : id) : [...ids, choice]); setChoice(''); setEditing('');
+        commit(editing ? ids.map(id => id === editing ? choice : id) : latest ? [...ids, choice] : prependNewShopReferences(ids, [choice])); setChoice(''); setEditing('');
       }}>{editing ? <Pencil size={18} aria-hidden="true" /> : <Plus size={18} aria-hidden="true" />}{editing ? 'Cambiar' : 'Agregar'}</button>
       {editing && <button type="button" disabled={disabled} onClick={() => { setEditing(''); setChoice(''); }}>Cancelar</button>}
     </div>

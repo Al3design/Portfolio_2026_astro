@@ -70,3 +70,7 @@ Una prueba guardada en Tina puede crear commit/deploy. Si Alejandro pide descart
 Al cerrar: main local/remota al mismo SHA, checkout limpio, Production Ready identificado y comprobaciones públicas del alcance. No repetir suites verdes ni otro build/push para narrar éxito. Estado/última escritura/IDs/resultados en reporte o checkpoint; no confundir limpieza con borrar u ocultar fuentes ajenas. `output`, capturas/logs y daemon son artefactos locales según `.gitignore`, no archivos que una IA deba publicar para limpiar Git.
 
 Evidencia de esta recuperación y límites: [reporte de integración](../../../../openspec/changes/rutina-ia-local-portfolio/report-2026-11-13.md). OpenCode/DSH aún requieren acreditar sus propias herramientas y ciclo real; la integración realizada desde Codex no lo sustituye.
+
+## Auditorías Node sobre módulos del frontend
+
+Un `import` directo de shop-colours.ts puede fallar con ERR_IMPORT_ATTRIBUTE_MISSING por el JSON de filamentos: el módulo se consume con el bundler del sitio, no es un script Node autónomo. No modificar imports del producto ni instalar esbuild para forzar una auditoría improvisada (no está disponible como dependencia directa en este checkout). Registrar el límite del harness; usar la evidencia de build/artefacto y revisión del Preview en el cierre ya autorizado. No presentar un harness fallido como fallo visual ni como control aprobado, ni encadenar más intentos. Las pruebas Node existentes de selección/orden sí tienen su contrato propio.

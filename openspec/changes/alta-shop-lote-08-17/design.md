@@ -8,7 +8,7 @@ Fuentes: AGENTS, skill/operación/recuperación editorial, guía, plantilla Shop
 - `12-christmas-tree-huge`: mismo diseño de Árbol decorativo, versión más grande confirmada por el usuario. Una foto al final; portada y fotos anteriores intactas. Otro árbol en la imagen sirve de comparación. Actualizar solo details.variants para expresar el tamaño, sin medidas.
 - `13-christmas-tree-spin`: diseño en espiral distinto, ficha propia. `08-jarra`: se muestra un recipiente sin asa; título descriptivo Jarrón de base acanalada, distinto del jarrón redondeado existente. El conjunto de florero/base de 14 se describe por sus piezas visibles, sin prometer aptitud térmica o estanqueidad.
 - Otros modelos: Llavero Chimuelo, Caja bloque de interrogación, Cubo articulado TNT, Litofanía de Messi, Llavero Veganuel y Llavero Harry Potter. Nombres derivados de material aportado y aspecto observado; no prometer producto oficial, licencia ni servicios no incluidos.
-- Conservar condiciones existentes: precio/colores a consultar, entrega según stock y a confirmar, solo impresión 3D. PLA confirmado; dimensiones omitidas, paletas sin códigos/HEX inventados y productionMode pending interno hasta confirmar disponibilidad concreta.
+- Conservar condiciones existentes: precio/colores a consultar, entrega según stock y a confirmar, solo impresión 3D. PLA confirmado; dimensiones omitidas, paletas manuales aproximadas ES/EN sin códigos de fabricante inferidos y productionMode pending interno hasta confirmar disponibilidad concreta.
 - ES/EN con datos equivalentes y alt propios de cada foto. Las nuevas portadas se eligen entre las fotos del lote; no se modifica la primera imagen de las piezas existentes.
 
 # Verification

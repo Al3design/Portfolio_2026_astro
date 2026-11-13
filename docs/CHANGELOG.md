@@ -6,6 +6,12 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — Altas Shop primero y muestras de color
+
+- Agregar en la selección pública Tina inserta al principio; arrastrar/flechas/Pos. y Save/Reset conservan la elección manual. Reemplazos mantienen posición, novedades/hero siguen independientes; no se invierte el renderer ni se publican borradores por descubrimiento.
+- Las nueve altas del lote 08–17 preceden a las ocho anteriores, conservadas entre sí. Paletas manuales ES/EN reutilizan los cuadrados existentes, sin cambios de CSS/tokens. Dorado de Messi confirmado por Alejandro; tonos HEX aproximados sin códigos de fabricante ni colores de ambientación.
+- Regla y recorrido actualizados en skill, prompts, guía, plantillas, AGENTS/config y README. Revisión anterior ec5de21 tuvo Preview Ready; este cambio material requiere un nuevo Preview y OK posterior antes de main.
+
 ## [2026-11-13] — Candidato Shop con fotos de carpetas 08–17
 
 - Nueve fichas nuevas ES/EN y una foto comparativa al final del árbol existente, con variante de mayor tamaño confirmada por Alejandro. PLA confirmado para todo el lote; 28 originales copiados al intake privado con manifiesto de fuentes/hash/alt/orden, sin reemplazar imágenes actuales.

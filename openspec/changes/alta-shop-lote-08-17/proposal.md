@@ -6,7 +6,7 @@ Alejandro pidió incorporar las fotos nuevas de las carpetas 08–17 de `G:/Mi u
 
 - Nueve fichas bilingües nuevas y 28 fotos copiadas al intake privado del 13/11.
 - Una foto comparativa agregada al final de Árbol decorativo y texto de variante de mayor tamaño, según aclaración del usuario; sin medidas inventadas.
-- Selección candidata de 17 piezas: las ocho actuales en su orden y las nueve nuevas al final, sin cambiar hero/novedades.
+- Selección candidata de 17 piezas: las nueve nuevas primero (última incorporación arriba) y las ocho actuales conservadas entre sí, sin cambiar hero/novedades.
 
 # Impact
 

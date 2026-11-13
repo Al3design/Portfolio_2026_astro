@@ -276,3 +276,9 @@ Los adaptadores personalizados leen inventarios completos por cursor y actualiza
 
 
 Cierre local 10/11 de listas compartidas: pruebas nuevas3/3; tipos0 errores/0 warnings; navegador real comprobó paginación, movimiento global, Save/reapertura/Reset y restauración exacta. Ver report-2026-11-10 del change listas-editoriales-paginadas para alcance y límites. Publicación se registra separadamente; no atribuirle aún este resultado local.
+
+## Altas Shop: orden y muestras de color
+
+Shop: cada referencia nueva seleccionada explícitamente en products entra al principio; después manda el orden manual guardado en Tina (arrastrar, flechas o Pos., Save/Reset). Editar ficha/fotos o repetir una carga no mueve referencias existentes. No ordenar al renderizar por nombre, fechas de archivos ni invertir por CSS; no descubrir/publicar borradores automáticamente. Hero y latest se eligen aparte y no cambian por una alta.
+
+Completar palette de cada alta con las muestras del PLA mostrado y etiquetas ES/EN antes de entregar Preview; palette: [] oculta los cuadrados. Usar HEX manual aproximado cuando no hay código de filamento confirmado, sin atribuir marca/preset por foto. Excluir decoración, fondo e iluminación; consultar colores ambiguos y registrar pendientes explícitos. El HEX de producto no modifica tokens del diseño.

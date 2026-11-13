@@ -18,3 +18,9 @@ Los comandos de [operación](references/operacion.md) son catálogo, no autoriza
 Ante un error/aviso conocido, consultar solo su fila en [bloqueos y avisos](references/bloqueos-y-avisos.md): credenciales locales Tina, índice remoto, conector Vercel, 2FA, refs de navegador, pnpm/hints/CRLF o estado Git. No repetir el relevamiento general ni convertir esa guía en permiso de ejecución. MFA requiere handoff y comprobación del deploy resultante; no se elude con otro canal.
 
 Usar [prompts](references/prompts.md) para alta/cambio/OK y [perfiles Windows](references/perfiles-windows.md) solo para configurar las apps. Revisor opcional, lectura de material estable/diff/evidencia, sin shell, escritura, publicación ni delegación; no es requisito para sustituir una imagen confirmada. No prometer revisión visual si la herramienta no está disponible.
+
+## Altas Shop: orden y muestras de color
+
+Shop: cada referencia nueva seleccionada explícitamente en products entra al principio; después manda el orden manual guardado en Tina (arrastrar, flechas o Pos., Save/Reset). Editar ficha/fotos o repetir una carga no mueve referencias existentes. No ordenar al renderizar por nombre, fechas de archivos ni invertir por CSS; no descubrir/publicar borradores automáticamente. Hero y latest se eligen aparte y no cambian por una alta.
+
+Completar palette de cada alta con las muestras del PLA mostrado y etiquetas ES/EN antes de entregar Preview; palette: [] oculta los cuadrados. Usar HEX manual aproximado cuando no hay código de filamento confirmado, sin atribuir marca/preset por foto. Excluir decoración, fondo e iluminación; consultar colores ambiguos y registrar pendientes explícitos. El HEX de producto no modifica tokens del diseño.

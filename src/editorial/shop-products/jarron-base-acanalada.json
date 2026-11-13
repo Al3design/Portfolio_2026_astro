@@ -42,7 +42,13 @@
       "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Ask whether it can hold water before using fresh flowers."
     }
   },
-  "palette": [],
+  "palette": [
+    {
+      "hex": "#f3f0e9",
+      "es": "Blanco",
+      "en": "White"
+    }
+  ],
   "photos": [
     {
       "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261111_130915.jpg",

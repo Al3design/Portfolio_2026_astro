@@ -3,8 +3,10 @@
 - [x] 1.1 Leer fuentes vigentes, crear rama propia desde main limpia/actualizada e inventariar solo fotos de carpetas 08–17.
 - [x] 1.2 Ver 28 fotos y comparar portadas del catálogo, identificar nueve diseños nuevos y la variante grande del árbol existente.
 - [x] 1.3 Copiar originales al intake privado con SHA y completar nueve fichas ES/EN/alt/material, conservando condiciones comerciales.
-- [x] 1.4 Añadir una foto al árbol al final y texto de variante grande; selección con nueve referencias nuevas al final, hero/latest intactos.
+- [x] 1.4 Añadir una foto al árbol al final y texto de variante grande; selección con nueve referencias nuevas primero, anteriores conservadas entre sí, hero/latest intactos.
 - [x] 1.5 Documentar alcance, correspondencias, límites, permiso de PLA y parada humana.
+
+- [x] 1.6 Aplicar pedido posterior: altas primero, posición manual conservada y paletas ES/EN; Dorado de Messi confirmado. Registrar en skills y fuentes duraderas.
 
 ## 2. Cierre hasta Preview
 

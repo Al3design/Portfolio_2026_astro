@@ -42,7 +42,18 @@
       "en": "Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight."
     }
   },
-  "palette": [],
+  "palette": [
+    {
+      "hex": "#28282b",
+      "es": "Negro",
+      "en": "Black"
+    },
+    {
+      "hex": "#edb52e",
+      "es": "Amarillo",
+      "en": "Yellow"
+    }
+  ],
   "photos": [
     {
       "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261101_190408.jpg",

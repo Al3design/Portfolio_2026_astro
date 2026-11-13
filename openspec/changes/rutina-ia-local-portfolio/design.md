@@ -4,6 +4,8 @@ Fuentes inspeccionadas: AGENTS, config OpenSpec, guía editorial, package/lock/w
 
 # Decisions
 
+- Recuperación progresiva por síntoma en `references/bloqueos-y-avisos.md`: distinguir entorno local, índice, conector y MFA; usar evidencia del deployment/branch correcto, no repetir un relevamiento ni eludir autenticación. Avisos informativos no amplían el alcance. Reporte versionado conserva la resolución real y separa éxito Codex de aceptación pendiente en apps.
+
 - Usar contracts y renderer existentes: projects bilingües, piezas Shop y selección separadas; páginas/global/orden tienen documentos propios.
 - No trasladar main/editorial-tina ni cierre sin PR. Conservar rama activa; Preview por rama no productiva configurada o copia temporal explícita. Cambio de rama necesita pedido al usuario según AGENTS.
 - Copia temporal de HEAD + overlays exactos; manifiesto externo. Estado publicable solo en copia cuando corresponda. Sellado crea revisión nueva; integridad falla ante drift. No simular SHA Git en despliegues de archivos.

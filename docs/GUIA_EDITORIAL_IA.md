@@ -2,6 +2,8 @@
 
 Rutina operativa vigente de IA local: [skill](../.agents/skills/portfolio-editorial/SKILL.md), [operación](../.agents/skills/portfolio-editorial/references/operacion.md) y [prompts](../.agents/skills/portfolio-editorial/references/prompts.md). Esta guía conserva el contrato de contenido. Las notas fechadas inferiores son evidencia histórica, no autorización ni diagnóstico del entorno actual. Diseño fijo; altas y cambios focales usan las plantillas existentes.
 
+Ante fallos de entorno, índice o autenticación, consultar [bloqueos y avisos](../.agents/skills/portfolio-editorial/references/bloqueos-y-avisos.md), sin convertir la recuperación en cambios de contenido/diseño ni repetir controles por tanda.
+
 Conservar tokens y maqueta del sitio (`src/styles/abstracts/`, `--clr-brand-*`) y del administrador (`--al3-admin-*`, puente `--tina-*`, [guía del tema](TINA_ADMIN_THEME.md)), sin mezclar su CSS ni transmitir el tema admin al iframe. Anchos, espacios, tipografías, jerarquía, variantes, temas y responsive son parte del diseño existente. Si el contenido no encaja, informar la limitación; no crear estilos/HTML/clases o modificar tokens como parte de una carga. Hosting documentado Vercel, con build en `vercel.json`; acceso/configuración remotos se acreditan por separado.
 
 Protocolo de alta, edición y publicación de contenido, aplicable también a una IA local. Leer antes de redactar, cargar imágenes o crear documentos. El contrato se contrastó con el código del checkout el **02/11/2026**. Si cambia el código, revisar las fuentes indicadas y actualizar esta guía conjuntamente; los reportes históricos no sustituyen el contrato actual.

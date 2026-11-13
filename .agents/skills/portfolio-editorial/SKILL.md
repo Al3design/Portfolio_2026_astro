@@ -15,4 +15,6 @@ Preparar → revisar diff → controles expresamente autorizados una vez → can
 
 Los comandos de [operación](references/operacion.md) son catálogo, no autorización. Ejecutora sin suites/build/capturas por tanda; si un control falla, registrar y entregar sin reintentar ni sustituir. El orquestador conserva el cierre de AGENTS. No habilitar MCP, iniciar servidores duplicados o instalar dependencias por rutina.
 
+Ante un error/aviso conocido, consultar solo su fila en [bloqueos y avisos](references/bloqueos-y-avisos.md): credenciales locales Tina, índice remoto, conector Vercel, 2FA, refs de navegador, pnpm/hints/CRLF o estado Git. No repetir el relevamiento general ni convertir esa guía en permiso de ejecución. MFA requiere handoff y comprobación del deploy resultante; no se elude con otro canal.
+
 Usar [prompts](references/prompts.md) para alta/cambio/OK y [perfiles Windows](references/perfiles-windows.md) solo para configurar las apps. Revisor opcional, lectura de material estable/diff/evidencia, sin shell, escritura, publicación ni delegación; no es requisito para sustituir una imagen confirmada. No prometer revisión visual si la herramienta no está disponible.

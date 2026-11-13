@@ -1,5 +1,7 @@
 # OpenCode Desktop y DeepSeek Harness
 
+Recuperación durante un encargo: [bloqueos y avisos](bloqueos-y-avisos.md). Acceso del conector, sesión de navegador, herramientas de cada app y credenciales de su terminal se comprueban por separado; 2FA se entrega al usuario, sin copiar secretos entre clientes.
+
 Abrir el directorio del portfolio en la app de escritorio. OpenCode descubre `.opencode/agents/portfolio-editor.md` (principal, 80 pasos) y `portfolio-revisor.md` (lectura, 20). Editor no delega; revisor opcional en sesión separada para mantener un solo escritor. No usar la CLI de OpenCode como sustituto de una prueba de la app Windows.
 
 Formato contrastado el 13/11 con [documentación oficial de agentes OpenCode V2](https://opencode.ai/docs/agents/): carpeta plural `agents`, `mode`, `steps` y lista `permissions` por acción/recurso/efecto. La app instalada declara CLI empaquetada 2.3.0 en `resources/opencode-cli.version`; no se usa la CLI del PATH como evidencia de la versión desktop. Esto valida la correspondencia documental, no la carga/permisos efectivos en UI.

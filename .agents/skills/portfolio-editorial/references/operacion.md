@@ -1,5 +1,7 @@
 # Operación del portfolio
 
+Si un paso se bloquea o muestra un aviso, consultar el caso concreto de [bloqueos y avisos](bloqueos-y-avisos.md). No releer todas las referencias ni repetir suites, instalaciones, reindexaciones o builds por costumbre.
+
 ## Destinos y alcance
 
 El mapa de campos, bloques, medios, ES/EN y consumidores vive en `docs/GUIA_EDITORIAL_IA.md`; no duplicarlo aquí. Fuentes: `tina/config.ts`, `tina/shop-products.ts`, `tina/shop-catalogue.ts`, `src/lib/project-editorial.ts`, `src/lib/project-locales.ts`, `astro.config.mjs`, `vercel.json`, `package.json` y `pnpm-lock.yaml`.

@@ -6,6 +6,12 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — Bloqueos y avisos para IA local
+
+- Guía condicional `bloqueos-y-avisos.md` enlazada desde AGENTS, CLAUDE, README, skill/operación/perfiles y guía editorial: distinguir Tina sin credenciales locales, índice remoto viejo, conector Vercel 404, 2FA, refs obsoletos del navegador y avisos pnpm/hints/CRLF. Incluye acción acotada, evidencia y límites, sin convertirla en controles extra por carga.
+- Recuperación real incorporada al reporte versionado: índice de la rama de trabajo actualizado una vez, 2FA humano, Preview y Production Ready de `e7ce234`, main local/remota sincronizada y URLs comprobadas. El ciclo de OpenCode/DSH sigue pendiente; “conector sin acceso” no equivale a “proyecto inaccesible”. README deja de presentar el acceso remoto como pendiente global.
+- Solo documentación e instrucciones; sin cambios de diseño, runtime, contratos, perfiles globales o scripts. No se repiten suites/builds locales ni reindexaciones para documentar lo ya observado.
+
 ## [2026-11-13] — Rutina de IA local propia del portfolio
 
 - Nueva decisión Git de Alejandro: main local/remota limpia y actualizada como base; cada encargo nuevo crea `codex/<tarea>` y los retomados continúan su rama. Tras Preview y OK posterior, integrar y volver a main limpia, sin worktrees ni ramas por tanda. Sustituye las restricciones anteriores de no crear ramas por encargo en AGENTS/CLAUDE/config/guías/prompts y perfiles Windows.

@@ -4,7 +4,7 @@ import { resolve, relative, extname } from 'node:path';
 
 // Inspect the built output, not source templates or the development server.
 const root = resolve('dist');
-const { selection: { slugs } } = await readShopSelection(process.cwd());
+const { selection: { slugs, latestSlugs } } = await readShopSelection(process.cwd());
 const errors = [];
 const pages = [];
 const photos = new Set();
@@ -23,6 +23,17 @@ for (const [base, price, delivery, included] of [
     try {
       const html = await readFile(resolve(root, page), 'utf8');
       pages.push(page);
+      if (!slug || slug === 'coleccion' || slug === 'collection') {
+        const prefix = base === 'tienda' ? 'Ver pieza:' : 'View piece:';
+        const cards = [...html.matchAll(/<a\b[^>]*>/g)].map(match => match[0]).filter(tag => tag.includes(`aria-label="${prefix}`));
+        const actual = cards.map(tag => tag.match(/href="([^"]+)"/)?.[1]?.split('/').filter(Boolean).pop());
+        const preferred = [...latestSlugs, ...slugs.filter(id => !latestSlugs.includes(id))];
+        const expected = slug ? slugs : preferred;
+        if (JSON.stringify(actual) !== JSON.stringify(expected)) errors.push(`${page}: incorrect storefront piece order`);
+        const visible = [...html.matchAll(/<article\b[^>]*\bdata-piece\b[^>]*>/g)].map(match => match[0])
+          .filter(tag => !/\bhidden(?:\s|=|>)/.test(tag)).map(tag => tag.match(/\bid="([^"]+)"/)?.[1]);
+        if (JSON.stringify(visible) !== JSON.stringify(slug ? slugs : expected.slice(0, 3))) errors.push(`${page}: incorrect visible storefront pieces`);
+      }
       if (!html.includes(price) || !html.includes(delivery) || !html.includes(included)) errors.push(`${page}: missing enquiry terms`);
       if (/\b(?:href|src)=["'][^"']*(?:\/revision\/|\/admin\/)/.test(html)) errors.push(`${page}: editorial URL exposed`);
       if (slugs.includes(slug)) {

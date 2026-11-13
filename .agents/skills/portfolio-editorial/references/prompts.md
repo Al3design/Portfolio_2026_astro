@@ -97,3 +97,5 @@ Prepará Preview de esta revisión y detenete para mi OK posterior.
 ```
 
 Entrada Tina para todas las cargas: Preview permanente de editorial /admin/, enlazado en README/operación. No abrir producción /admin/ para guardar un borrador. La selección de rama se comprueba antes de cualquier guardado; un enlace de producción no selecciona editorial por sí mismo.
+
+Para altas/orden Shop, revisar inicio (/tienda/ y /en/shop-3d/) además de colección: latest vacío sigue las tres primeras piezas de products; latest explícito prioriza manualmente. Usar modo automático salvo selección editorial solicitada; conservar hero. No dar por corregido el inicio por comprobar solo la colección.

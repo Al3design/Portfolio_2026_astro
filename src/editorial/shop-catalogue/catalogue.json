@@ -52,16 +52,6 @@
       "product": "src/editorial/shop-products/soporte-control-creeper.json"
     }
   ],
-  "latest": [
-    {
-      "product": "src/editorial/shop-products/soporte-control-creeper.json"
-    },
-    {
-      "product": "src/editorial/shop-products/maceta-perro.json"
-    },
-    {
-      "product": "src/editorial/shop-products/maceta-acanalada-con-plato.json"
-    }
-  ],
+  "latest": [],
   "hero": "src/editorial/shop-products/jarron-acanalado.json"
 }

@@ -6,11 +6,22 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — OK e integración del orden de portada Tienda
+
+- Alejandro aprobó publicar la corrección 1667740 del Preview EkgXRSmvJ7CvfyxfMJtP4Up8fMQZ. Portada automática con Harry Potter, Veganuel y Messi; novedades manuales opcionales, hero conservado.
+- Se integran la corrección y las reglas vigentes de editorial permanente, resolviendo únicamente conflictos documentales. Runtime/contenido coinciden con el Preview aprobado; no se repiten suites verdes ni se cambia diseño. Estado final del deploy y verificación pública en el checkpoint del encargo citado en el reporte.
+
 ## [2026-11-13] — Rama editorial permanente para cargas Tina/IA
 
 - Por decisión de Alejandro, contenido e imágenes reutilizan editorial (sin prefijo codex), un solo lote pendiente por vez, Preview y OK posterior antes de main. Ramas codex/<tarea> quedan para cambios técnicos; editorial se conserva y sincroniza después de integrar.
 - Rama remota creada desde main 309cef2, indexada en Tina con Event Log succeeded. Se documenta entrada /admin/ del Preview editorial: config deriva la rama del despliegue, mientras producción /admin/ sigue en main. Sin cambiar esquema, build, tokens ni runtime ni habilitar el workflow de pago.
 - AGENTS, CLAUDE, skill, prompts, operación, OpenCode/DSH, README y guía alineados. La corrección técnica de portada 1667740 sigue aparte y pendiente de OK; esta rutina no la publica.
+
+## [2026-11-13] — Candidato: orden automático también en inicio de Tienda
+
+- La portada conservaba las tres novedades anteriores aunque el catálogo ya tenía altas primero. Novedades vacío pasa a usar las tres primeras piezas del catálogo; una selección manual explícita sigue teniendo prioridad y se puede vaciar para volver al modo automático.
+- Selección candidata en modo automático; hero, catálogo completo, fotos/paletas, maqueta y tokens intactos. El admin explica ambos modos sin cambiar esquema/generados.
+- Checker de artefacto comprueba orden completo y tarjetas visibles de inicio/colección ES/EN, además de controles de medios/privacidad existentes. Skill/AGENTS/guía registran ambas superficies. Rama codex/orden-portada-tienda, pendiente Preview y OK posterior.
 
 ## [2026-11-13] — Flujo Git y recuperación con 2FA para IA local
 

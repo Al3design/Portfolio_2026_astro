@@ -11,10 +11,12 @@
 ## 2. Cierre hasta Preview
 
 - [x] 2.1 Auditoría focal de preservación, copias/deduplicación y lector de selección; prueba de selección/fotos una vez (6/6; lector real con 17 piezas y 57 fotos).
-- [ ] 2.2 Commit/push selectivo y build Preview con verificador de artefacto, sin duplicar build local.
-- [ ] 2.3 Revisar candidato desplegado ES/EN, galerías, portada/novedades conservadas y límites de acceso.
-- [ ] 2.4 Entregar URL y revisión, guardar ESPERANDO_OK_PREVIEW y terminar turno.
+- [x] 2.2 Commit/push selectivo y build Preview con verificador de artefacto, sin duplicar build local.
+- [x] 2.3 Revisar candidato desplegado ES/EN, galerías, portada/novedades conservadas y límites de acceso.
+- [x] 2.4 Entregar URL y revisión, guardar ESPERANDO_OK_PREVIEW y terminar turno.
 
-## 3. Solo después del OK
+## 3. Integración autorizada por OK del 13/11
 
 - [ ] 3.1 Confirmar snapshot aprobado, integrar por flujo permitido y comprobar producción; volver a main local/remota actualizada y limpia. No archivar ni marcar aceptación productiva antes.
+
+OK recibido: «dale gas, ok», sobre e57f0d1. Build/recorrido de Preview completados; integración y estado productivo final se registran en el checkpoint externo citado en el reporte. La casilla 3.1 no se adelanta a la comprobación productiva ni exige otro push solo para marcarla.

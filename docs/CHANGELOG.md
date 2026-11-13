@@ -6,6 +6,11 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — OK del lote Shop y autorización de integración
+
+- Alejandro aprobó el Preview e57f0d1: nueve altas primero, paletas ES/EN y Dorado de Messi. Vercel Ready, artefacto sin errores y recorrido ES/EN 20/20; controles y límites visuales en el reporte del lote.
+- Se autoriza integrar esa revisión a main con registro documental de cierre. Identidad y resultado del despliegue Production se conservan en el checkpoint externo citado por el reporte; no se presume producción por el OK ni se repiten suites/builds verdes.
+
 ## [2026-11-13] — Altas Shop primero y muestras de color
 
 - Agregar en la selección pública Tina inserta al principio; arrastrar/flechas/Pos. y Save/Reset conservan la elección manual. Reemplazos mantienen posición, novedades/hero siguen independientes; no se invierte el renderer ni se publican borradores por descubrimiento.

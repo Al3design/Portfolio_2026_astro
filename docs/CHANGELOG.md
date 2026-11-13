@@ -6,6 +6,11 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — Flujo Git y recuperación con 2FA para IA local
+
+- AGENTS, skill editorial, recuperación, config y README distinguen despliegue automático por push de Redeploy manual para un fallo diagnosticado. No duplicar un despliegue exitoso con Redeploy.
+- Ante Verify Your Identity, intervención humana en Vercel, sin códigos en chat ni vías alternativas para eludir el desafío. Se registra que los últimos Preview/Production por Git no pidieron código, sin garantizar futuras sesiones ni inventar una causa interna de Vercel. Solo documentación; producto aprobado sin cambios, sin nuevas suites/build locales.
+
 ## [2026-11-13] — OK del lote Shop y autorización de integración
 
 - Alejandro aprobó el Preview e57f0d1: nueve altas primero, paletas ES/EN y Dorado de Messi. Vercel Ready, artefacto sin errores y recorrido ES/EN 20/20; controles y límites visuales en el reporte del lote.

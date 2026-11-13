@@ -8,6 +8,8 @@ Entrada: [skill portfolio-editorial](.agents/skills/portfolio-editorial/SKILL.md
 
 El destino es **Vercel**, proyecto documentado `portfolio-2026-astro`, dominio `al3design.dev`; `vercel.json` define el build. La integración `e7ce234` se acreditó el 13/11 por GitHub y navegador: Preview/Production Ready; el conector Vercel de esa sesión no tenía acceso. Esto no acredita el acceso propio de OpenCode/DSH. Tina conserva sus contratos separados para artículos ES/EN, páginas, globales, orden visual, fichas y selección Shop; formularios, apariencia admin y Cloud tienen procedimientos distintos.
 
+Publicación habitual por Git: push a rama → Preview; tras OK → main → Production. Redeploy manual solo para recuperar un fallo diagnosticado, sin duplicar despliegues exitosos. Si Vercel pide 2FA, la IA entrega el control para ingresar el código en la página; no lo pide por chat ni lo elude. Ver [recuperación, sección 4](.agents/skills/portfolio-editorial/references/bloqueos-y-avisos.md).
+
 Para resolver rápido un incidente, ver [bloqueos y avisos](.agents/skills/portfolio-editorial/references/bloqueos-y-avisos.md): mensaje → causa que comprobar → acción acotada y límite. Incluye Tina sin credenciales locales, índice de rama desactualizado, conector Vercel 404, 2FA y avisos pnpm/hints/CRLF. Consultar solo el caso aplicable; no es una nueva checklist de controles por carga.
 
 Los [prompts](.agents/skills/portfolio-editorial/references/prompts.md) incluyen ejemplos reales entre paréntesis después de cada campo: OdontoPro, BDM y Jarrón acanalado. Reemplazar los corchetes y quitar el ejemplo antes de enviar; el Preview/SHA/ID ilustrativos son históricos y no autorizan otra publicación.

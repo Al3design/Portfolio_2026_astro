@@ -49,6 +49,10 @@ Tomar el enlace real de `target_url`; no adivinar IDs/hosts. Abrir el deployment
 
 ## 4. Verificación 2FA y redeploy
 
+El carril habitual es push de cambios reales a la rama de trabajo → Preview automático por Git → OK posterior de Alejandro → integración/push a main → Production automático. No pulsar Redeploy además de un push exitoso. Redeploy manual queda para recuperar un build fallido tras diagnosticar/corregir su causa dentro del alcance autorizado; seguir su único deployment ID. Si aparece Verify Your Identity/2FA, entregar el control a Alejandro para que ingrese el código en Vercel y esperar; nunca solicitarlo en el chat ni cambiar de canal para eludirlo. No prometer ausencia de futuros desafíos ni atribuir su causa a una política interna no comprobada.
+
+Evidencia del 13/11: los desafíos observados aparecieron durante recuperaciones con Redeploy manual por fallos de índice Tina; el código rechazado generó otro intento de autenticación, no prueba de otro build. El Preview e57f0d1 y Production 57ea1a4 salieron por pushes normales sin solicitar código. Esto distingue lo observado; no demuestra por qué Vercel pidió reverificación ni que cada Redeploy la exija. Si el usuario autoriza un reintento tras un código rechazado, retomar la misma acción y comprobar el estado antes de repetir.
+
 Confirmar en el modal **Preview**, mismo candidato y dominios esperados antes de solicitar el redeploy. Si Vercel presenta **Verify Your Identity**, avisar y hacer handoff inmediatamente para que Alejandro introduzca un código vigente en la página y pulse Verify Code. Esperar a que devuelva el control. No pedirlo en el chat, leer el campo ni capturarlo.
 
 Si informa código rechazado o demora, no atribuirle una causa sin evidencia ni repetir automáticamente. Con su indicación de reintentar, leer el estado, renovar el diálogo de la misma acción si hace falta y volver a entregar el control. No usar commits vacíos, otra API ni un push para eludir el desafío.

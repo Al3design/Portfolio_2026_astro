@@ -1,0 +1,273 @@
+{
+  "sourceRoot": "G:/Mi unidad/laburo/3D",
+  "material": "PLA confirmado por el usuario para las carpetas 08–17",
+  "review": "28 fotos vistas antes de describirlas; 8 portadas existentes comparadas",
+  "files": [
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\08-jarra\\fotos\\20261111_130915.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261111_130915.jpg",
+      "sha256": "e2c03499245a8cc55c50e6e75d3c4fa02b0eeffa9cf41c1fe42afde100e1a9b6",
+      "product": "jarron-base-acanalada",
+      "position": 1,
+      "altEs": "Jarrón blanco de cuello recto y mitad inferior acanalada sobre una mesa.",
+      "altEn": "White vase with a straight neck and ribbed lower half on a table."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\08-jarra\\fotos\\20261111_130931.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261111_130931.jpg",
+      "sha256": "549433fb4ad16c83e01056700d5f48e6ddc1bf04ecbaa0460a9b9de320be658d",
+      "product": "jarron-base-acanalada",
+      "position": 2,
+      "altEs": "Vista en diagonal del jarrón blanco, con la abertura y el relieve vertical visibles.",
+      "altEn": "Angled view of the white vase showing its opening and vertical ribbing."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\08-jarra\\fotos\\20261111_130935.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261111_130935.jpg",
+      "sha256": "dfb23873f808378634ec09c696967a8dc86c50b1d2beb7f508cc3f6533a270da",
+      "product": "jarron-base-acanalada",
+      "position": 3,
+      "altEs": "Vista frontal a contraluz del jarrón blanco de base acanalada.",
+      "altEn": "Backlit front view of the white vase with a ribbed base."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\08-jarra\\fotos\\20261111_130939.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261111_130939.jpg",
+      "sha256": "9e1d815d786cdda06b115b2789266f22d335d9abe38b9f6d110d1e6b288d5395",
+      "product": "jarron-base-acanalada",
+      "position": 4,
+      "altEs": "Vista desde arriba de la abertura circular y el interior del jarrón blanco.",
+      "altEn": "Top view of the circular opening and interior of the white vase."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\09-llavero-chimuelo\\fotos\\20261106_180149.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_180149.jpg",
+      "sha256": "b648ce913cefb97a16c8f6732df1f089924a11b440c02801ac0e26479f5c5bb3",
+      "product": "llavero-chimuelo",
+      "position": 1,
+      "altEs": "Primer plano de Chimuelo negro con ojos amarillos, orejas levantadas y cuerpo extendido sobre la mesa.",
+      "altEn": "Close-up of black Toothless with yellow eyes, raised ears and its body extended across the table."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\09-llavero-chimuelo\\fotos\\20261106_174746.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_174746.jpg",
+      "sha256": "8cc5b87017dfbea81646e34c12ad3aec3e22f6427061d26ec176005532c64360",
+      "product": "llavero-chimuelo",
+      "position": 2,
+      "altEs": "Pequeña figura negra de Chimuelo fotografiada sobre una mesa blanca.",
+      "altEn": "Small black Toothless figure photographed on a white table."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\09-llavero-chimuelo\\fotos\\20261106_180211.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_180211.jpg",
+      "sha256": "d541adc93683dacbcc38eec46634a91ec92ebe8297ff7784ff83153a24aa1d3e",
+      "product": "llavero-chimuelo",
+      "position": 3,
+      "altEs": "Chimuelo negro visto en diagonal, con la cabeza y el cuerpo sobre la mesa.",
+      "altEn": "Angled view of black Toothless with its head and body resting on the table."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\10-caja-mariobros\\fotos\\20261106_180138.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_180138.jpg",
+      "sha256": "2b00081c2908069d0337a96bb951f7aeeb17d0bb82244a447077bd00060098bf",
+      "product": "caja-bloque-interrogacion",
+      "position": 1,
+      "altEs": "Caja amarilla cerrada, con signos de interrogación claros en dos caras y la tapa visible.",
+      "altEn": "Closed yellow box with light-coloured question marks on two sides and its lid visible."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\10-caja-mariobros\\fotos\\20261106_174638.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_174638.jpg",
+      "sha256": "439681199b8296491e5e3ac1474cff683f41afb13b79441bf36a573ddc23bcdd",
+      "product": "caja-bloque-interrogacion",
+      "position": 2,
+      "altEs": "Vista frontal de la caja amarilla con un signo de interrogación y detalles en las esquinas.",
+      "altEn": "Front view of the yellow box with a question mark and details at the corners."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\10-caja-mariobros\\fotos\\20261106_180116.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_180116.jpg",
+      "sha256": "b66098022bd063d778bad031534ec2bb30145c9d09931a6fe30b9a6a9ea88b7c",
+      "product": "caja-bloque-interrogacion",
+      "position": 3,
+      "altEs": "Caja amarilla vista desde arriba con la tapa abierta hacia un lado y el interior a la vista.",
+      "altEn": "Top view of the yellow box with its lid open to one side and its interior visible."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\11-fidget-cubo-tnt\\fotos\\20261106_180056.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_180056.jpg",
+      "sha256": "83bae3d7d181f82955d56ef7f67a9362abc5a10b652b8c25cb20fa974526bb1b",
+      "product": "cubo-articulado-tnt",
+      "position": 1,
+      "altEs": "Cubo rojo plegado con bandas claras, letras TNT y uniones visibles entre los bloques.",
+      "altEn": "Folded red cube with light bands, TNT lettering and visible joints between the blocks."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\11-fidget-cubo-tnt\\fotos\\20261106_174802.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_174802.jpg",
+      "sha256": "c65db78ef226321a00bc551c63b4efffb603c3b9a4b177ae0ea64e5fe0783be7",
+      "product": "cubo-articulado-tnt",
+      "position": 2,
+      "altEs": "Bloques rojos TNT en una posición parcialmente plegada sobre una mesa.",
+      "altEn": "Red TNT blocks in a partly folded position on a table."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\11-fidget-cubo-tnt\\fotos\\20261106_174830.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_174830.jpg",
+      "sha256": "ac474ff557649b9d7798e99ac5e6efa2f611be7006c28b47e51e21a66b10feab",
+      "product": "cubo-articulado-tnt",
+      "position": 3,
+      "altEs": "Conjunto TNT extendido en una posición vertical con las uniones visibles.",
+      "altEn": "TNT assembly extended vertically with its joints visible."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\11-fidget-cubo-tnt\\fotos\\20261106_180033.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_180033.jpg",
+      "sha256": "b2efc9d07cbb6b17062d311c507976a805b2b547aa9b1b79aa86cfcbbcd83e30",
+      "product": "cubo-articulado-tnt",
+      "position": 4,
+      "altEs": "Fidget TNT desplegado en un rectángulo horizontal, visto en diagonal.",
+      "altEn": "TNT fidget unfolded into a horizontal rectangle, viewed at an angle."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\11-fidget-cubo-tnt\\fotos\\20261106_180041.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_180041.jpg",
+      "sha256": "689ae9c8ff614220cd4212c77989a0950167a918ff2b649c2e218896e5696d53",
+      "product": "cubo-articulado-tnt",
+      "position": 5,
+      "altEs": "Vista desde arriba del fidget TNT desplegado, con bloques rojos y letras oscuras.",
+      "altEn": "Top view of the unfolded TNT fidget with red blocks and dark lettering."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\11-fidget-cubo-tnt\\fotos\\20261106_180052.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_180052.jpg",
+      "sha256": "34bd64ce46629a8f272c44cda8a6a453aae71b10f19359453e42b3394020a30b",
+      "product": "cubo-articulado-tnt",
+      "position": 6,
+      "altEs": "Otra vista del cubo TNT plegado, con sus bandas claras y articulaciones.",
+      "altEn": "Another view of the folded TNT cube with its light bands and joints."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\12-christmas-tree-huge\\fotos\\20261106_175934.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_175934.jpg",
+      "sha256": "01c89d06117b4bab153b6bec1dcff207b3e56ba8619d8fe9c9807030e9a9201c",
+      "product": "arbol-decorativo",
+      "position": 9,
+      "altEs": "Versión de mayor tamaño del árbol de Navidad con follaje en capas, junto a otro árbol más pequeño en espiral como comparación.",
+      "altEn": "Larger version of the Christmas tree with layered foliage, beside a smaller spiral tree for comparison."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\13-christmas-tree-spin\\fotos\\20261106_175947.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_175947.jpg",
+      "sha256": "4e15978f2dd3cf1d6e8ea81c74faec241255b6ca6de499382202709f390b09ac",
+      "product": "arbol-navidad-espiral",
+      "position": 1,
+      "altEs": "Árbol verde de Navidad con cuerpo en espiral y estrella amarilla sobre una mesa blanca.",
+      "altEn": "Green Christmas tree with a spiral body and yellow star on a white table."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\13-christmas-tree-spin\\fotos\\20261106_175007.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261106_175007.jpg",
+      "sha256": "d83cc1f9d342cf55a11ed73cdb79f6b4af8f9a36ad1e4286381c72ea10d9a795",
+      "product": "arbol-navidad-espiral",
+      "position": 2,
+      "altEs": "Árbol de cuerpo en espiral y estrella en la punta, fotografiado a contraluz.",
+      "altEn": "Tree with a spiral body and a star on top, photographed against the light."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\14-florero-vela-base\\fotos\\20261101_212828.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_212828.jpg",
+      "sha256": "73bc4531fb521a11a6b4a92bfaf6910895fd42742c9333cb1c62ae18721304b4",
+      "product": "set-florero-con-base",
+      "position": 1,
+      "altEs": "Florero beige acanalado con flores, soporte circular y base redondeada sobre un mueble de madera.",
+      "altEn": "Beige ribbed vase with flowers, a circular holder and a rounded base on wooden furniture."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\14-florero-vela-base\\fotos\\20261101_212840.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_212840.jpg",
+      "sha256": "3f5b0e178bce95e6ebd44a90a1777926e08fd7b6e6ef8db2ab250cf6d682f54c",
+      "product": "set-florero-con-base",
+      "position": 2,
+      "altEs": "Vista elevada del florero con flores y del soporte circular sobre la misma base.",
+      "altEn": "Elevated view of the vase with flowers and circular holder on the same base."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\14-florero-vela-base\\fotos\\20261101_212844.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_212844.jpg",
+      "sha256": "3906322759e28a33bca46d2125e0d8092b1ccfeb2349729e91efeeed419538b0",
+      "product": "set-florero-con-base",
+      "position": 3,
+      "altEs": "Detalle del florero beige y el soporte circular acanalados, sobre una base del mismo color.",
+      "altEn": "Detail of the beige ribbed vase and circular holder on a matching base."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\15-rotoscopia-messi\\fotos\\20261101_190636.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_190636.jpg",
+      "sha256": "a74349a7353c7bd69833707e0a631b90a034655ea6445e11de9e57715e992627",
+      "product": "litofania-messi",
+      "position": 1,
+      "altEs": "Placa rectangular con el retrato de Messi iluminado a contraluz y sostenida con una mano.",
+      "altEn": "Rectangular panel with a backlit portrait of Messi, held in one hand."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\15-rotoscopia-messi\\fotos\\20261101_190644.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_190644.jpg",
+      "sha256": "8118174bdce8217218af7d9f26b751d0b9d967af1c374a3bfe452dd394ffb66b",
+      "product": "litofania-messi",
+      "position": 2,
+      "altEs": "Vista más amplia de la placa con el retrato de Messi frente a una fuente de luz.",
+      "altEn": "Wider view of the panel with the portrait of Messi in front of a light source."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\16-llavero-veganuel\\fotos\\20261101_190459.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_190459.jpg",
+      "sha256": "45b53714b85cb7785e18372ffa9fa4876c8ef444c4a9704fe4b0e078d4b5fe53",
+      "product": "llavero-veganuel",
+      "position": 1,
+      "altEs": "Llavero negro con la palabra Veganuel en blanco, unido a una argolla metálica.",
+      "altEn": "Black keychain with white Veganuel lettering, attached to a metal ring."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\16-llavero-veganuel\\fotos\\20261101_190529.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_190529.jpg",
+      "sha256": "725aafc934f029457260ce30dfddca108303030592657fc451e8b7e2bc39ee69",
+      "product": "llavero-veganuel",
+      "position": 2,
+      "altEs": "Detalle del relieve blanco de la palabra Veganuel sobre la base negra del llavero.",
+      "altEn": "Detail of the raised white Veganuel lettering on the black keychain base."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\17-llavero-hp\\fotos\\20261101_190408.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_190408.jpg",
+      "sha256": "4c46ff76edac23a3604bc2ef02ef855628878735c0a045cbee74e557839bee6b",
+      "product": "llavero-harry-potter",
+      "position": 1,
+      "altEs": "Llavero con letras amarillas de Harry Potter sobre una base negra y argolla metálica a la izquierda.",
+      "altEn": "Keychain with yellow Harry Potter lettering on a black base and a metal ring on the left."
+    },
+    {
+      "source": "G:\\Mi unidad\\laburo\\3D\\17-llavero-hp\\fotos\\20261101_190423.jpg",
+      "destination": "src/editorial/shop-assets/intake-2026-11-13/20261101_190423.jpg",
+      "sha256": "9d251647ff93f966c97457617994cab2a2646605a5509e9d2d0e0109879d1cef",
+      "product": "llavero-harry-potter",
+      "position": 2,
+      "altEs": "Otra vista del llavero Harry Potter con letras amarillas y base negra sobre una superficie clara.",
+      "altEn": "Another view of the Harry Potter keychain with yellow lettering and a black base on a light surface."
+    }
+  ],
+  "newProducts": [
+    "jarron-base-acanalada",
+    "llavero-chimuelo",
+    "caja-bloque-interrogacion",
+    "cubo-articulado-tnt",
+    "arbol-navidad-espiral",
+    "set-florero-con-base",
+    "litofania-messi",
+    "llavero-veganuel",
+    "llavero-harry-potter"
+  ],
+  "updatedProducts": [
+    "arbol-decorativo"
+  ]
+}

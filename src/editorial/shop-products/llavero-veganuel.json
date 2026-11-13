@@ -1,0 +1,62 @@
+{
+  "title": "Llavero Veganuel",
+  "status": "draft",
+  "productionMode": "pending",
+  "locales": {
+    "es": {
+      "title": "Llavero Veganuel",
+      "description": "Un llavero de PLA con el nombre Veganuel en relieve. Las fotos muestran el diseño en blanco y negro; consultá por los colores disponibles."
+    },
+    "en": {
+      "title": "Veganuel keychain",
+      "description": "A PLA keychain with raised Veganuel lettering. The photos show the design in black and white; ask about available colours."
+    }
+  },
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    },
+    "care": {
+      "es": "Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo.",
+      "en": "Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight."
+    }
+  },
+  "palette": [],
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261101_190459.jpg",
+      "kind": "photo",
+      "altEs": "Llavero negro con la palabra Veganuel en blanco, unido a una argolla metálica.",
+      "altEn": "Black keychain with white Veganuel lettering, attached to a metal ring."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261101_190529.jpg",
+      "kind": "photo",
+      "altEs": "Detalle del relieve blanco de la palabra Veganuel sobre la base negra del llavero.",
+      "altEn": "Detail of the raised white Veganuel lettering on the black keychain base."
+    }
+  ],
+  "category": "design",
+  "productionNotes": "PLA confirmado para este lote. Disponibilidad y entrega a confirmar; no inferir stock, medidas ni códigos de filamento de las fotos."
+}

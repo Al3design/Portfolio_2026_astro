@@ -1,0 +1,62 @@
+{
+  "title": "Llavero Harry Potter",
+  "status": "draft",
+  "productionMode": "pending",
+  "locales": {
+    "es": {
+      "title": "Llavero Harry Potter",
+      "description": "Un llavero de PLA con el nombre Harry Potter en relieve. El diseño fotografiado combina una base negra con letras amarillas; consultá por los colores disponibles."
+    },
+    "en": {
+      "title": "Harry Potter keychain",
+      "description": "A PLA keychain with raised Harry Potter lettering. The photographed design combines a black base with yellow letters; ask about available colours."
+    }
+  },
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    },
+    "care": {
+      "es": "Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo.",
+      "en": "Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight."
+    }
+  },
+  "palette": [],
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261101_190408.jpg",
+      "kind": "photo",
+      "altEs": "Llavero con letras amarillas de Harry Potter sobre una base negra y argolla metálica a la izquierda.",
+      "altEn": "Keychain with yellow Harry Potter lettering on a black base and a metal ring on the left."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261101_190423.jpg",
+      "kind": "photo",
+      "altEs": "Otra vista del llavero Harry Potter con letras amarillas y base negra sobre una superficie clara.",
+      "altEn": "Another view of the Harry Potter keychain with yellow lettering and a black base on a light surface."
+    }
+  ],
+  "category": "design",
+  "productionNotes": "PLA confirmado para este lote. Disponibilidad y entrega a confirmar; no inferir stock, medidas ni códigos de filamento de las fotos."
+}

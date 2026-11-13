@@ -1,0 +1,86 @@
+{
+  "title": "Cubo articulado TNT",
+  "status": "draft",
+  "productionMode": "pending",
+  "locales": {
+    "es": {
+      "title": "Cubo articulado TNT",
+      "description": "Un fidget de PLA formado por bloques rojos con la inscripción TNT. Las fotos muestran distintas posiciones del conjunto, plegado como cubo y extendido."
+    },
+    "en": {
+      "title": "TNT articulated cube",
+      "description": "A PLA fidget made of red blocks marked TNT. The photos show the assembly in different positions, folded into a cube and unfolded."
+    }
+  },
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    },
+    "care": {
+      "es": "Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo.",
+      "en": "Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight."
+    }
+  },
+  "palette": [],
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_180056.jpg",
+      "kind": "photo",
+      "altEs": "Cubo rojo plegado con bandas claras, letras TNT y uniones visibles entre los bloques.",
+      "altEn": "Folded red cube with light bands, TNT lettering and visible joints between the blocks."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_174802.jpg",
+      "kind": "photo",
+      "altEs": "Bloques rojos TNT en una posición parcialmente plegada sobre una mesa.",
+      "altEn": "Red TNT blocks in a partly folded position on a table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_174830.jpg",
+      "kind": "photo",
+      "altEs": "Conjunto TNT extendido en una posición vertical con las uniones visibles.",
+      "altEn": "TNT assembly extended vertically with its joints visible."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_180033.jpg",
+      "kind": "photo",
+      "altEs": "Fidget TNT desplegado en un rectángulo horizontal, visto en diagonal.",
+      "altEn": "TNT fidget unfolded into a horizontal rectangle, viewed at an angle."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_180041.jpg",
+      "kind": "photo",
+      "altEs": "Vista desde arriba del fidget TNT desplegado, con bloques rojos y letras oscuras.",
+      "altEn": "Top view of the unfolded TNT fidget with red blocks and dark lettering."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_180052.jpg",
+      "kind": "photo",
+      "altEs": "Otra vista del cubo TNT plegado, con sus bandas claras y articulaciones.",
+      "altEn": "Another view of the folded TNT cube with its light bands and joints."
+    }
+  ],
+  "category": "design",
+  "productionNotes": "PLA confirmado para este lote. Disponibilidad y entrega a confirmar; no inferir stock, medidas ni códigos de filamento de las fotos."
+}

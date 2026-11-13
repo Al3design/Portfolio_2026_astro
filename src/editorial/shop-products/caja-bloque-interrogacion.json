@@ -1,0 +1,68 @@
+{
+  "title": "Caja bloque de interrogación",
+  "status": "draft",
+  "productionMode": "pending",
+  "locales": {
+    "es": {
+      "title": "Caja bloque de interrogación",
+      "description": "Una caja de PLA con forma de bloque amarillo y signos de interrogación, inspirada en Mario Bros. Las fotos muestran el exterior y el interior con la tapa abierta."
+    },
+    "en": {
+      "title": "Question block box",
+      "description": "A PLA box shaped like a yellow question block, inspired by Mario Bros. The photos show the outside and the interior with its lid open."
+    }
+  },
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    },
+    "care": {
+      "es": "Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo.",
+      "en": "Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight."
+    }
+  },
+  "palette": [],
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_180138.jpg",
+      "kind": "photo",
+      "altEs": "Caja amarilla cerrada, con signos de interrogación claros en dos caras y la tapa visible.",
+      "altEn": "Closed yellow box with light-coloured question marks on two sides and its lid visible."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_174638.jpg",
+      "kind": "photo",
+      "altEs": "Vista frontal de la caja amarilla con un signo de interrogación y detalles en las esquinas.",
+      "altEn": "Front view of the yellow box with a question mark and details at the corners."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_180116.jpg",
+      "kind": "photo",
+      "altEs": "Caja amarilla vista desde arriba con la tapa abierta hacia un lado y el interior a la vista.",
+      "altEn": "Top view of the yellow box with its lid open to one side and its interior visible."
+    }
+  ],
+  "category": "organization",
+  "productionNotes": "PLA confirmado para este lote. Disponibilidad y entrega a confirmar; no inferir stock, medidas ni códigos de filamento de las fotos."
+}

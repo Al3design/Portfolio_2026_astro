@@ -1,0 +1,62 @@
+{
+  "title": "Árbol de Navidad en espiral",
+  "status": "draft",
+  "productionMode": "pending",
+  "locales": {
+    "es": {
+      "title": "Árbol de Navidad en espiral",
+      "description": "Un árbol decorativo de PLA con relieve en espiral y una estrella en la punta. Su silueta es diferente a la del árbol con follaje en capas; consultá por los colores disponibles."
+    },
+    "en": {
+      "title": "Spiral Christmas tree",
+      "description": "A decorative PLA tree with spiral ribbing and a star on top. Its silhouette differs from the layered-foliage tree; ask about available colours."
+    }
+  },
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    },
+    "care": {
+      "es": "Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo.",
+      "en": "Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight."
+    }
+  },
+  "palette": [],
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_175947.jpg",
+      "kind": "photo",
+      "altEs": "Árbol verde de Navidad con cuerpo en espiral y estrella amarilla sobre una mesa blanca.",
+      "altEn": "Green Christmas tree with a spiral body and yellow star on a white table."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_175007.jpg",
+      "kind": "photo",
+      "altEs": "Árbol de cuerpo en espiral y estrella en la punta, fotografiado a contraluz.",
+      "altEn": "Tree with a spiral body and a star on top, photographed against the light."
+    }
+  ],
+  "category": "home",
+  "productionNotes": "PLA confirmado para este lote. Disponibilidad y entrega a confirmar; no inferir stock, medidas ni códigos de filamento de las fotos."
+}

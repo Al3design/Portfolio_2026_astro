@@ -54,8 +54,8 @@
       "en": "PLA"
     },
     "variants": {
-      "es": "Colores a consultar.",
-      "en": "Colours available on enquiry."
+      "es": "La foto comparativa muestra una versión de mayor tamaño. Consultá medidas, colores y disponibilidad.",
+      "en": "The comparison photo shows a larger version. Ask about dimensions, colours and availability."
     },
     "care": {
       "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Manipulá la estrella y las puntas con cuidado.",
@@ -130,6 +130,12 @@
       "altEn": "Another view of the dark green tree with a star and brown trunk.",
       "captionEs": "Otra combinación de colores, con tonos más oscuros.",
       "captionEn": "Another colour combination with darker tones."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261106_175934.jpg",
+      "kind": "photo",
+      "altEs": "Versión de mayor tamaño del árbol de Navidad con follaje en capas, junto a otro árbol más pequeño en espiral como comparación.",
+      "altEn": "Larger version of the Christmas tree with layered foliage, beside a smaller spiral tree for comparison."
     }
   ]
 }

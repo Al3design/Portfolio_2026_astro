@@ -6,6 +6,10 @@ Este documento registra los cambios significativos realizados al proyecto en ord
 
 ---
 
+## [2026-11-13] — Candidato Shop con fotos de carpetas 08–17
+
+- Nueve fichas nuevas ES/EN y una foto comparativa al final del árbol existente, con variante de mayor tamaño confirmada por Alejandro. PLA confirmado para todo el lote; 28 originales copiados al intake privado con manifiesto de fuentes/hash/alt/orden, sin reemplazar imágenes actuales.
+- Selección candidata de 17 piezas, conservando las ocho anteriores, hero y novedades. Sin cambios de diseño, contratos o condiciones comerciales; medidas/stock/códigos de filamento no inferidos de fotos. Rama `codex/alta-shop-08-17`, hasta Preview y parada para OK posterior; no publicado en main. Estado/evidencia en `openspec/changes/alta-shop-lote-08-17/report-2026-11-13.md`.
 ## [2026-11-13] — Ejemplos reales en prompts de plantilla
 
 - Los cinco prompts (alta, cambio, control, OK de Preview y revisión) incluyen ejemplos reales después de los corchetes: borrador OdontoPro, caso BDM, ficha/foto/campo del Jarrón acanalado y comando existente de selección Shop. Se aclara cómo completar y retirar los ejemplos, y que un borrador existente se completa sin duplicarlo.

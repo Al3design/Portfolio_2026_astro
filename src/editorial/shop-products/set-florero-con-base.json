@@ -1,0 +1,68 @@
+{
+  "title": "Set decorativo con florero y base",
+  "status": "draft",
+  "productionMode": "pending",
+  "locales": {
+    "es": {
+      "title": "Set decorativo con florero y base",
+      "description": "Una composición de PLA con florero acanalado, soporte circular y base de bordes redondeados. Las fotos muestran el conjunto ambientado con flores y una vela; los elementos decorativos no están incluidos."
+    },
+    "en": {
+      "title": "Decorative vase and base set",
+      "description": "A PLA arrangement with a ribbed vase, a circular holder and a round-edged base. The photos show the set styled with flowers and a candle; decorative props are not included."
+    }
+  },
+  "details": {
+    "price": {
+      "es": "Precio a consultar.",
+      "en": "Price on enquiry."
+    },
+    "deliveryTime": {
+      "es": "Según stock y a confirmar.",
+      "en": "Subject to stock; to be confirmed."
+    },
+    "included": {
+      "es": "Solo incluye la impresión 3D. Los demás elementos de las fotos son decorativos y no están incluidos.",
+      "en": "Only the 3D print is included. Other items in the photos are decorative and are not included."
+    },
+    "variants": {
+      "es": "Colores a consultar.",
+      "en": "Colours available on enquiry."
+    },
+    "material": {
+      "es": "PLA",
+      "en": "PLA"
+    },
+    "availability": {
+      "es": "Trabajamos con stock y por pedido. Consultá la disponibilidad.",
+      "en": "We work with stock and made-to-order pieces. Ask about availability."
+    },
+    "care": {
+      "es": "Para interiores. Limpiá con un paño suave y apenas húmedo, y secá después. Evitá el calor y el sol directo. No uses lavavajillas. Consultá si puede contener agua antes de usar flores naturales.",
+      "en": "For indoor use. Wipe with a soft, slightly damp cloth and dry. Keep away from heat and direct sunlight. Do not put in a dishwasher. Ask whether it can hold water before using fresh flowers."
+    }
+  },
+  "palette": [],
+  "photos": [
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261101_212828.jpg",
+      "kind": "photo",
+      "altEs": "Florero beige acanalado con flores, soporte circular y base redondeada sobre un mueble de madera.",
+      "altEn": "Beige ribbed vase with flowers, a circular holder and a rounded base on wooden furniture."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261101_212840.jpg",
+      "kind": "photo",
+      "altEs": "Vista elevada del florero con flores y del soporte circular sobre la misma base.",
+      "altEn": "Elevated view of the vase with flowers and circular holder on the same base."
+    },
+    {
+      "sourcePath": "src/editorial/shop-assets/intake-2026-11-13/20261101_212844.jpg",
+      "kind": "photo",
+      "altEs": "Detalle del florero beige y el soporte circular acanalados, sobre una base del mismo color.",
+      "altEn": "Detail of the beige ribbed vase and circular holder on a matching base."
+    }
+  ],
+  "category": "home",
+  "productionNotes": "PLA confirmado para este lote. Disponibilidad y entrega a confirmar; no inferir stock, medidas ni códigos de filamento de las fotos."
+}
